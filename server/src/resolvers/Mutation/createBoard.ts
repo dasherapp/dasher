@@ -1,11 +1,12 @@
-import { Context } from '../../utils'
+import { Context, getUserId } from '../../utils'
 
-function createBoard(root, { name, ownerLogin }, context: Context, info) {
+function createBoard(root, { name }, context: Context, info) {
+  const userId = getUserId(context)
   return context.db.mutation.createBoard(
     {
       data: {
         name,
-        owner: { connect: { login: ownerLogin } },
+        owner: { connect: { id: userId } },
       },
     },
     info,

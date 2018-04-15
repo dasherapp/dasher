@@ -6,7 +6,7 @@ type Query {
 }
 
 type Mutation {
-  createBoard(name: String!, ownerLogin: String!): Board
+  createBoard(name: String!): Board
   authenticate(githubCode: String!): AuthenticateUserPayload
 }
 

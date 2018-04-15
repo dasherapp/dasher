@@ -1,27 +1,26 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { ApolloProvider } from 'react-apollo'
-import ApolloClient from 'apollo-boost'
 
+import Apollo from './Apollo'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
+import CallbackPage from './CallbackPage'
 import NotFoundPage from './NotFoundPage'
-
-const client = new ApolloClient({ uri: 'http://localhost:4000' })
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <Apollo>
       <Router>
         <Fragment>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/callback" component={CallbackPage} />
             <Route component={NotFoundPage} />
           </Switch>
         </Fragment>
       </Router>
-    </ApolloProvider>
+    </Apollo>
   )
 }
 

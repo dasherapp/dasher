@@ -1,8 +1,11 @@
 {
-  "name": "react-fullstack-basic",
+  "name": "dasher",
   "version": "1.0.0",
-  "devDependencies": {
-    "react-scripts": "1.1.4"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "apollo-boost": "0.1.4",
@@ -12,13 +15,9 @@
     "react-apollo": "2.1.3",
     "react-dom": "16.3.1",
     "react-modal": "3.3.2",
-    "react-router-dom": "4.2.2",
-    "tachyons": "4.9.1"
+    "react-router-dom": "4.2.2"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "react-scripts": "1.1.4"
   }
 }

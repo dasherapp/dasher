@@ -1,6 +1,29 @@
-type Post {
+type User @model {
   id: ID! @unique
-  isPublished: Boolean!
-  title: String!
-  text: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  githubUserId: String! @unique
+  name: String
+  login: String! @unique
+  avatarUrl: String!
+  boards: [Board!]!
+}
+
+type Board @model {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  owner: User!
+  columns: [Column!]!
+}
+
+type Column @model {
+  id: ID! @unique
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  name: String!
+  board: Board!
+  query: String!
+  index: Int!
 }

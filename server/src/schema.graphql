@@ -1,9 +1,16 @@
-# import Board from "./generated/prisma.graphql"
+# import User, Board from "./generated/prisma.graphql"
 
 type Query {
+  me: User
   boards: [Board!]!
 }
 
 type Mutation {
   createBoard(name: String!, ownerLogin: String!): Board
+  authenticate(githubCode: String!): AuthenticateUserPayload
+}
+
+type AuthenticateUserPayload {
+  user: User!
+  token: String!
 }

@@ -1,13 +1,9 @@
-# import Post from "./generated/prisma.graphql"
+# import Board from "./generated/prisma.graphql"
 
 type Query {
-  feed: [Post!]!
-  drafts: [Post!]!
-  post(id: ID!): Post
+  boards: [Board!]!
 }
 
 type Mutation {
-  createDraft(title: String!, text: String): Post
-  deletePost(id: ID!): Post
-  publish(id: ID!): Post
+  createBoard(name: String!, ownerLogin: String!): Board
 }

@@ -1,5 +1,6 @@
 {
   "name": "dasher",
+  "version": "1.0.0",
   "scripts": {
     "start": "dotenv -- nodemon -x ts-node -e ts,graphql src/index.ts",
     "playground": "prisma playground",

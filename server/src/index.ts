@@ -1,14 +1,19 @@
-const { GraphQLServer } = require('graphql-yoga')
-const { Prisma } = require('prisma-binding')
+import { GraphQLServer } from 'graphql-yoga'
+import { Prisma } from 'prisma-binding'
+
+interface Context {
+  db: Prisma
+  request: any
+}
 
 const resolvers = {
   Query: {
-    boards(root, args, context, info) {
+    boards(root, args, context: Context, info) {
       return context.db.query.boards({}, info)
     },
   },
   Mutation: {
-    createBoard(root, { name, ownerLogin }, context, info) {
+    createBoard(root, { name, ownerLogin }, context: Context, info) {
       return context.db.mutation.createBoard(
         {
           data: {

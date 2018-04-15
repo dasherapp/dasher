@@ -28,8 +28,6 @@ async function authenticate(root, { githubCode }, context: Context, info) {
     user = await createPrismaUser(context, githubUser)
   }
 
-  console.log(`app secret`, process.env.APP_SECRET)
-
   return {
     token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
     user,

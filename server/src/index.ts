@@ -30,8 +30,8 @@ const resolvers = {
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
-  context: req => ({
-    ...req,
+  context: request => ({
+    ...request,
     db: new Prisma({
       typeDefs: 'src/generated/prisma.graphql',
       endpoint: 'https://us1.prisma.sh/dasher/dasher/dev',

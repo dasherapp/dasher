@@ -1,4 +1,4 @@
-import { logIn, isLoggedIn, AUTH_TOKEN_KEY } from '../auth'
+import { logIn, logOut, isLoggedIn, AUTH_TOKEN_KEY } from '../auth'
 
 afterEach(() => {
   localStorage.clear()
@@ -6,6 +6,16 @@ afterEach(() => {
 
 describe('logIn()', () => {
   it('stores auth token in localStorage')
+})
+
+describe('logOut()', () => {
+  it('removes auth token from localStorage', () => {
+    localStorage.setItem(AUTH_TOKEN_KEY, 'fake_auth_token')
+    expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBe('fake_auth_token')
+
+    logOut()
+    expect(localStorage.getItem(AUTH_TOKEN_KEY)).toBeNull()
+  })
 })
 
 describe('isLoggedIn()', () => {

@@ -19,13 +19,8 @@ function AccountMenu({ history }) {
   return (
     <Query query={ME_QUERY}>
       {({ data, loading, error }) => {
-        if (loading) {
-          return <div>Loading...</div>
-        }
-
-        if (error) {
-          return <div>Error</div>
-        }
+        if (loading) return <div>Loading...</div>
+        if (error) return <div>Error</div>
 
         const { name, login, avatarUrl } = data.me
 

@@ -10,7 +10,7 @@ class CallbackPage extends Component {
     })
 
     if (code) {
-      logIn(code)
+      await logIn(code)
       this.props.history.replace('/')
     }
   }

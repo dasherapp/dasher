@@ -2,7 +2,7 @@ import { gql } from 'apollo-boost'
 
 import { client } from '../components/Apollo'
 
-const AUTH_TOKEN_KEY = 'auth_token'
+export const AUTH_TOKEN_KEY = 'auth_token'
 
 const AUTHENTICATE_MUTATION = gql`
   mutation AuthenticateMutation($githubCode: String!) {

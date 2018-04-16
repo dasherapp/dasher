@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getGithubAuthUrl() returns correct URL 1`] = `"https://github.com/login/oauth/authorize?client_id=799bd70f09884c025750&scope=repo&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fcallback"`;

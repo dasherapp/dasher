@@ -1,7 +1,7 @@
 import { getGithubAuthUrl } from '../github'
 
 describe('getGithubAuthUrl()', () => {
-  test('returns correct URL', () => {
+  it('returns correct URL', () => {
     const location = {
       origin: 'http://localhost:3000',
     }

@@ -2,7 +2,19 @@ import React from 'react'
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-boost'
 
-export const client = new ApolloClient({ uri: 'http://localhost:4000' })
+import { getAuthToken } from '../utils/auth'
+
+export const client = new ApolloClient({
+  uri: 'http://localhost:4000',
+  request: operation => {
+    const token = getAuthToken()
+    operation.setContext({
+      headers: {
+        authorization: token,
+      },
+    })
+  },
+})
 
 function Apollo(props) {
   return <ApolloProvider client={client} {...props} />

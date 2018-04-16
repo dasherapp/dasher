@@ -18,10 +18,26 @@ export async function logIn(githubCode) {
     variables: { githubCode },
   })
 
-  localStorage.setItem(AUTH_TOKEN_KEY, data.authenticate.token)
+  setAuthToken(data.authenticate.token)
+}
+
+export function logOut() {
+  removeAuthToken()
 }
 
 export function isLoggedIn() {
-  const authToken = localStorage.getItem(AUTH_TOKEN_KEY)
+  const authToken = getAuthToken()
   return Boolean(authToken)
+}
+
+export function setAuthToken(token) {
+  localStorage.setItem(AUTH_TOKEN_KEY, token)
+}
+
+export function getAuthToken() {
+  return localStorage.getItem(AUTH_TOKEN_KEY)
+}
+
+export function removeAuthToken() {
+  localStorage.removeItem(AUTH_TOKEN_KEY)
 }

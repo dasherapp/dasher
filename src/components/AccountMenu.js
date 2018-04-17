@@ -1,4 +1,5 @@
 import React from 'react'
+import { shape, func } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
@@ -45,6 +46,10 @@ function AccountMenu({ history }) {
       }}
     </Query>
   )
+}
+
+AccountMenu.propTypes = {
+  history: shape({ push: func.isRequired }).isRequired,
 }
 
 export default withRouter(AccountMenu)

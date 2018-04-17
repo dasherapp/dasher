@@ -1,4 +1,5 @@
 import React from 'react'
+import { oneOfType, element, func } from 'prop-types'
 import { Route, Redirect } from 'react-router-dom'
 
 import { isLoggedIn } from '../utils/auth'
@@ -12,6 +13,10 @@ function PrivateRoute({ component: Component, ...rest }) {
       }
     />
   )
+}
+
+PrivateRoute.propTypes = {
+  component: oneOfType([element, func]).isRequired,
 }
 
 export default PrivateRoute

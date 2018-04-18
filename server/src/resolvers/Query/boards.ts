@@ -1,7 +1,8 @@
-import { Context } from '../../utils'
+import { Context, getUserId } from '../../utils'
 
 function boards(root, args, context: Context, info) {
-  return context.db.query.boards({}, info)
+  const id = getUserId(context)
+  return context.db.query.boards({ where: { owner: { id } } }, info)
 }
 
 export default boards

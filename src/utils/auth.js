@@ -26,8 +26,7 @@ export function logOut() {
 }
 
 export function isLoggedIn() {
-  const authToken = getAuthToken()
-  return Boolean(authToken)
+  return Boolean(getAuthToken())
 }
 
 export function setAuthToken(token) {

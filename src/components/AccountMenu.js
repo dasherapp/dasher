@@ -19,20 +19,18 @@ const ME_QUERY = gql`
 function AccountMenu({ history }) {
   return (
     <Query query={ME_QUERY}>
-      {({ data, loading, error }) => {
+      {({ data: { me }, loading, error }) => {
         if (loading) return <div>Loading...</div>
         if (error) return <div>Error</div>
-
-        const { name, login, avatarUrl } = data.me
 
         return (
           <details>
             <summary>
-              <img src={avatarUrl} width="32" alt={login} />
+              <img src={me.avatarUrl} width="32" alt={me.login} />
             </summary>
 
-            <p>{name}</p>
-            <p>{login}</p>
+            <p>{me.name}</p>
+            <p>{me.login}</p>
             <button
               onClick={() => {
                 logOut()
@@ -49,7 +47,9 @@ function AccountMenu({ history }) {
 }
 
 AccountMenu.propTypes = {
-  history: shape({ push: func.isRequired }).isRequired,
+  history: shape({
+    push: func.isRequired,
+  }).isRequired,
 }
 
 export default withRouter(AccountMenu)

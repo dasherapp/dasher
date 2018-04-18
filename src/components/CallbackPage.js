@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 import qs from 'qs'
 
 import { logIn } from '../utils/auth'
@@ -16,7 +16,7 @@ class CallbackPage extends Component {
   }
 
   render() {
-    return null
+    return <div>Loading...</div>
   }
 }
 

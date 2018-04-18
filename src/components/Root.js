@@ -5,7 +5,7 @@ const Root = glamorous.div({
   fontFamily: fonts.sans,
   boxSizing: 'border-box',
 
-  '*, *:before, *:after': {
+  ' *, *:before, *:after': {
     boxSizing: 'inherit',
   },
 })

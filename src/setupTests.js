@@ -1,3 +1,7 @@
+import serializer from 'jest-glamor-react'
+
+expect.addSnapshotSerializer(serializer)
+
 class LocalStorageMock {
   constructor() {
     this.store = {}

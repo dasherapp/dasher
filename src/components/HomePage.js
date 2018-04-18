@@ -1,4 +1,5 @@
 import React from 'react'
+
 import AccountMenu from './AccountMenu'
 
 function HomePage() {

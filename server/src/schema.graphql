@@ -2,7 +2,8 @@
 
 type Query {
   me: User
-  boards: [Board!]!
+  boards: [Board]!
+  board(id: ID!): Board
 }
 
 type Mutation {

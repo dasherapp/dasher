@@ -8,7 +8,7 @@ const ModalRoot = () => (
     {modal => {
       const { component: Component, props } = modal.state
 
-      return Component && <Component hideModal={modal.hideModal} {...props} />
+      return Component && <Component closeModal={modal.closeModal} {...props} />
     }}
   </Subscribe>
 )

@@ -19,18 +19,18 @@ const ME_QUERY = gql`
 function AccountMenu({ history }) {
   return (
     <Query query={ME_QUERY}>
-      {({ data: { me }, loading, error }) => {
+      {({ data, loading, error }) => {
         if (loading) return <div>Loading...</div>
         if (error) return <div>Error</div>
 
         return (
           <details>
             <summary>
-              <img src={me.avatarUrl} width="32" alt={me.login} />
+              <img src={data.me.avatarUrl} width="32" alt={data.me.login} />
             </summary>
 
-            <p>{me.name}</p>
-            <p>{me.login}</p>
+            <p>{data.me.name}</p>
+            <p>{data.me.login}</p>
             <button
               onClick={() => {
                 logOut()

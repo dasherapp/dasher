@@ -23,18 +23,18 @@ function BoardPage({ match }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <Query query={BOARD_QUERY} variables={{ id: match.params.id }}>
-          {({ data: { board }, loading, error }) => {
+          {({ data, loading, error }) => {
             if (loading) return <div>Loading...</div>
             if (error) return <div>Error</div>
-            if (!board) return <NotFoundPage />
+            if (!data.board) return <NotFoundPage />
 
             return (
               <div>
                 <AccountMenu />
-                <h1>{board.name}</h1>
+                <h1>{data.board.name}</h1>
                 <button
                   onClick={() =>
-                    modal.showModal(EditBoardModal, { boardId: board.id })
+                    modal.showModal(EditBoardModal, { boardId: data.board.id })
                   }
                 >
                   Edit board

@@ -26,13 +26,13 @@ function Boards() {
             Create board
           </button>
           <Query query={BOARDS_QUERY}>
-            {({ data: { boards }, loading, error }) => {
+            {({ data, loading, error }) => {
               if (loading) return <div>Loading...</div>
               if (error) return <div>Error</div>
 
               return (
                 <ul>
-                  {boards.map(board => (
+                  {data.boards.map(board => (
                     <li key={board.id}>
                       <div>
                         <Link to={`/board/${board.id}`}>{board.name}</Link>

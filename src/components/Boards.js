@@ -2,6 +2,9 @@ import React from 'react'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { Link } from 'react-router-dom'
+import { Subscribe } from 'unstated'
+import ModalContainer from '../containers/ModalContainer'
+import EditBoardModal from './EditBoardModal'
 
 const BOARDS_QUERY = gql`
   query BoardsQuery {
@@ -14,22 +17,32 @@ const BOARDS_QUERY = gql`
 
 function Boards() {
   return (
-    <Query query={BOARDS_QUERY}>
-      {({ data: { boards }, loading, error }) => {
-        if (loading) return <div>Loading...</div>
-        if (error) return <div>Error</div>
+    <Subscribe to={[ModalContainer]}>
+      {modal => (
+        <div>
+          <h1>Boards</h1>
+          <button onClick={() => modal.showModal(EditBoardModal)}>
+            New board
+          </button>
+          <Query query={BOARDS_QUERY}>
+            {({ data: { boards }, loading, error }) => {
+              if (loading) return <div>Loading...</div>
+              if (error) return <div>Error</div>
 
-        return (
-          <ul>
-            {boards.map(board => (
-              <li>
-                <Link to={`/board/${board.id}`}>{board.name}</Link>
-              </li>
-            ))}
-          </ul>
-        )
-      }}
-    </Query>
+              return (
+                <ul>
+                  {boards.map(board => (
+                    <li>
+                      <Link to={`/board/${board.id}`}>{board.name}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )
+            }}
+          </Query>
+        </div>
+      )}
+    </Subscribe>
   )
 }
 

@@ -52,8 +52,8 @@ BoardPage.propTypes = {
   match: shape({
     params: shape({
       id: string.isRequired,
-    }).isRequried,
-  }).isRequried,
+    }).isRequired,
+  }).isRequired,
 }
 
 export default BoardPage

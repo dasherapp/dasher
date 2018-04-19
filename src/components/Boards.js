@@ -34,7 +34,18 @@ function Boards() {
                 <ul>
                   {boards.map(board => (
                     <li>
-                      <Link to={`/board/${board.id}`}>{board.name}</Link>
+                      <div>
+                        <Link to={`/board/${board.id}`}>{board.name}</Link>
+                        <button
+                          onClick={() =>
+                            modal.showModal(EditBoardModal, {
+                              boardId: board.id,
+                            })
+                          }
+                        >
+                          Edit board
+                        </button>
+                      </div>
                     </li>
                   ))}
                 </ul>

@@ -8,9 +8,9 @@ const INITIAL_STATE = {
 class ModalContainer extends Container {
   state = INITIAL_STATE
 
-  showModal = (component, props = {}) => this.setState({ component, props })
+  openModal = (component, props = {}) => this.setState({ component, props })
 
-  hideModal = () => this.setState(INITIAL_STATE)
+  closeModal = () => this.setState(INITIAL_STATE)
 }
 
 export default ModalContainer

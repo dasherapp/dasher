@@ -22,7 +22,7 @@ function Boards() {
       {modal => (
         <div>
           <h1>Boards</h1>
-          <button onClick={() => modal.showModal(EditBoardModal)}>
+          <button onClick={() => modal.openModal(EditBoardModal)}>
             Create board
           </button>
           <Query query={BOARDS_QUERY}>
@@ -38,7 +38,7 @@ function Boards() {
                         <Link to={`/board/${board.id}`}>{board.name}</Link>
                         <button
                           onClick={() =>
-                            modal.showModal(EditBoardModal, {
+                            modal.openModal(EditBoardModal, {
                               boardId: board.id,
                             })
                           }

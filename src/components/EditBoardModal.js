@@ -25,7 +25,7 @@ const UPDATE_BOARD_MUTATION = gql`
 
 class EditBoardModal extends React.Component {
   static propTypes = {
-    hideModal: func.isRequired,
+    closeModal: func.isRequired,
     boardId: string,
   }
 
@@ -40,7 +40,7 @@ class EditBoardModal extends React.Component {
   }
 
   render() {
-    const { hideModal, boardId } = this.props
+    const { closeModal, boardId } = this.props
     const { name } = this.state
 
     return (
@@ -57,7 +57,7 @@ class EditBoardModal extends React.Component {
         {createBoard => (
           <Mutation mutation={UPDATE_BOARD_MUTATION}>
             {updateBoard => (
-              <Modal isOpen onRequestClose={hideModal}>
+              <Modal isOpen onRequestClose={closeModal}>
                 <form
                   id="edit-board"
                   onSubmit={event => {
@@ -69,7 +69,7 @@ class EditBoardModal extends React.Component {
                       createBoard({ variables: { name } })
                     }
 
-                    hideModal()
+                    closeModal()
                   }}
                 >
                   <label>
@@ -86,7 +86,7 @@ class EditBoardModal extends React.Component {
                 <button type="submit" form="edit-board">
                   {boardId ? 'Save' : 'Create'}
                 </button>
-                <button onClick={hideModal}>Cancel</button>
+                <button onClick={closeModal}>Cancel</button>
               </Modal>
             )}
           </Mutation>

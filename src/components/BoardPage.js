@@ -34,7 +34,7 @@ function BoardPage({ match }) {
                 <h1>{data.board.name}</h1>
                 <button
                   onClick={() =>
-                    modal.showModal(EditBoardModal, { boardId: data.board.id })
+                    modal.openModal(EditBoardModal, { boardId: data.board.id })
                   }
                 >
                   Edit board

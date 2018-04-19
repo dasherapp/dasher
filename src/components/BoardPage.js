@@ -2,13 +2,17 @@ import React from 'react'
 import { shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
+import { Subscribe } from 'unstated'
 
+import ModalContainer from '../containers/ModalContainer'
+import EditBoardModal from './EditBoardModal'
 import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
 
 const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {
     board(id: $id) {
+      id
       name
     }
   }
@@ -16,20 +20,31 @@ const BOARD_QUERY = gql`
 
 function BoardPage({ match }) {
   return (
-    <Query query={BOARD_QUERY} variables={{ id: match.params.id }}>
-      {({ data: { board }, loading, error }) => {
-        if (loading) return <div>Loading...</div>
-        if (error) return <div>Error</div>
-        if (!board) return <NotFoundPage />
+    <Subscribe to={[ModalContainer]}>
+      {modal => (
+        <Query query={BOARD_QUERY} variables={{ id: match.params.id }}>
+          {({ data: { board }, loading, error }) => {
+            if (loading) return <div>Loading...</div>
+            if (error) return <div>Error</div>
+            if (!board) return <NotFoundPage />
 
-        return (
-          <div>
-            <AccountMenu />
-            <h1>{board.name}</h1>
-          </div>
-        )
-      }}
-    </Query>
+            return (
+              <div>
+                <AccountMenu />
+                <h1>{board.name}</h1>
+                <button
+                  onClick={() =>
+                    modal.showModal(EditBoardModal, { boardId: board.id })
+                  }
+                >
+                  Edit board
+                </button>
+              </div>
+            )
+          }}
+        </Query>
+      )}
+    </Subscribe>
   )
 }
 

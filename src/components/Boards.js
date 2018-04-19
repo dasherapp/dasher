@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
+
 import ModalContainer from '../containers/ModalContainer'
 import EditBoardModal from './EditBoardModal'
 
@@ -22,7 +23,7 @@ function Boards() {
         <div>
           <h1>Boards</h1>
           <button onClick={() => modal.showModal(EditBoardModal)}>
-            New board
+            Create board
           </button>
           <Query query={BOARDS_QUERY}>
             {({ data: { boards }, loading, error }) => {

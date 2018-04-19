@@ -51,11 +51,13 @@ class EditBoardModal extends React.Component {
                   id="edit-board"
                   onSubmit={event => {
                     event.preventDefault()
+
                     if (boardId) {
                       updateBoard({ variables: { boardId, name } })
                     } else {
                       createBoard({ variables: { name } })
                     }
+
                     hideModal()
                   }}
                 >

@@ -4,6 +4,8 @@ import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
 
+import { BOARDS_QUERY } from './Boards'
+
 const CREATE_BOARD_MUTATION = gql`
   mutation CreateBoardMutation($name: String!) {
     createBoard(name: $name) {
@@ -42,7 +44,16 @@ class EditBoardModal extends React.Component {
     const { name } = this.state
 
     return (
-      <Mutation mutation={CREATE_BOARD_MUTATION}>
+      <Mutation
+        mutation={CREATE_BOARD_MUTATION}
+        update={(cache, { data }) => {
+          const { boards } = cache.readQuery({ query: BOARDS_QUERY })
+          cache.writeQuery({
+            query: BOARDS_QUERY,
+            data: { boards: boards.concat([data.createBoard]) },
+          })
+        }}
+      >
         {createBoard => (
           <Mutation mutation={UPDATE_BOARD_MUTATION}>
             {updateBoard => (

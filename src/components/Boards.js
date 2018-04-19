@@ -7,7 +7,7 @@ import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
 import EditBoardModal from './EditBoardModal'
 
-const BOARDS_QUERY = gql`
+export const BOARDS_QUERY = gql`
   query BoardsQuery {
     boards {
       id

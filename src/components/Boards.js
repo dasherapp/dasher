@@ -33,7 +33,7 @@ function Boards() {
               return (
                 <ul>
                   {boards.map(board => (
-                    <li>
+                    <li key={board.id}>
                       <div>
                         <Link to={`/board/${board.id}`}>{board.name}</Link>
                         <button

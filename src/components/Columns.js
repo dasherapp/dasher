@@ -23,35 +23,41 @@ const CREATE_COLUMN_MUTATION = gql`
   }
 `
 
+const HorizontalScroll = glamorous.div({
+  display: 'flex',
+  overflowX: 'auto',
+})
+
 const ColumnsContainer = glamorous.div({
   display: 'flex',
   alignItems: 'flex-start',
   padding: spacing[4],
   backgroundColor: 'papayawhip',
-  overflowX: 'auto',
 })
 
 function Columns({ boardId, columns }) {
   return (
     <Mutation mutation={CREATE_COLUMN_MUTATION}>
       {createColumn => (
-        <ColumnsContainer>
-          {columns.map(column => <Column key={column.id} column={column} />)}
-          <button
-            onClick={() =>
-              createColumn({
-                variables: {
-                  boardId,
-                  index: columns.length,
-                  name: '',
-                  query: '',
-                },
-              })
-            }
-          >
-            Add column
-          </button>
-        </ColumnsContainer>
+        <HorizontalScroll>
+          <ColumnsContainer>
+            {columns.map(column => <Column key={column.id} column={column} />)}
+            <button
+              onClick={() =>
+                createColumn({
+                  variables: {
+                    boardId,
+                    index: columns.length,
+                    name: '',
+                    query: '',
+                  },
+                })
+              }
+            >
+              Add column
+            </button>
+          </ColumnsContainer>
+        </HorizontalScroll>
       )}
     </Mutation>
   )
@@ -62,7 +68,6 @@ Columns.propTypes = {
   columns: arrayOf(
     shape({
       id: string.isRequired,
-      name: string.isRequired,
     }),
   ).isRequired,
 }

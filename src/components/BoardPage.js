@@ -8,6 +8,7 @@ import ModalContainer from '../containers/ModalContainer'
 import EditBoardModal from './EditBoardModal'
 import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
+import Columns from './Columns'
 
 const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {
@@ -44,13 +45,7 @@ function BoardPage({ match }) {
                 >
                   Edit
                 </button>
-                <div>
-                  {data.board.columns.map(column => (
-                    <div key={column.id}>
-                      {column.name || 'Untitled Column'}
-                    </div>
-                  ))}
-                </div>
+                <Columns columns={data.board.columns} />
               </div>
             )
           }}

@@ -15,7 +15,11 @@ const ColumnContainer = glamorous.div({
 })
 
 function Column({ column }) {
-  return <ColumnContainer>{column.name || 'Untitled Column'}</ColumnContainer>
+  return (
+    <ColumnContainer>
+      <strong>{column.name || 'Untitled Column'}</strong>
+    </ColumnContainer>
+  )
 }
 
 Column.propTypes = {

@@ -16,3 +16,5 @@ export const fonts = {
     'sans-serif',
   ].join(', '),
 }
+
+export const radii = [3, 6]

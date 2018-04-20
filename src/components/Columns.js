@@ -25,6 +25,7 @@ const CREATE_COLUMN_MUTATION = gql`
 
 const ColumnsContainer = glamorous.div({
   display: 'flex',
+  alignItems: 'flex-start',
   padding: spacing[4],
   backgroundColor: 'papayawhip',
   overflowX: 'auto',

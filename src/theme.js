@@ -1,3 +1,5 @@
+export const spacing = [0, 4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
+
 export const fonts = {
   sans: [
     'system-ui',

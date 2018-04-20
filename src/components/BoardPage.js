@@ -2,6 +2,7 @@ import React from 'react'
 import { shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
+import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
 
 import ModalContainer from '../containers/ModalContainer'
@@ -37,6 +38,7 @@ function BoardPage({ match }) {
             return (
               <div>
                 <AccountMenu />
+                <Link to="/">Back</Link>
                 <h1>{data.board.name}</h1>
                 <button
                   onClick={() =>

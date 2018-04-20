@@ -14,6 +14,11 @@ const BOARD_QUERY = gql`
     board(id: $id) {
       id
       name
+      columns(orderBy: index_ASC) {
+        id
+        index
+        name
+      }
     }
   }
 `
@@ -37,8 +42,15 @@ function BoardPage({ match }) {
                     modal.openModal(EditBoardModal, { boardId: data.board.id })
                   }
                 >
-                  Edit board
+                  Edit
                 </button>
+                <div>
+                  {data.board.columns.map(column => (
+                    <div key={column.id}>
+                      {column.name || 'Untitled Column'}
+                    </div>
+                  ))}
+                </div>
               </div>
             )
           }}

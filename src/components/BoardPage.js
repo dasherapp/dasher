@@ -47,7 +47,7 @@ function BoardPage({ match }) {
                 >
                   Edit
                 </button>
-                <Columns columns={data.board.columns} />
+                <Columns boardId={data.board.id} columns={data.board.columns} />
               </div>
             )
           }}

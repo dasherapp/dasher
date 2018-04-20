@@ -50,7 +50,7 @@ class EditBoardModal extends React.Component {
           const { boards } = cache.readQuery({ query: BOARDS_QUERY })
           cache.writeQuery({
             query: BOARDS_QUERY,
-            data: { boards: boards.concat([data.createBoard]) },
+            data: { boards: [...boards, data.createBoard] },
           })
         }}
       >

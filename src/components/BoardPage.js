@@ -11,7 +11,7 @@ import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
 import Columns from './Columns'
 
-const BOARD_QUERY = gql`
+export const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {
     board(id: $id) {
       id

@@ -4,6 +4,7 @@ import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
 
+import { BOARD_QUERY } from './BoardPage'
 import { spacing } from '../theme'
 import Column from './Column'
 
@@ -37,7 +38,25 @@ const ColumnsContainer = glamorous.div({
 
 function Columns({ boardId, columns }) {
   return (
-    <Mutation mutation={CREATE_COLUMN_MUTATION}>
+    <Mutation
+      mutation={CREATE_COLUMN_MUTATION}
+      update={(cache, { data }) => {
+        const { board } = cache.readQuery({
+          query: BOARD_QUERY,
+          variables: { id: boardId },
+        })
+        cache.writeQuery({
+          query: BOARD_QUERY,
+          variables: { id: boardId },
+          data: {
+            board: {
+              ...board,
+              columns: [...board.columns, data.createColumn],
+            },
+          },
+        })
+      }}
+    >
       {createColumn => (
         <HorizontalScroll>
           <ColumnsContainer>

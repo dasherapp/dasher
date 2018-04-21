@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
 
 import ModalContainer from '../containers/ModalContainer'
-import EditBoardModal from './EditBoardModal'
+import UpdateBoardModal from './UpdateBoardModal'
+import DeleteBoardModal from './DeleteBoardModal'
 import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
 import Columns from './Columns'
@@ -42,10 +43,21 @@ function BoardPage({ match }) {
                 <h1>{data.board.name}</h1>
                 <button
                   onClick={() =>
-                    modal.openModal(EditBoardModal, { boardId: data.board.id })
+                    modal.openModal(UpdateBoardModal, {
+                      board: data.board,
+                    })
                   }
                 >
                   Edit
+                </button>
+                <button
+                  onClick={() =>
+                    modal.openModal(DeleteBoardModal, {
+                      board: data.board,
+                    })
+                  }
+                >
+                  Delete board
                 </button>
                 <Columns boardId={data.board.id} columns={data.board.columns} />
               </div>

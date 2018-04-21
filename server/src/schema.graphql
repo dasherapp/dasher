@@ -15,6 +15,7 @@ type Mutation {
     query: String!
   ): Column
   updateBoard(id: ID!, name: String): Board
+  deleteBoard(id: ID!): Board
   authenticate(githubCode: String!): AuthenticateUserPayload
 }
 

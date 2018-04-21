@@ -5,7 +5,7 @@ import { Query } from 'react-apollo'
 import { Subscribe } from 'unstated'
 
 import ModalContainer from '../containers/ModalContainer'
-import EditBoardModal from './EditBoardModal'
+import UpdateBoardModal from './UpdateBoardModal'
 import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
 
@@ -34,7 +34,9 @@ function BoardPage({ match }) {
                 <h1>{data.board.name}</h1>
                 <button
                   onClick={() =>
-                    modal.openModal(EditBoardModal, { boardId: data.board.id })
+                    modal.openModal(UpdateBoardModal, {
+                      boardId: data.board.id,
+                    })
                   }
                 >
                   Edit board

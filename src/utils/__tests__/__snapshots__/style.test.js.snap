@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`joinSpacing() throws an error when passed more than four arguments 1`] = `"Too many arguments"`;
+
+exports[`toMediaQuery() uses em by default 1`] = `"@media screen and (min-width: 32em)"`;
+
+exports[`toMediaQuery() works with other units 1`] = `"@media screen and (min-width: 1200px)"`;
+
+exports[`toMediaQuery() works with other units 2`] = `"@media screen and (min-width: 64rem)"`;

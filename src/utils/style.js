@@ -2,7 +2,7 @@ function isNumber(value) {
   return typeof value === 'number' && !isNaN(value)
 }
 
-function toUnit(unit) {
+export function toUnit(unit) {
   return value => (isNumber(value) && value !== 0 ? value + unit : value)
 }
 

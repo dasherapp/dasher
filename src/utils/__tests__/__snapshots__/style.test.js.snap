@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`mq() uses em units by default 1`] = `"@media screen and (min-width: 32em)"`;
+
+exports[`mq() works with px units 1`] = `"@media screen and (min-width: 1200px)"`;

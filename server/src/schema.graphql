@@ -9,6 +9,7 @@ type Query {
 type Mutation {
   createBoard(name: String!): Board
   updateBoard(id: ID!, name: String): Board
+  deleteBoard(id: ID!): Board
   authenticate(githubCode: String!): AuthenticateUserPayload
 }
 

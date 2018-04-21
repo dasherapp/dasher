@@ -3,6 +3,7 @@ import boards from './Query/boards'
 import board from './Query/board'
 import createBoard from './Mutation/createBoard'
 import updateBoard from './Mutation/updateBoard'
+import deleteBoard from './Mutation/deleteBoard'
 import authenticate from './Mutation/authenticate'
 
 const resolvers = {
@@ -14,6 +15,7 @@ const resolvers = {
   Mutation: {
     createBoard,
     updateBoard,
+    deleteBoard,
     authenticate,
   },
 }

@@ -7,6 +7,7 @@ import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
 import CreateBoardModal from './CreateBoardModal'
+import DeleteBoardModal from './DeleteBoardModal'
 
 export const BOARDS_QUERY = gql`
   query BoardsQuery {
@@ -45,6 +46,15 @@ function Boards() {
                           }
                         >
                           Edit board
+                        </button>
+                        <button
+                          onClick={() =>
+                            modal.openModal(DeleteBoardModal, {
+                              board: board,
+                            })
+                          }
+                        >
+                          Delete board
                         </button>
                       </div>
                     </li>

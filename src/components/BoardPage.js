@@ -6,6 +6,7 @@ import { Subscribe } from 'unstated'
 
 import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
+import DeleteBoardModal from './DeleteBoardModal'
 import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
 
@@ -40,6 +41,15 @@ function BoardPage({ match }) {
                   }
                 >
                   Edit board
+                </button>
+                <button
+                  onClick={() =>
+                    modal.openModal(DeleteBoardModal, {
+                      board: data.board,
+                    })
+                  }
+                >
+                  Delete board
                 </button>
               </div>
             )

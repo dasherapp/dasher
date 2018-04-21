@@ -1,3 +1,5 @@
+import openColor from 'open-color'
+
 export const spacing = [4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
 
 export const fonts = {
@@ -16,6 +18,8 @@ export const fonts = {
     'sans-serif',
   ].join(', '),
 }
+
+export const colors = openColor
 
 export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64]
 

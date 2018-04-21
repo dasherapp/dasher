@@ -4,6 +4,8 @@ import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
 
+import BoardForm from './BoardForm'
+
 const UPDATE_BOARD_MUTATION = gql`
   mutation UpdateBoardMutation($boardId: ID!, $name: String) {
     updateBoard(id: $boardId, name: $name) {
@@ -13,56 +15,38 @@ const UPDATE_BOARD_MUTATION = gql`
   }
 `
 
-class UpdateBoardModal extends React.Component {
-  static propTypes = {
-    closeModal: func.isRequired,
-    board: shape({
-      id: string.isRequired,
-      name: string.isRequired,
-    }).isRequired,
-  }
+function UpdateBoardModal({ closeModal, board }) {
+  return (
+    <Mutation mutation={UPDATE_BOARD_MUTATION}>
+      {updateBoard => (
+        <Modal isOpen onRequestClose={closeModal}>
+          <BoardForm
+            id="update-board"
+            initialState={{ name: board.name }}
+            onSubmit={(event, { name }) => {
+              event.preventDefault()
+              updateBoard({
+                variables: { boardId: board.id, name },
+              })
+              closeModal()
+            }}
+          />
+          <button type="submit" form="update-board">
+            Save
+          </button>
+          <button onClick={closeModal}>Cancel</button>
+        </Modal>
+      )}
+    </Mutation>
+  )
+}
 
-  state = { name: this.props.board.name }
-
-  handleNameChange = event => {
-    this.setState({ name: event.target.value })
-  }
-  render() {
-    const { closeModal, board } = this.props
-    const { name } = this.state
-
-    return (
-      <Mutation mutation={UPDATE_BOARD_MUTATION}>
-        {updateBoard => (
-          <Modal isOpen onRequestClose={closeModal}>
-            <form
-              id="update-board"
-              onSubmit={event => {
-                event.preventDefault()
-                updateBoard({ variables: { boardId: board.id, name } })
-                closeModal()
-              }}
-            >
-              <label>
-                Name
-                <div>
-                  <input
-                    value={name}
-                    onChange={this.handleNameChange}
-                    required
-                  />
-                </div>
-              </label>
-            </form>
-            <button type="submit" form="update-board">
-              Save
-            </button>
-            <button onClick={closeModal}>Cancel</button>
-          </Modal>
-        )}
-      </Mutation>
-    )
-  }
+UpdateBoardModal.propTypes = {
+  closeModal: func.isRequired,
+  board: shape({
+    id: string.isRequired,
+    name: string.isRequired,
+  }).isRequired,
 }
 
 export default UpdateBoardModal

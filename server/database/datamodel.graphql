@@ -13,8 +13,8 @@ type Board @model {
   id: ID! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
-  name: String!
   owner: User!
+  name: String!
   columns: [Column!]!
 }
 
@@ -22,8 +22,8 @@ type Column @model {
   id: ID! @unique
   createdAt: DateTime!
   updatedAt: DateTime!
-  name: String!
   board: Board!
-  query: String!
   index: Int!
+  name: String!
+  query: String!
 }

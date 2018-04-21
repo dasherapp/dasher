@@ -10,10 +10,10 @@ css.global('body', {
   margin: 0,
   fontFamily: fonts.sans,
   boxSizing: 'border-box',
+})
 
-  ' *, *:before, *:after': {
-    boxSizing: 'inherit',
-  },
+css.global('*, *:before, *:after', {
+  boxSizing: 'inherit',
 })
 
 const rootSelector = '#root'

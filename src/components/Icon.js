@@ -82,7 +82,7 @@ export function CircleIcon(props) {
   )
 }
 
-export function Ellipses(props) {
+export function EllipsesIcon(props) {
   return (
     <Icon>
       <circle cx="12" cy="12" r="1" />

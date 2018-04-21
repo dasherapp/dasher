@@ -35,7 +35,7 @@ function BoardPage({ match }) {
                 <button
                   onClick={() =>
                     modal.openModal(UpdateBoardModal, {
-                      boardId: data.board.id,
+                      board: data.board,
                     })
                   }
                 >

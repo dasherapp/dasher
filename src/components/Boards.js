@@ -40,7 +40,7 @@ function Boards() {
                         <button
                           onClick={() =>
                             modal.openModal(UpdateBoardModal, {
-                              boardId: board.id,
+                              board: board,
                             })
                           }
                         >

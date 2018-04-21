@@ -26,20 +26,22 @@ function BoardCard({ board }) {
           <BoardCardContainer>
             {board.name}
             <button
-              onClick={() =>
+              onClick={event => {
+                event.preventDefault()
                 modal.openModal(UpdateBoardModal, {
                   board: board,
                 })
-              }
+              }}
             >
               Edit board
             </button>
             <button
-              onClick={() =>
+              onClick={event => {
+                event.preventDefault()
                 modal.openModal(DeleteBoardModal, {
                   board: board,
                 })
-              }
+              }}
             >
               Delete board
             </button>

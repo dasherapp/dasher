@@ -1,3 +1,5 @@
+import openColor from 'open-color'
+
 export const fonts = {
   sans: [
     'system-ui',
@@ -14,3 +16,5 @@ export const fonts = {
     'sans-serif',
   ].join(', '),
 }
+
+export const colors = openColor

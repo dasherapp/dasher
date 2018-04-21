@@ -6,8 +6,12 @@ function toUnit(unit) {
   return value => (isNumber(value) && value !== 0 ? value + unit : value)
 }
 
+export const toPx = toUnit('px')
+
+export const toEm = toUnit('em')
+
 export function toMediaQuery(breakpoint) {
-  return `@media screen and (min-width: ${toUnit('em')(breakpoint)})`
+  return `@media screen and (min-width: ${toEm(breakpoint)})`
 }
 
 export function joinSpacing() {
@@ -16,6 +20,6 @@ export function joinSpacing() {
   }
 
   return Array.from(arguments)
-    .map(toUnit('px'))
+    .map(toPx)
     .join(' ')
 }

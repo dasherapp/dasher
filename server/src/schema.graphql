@@ -1,4 +1,4 @@
-# import User, Board from "./generated/prisma.graphql"
+# import User, Board, Column from "./generated/prisma.graphql"
 
 type Query {
   me: User
@@ -8,6 +8,12 @@ type Query {
 
 type Mutation {
   createBoard(name: String!): Board
+  createColumn(
+    boardId: ID!
+    index: Int!
+    name: String!
+    query: String!
+  ): Column
   updateBoard(id: ID!, name: String): Board
   deleteBoard(id: ID!): Board
   authenticate(githubCode: String!): AuthenticateUserPayload

@@ -2,14 +2,20 @@ function isNumber(value) {
   return typeof value === 'number' && !isNaN(value)
 }
 
-function em(value) {
-  return isNumber(value) ? value + 'em' : value
+function toUnit(unit) {
+  return value => (isNumber(value) && value !== 0 ? value + unit : value)
 }
 
-function px(value) {
-  return isNumber(value) ? value + 'px' : value
+export function toMediaQuery(breakpoint) {
+  return `@media screen and (min-width: ${toUnit('em')(breakpoint)})`
 }
 
-export function mq(breakpoint) {
-  return `@media screen and (min-width: ${em(breakpoint)})`
+export function joinSpacing() {
+  if (arguments.length > 4) {
+    throw new Error('Too many arguments')
+  }
+
+  return Array.from(arguments)
+    .map(toUnit('px'))
+    .join(' ')
 }

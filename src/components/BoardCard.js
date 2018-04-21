@@ -14,7 +14,7 @@ const BoardCardContainer = glamorous.div({
   padding: spacing[2],
   fontSize: fontSizes[3],
   color: colors.gray[9],
-  backgroundColor: colors.gray[2],
+  backgroundColor: colors.white,
   borderRadius: radii[1],
 })
 

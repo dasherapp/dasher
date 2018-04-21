@@ -5,6 +5,8 @@ import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
 import { withRouter } from 'react-router-dom'
 
+import { BOARDS_QUERY } from './Boards'
+
 const DELETE_BOARD_MUTATION = gql`
   mutation DeleteBoard($id: ID!) {
     deleteBoard(id: $id) {
@@ -14,7 +16,18 @@ const DELETE_BOARD_MUTATION = gql`
 `
 function DeleteBoardModal({ closeModal, board, history }) {
   return (
-    <Mutation mutation={DELETE_BOARD_MUTATION}>
+    <Mutation
+      mutation={DELETE_BOARD_MUTATION}
+      update={(cache, { data }) => {
+        const { boards } = cache.readQuery({ query: BOARDS_QUERY })
+        cache.writeQuery({
+          query: BOARDS_QUERY,
+          data: {
+            boards: boards.filter(board => board.id !== data.deleteBoard.id),
+          },
+        })
+      }}
+    >
       {deleteBoard => (
         <Modal isOpen onRequestClose={closeModal}>
           <React.Fragment>

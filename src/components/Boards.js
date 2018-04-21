@@ -3,9 +3,11 @@ import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { Subscribe } from 'unstated'
 
+import { spacing } from '../theme'
 import ModalContainer from '../containers/ModalContainer'
 import CreateBoardModal from './CreateBoardModal'
 import BoardCard from './BoardCard'
+import Grid from './Grid'
 
 export const BOARDS_QUERY = gql`
   query BoardsQuery {
@@ -31,11 +33,11 @@ function Boards() {
               if (error) return <div>Error</div>
 
               return (
-                <div>
+                <Grid width={300} gap={spacing[3]}>
                   {data.boards.map(board => (
                     <BoardCard key={board.id} board={board} />
                   ))}
-                </div>
+                </Grid>
               )
             }}
           </Query>

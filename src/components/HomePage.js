@@ -1,5 +1,6 @@
 import React from 'react'
 
+import PageContainer from './PageContainer'
 import AccountMenu from './AccountMenu'
 import Boards from './Boards'
 
@@ -7,8 +8,9 @@ function HomePage() {
   return (
     <div>
       <AccountMenu />
-      <h1>Home Page</h1>
-      <Boards />
+      <PageContainer>
+        <Boards />
+      </PageContainer>
     </div>
   )
 }

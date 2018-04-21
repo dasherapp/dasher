@@ -7,6 +7,7 @@ import glamorous from 'glamorous'
 import { BOARD_QUERY } from './BoardPage'
 import { spacing } from '../theme'
 import Column from './Column'
+import SkeletonButton from './SkeletonButton'
 
 const CREATE_COLUMN_MUTATION = gql`
   mutation CreateColumnMutation(
@@ -32,7 +33,7 @@ const HorizontalScroll = glamorous.div({
 const ColumnsContainer = glamorous.div({
   display: 'flex',
   alignItems: 'flex-start',
-  padding: spacing[4],
+  padding: spacing[3],
   backgroundColor: 'papayawhip',
 })
 
@@ -61,7 +62,7 @@ function Columns({ boardId, columns }) {
         <HorizontalScroll>
           <ColumnsContainer>
             {columns.map(column => <Column key={column.id} column={column} />)}
-            <button
+            <SkeletonButton
               onClick={() =>
                 createColumn({
                   variables: {
@@ -74,7 +75,7 @@ function Columns({ boardId, columns }) {
               }
             >
               Add column
-            </button>
+            </SkeletonButton>
           </ColumnsContainer>
         </HorizontalScroll>
       )}

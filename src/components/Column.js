@@ -6,10 +6,9 @@ import { spacing, radii } from '../theme'
 
 const ColumnContainer = glamorous.div({
   display: 'flex',
-  flex: '0 0 auto',
   width: 360,
-  marginRight: spacing[4],
-  padding: spacing[4],
+  marginRight: spacing[3],
+  padding: spacing[3],
   backgroundColor: 'white',
   borderRadius: radii[1],
 })

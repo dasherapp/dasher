@@ -1,4 +1,4 @@
-export const spacing = [0, 4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
+export const spacing = [4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
 
 export const fonts = {
   sans: [
@@ -15,6 +15,15 @@ export const fonts = {
     '"Helvetica Neue"',
     'sans-serif',
   ].join(', '),
+}
+
+export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64]
+
+export const lineHeights = {
+  none: 1,
+  tight: 1.25,
+  normal: 1.5,
+  loose: 2,
 }
 
 export const radii = [3, 6]

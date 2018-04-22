@@ -6,6 +6,7 @@ import createColumn from './Mutation/createColumn'
 import updateBoard from './Mutation/updateBoard'
 import updateColumn from './Mutation/updateColumn'
 import deleteBoard from './Mutation/deleteBoard'
+import deleteColumn from './Mutation/deleteColumn'
 import authenticate from './Mutation/authenticate'
 
 const resolvers = {
@@ -20,6 +21,7 @@ const resolvers = {
     updateBoard,
     updateColumn,
     deleteBoard,
+    deleteColumn,
     authenticate,
   },
 }

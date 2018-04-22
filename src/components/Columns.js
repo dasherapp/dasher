@@ -60,7 +60,9 @@ function Columns({ boardId, columns }) {
       {createColumn => (
         <HorizontalScroll>
           <ColumnsContainer>
-            {columns.map(column => <Column key={column.id} column={column} />)}
+            {columns.map(column => (
+              <Column key={column.id} boardId={boardId} column={column} />
+            ))}
             <SkeletonButton
               onClick={() =>
                 createColumn({

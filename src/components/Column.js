@@ -4,6 +4,7 @@ import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
 
+import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
@@ -15,6 +16,14 @@ const UPDATE_COLUMN_MUTATION = gql`
       index
       name
       query
+    }
+  }
+`
+
+const DELETE_COLUMN_MUTATION = gql`
+  mutation DeleteColumnMutation($id: ID!) {
+    deleteColumn(id: $id) {
+      id
     }
   }
 `
@@ -54,34 +63,67 @@ class Column extends Component {
   toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
 
   render() {
-    const { column } = this.props
+    const { boardId, column } = this.props
     const { isEditing, name, query } = this.state
     return (
       <Mutation mutation={UPDATE_COLUMN_MUTATION}>
         {updateColumn => (
-          <ColumnContainer>
-            <strong>{name || 'Untitled Column'}</strong>
-            {column.name && (
-              <Button kind="secondary" onClick={this.toggleEdit}>
-                Edit column
-              </Button>
+          <Mutation
+            mutation={DELETE_COLUMN_MUTATION}
+            update={(cache, { data }) => {
+              const { board } = cache.readQuery({
+                query: BOARD_QUERY,
+                variables: { id: boardId },
+              })
+              cache.writeQuery({
+                query: BOARD_QUERY,
+                variables: { id: boardId },
+                data: {
+                  board: {
+                    ...board,
+                    columns: board.columns.filter(
+                      column => column.id !== data.deleteColumn.id,
+                    ),
+                  },
+                },
+              })
+            }}
+          >
+            {deleteColumn => (
+              <ColumnContainer>
+                <strong>{name || 'Untitled Column'}</strong>
+                {column.name && (
+                  <Button kind="secondary" onClick={this.toggleEdit}>
+                    Edit column
+                  </Button>
+                )}
+                {isEditing && (
+                  <ColumnForm
+                    formState={{ name, query }}
+                    onChange={change => this.setState(change)}
+                    onSubmit={event => {
+                      event.preventDefault()
+                      updateColumn({
+                        variables: { id: column.id, name, query },
+                      })
+                      this.toggleEdit()
+                    }}
+                    onCancel={() => {
+                      if (column.name) {
+                        this.setState({
+                          name: column.name,
+                          query: column.query,
+                        })
+                        this.toggleEdit()
+                      } else {
+                        deleteColumn({ variables: { id: column.id } })
+                      }
+                    }}
+                  />
+                )}
+              </ColumnContainer>
             )}
-            {isEditing && (
-              <ColumnForm
-                formState={{ name, query }}
-                onChange={change => this.setState(change)}
-                onSubmit={event => {
-                  event.preventDefault()
-                  updateColumn({ variables: { id: column.id, name, query } })
-                  this.toggleEdit()
-                }}
-                onCancel={() => {
-                  this.setState({ name: column.name, query: column.query })
-                  this.toggleEdit()
-                }}
-              />
-            )}
-          </ColumnContainer>
+          </Mutation>
         )}
       </Mutation>
     )

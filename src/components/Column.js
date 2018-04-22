@@ -46,6 +46,7 @@ class Column extends Component {
             onSubmit={(event, state) => {
               event.preventDefault()
               console.log(state)
+              this.toggleEdit()
             }}
             onCancel={this.toggleEdit}
           />

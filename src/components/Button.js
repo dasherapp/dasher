@@ -2,7 +2,6 @@ import { bool, func, oneOf } from 'prop-types'
 import glamorous from 'glamorous'
 
 import { joinSpacing, toAlpha } from '../utils/style'
-
 import {
   radii,
   colors,

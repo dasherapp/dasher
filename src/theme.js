@@ -42,4 +42,6 @@ export const lineHeights = {
   loose: 2,
 }
 
+export const colors = openColor
+
 export const radii = [3, 6]

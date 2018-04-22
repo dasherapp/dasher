@@ -28,7 +28,12 @@ function AccountMenu({ history }) {
         return (
           <details>
             <summary>
-              <Avatar src={data.me.avatarUrl} size="32" alt={data.me.login} />
+              <Avatar
+                src={data.me.avatarUrl}
+                alt={data.me.login}
+                size={32}
+                shape="circle"
+              />
             </summary>
 
             <p>{data.me.name}</p>

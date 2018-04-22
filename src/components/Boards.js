@@ -8,6 +8,8 @@ import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
 import CreateBoardModal from './CreateBoardModal'
 import DeleteBoardModal from './DeleteBoardModal'
+import Button from './Button'
+import Flex from './Flex'
 
 export const BOARDS_QUERY = gql`
   query BoardsQuery {
@@ -23,10 +25,12 @@ function Boards() {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <div>
-          <h1>Boards</h1>
-          <button onClick={() => modal.openModal(CreateBoardModal)}>
-            Create board
-          </button>
+          <Flex alignItems="center" justifyContent="space-between">
+            <h1>Boards</h1>
+            <Button onClick={() => modal.openModal(CreateBoardModal)}>
+              Create board
+            </Button>
+          </Flex>
           <Query query={BOARDS_QUERY}>
             {({ data, loading, error }) => {
               if (loading) return <div>Loading...</div>

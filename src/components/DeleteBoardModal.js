@@ -5,6 +5,7 @@ import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
 import { withRouter } from 'react-router-dom'
 
+import Button from './Button'
 import { BOARDS_QUERY } from './Boards'
 
 const DELETE_BOARD_MUTATION = gql`
@@ -36,8 +37,11 @@ function DeleteBoardModal({ closeModal, board, history }) {
               Are you sure you want to delete <strong>{board.name}</strong>?
               This action cannot be undone.
             </p>
-            <button onClick={closeModal}>Cancel</button>
-            <button
+            <Button kind="secondary" onClick={closeModal}>
+              Cancel
+            </Button>
+            <Button
+              kind="danger"
               onClick={() => {
                 deleteBoard({ variables: { id: board.id } })
                 closeModal()
@@ -45,7 +49,7 @@ function DeleteBoardModal({ closeModal, board, history }) {
               }}
             >
               Delete
-            </button>
+            </Button>
           </React.Fragment>
         </Modal>
       )}

@@ -5,6 +5,7 @@ import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
 
 import BoardForm from './BoardForm'
+import Button from './Button'
 import { BOARDS_QUERY } from './Boards'
 
 const CREATE_BOARD_MUTATION = gql`
@@ -37,10 +38,12 @@ function CreateBoardModal({ closeModal }) {
               closeModal()
             }}
           />
-          <button type="submit" form="create-board">
+          <Button kind="secondary" onClick={closeModal}>
+            Cancel
+          </Button>
+          <Button type="submit" form="create-board">
             Create
-          </button>
-          <button onClick={closeModal}>Cancel</button>
+          </Button>
         </Modal>
       )}
     </Mutation>

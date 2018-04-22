@@ -4,6 +4,7 @@ import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
 
+import Button from './Button'
 import BoardForm from './BoardForm'
 
 const UPDATE_BOARD_MUTATION = gql`
@@ -31,10 +32,12 @@ function UpdateBoardModal({ closeModal, board }) {
               closeModal()
             }}
           />
-          <button type="submit" form="update-board">
+          <Button kind="secondary" onClick={closeModal}>
+            Cancel
+          </Button>
+          <Button type="submit" form="update-board">
             Save
-          </button>
-          <button onClick={closeModal}>Cancel</button>
+          </Button>
         </Modal>
       )}
     </Mutation>

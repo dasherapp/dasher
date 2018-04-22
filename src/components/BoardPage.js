@@ -11,6 +11,7 @@ import DeleteBoardModal from './DeleteBoardModal'
 import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
 import Columns from './Columns'
+import Button from './Button'
 
 export const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {
@@ -41,7 +42,7 @@ function BoardPage({ match }) {
                 <AccountMenu />
                 <Link to="/">Back</Link>
                 <h1>{data.board.name}</h1>
-                <button
+                <Button
                   onClick={() =>
                     modal.openModal(UpdateBoardModal, {
                       board: data.board,
@@ -49,8 +50,9 @@ function BoardPage({ match }) {
                   }
                 >
                   Edit
-                </button>
-                <button
+                </Button>
+                <Button
+                  kind="danger"
                   onClick={() =>
                     modal.openModal(DeleteBoardModal, {
                       board: data.board,
@@ -58,7 +60,7 @@ function BoardPage({ match }) {
                   }
                 >
                   Delete board
-                </button>
+                </Button>
                 <Columns boardId={data.board.id} columns={data.board.columns} />
               </div>
             )

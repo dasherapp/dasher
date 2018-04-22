@@ -8,7 +8,6 @@ import ModalContainer from '../containers/ModalContainer'
 import CreateBoardModal from './CreateBoardModal'
 import BoardCard from './BoardCard'
 import Grid from './Grid'
-import DeleteBoardModal from './DeleteBoardModal'
 import Button from './Button'
 import Flex from './Flex'
 

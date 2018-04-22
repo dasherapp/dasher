@@ -12,15 +12,7 @@ const Avatar = glamorous.img(props => ({
 }))
 
 Avatar.propTypes = {
-  /** The avatar image URL. */
   src: string.isRequired,
-  /** Alternate text if image cannot be displayed */
-  alt: string.isRequired,
-  /**
-   * The width and height of the avatar.
-   * A number will be interpreted as a pixel value.
-   * Use a string to specify other units (e.g. "2em").
-   * */
   size: oneOfType([string, number]),
 }
 

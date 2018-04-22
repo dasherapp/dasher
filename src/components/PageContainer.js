@@ -5,8 +5,8 @@ import { spacing } from '../theme'
 
 const PageContainer = glamorous.div({
   maxWidth: 1200,
+  width: '90%',
   margin: '0 auto',
-  padding: joinSpacing(0, spacing[3]),
 })
 
 export default PageContainer

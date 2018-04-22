@@ -5,12 +5,15 @@ import Button from './Button'
 
 class ColumnForm extends Component {
   static propTypes = {
-    onSubmit: func.isRequired,
     initialState: shape({ name: string }),
+    onSubmit: func,
+    onCancel: func,
   }
 
   static defaultProps = {
     initialState: { name: '', query: '' },
+    onSubmit: () => {},
+    onCancel: () => {},
   }
 
   state = this.props.initialState
@@ -24,7 +27,7 @@ class ColumnForm extends Component {
   }
 
   render() {
-    const { onSubmit } = this.props
+    const { onSubmit, onCancel } = this.props
     const { name, query } = this.state
     return (
       <form onSubmit={event => onSubmit(event, this.state)}>
@@ -46,7 +49,9 @@ class ColumnForm extends Component {
           </label>
         </div>
         <div>
-          <Button kind="secondary">Cancel</Button>
+          <Button type="button" kind="secondary" onClick={onCancel}>
+            Cancel
+          </Button>
           <Button type="submit">Save</Button>
         </div>
       </form>

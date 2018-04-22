@@ -1,13 +1,13 @@
 import React from 'react'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
-import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
 
+import { spacing } from '../theme'
 import ModalContainer from '../containers/ModalContainer'
-import UpdateBoardModal from './UpdateBoardModal'
 import CreateBoardModal from './CreateBoardModal'
-import DeleteBoardModal from './DeleteBoardModal'
+import BoardCard from './BoardCard'
+import Grid from './Grid'
 import Button from './Button'
 import Flex from './Flex'
 
@@ -37,33 +37,11 @@ function Boards() {
               if (error) return <div>Error</div>
 
               return (
-                <ul>
+                <Grid width={300} gap={spacing[3]}>
                   {data.boards.map(board => (
-                    <li key={board.id}>
-                      <div>
-                        <Link to={`/board/${board.id}`}>{board.name}</Link>
-                        <button
-                          onClick={() =>
-                            modal.openModal(UpdateBoardModal, {
-                              board: board,
-                            })
-                          }
-                        >
-                          Edit board
-                        </button>
-                        <button
-                          onClick={() =>
-                            modal.openModal(DeleteBoardModal, {
-                              board: board,
-                            })
-                          }
-                        >
-                          Delete board
-                        </button>
-                      </div>
-                    </li>
+                    <BoardCard key={board.id} board={board} />
                   ))}
-                </ul>
+                </Grid>
               )
             }}
           </Query>

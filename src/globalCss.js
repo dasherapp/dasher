@@ -1,11 +1,12 @@
 import { css } from 'glamor'
 
-import { fonts } from './theme'
+import { fonts, colors } from './theme'
 
 css.global('body', {
+  boxSizing: 'border-box',
   margin: 0,
   fontFamily: fonts.sans,
-  boxSizing: 'border-box',
+  backgroundColor: colors.gray[1],
 })
 
 css.global('*, *:before, *:after', {

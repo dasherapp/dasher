@@ -22,6 +22,7 @@ export const BOARD_QUERY = gql`
         id
         index
         name
+        query
       }
     }
   }

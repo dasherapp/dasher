@@ -37,7 +37,8 @@ export function joinSpacing() {
  * @param {string} [background]
  * @returns {string}
  */
-export const toAlpha = memoize((foreground, background = '#fff') => {
+export const toAlpha = memoize(
+  (foreground, background = '#fff') => {
   const r = 0
   const g = 1
   const b = 2
@@ -75,4 +76,8 @@ export const toAlpha = memoize((foreground, background = '#fff') => {
     processChannel(b),
     Math.round(bestAlpha * 100) / 100,
   )
-})
+  },
+  {
+    strategy: memoize.strategies.variadic,
+  },
+)

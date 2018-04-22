@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Custom icons renders without crashing 1`] = `
+exports[`renders custom icons 1`] = `
 <div>
   <svg
-    fill="none"
-    height={24}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={24}
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
     <circle
       cx="12"
@@ -20,27 +20,27 @@ exports[`Custom icons renders without crashing 1`] = `
     />
     <line
       x1="12"
-      x2="12"
       y1="8"
+      x2="12"
       y2="12"
     />
     <line
       x1="12"
-      x2="12"
       y1="16"
+      x2="12"
       y2="16"
     />
   </svg>
   <svg
-    fill="none"
-    height={24}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={24}
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
     <circle
       cx="18"
@@ -57,21 +57,21 @@ exports[`Custom icons renders without crashing 1`] = `
     />
     <line
       x1="6"
-      x2="6"
       y1="9"
+      x2="6"
       y2="21"
     />
   </svg>
   <svg
-    fill="none"
-    height={24}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={24}
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
     <circle
       cx="18"
@@ -88,55 +88,54 @@ exports[`Custom icons renders without crashing 1`] = `
     />
   </svg>
   <svg
-    fill="none"
-    height={24}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={24}
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
     <polyline
       points="20 6 9 17 4 12"
     />
   </svg>
   <svg
-    fill="none"
-    height={24}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={24}
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
     <line
       x1="18"
-      x2="6"
       y1="6"
+      x2="6"
       y2="18"
     />
-     
     <line
       x1="6"
-      x2="18"
       y1="6"
+      x2="18"
       y2="18"
     />
   </svg>
   <svg
-    fill="none"
-    height={24}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={24}
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
     <circle
       cx="12"
@@ -145,15 +144,15 @@ exports[`Custom icons renders without crashing 1`] = `
     />
   </svg>
   <svg
-    fill="none"
-    height={24}
-    stroke="currentColor"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth={2}
-    viewBox="0 0 24 24"
-    width={24}
     xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
     <circle
       cx="12"
@@ -176,29 +175,41 @@ exports[`Custom icons renders without crashing 1`] = `
 
 exports[`renders with custom color and size 1`] = `
 <svg
-  color="#C27E00"
-  fill="none"
-  height={16}
-  stroke="currentColor"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  strokeWidth={2}
-  viewBox="0 0 24 24"
-  width={16}
   xmlns="http://www.w3.org/2000/svg"
-/>
+  width="16"
+  height="16"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  color="#c27e00"
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="10"
+  />
+</svg>
 `;
 
 exports[`renders without crashing 1`] = `
 <svg
-  fill="none"
-  height={24}
-  stroke="currentColor"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  strokeWidth={2}
-  viewBox="0 0 24 24"
-  width={24}
   xmlns="http://www.w3.org/2000/svg"
-/>
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="10"
+  />
+</svg>
 `;

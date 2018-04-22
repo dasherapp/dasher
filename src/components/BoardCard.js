@@ -17,15 +17,17 @@ import DeleteBoardModal from './DeleteBoardModal'
 
 const CardLink = glamorous(Link)({
   height: 160,
-  padding: spacing[2],
+  padding: spacing[4],
   fontSize: fontSizes[3],
+  textDecoration: 'none',
   color: colors.gray[9],
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: shadows[2],
+  outline: 0,
   transition: `box-shadow ${transition.duration} ${transition.easing}`,
 
-  ':hover': {
+  ':hover,:focus': {
     boxShadow: shadows[3],
   },
 })

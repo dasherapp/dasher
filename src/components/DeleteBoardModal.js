@@ -9,12 +9,13 @@ import Button from './Button'
 import { BOARDS_QUERY } from './Boards'
 
 const DELETE_BOARD_MUTATION = gql`
-  mutation DeleteBoard($id: ID!) {
+  mutation DeleteBoardMutation($id: ID!) {
     deleteBoard(id: $id) {
       id
     }
   }
 `
+
 function DeleteBoardModal({ closeModal, board, history }) {
   return (
     <Mutation

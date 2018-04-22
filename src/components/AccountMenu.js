@@ -5,6 +5,7 @@ import { Query } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 
 import { logOut } from '../utils/auth'
+import Button from './Button'
 
 const ME_QUERY = gql`
   query MeQuery {
@@ -31,14 +32,14 @@ function AccountMenu({ history }) {
 
             <p>{data.me.name}</p>
             <p>{data.me.login}</p>
-            <button
+            <Button
               onClick={() => {
                 logOut()
                 history.push('/login')
               }}
             >
               Log out
-            </button>
+            </Button>
           </details>
         )
       }}

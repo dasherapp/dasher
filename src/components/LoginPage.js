@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 import { getGithubAuthUrl } from '../utils/github'
 import { isLoggedIn } from '../utils/auth'
+import Button from './Button'
 
 function goToGithubAuthPage() {
   window.location = getGithubAuthUrl(window.location)
@@ -14,7 +15,7 @@ function LoginPage() {
   ) : (
     <div>
       <h1>Login Page</h1>
-      <button onClick={goToGithubAuthPage}>Continue with GitHub</button>
+      <Button onClick={goToGithubAuthPage}>Continue with GitHub</Button>
     </div>
   )
 }

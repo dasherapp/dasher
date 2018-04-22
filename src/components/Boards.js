@@ -3,13 +3,13 @@ import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
-import { Div } from 'glamorous'
 
 import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
 import CreateBoardModal from './CreateBoardModal'
 import DeleteBoardModal from './DeleteBoardModal'
 import Button from './Button'
+import Flex from './Flex'
 
 export const BOARDS_QUERY = gql`
   query BoardsQuery {
@@ -25,16 +25,12 @@ function Boards() {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <div>
-          <Div
-            display="flex"
-            alignItems="center"
-            justifyContent="space-between"
-          >
+          <Flex alignItems="center" justifyContent="space-between">
             <h1>Boards</h1>
             <Button onClick={() => modal.openModal(CreateBoardModal)}>
               Create board
             </Button>
-          </Div>
+          </Flex>
           <Query query={BOARDS_QUERY}>
             {({ data, loading, error }) => {
               if (loading) return <div>Loading...</div>

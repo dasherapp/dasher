@@ -26,10 +26,10 @@ class Column extends Component {
   }
 
   state = {
-    isEditing: false,
+    isEditing: this.props.column.name ? false : true,
   }
 
-  toggleEditing = () => this.setState({ isEditing: !this.state.isEditing })
+  toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
 
   render() {
     const { column } = this.props
@@ -37,7 +37,7 @@ class Column extends Component {
     return (
       <ColumnContainer>
         <strong>{column.name || 'Untitled Column'}</strong>
-        <Button kind="secondary" onClick={this.toggleEditing}>
+        <Button kind="secondary" onClick={this.toggleEdit}>
           Edit column
         </Button>
         {isEditing && (
@@ -47,7 +47,7 @@ class Column extends Component {
               event.preventDefault()
               console.log(state)
             }}
-            onCancel={this.toggleEditing}
+            onCancel={this.toggleEdit}
           />
         )}
       </ColumnContainer>

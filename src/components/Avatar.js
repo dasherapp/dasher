@@ -4,14 +4,12 @@ import glamorous from 'glamorous'
 
 import { radii } from '../theme'
 
-const AvatarContainer = glamorous.img(props => ({
+const Avatar = glamorous.img(props => ({
   width: props.size,
   height: props.size,
   borderRadius: radii[0],
   alt: props.alt,
 }))
-
-const Avatar = props => <AvatarContainer {...props} />
 
 Avatar.propTypes = {
   /** The avatar image URL. */

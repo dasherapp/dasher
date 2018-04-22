@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -93,9 +93,20 @@ class Column extends Component {
               <ColumnContainer>
                 <strong>{name || 'Untitled Column'}</strong>
                 {column.name && (
-                  <Button kind="secondary" onClick={this.toggleEdit}>
-                    Edit column
-                  </Button>
+                  <Fragment>
+                    <Button kind="secondary" onClick={this.toggleEdit}>
+                      Edit column
+                    </Button>
+                    <Button
+                      kind="secondary"
+                      onClick={() =>
+                        // TODO: open a delete confirmation modal
+                        deleteColumn({ variables: { id: column.id } })
+                      }
+                    >
+                      Delete column
+                    </Button>
+                  </Fragment>
                 )}
                 {isEditing && (
                   <ColumnForm

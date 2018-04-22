@@ -53,13 +53,6 @@ class Column extends Component {
     isEditing: this.props.column.name ? false : true,
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    return {
-      name: nextProps.column.name,
-      query: nextProps.column.query,
-    }
-  }
-
   toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
 
   render() {

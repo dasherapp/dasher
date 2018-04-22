@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Custom icons renders without crashing 1`] = `
+exports[`renders custom icons 1`] = `
 <div>
   <svg
     fill="none"
@@ -186,7 +186,13 @@ exports[`renders with custom color and size 1`] = `
   viewBox="0 0 24 24"
   width={16}
   xmlns="http://www.w3.org/2000/svg"
-/>
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="10"
+  />
+</svg>
 `;
 
 exports[`renders without crashing 1`] = `
@@ -200,5 +206,11 @@ exports[`renders without crashing 1`] = `
   viewBox="0 0 24 24"
   width={24}
   xmlns="http://www.w3.org/2000/svg"
-/>
+>
+  <circle
+    cx="12"
+    cy="12"
+    r="10"
+  />
+</svg>
 `;

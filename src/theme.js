@@ -45,3 +45,8 @@ export const lineHeights = {
 export const colors = openColor
 
 export const radii = [3, 6]
+
+export const transition = {
+  duration: '150ms',
+  easing: 'ease-in-out',
+}

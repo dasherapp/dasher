@@ -1,4 +1,3 @@
-import React from 'react'
 import { oneOfType, oneOf, string, number } from 'prop-types'
 import glamorous from 'glamorous'
 

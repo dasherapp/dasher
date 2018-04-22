@@ -29,7 +29,7 @@ function BoardCard({ board }) {
               onClick={event => {
                 event.preventDefault()
                 modal.openModal(UpdateBoardModal, {
-                  board: board,
+                  board,
                 })
               }}
             >

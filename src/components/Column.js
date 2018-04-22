@@ -39,31 +39,44 @@ class Column extends Component {
   }
 
   state = {
+    name: this.props.column.name,
+    query: this.props.column.query,
     isEditing: this.props.column.name ? false : true,
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      name: nextProps.column.name,
+      query: nextProps.column.query,
+    }
   }
 
   toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
 
   render() {
     const { column } = this.props
-    const { isEditing } = this.state
+    const { isEditing, name, query } = this.state
     return (
       <Mutation mutation={UPDATE_COLUMN_MUTATION}>
         {updateColumn => (
           <ColumnContainer>
-            <strong>{column.name || 'Untitled Column'}</strong>
+            <strong>{name || 'Untitled Column'}</strong>
             <Button kind="secondary" onClick={this.toggleEdit}>
               Edit column
             </Button>
             {isEditing && (
               <ColumnForm
-                initialState={{ name: column.name, query: column.query }}
-                onSubmit={(event, { name, query }) => {
+                formState={{ name, query }}
+                onChange={change => this.setState(change)}
+                onSubmit={event => {
                   event.preventDefault()
                   updateColumn({ variables: { id: column.id, name, query } })
                   this.toggleEdit()
                 }}
-                onCancel={this.toggleEdit}
+                onCancel={() => {
+                  this.setState({ name: column.name, query: column.query })
+                  this.toggleEdit()
+                }}
               />
             )}
           </ColumnContainer>

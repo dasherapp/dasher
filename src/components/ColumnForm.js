@@ -1,62 +1,56 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { string, shape, func } from 'prop-types'
 
 import Button from './Button'
 
-class ColumnForm extends Component {
-  static propTypes = {
-    initialState: shape({ name: string }),
-    onSubmit: func,
-    onCancel: func,
-  }
+function ColumnForm({ formState, onChange, onSubmit, onCancel }) {
+  return (
+    <form onSubmit={onSubmit}>
+      <div>
+        <label>
+          Name
+          <input
+            value={formState.name}
+            onChange={event => onChange({ name: event.target.value })}
+            required
+            autoFocus
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Query
+          <input
+            value={formState.query}
+            onChange={event => onChange({ query: event.target.value })}
+            required
+          />
+        </label>
+      </div>
+      <div>
+        <Button type="button" kind="secondary" onClick={onCancel}>
+          Cancel
+        </Button>
+        <Button type="submit">Save</Button>
+      </div>
+    </form>
+  )
+}
 
-  static defaultProps = {
-    initialState: { name: '', query: '' },
-    onSubmit: () => {},
-    onCancel: () => {},
-  }
+ColumnForm.propTypes = {
+  formState: shape({
+    name: string.isRequired,
+    query: string.isRequired,
+  }).isRequired,
+  onChange: func,
+  onSubmit: func,
+  onCancel: func,
+}
 
-  state = this.props.initialState
-
-  handleNameChange = event => {
-    this.setState({ name: event.target.value })
-  }
-
-  handleQueryChange = event => {
-    this.setState({ query: event.target.value })
-  }
-
-  render() {
-    const { onSubmit, onCancel } = this.props
-    const { name, query } = this.state
-    return (
-      <form onSubmit={event => onSubmit(event, this.state)}>
-        <div>
-          <label>
-            Name
-            <input
-              value={name}
-              onChange={this.handleNameChange}
-              required
-              autoFocus
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Query
-            <input value={query} onChange={this.handleQueryChange} required />
-          </label>
-        </div>
-        <div>
-          <Button type="button" kind="secondary" onClick={onCancel}>
-            Cancel
-          </Button>
-          <Button type="submit">Save</Button>
-        </div>
-      </form>
-    )
-  }
+ColumnForm.defaultProps = {
+  onChange: () => {},
+  onSubmit: () => {},
+  onCancel: () => {},
 }
 
 export default ColumnForm

@@ -1,6 +1,6 @@
 import openColor from 'open-color'
 
-import { toMediaQuery } from './utils/style'
+import { toMediaQuery, toAlpha } from './utils/style'
 
 export const breakpoints = {
   sm: toMediaQuery(32),
@@ -46,16 +46,16 @@ export const colors = openColor
 
 export const radii = [3, 6]
 
-export default (shadows = [
-  `0 0 0 1px ${toAlpha(color.gray[3])}`,
-  `0 2px 4px 0 ${toAlpha(color.gray[2])}`,
-  `0 4px 8px 0 ${toAlpha(color.gray[3])}, 0 2px 4px 0 ${toAlpha(
-    color.gray[2],
+export const shadows = [
+  `0 0 0 1px ${toAlpha(colors.gray[3])}`,
+  `0 2px 4px 0 ${toAlpha(colors.gray[2])}`,
+  `0 4px 8px 0 ${toAlpha(colors.gray[3])}, 0 2px 4px 0 ${toAlpha(
+    colors.gray[2],
   )}`,
-  `0 15px 30px 0 ${toAlpha(color.gray[3])}, 0 5px 15px 0 ${toAlpha(
-    color.gray[2],
+  `0 15px 30px 0 ${toAlpha(colors.gray[3])}, 0 5px 15px 0 ${toAlpha(
+    colors.gray[2],
   )}`,
-])
+]
 
 export const transition = {
   duration: '150ms',

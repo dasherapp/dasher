@@ -6,14 +6,11 @@ import { Subscribe } from 'unstated'
 import { spacing } from '../theme'
 import ModalContainer from '../containers/ModalContainer'
 import CreateBoardModal from './CreateBoardModal'
-<<<<<<< HEAD
 import BoardCard from './BoardCard'
 import Grid from './Grid'
-=======
 import DeleteBoardModal from './DeleteBoardModal'
 import Button from './Button'
 import Flex from './Flex'
->>>>>>> master
 
 export const BOARDS_QUERY = gql`
   query BoardsQuery {

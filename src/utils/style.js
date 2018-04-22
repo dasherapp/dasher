@@ -23,9 +23,9 @@ export const joinSpacing = (...args) => {
 
 /**
  * Return the transparent version of the `foreground` color,
- * as if it was blended over the `background` color.
+ * as if it was overlaid on the `background` color.
  *
- * Source: https://git.io/vpYAv
+ * Inspiration: https://git.io/vpYAv
  *
  * @param {string} foreground
  * @param {string} [background=#fff]

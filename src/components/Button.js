@@ -1,7 +1,6 @@
 import { bool, func, oneOf } from 'prop-types'
 import glamorous from 'glamorous'
 
-import { joinSpacing, toAlpha } from '../utils/style'
 import {
   radii,
   colors,
@@ -11,14 +10,17 @@ import {
   spacing,
   transition,
 } from '../theme'
+import { joinSpacing, toAlpha } from '../utils/style'
 
 const kinds = {
   primary: {
     color: colors.white,
     backgroundColor: colors.indigo[7],
+
     ':hover': {
       backgroundColor: colors.indigo[9],
     },
+
     ':focus': {
       boxShadow: `0 0 0 3px ${toAlpha(colors.indigo[3])}`,
     },
@@ -26,9 +28,11 @@ const kinds = {
   secondary: {
     color: toAlpha(colors.gray[9]),
     backgroundColor: 'transparent',
+
     ':hover': {
       backgroundColor: toAlpha(colors.gray[1]),
     },
+
     ':focus': {
       boxShadow: `0 0 0 3px ${toAlpha(colors.gray[3])}`,
     },
@@ -36,9 +40,11 @@ const kinds = {
   danger: {
     color: colors.white,
     backgroundColor: colors.red[7],
+
     ':hover': {
       backgroundColor: colors.red[9],
     },
+
     ':focus': {
       boxShadow: `0 0 0 3px ${toAlpha(colors.red[3])}`,
     },
@@ -49,14 +55,14 @@ const Button = glamorous.button(
   {
     display: 'inline-block',
     padding: joinSpacing(spacing[1], spacing[2]),
-    border: 'none',
-    borderRadius: radii[0],
-    outline: 0,
     fontFamily: 'inherit',
     fontSize: fontSizes[1],
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.tight,
     textDecoration: 'none',
+    border: 'none',
+    borderRadius: radii[0],
+    outline: 0,
     whiteSpace: 'nowrap',
     cursor: 'pointer',
     userSelect: 'none',

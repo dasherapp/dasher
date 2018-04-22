@@ -34,7 +34,6 @@ const ColumnsContainer = glamorous.div({
   display: 'flex',
   alignItems: 'flex-start',
   padding: spacing[3],
-  backgroundColor: 'papayawhip',
 })
 
 function Columns({ boardId, columns }) {

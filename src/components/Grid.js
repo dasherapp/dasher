@@ -1,16 +1,14 @@
 import glamorous from 'glamorous'
 import { oneOfType, number, string } from 'prop-types'
 
-import { toUnit } from '../utils/style'
+import { toPx } from '../utils/style'
 import { spacing } from '../theme'
 
 const Grid = glamorous.div(props => ({
   display: 'grid',
   alignItems: props.align,
   gridGap: props.gap,
-  gridTemplateColumns: `repeat(auto-fit, minmax(${toUnit('px')(
-    props.width,
-  )}, 1fr))`,
+  gridTemplateColumns: `repeat(auto-fit, minmax(${toPx(props.width)}, 1fr))`,
 }))
 
 Grid.propTypes = {

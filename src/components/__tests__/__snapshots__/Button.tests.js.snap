@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders as danger 1`] = `
+.css-0,
+[data-css-0] {
+  display: inline-block;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #f03e3e;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+}
+
+.css-0:hover,
+[data-css-0]:hover {
+  background-color: #c92a2a;
+}
+
+.css-0:focus,
+[data-css-0]:focus {
+  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.34);
+}
+
+<button
+  class="css-0"
+>
+  Primary Button
+</button>
+`;
+
+exports[`renders as primary 1`] = `
+.css-0,
+[data-css-0] {
+  display: inline-block;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #4263eb;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+}
+
+.css-0:hover,
+[data-css-0]:hover {
+  background-color: #364fc7;
+}
+
+.css-0:focus,
+[data-css-0]:focus {
+  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
+}
+
+<button
+  class="css-0"
+>
+  Primary Button
+</button>
+`;
+
+exports[`renders as secondary 1`] = `
+.css-0,
+[data-css-0] {
+  display: inline-block;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  color: rgba(0, 5, 9, 0.87);
+  background-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+}
+
+.css-0:hover,
+[data-css-0]:hover {
+  background-color: rgba(0, 36, 73, 0.05);
+}
+
+.css-0:focus,
+[data-css-0]:focus {
+  box-shadow: 0 0 0 3px rgba(0, 31, 62, 0.13);
+}
+
+<button
+  class="css-0"
+>
+  Primary Button
+</button>
+`;
+
+exports[`renders at fullWidth 1`] = `
+.css-0,
+[data-css-0] {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #4263eb;
+  width: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+}
+
+.css-0:hover,
+[data-css-0]:hover {
+  background-color: #364fc7;
+}
+
+.css-0:focus,
+[data-css-0]:focus {
+  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
+}
+
+<button
+  class="css-0"
+>
+  Full Width Button
+</button>
+`;
+
+exports[`renders when disabled 1`] = `
+.css-0,
+[data-css-0] {
+  display: inline-block;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #4263eb;
+  opacity: 0.5;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+}
+
+.css-0:hover,
+[data-css-0]:hover {
+  background-color: #364fc7;
+}
+
+.css-0:focus,
+[data-css-0]:focus {
+  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
+}
+
+<button
+  disabled=""
+  class="css-0"
+>
+  Disabled Button
+</button>
+`;
+
+exports[`renders without crashing 1`] = `
+.css-0,
+[data-css-0] {
+  display: inline-block;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 3px;
+  outline: 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #4263eb;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+}
+
+.css-0:hover,
+[data-css-0]:hover {
+  background-color: #364fc7;
+}
+
+.css-0:focus,
+[data-css-0]:focus {
+  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
+}
+
+<button
+  class="css-0"
+>
+  Test Button
+</button>
+`;

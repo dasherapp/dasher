@@ -28,7 +28,7 @@ export const joinSpacing = (...args) => {
  * Source: https://git.io/vpYAv
  *
  * @param {string} foreground
- * @param {string} [background]
+ * @param {string} [background=#fff]
  * @returns {string}
  */
 export const toAlpha = memoize(
@@ -37,9 +37,11 @@ export const toAlpha = memoize(
     const g = 1
     const b = 2
 
+    // Convert color string to array (i.e. [r, g, b, a])
     const fgColor = color.get.rgb(foreground)
     const bgColor = color.get.rgb(background)
 
+    // Calculate alpha value
     let bestAlpha = [r, g, b]
       .map(
         channel =>
@@ -47,10 +49,9 @@ export const toAlpha = memoize(
           ((0 < fgColor[channel] - bgColor[channel] ? 255 : 0) -
             bgColor[channel]),
       )
-      .sort(function(a, b) {
-        return b - a
-      })[0]
+      .sort((a, b) => b - a)[0]
 
+    // Keep bestAlpha between 0 and 1
     bestAlpha = Math.max(Math.min(bestAlpha, 1), 0)
 
     // Calculate the resulting color

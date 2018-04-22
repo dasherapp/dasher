@@ -28,7 +28,10 @@ export const fonts = {
   ].join(', '),
 }
 
-export const colors = openColor
+export const fontWeights = {
+  normal: 400,
+  bold: 600,
+}
 
 export const fontSizes = [12, 14, 16, 20, 24, 32, 48, 64]
 

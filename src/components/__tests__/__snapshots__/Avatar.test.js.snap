@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders as circle 1`] = `
+.css-0,
+[data-css-0] {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+<img
+  src="http://via.placeholder.com/100x100"
+  alt="placeholder"
+  class="css-0"
+/>
+`;
+
+exports[`renders with custom size (number) 1`] = `
+.css-0,
+[data-css-0] {
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+}
+
+<img
+  src="http://via.placeholder.com/100x100"
+  alt="placeholder"
+  class="css-0"
+/>
+`;
+
+exports[`renders with custom size (string) 1`] = `
+.css-0,
+[data-css-0] {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 3px;
+}
+
+<img
+  src="http://via.placeholder.com/100x100"
+  alt="placeholder"
+  class="css-0"
+/>
+`;
+
+exports[`renders without crashing 1`] = `
+.css-0,
+[data-css-0] {
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
+}
+
+<img
+  src="http://via.placeholder.com/100x100"
+  alt="placeholder"
+  class="css-0"
+/>
+`;

@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom'
 
 import { logOut } from '../utils/auth'
 import Button from './Button'
+import Avatar from './Avatar'
 
 const ME_QUERY = gql`
   query MeQuery {
@@ -27,7 +28,7 @@ function AccountMenu({ history }) {
         return (
           <details>
             <summary>
-              <img src={data.me.avatarUrl} width="32" alt={data.me.login} />
+              <Avatar src={data.me.avatarUrl} size="32" alt={data.me.login} />
             </summary>
 
             <p>{data.me.name}</p>

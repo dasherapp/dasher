@@ -1,6 +1,7 @@
 import React from 'react'
 import { oneOfType, string, number } from 'prop-types'
 import glamorous from 'glamorous'
+
 import { radii } from '../theme'
 
 const AvatarContainer = glamorous.img(props => ({

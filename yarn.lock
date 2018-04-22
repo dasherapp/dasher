@@ -2071,7 +2071,7 @@ dom-serializer@0:
     domelementtype "~1.1.1"
     entities "~1.1.1"
 
-dom-testing-library@^1.0.0:
+dom-testing-library@^1.0.0, dom-testing-library@^1.9.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/dom-testing-library/-/dom-testing-library-1.9.0.tgz#3040784dd7cdb073a2b588cde9774187e8011054"
   dependencies:

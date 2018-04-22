@@ -41,6 +41,7 @@ const ColumnContainer = glamorous.div({
 
 class Column extends Component {
   static propTypes = {
+    boardId: string.isRequired,
     column: shape({
       name: string.isRequired,
       query: string.isRequired,

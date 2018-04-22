@@ -28,7 +28,7 @@ function Boards() {
           <Flex alignItems="center" justifyContent="space-between">
             <h1>Boards</h1>
             <Button onClick={() => modal.openModal(CreateBoardModal)}>
-              Create board
+              New board
             </Button>
           </Flex>
           <Query query={BOARDS_QUERY}>

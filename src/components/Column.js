@@ -61,9 +61,11 @@ class Column extends Component {
         {updateColumn => (
           <ColumnContainer>
             <strong>{name || 'Untitled Column'}</strong>
-            <Button kind="secondary" onClick={this.toggleEdit}>
-              Edit column
-            </Button>
+            {column.name && (
+              <Button kind="secondary" onClick={this.toggleEdit}>
+                Edit column
+              </Button>
+            )}
             {isEditing && (
               <ColumnForm
                 formState={{ name, query }}

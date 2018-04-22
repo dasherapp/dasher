@@ -1,20 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { css } from 'glamor'
 import Modal from 'react-modal'
 
-import { fonts } from './theme'
+import './globalCss'
 import App from './components/App'
-
-css.global('body', {
-  margin: 0,
-  fontFamily: fonts.sans,
-  boxSizing: 'border-box',
-})
-
-css.global('*, *:before, *:after', {
-  boxSizing: 'inherit',
-})
 
 const rootSelector = '#root'
 Modal.setAppElement(rootSelector)

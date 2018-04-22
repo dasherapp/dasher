@@ -1,5 +1,14 @@
 import openColor from 'open-color'
 
+import { toMediaQuery } from './utils/style'
+
+export const breakpoints = {
+  sm: toMediaQuery(32),
+  md: toMediaQuery(48),
+  lg: toMediaQuery(64),
+  xl: toMediaQuery(80),
+}
+
 export const spacing = [4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
 
 export const fonts = {

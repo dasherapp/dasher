@@ -1,5 +1,6 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render } from 'react-testing-library'
+
 import Icon, {
   IssueIcon,
   PullRequestIcon,
@@ -11,30 +12,37 @@ import Icon, {
 } from '../Icon'
 
 it('renders without crashing', () => {
-  const tree = renderer.create(<Icon />).toJSON()
-  expect(tree).toMatchSnapshot()
+  const { container } = render(
+    <Icon>
+      <circle cx="12" cy="12" r="10" />
+    </Icon>,
+  )
+
+  expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders with custom color and size', () => {
-  const tree = renderer.create(<Icon color="#C27E00" size={16} />).toJSON()
-  expect(tree).toMatchSnapshot()
+  const { container } = render(
+    <Icon color="#c27e00" size={16}>
+      <circle cx="12" cy="12" r="10" />
+    </Icon>,
+  )
+
+  expect(container.firstChild).toMatchSnapshot()
 })
 
-describe('Custom icons', () => {
-  it('renders without crashing', () => {
-    const tree = renderer
-      .create(
-        <div>
-          <IssueIcon />
-          <PullRequestIcon />
-          <MergeIcon />
-          <CheckIcon />
-          <XIcon />
-          <CircleIcon />
-          <EllipsesIcon />
-        </div>,
-      )
-      .toJSON()
-    expect(tree).toMatchSnapshot()
-  })
+it('renders custom icons', () => {
+  const { container } = render(
+    <div>
+      <IssueIcon />
+      <PullRequestIcon />
+      <MergeIcon />
+      <CheckIcon />
+      <XIcon />
+      <CircleIcon />
+      <EllipsesIcon />
+    </div>,
+  )
+
+  expect(container.firstChild).toMatchSnapshot()
 })

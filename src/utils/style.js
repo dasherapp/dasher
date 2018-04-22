@@ -42,7 +42,7 @@ export const toAlpha = memoize(
     const bgColor = color.get.rgb(background)
 
     // Calculate alpha value
-    let bestAlpha = [r, g, b]
+    let alpha = [r, g, b]
       .map(
         channel =>
           (fgColor[channel] - bgColor[channel]) /
@@ -51,25 +51,21 @@ export const toAlpha = memoize(
       )
       .sort((a, b) => b - a)[0]
 
-    // Keep bestAlpha between 0 and 1
-    bestAlpha = Math.max(Math.min(bestAlpha, 1), 0)
+    // Keep alpha value between 0 and 1
+    alpha = Math.max(Math.min(alpha, 1), 0)
 
     // Calculate the resulting color
     function processChannel(channel) {
-      if (0 === bestAlpha) {
-        return bgColor[channel]
-      } else {
-        return (
-          bgColor[channel] + (fgColor[channel] - bgColor[channel]) / bestAlpha
-        )
-      }
+      return 0 === alpha
+        ? bgColor[channel]
+        : bgColor[channel] + (fgColor[channel] - bgColor[channel]) / alpha
     }
 
     return color.to.rgb(
       processChannel(r),
       processChannel(g),
       processChannel(b),
-      Math.round(bestAlpha * 100) / 100,
+      Math.round(alpha * 100) / 100,
     )
   },
   {

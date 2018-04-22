@@ -1,10 +1,23 @@
 import React, { Component } from 'react'
 import { shape, string } from 'prop-types'
+import { gql } from 'apollo-boost'
+import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
 
 import { spacing, colors, radii, shadows } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
+
+const UPDATE_COLUMN_MUTATION = gql`
+  mutation UpdateColumnMutation($id: ID!, $name: String, $query: String) {
+    updateColumn(id: $id, name: $name, query: $query) {
+      id
+      index
+      name
+      query
+    }
+  }
+`
 
 const ColumnContainer = glamorous.div({
   display: 'flex',
@@ -35,23 +48,27 @@ class Column extends Component {
     const { column } = this.props
     const { isEditing } = this.state
     return (
-      <ColumnContainer>
-        <strong>{column.name || 'Untitled Column'}</strong>
-        <Button kind="secondary" onClick={this.toggleEdit}>
-          Edit column
-        </Button>
-        {isEditing && (
-          <ColumnForm
-            initialState={{ name: column.name, query: column.query }}
-            onSubmit={(event, state) => {
-              event.preventDefault()
-              console.log(state)
-              this.toggleEdit()
-            }}
-            onCancel={this.toggleEdit}
-          />
+      <Mutation mutation={UPDATE_COLUMN_MUTATION}>
+        {updateColumn => (
+          <ColumnContainer>
+            <strong>{column.name || 'Untitled Column'}</strong>
+            <Button kind="secondary" onClick={this.toggleEdit}>
+              Edit column
+            </Button>
+            {isEditing && (
+              <ColumnForm
+                initialState={{ name: column.name, query: column.query }}
+                onSubmit={(event, { name, query }) => {
+                  event.preventDefault()
+                  updateColumn({ variables: { id: column.id, name, query } })
+                  this.toggleEdit()
+                }}
+                onCancel={this.toggleEdit}
+              />
+            )}
+          </ColumnContainer>
         )}
-      </ColumnContainer>
+      </Mutation>
     )
   }
 }

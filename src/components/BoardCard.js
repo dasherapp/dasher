@@ -6,7 +6,6 @@ import { Subscribe } from 'unstated'
 import { spacing, colors, radii, fontSizes } from '../theme'
 import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
-import CreateBoardModal from './CreateBoardModal'
 import DeleteBoardModal from './DeleteBoardModal'
 
 const BoardCardContainer = glamorous.div({

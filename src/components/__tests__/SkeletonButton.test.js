@@ -10,9 +10,16 @@ it('renders without crashing', () => {
   expect(container.firstChild).toMatchSnapshot()
 })
 
-it('renders with custom width', () => {
+it('renders with custom number width', () => {
   const { container } = render(
     <SkeletonButton width={360}>Custom Width SkeletonButton</SkeletonButton>,
+  )
+  expect(container.firstChild).toMatchSnapshot()
+})
+
+it('renders with custom percentage width', () => {
+  const { container } = render(
+    <SkeletonButton width={'100%'}>Custom Width SkeletonButton</SkeletonButton>,
   )
   expect(container.firstChild).toMatchSnapshot()
 })

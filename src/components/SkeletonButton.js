@@ -42,7 +42,7 @@ SkeletonButton.propTypes = {
 }
 
 SkeletonButton.defaultProps = {
-  width: 'inherit',
+  width: '100%',
 }
 
 export default SkeletonButton

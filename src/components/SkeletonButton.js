@@ -1,3 +1,4 @@
+import { number, oneOfType, string } from 'prop-types'
 import glamorous from 'glamorous'
 
 import {
@@ -8,12 +9,13 @@ import {
   colors,
   radii,
   transition,
+  breakpoints,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
 
-const SkeletonButton = glamorous.button({
-  width: 360,
-  padding: joinSpacing(spacing[6], 0),
+const SkeletonButton = glamorous.button(props => ({
+  width: props.width,
+  padding: joinSpacing(spacing[4], 0),
   fontFamily: 'inherit',
   fontWeight: fontWeights.bold,
   fontSize: fontSizes[2],
@@ -29,6 +31,18 @@ const SkeletonButton = glamorous.button({
   ':hover,:focus': {
     backgroundColor: toAlpha(colors.gray[1]),
   },
-})
+
+  [breakpoints.sm]: {
+    padding: joinSpacing(spacing[6], 0),
+  },
+}))
+
+SkeletonButton.propTypes = {
+  width: oneOfType([number, string]),
+}
+
+SkeletonButton.defaultProps = {
+  width: 'inherit',
+}
 
 export default SkeletonButton

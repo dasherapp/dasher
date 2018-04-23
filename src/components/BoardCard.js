@@ -38,7 +38,7 @@ const CardLink = glamorous(Link)({
   transitionTimingFunction: transition.easing,
 
   ':hover,:focus': {
-    boxShadow: shadows[3],
+    boxShadow: shadows[2],
     transform: 'translateY(-2px)',
   },
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import { renderIntoDocument, render, fireEvent } from 'react-testing-library'
+
 import SkeletonButton from '../SkeletonButton'
 
 it('renders without crashing', () => {
@@ -30,6 +31,5 @@ it('calls onClick when button is clicked', () => {
       cancelable: true,
     }),
   )
-
   expect(handleClick).toHaveBeenCalledTimes(1)
 })

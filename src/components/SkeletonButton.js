@@ -1,4 +1,4 @@
-import { number, oneOfType, string } from 'prop-types'
+import { number, oneOfType, string, func } from 'prop-types'
 import glamorous from 'glamorous'
 
 import {
@@ -39,10 +39,12 @@ const SkeletonButton = glamorous.button(props => ({
 
 SkeletonButton.propTypes = {
   width: oneOfType([number, string]),
+  onClick: func,
 }
 
 SkeletonButton.defaultProps = {
   width: '100%',
+  onClick: () => {},
 }
 
 export default SkeletonButton

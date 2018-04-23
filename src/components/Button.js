@@ -10,7 +10,7 @@ import {
   spacing,
   transition,
 } from '../theme'
-import { joinSpacing, toAlpha } from '../utils/style'
+import { joinSpacing, toAlpha, propStyles } from '../utils/style'
 
 const kinds = {
   primary: {
@@ -34,7 +34,7 @@ const kinds = {
     },
 
     ':focus': {
-      boxShadow: `0 0 0 3px ${toAlpha(colors.gray[3])}`,
+      boxShadow: `0 0 0 3px ${toAlpha(colors.gray[4])}`,
     },
   },
   danger: {
@@ -47,6 +47,16 @@ const kinds = {
 
     ':focus': {
       boxShadow: `0 0 0 3px ${toAlpha(colors.red[3])}`,
+    },
+  },
+  icon: {
+    color: toAlpha(colors.gray[6]),
+    backgroundColor: 'transparent',
+    lineHeight: 0,
+    padding: spacing[0],
+
+    ':hover,:focus': {
+      backgroundColor: toAlpha(colors.gray[1]),
     },
   },
 }
@@ -69,29 +79,23 @@ const Button = glamorous.button(
     transition: `all ${transition.duration} ${transition.easing}`,
   },
   ({ kind }) => kinds[kind],
-  ({ fullWidth }) =>
-    fullWidth && {
-      display: 'flex',
-      width: '100%',
-    },
-  ({ disabled }) =>
-    disabled && {
+  propStyles({
+    disabled: {
       opacity: 0.5,
       pointerEvents: 'none',
     },
+  }),
 )
 
 Button.propTypes = {
-  kind: oneOf(['primary', 'secondary', 'danger']),
+  kind: oneOf(['primary', 'secondary', 'danger', 'icon']),
   disabled: bool,
-  fullWidth: bool,
   onClick: func,
 }
 
 Button.defaultProps = {
   kind: 'primary',
   disabled: false,
-  fullWidth: false,
   onClick: () => {},
 }
 

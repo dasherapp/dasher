@@ -22,7 +22,7 @@ export const joinSpacing = (...args) => {
 }
 
 /**
- * Return the transparent version of the `foreground` color,
+ * Returns the transparent version of the `foreground` color,
  * as if it was overlaid on the `background` color.
  *
  * Inspiration: https://git.io/vpYAv
@@ -72,3 +72,26 @@ export const toAlpha = memoize(
     strategy: memoize.strategies.variadic,
   },
 )
+
+/**
+ * Makes it easier to create glamorous components that
+ * accept props to enable/disable styles.
+ *
+ * Accepts an object where the key is a prop and the value is
+ * the styles object that should be applied if that prop is passed.
+ * Returns a function which you pass to a glamorousComponentFactory.
+ *
+ * Credit: https://codesandbox.io/s/AGRRMl63 by @kentcdodds
+ *
+ * @param {Object} styles - An object mapping props to styles
+ * @return {Function} - A dynamic styles function
+ */
+export const propStyles = styles => props =>
+  Object.keys(props).map(key => {
+    if (props[key]) {
+      return typeof styles[key] === 'function'
+        ? styles[key](props)
+        : styles[key]
+    }
+    return null
+  })

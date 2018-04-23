@@ -11,24 +11,34 @@ import {
   fontSizes,
   shadows,
   transition,
+  fontWeights,
 } from '../theme'
+import { toAlpha } from '../utils/style'
 import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
 import DeleteBoardModal from './DeleteBoardModal'
+import Button from './Button'
+import { EllipsesIcon } from './Icon'
+import Flex from './Flex'
+import Spacer from './Spacer'
 
 const CardLink = glamorous(Link)({
-  padding: spacing[4],
+  padding: spacing[3],
   fontSize: fontSizes[3],
+  fontWeight: fontWeights.bold,
   textDecoration: 'none',
-  color: colors.gray[9],
+  color: toAlpha(colors.gray[9]),
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: shadows[1],
   outline: 0,
-  transition: `box-shadow ${transition.duration} ${transition.easing}`,
+  transitionProperty: 'box-shadow, transform',
+  transitionDuration: transition.duration,
+  transitionTimingFunction: transition.easing,
 
   ':hover,:focus': {
     boxShadow: shadows[3],
+    transform: 'translateY(-2px)',
   },
 
   [breakpoints.sm]: {
@@ -41,13 +51,17 @@ function BoardCard({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <CardLink to={`/board/${board.id}`}>
-          {board.name}
-          <button
+          <Flex alignItems="center" paddingLeft={spacing[1]}>
+            <span>{board.name}</span>
+            <Spacer />
+            <Button kind="icon" onClick={event => event.preventDefault()}>
+              <EllipsesIcon />
+            </Button>
+          </Flex>
+          {/* <button
             onClick={event => {
               event.preventDefault()
-              modal.openModal(UpdateBoardModal, {
-                board,
-              })
+              modal.openModal(UpdateBoardModal, { board })
             }}
           >
             Edit board
@@ -55,13 +69,11 @@ function BoardCard({ board }) {
           <button
             onClick={event => {
               event.preventDefault()
-              modal.openModal(DeleteBoardModal, {
-                board: board,
-              })
+              modal.openModal(DeleteBoardModal, { board })
             }}
           >
             Delete board
-          </button>
+          </button> */}
         </CardLink>
       )}
     </Subscribe>

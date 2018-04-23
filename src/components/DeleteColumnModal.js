@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { func, shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -39,7 +39,7 @@ function DeleteColumnModal({ boardId, column, closeModal }) {
     >
       {deleteColumn => (
         <Modal isOpen onRequestClose={closeModal}>
-          <React.Fragment>
+          <Fragment>
             <h1>Delete column</h1>
             <p>
               Are you sure you want to delete <strong>{column.name}</strong>?
@@ -57,7 +57,7 @@ function DeleteColumnModal({ boardId, column, closeModal }) {
             >
               Delete
             </Button>
-          </React.Fragment>
+          </Fragment>
         </Modal>
       )}
     </Mutation>

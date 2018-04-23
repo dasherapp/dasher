@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { func, shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -32,7 +32,7 @@ function DeleteBoardModal({ closeModal, board, history }) {
     >
       {deleteBoard => (
         <Modal isOpen onRequestClose={closeModal}>
-          <React.Fragment>
+          <Fragment>
             <h1>Delete board</h1>
             <p>
               Are you sure you want to delete <strong>{board.name}</strong>?
@@ -51,7 +51,7 @@ function DeleteBoardModal({ closeModal, board, history }) {
             >
               Delete
             </Button>
-          </React.Fragment>
+          </Fragment>
         </Modal>
       )}
     </Mutation>

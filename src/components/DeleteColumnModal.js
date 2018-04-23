@@ -68,6 +68,7 @@ DeleteColumnModal.propTypes = {
   boardId: string.isRequired,
   column: shape({
     name: string.isRequired,
+    id: string.isRequired,
   }).isRequired,
   closeModal: func.isRequired,
 }

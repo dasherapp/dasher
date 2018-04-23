@@ -48,7 +48,7 @@ export const radii = [3, 6]
 
 export const shadows = [
   `0 0 0 1px ${toAlpha(colors.gray[3])}`,
-  `0 2px 4px 0 ${toAlpha(colors.gray[3])}`,
+  `0 1px 1px 1px ${toAlpha(colors.gray[3])}`,
   `0 4px 8px 0 ${toAlpha(colors.gray[3])}, 0 2px 4px 0 ${toAlpha(
     colors.gray[2],
   )}`,

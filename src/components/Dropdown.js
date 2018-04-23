@@ -49,13 +49,28 @@ class Dropdown extends Component {
     isOpen: false,
   }
 
-  toggleOpen = () => this.setState({ isOpen: !this.state.isOpen })
+  handleOutsideClick = event => {
+    if (this.rootNode && this.rootNode.contains(event.target)) return
+
+    this.toggleOpen()
+  }
+
+  toggleOpen = () => {
+    // Add or remove event listener
+    if (!this.state.isOpen) {
+      document.addEventListener('click', this.handleOutsideClick, false)
+    } else {
+      document.removeEventListener('click', this.handleOutsideClick, false)
+    }
+
+    this.setState({ isOpen: !this.state.isOpen })
+  }
 
   render() {
     const { toggleComponent: Toggle, children } = this.props
     const { isOpen } = this.state
     return (
-      <Relative>
+      <Relative innerRef={node => (this.rootNode = node)}>
         <Toggle
           onClick={event => {
             event.preventDefault()

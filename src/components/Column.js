@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -8,6 +8,10 @@ import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
+import Dropdown, { MenuItem } from './Dropdown'
+import { EllipsesIcon } from './Icon'
+import Flex from './Flex'
+import Spacer from './Spacer'
 
 const UPDATE_COLUMN_MUTATION = gql`
   mutation UpdateColumnMutation($id: ID!, $name: String, $query: String) {
@@ -33,7 +37,7 @@ const ColumnContainer = glamorous.div({
   flexDirection: 'column',
   width: 360,
   marginRight: spacing[3],
-  padding: spacing[3],
+  padding: spacing[2],
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: shadows[1],
@@ -85,23 +89,29 @@ class Column extends Component {
           >
             {deleteColumn => (
               <ColumnContainer>
-                <strong>{name || 'Untitled Column'}</strong>
-                {column.name && (
-                  <Fragment>
-                    <Button kind="secondary" onClick={this.toggleEdit}>
-                      Edit column
-                    </Button>
-                    <Button
-                      kind="secondary"
-                      onClick={() =>
-                        // TODO: open a delete confirmation modal
-                        deleteColumn({ variables: { id: column.id } })
-                      }
+                <Flex alignItems="center">
+                  <strong>{name || 'Untitled Column'}</strong>
+                  <Spacer />
+                  {column.name && (
+                    <Dropdown
+                      toggleComponent={({ onClick }) => (
+                        <Button kind="icon" onClick={onClick}>
+                          <EllipsesIcon />
+                        </Button>
+                      )}
                     >
-                      Delete column
-                    </Button>
-                  </Fragment>
-                )}
+                      <MenuItem onClick={this.toggleEdit}>Edit column</MenuItem>
+                      <MenuItem
+                        onClick={() =>
+                          // TODO: open a delete confirmation modal
+                          deleteColumn({ variables: { id: column.id } })
+                        }
+                      >
+                        Delete column
+                      </MenuItem>
+                    </Dropdown>
+                  )}
+                </Flex>
                 {isEditing && (
                   <ColumnForm
                     formState={{ name, query }}

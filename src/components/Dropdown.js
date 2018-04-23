@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import glamorous, { Div } from 'glamorous'
+import { oneOf } from 'prop-types'
+import glamorous from 'glamorous'
 
 import {
   spacing,
@@ -15,16 +16,17 @@ const Relative = glamorous.div({
   position: 'relative',
 })
 
-const Menu = glamorous.div({
+const Menu = glamorous.div(props => ({
   position: 'absolute',
-  right: 0,
+  [props.align]: 0,
+  marginTop: spacing[0],
   display: 'flex',
   flexDirection: 'column',
   padding: joinSpacing(spacing[0], 0),
   backgroundColor: colors.gray[8],
   borderRadius: radii[1],
-  boxShadow: shadows[2],
-})
+  boxShadow: shadows[3],
+}))
 
 export const MenuItem = glamorous.button({
   padding: joinSpacing(spacing[1], spacing[3]),
@@ -45,6 +47,14 @@ export const MenuItem = glamorous.button({
 })
 
 class Dropdown extends Component {
+  static propTypes = {
+    align: oneOf(['right', 'left']),
+  }
+
+  static defaultProps = {
+    align: 'right',
+  }
+
   state = {
     isOpen: false,
   }
@@ -67,7 +77,7 @@ class Dropdown extends Component {
   }
 
   render() {
-    const { toggleComponent: Toggle, children } = this.props
+    const { toggleComponent: Toggle, align, children } = this.props
     const { isOpen } = this.state
     return (
       <Relative innerRef={node => (this.rootNode = node)}>
@@ -77,7 +87,7 @@ class Dropdown extends Component {
             this.toggleOpen()
           }}
         />
-        {isOpen && <Menu>{children}</Menu>}
+        {isOpen && <Menu align={align}>{children}</Menu>}
       </Relative>
     )
   }

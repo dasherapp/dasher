@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import { shape, string } from 'prop-types'
+import { shape, string, object, bool, func } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
 
 import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows } from '../theme'
-import { toAlpha } from '../utils/style'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
 
@@ -50,6 +49,9 @@ class Column extends Component {
       name: string.isRequired,
       query: string.isRequired,
     }).isRequired,
+    isDragging: bool.isRequired,
+    draggableStyle: object.isRequired,
+    innerRef: func.isRequired,
   }
 
   state = {

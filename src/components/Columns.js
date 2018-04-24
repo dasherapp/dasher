@@ -6,8 +6,7 @@ import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
 
 import { BOARD_QUERY } from './BoardPage'
-import { spacing, colors } from '../theme'
-import { toAlpha } from '../utils/style'
+import { spacing } from '../theme'
 import Column from './Column'
 import SkeletonButton from './SkeletonButton'
 

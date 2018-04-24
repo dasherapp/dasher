@@ -1,5 +1,6 @@
 import React from 'react'
 import { renderIntoDocument, render, fireEvent } from 'react-testing-library'
+
 import Button from '../Button'
 
 it('renders without crashing', () => {
@@ -44,6 +45,5 @@ it('calls onClick when button is clicked', () => {
       cancelable: true,
     }),
   )
-
   expect(handleClick).toHaveBeenCalledTimes(1)
 })

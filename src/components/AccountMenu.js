@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom'
 import { logOut } from '../utils/auth'
 import Button from './Button'
 import Avatar from './Avatar'
+import Dropdown, { MenuItem } from './Dropdown'
 
 const ME_QUERY = gql`
   query MeQuery {
@@ -26,27 +27,26 @@ function AccountMenu({ history }) {
         if (error) return <div>Error</div>
 
         return (
-          <details>
-            <summary>
+          <Dropdown
+            toggleComponent={props => (
               <Avatar
                 src={data.me.avatarUrl}
                 alt={data.me.login}
                 size={32}
                 shape="circle"
+                {...props}
               />
-            </summary>
-
-            <p>{data.me.name}</p>
-            <p>{data.me.login}</p>
-            <Button
+            )}
+          >
+            <MenuItem
               onClick={() => {
                 logOut()
                 history.push('/login')
               }}
             >
               Log out
-            </Button>
-          </details>
+            </MenuItem>
+          </Dropdown>
         )
       }}
     </Query>

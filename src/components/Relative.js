@@ -1,6 +1,6 @@
 import glamorous from 'glamorous'
 
-const Relative = glamorous.div({
+const Relative = glamorous('div', { propsAreCssOverrides: true })({
   position: 'relative',
 })
 

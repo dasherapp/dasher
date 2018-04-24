@@ -100,7 +100,10 @@ class Dropdown extends Component {
     const { isOpen } = this.state
 
     return (
-      <Relative innerRef={node => (this.rootNode = node)}>
+      <Relative
+        innerRef={node => (this.rootNode = node)}
+        display="inline-block"
+      >
         <Toggle
           onClick={event => {
             event.preventDefault()

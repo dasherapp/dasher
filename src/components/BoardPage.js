@@ -12,6 +12,8 @@ import NotFoundPage from './NotFoundPage'
 import AccountMenu from './AccountMenu'
 import Columns from './Columns'
 import Button from './Button'
+import Flex from './Flex'
+import Spacer from './Spacer'
 
 export const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {
@@ -40,8 +42,12 @@ function BoardPage({ match }) {
 
             return (
               <div>
-                <AccountMenu />
-                <Link to="/">Back</Link>
+                <Flex>
+                  <Link to="/">Back</Link>
+                  <Spacer />
+                  <AccountMenu />
+                </Flex>
+
                 <h1>{data.board.name}</h1>
                 <Button
                   onClick={() =>

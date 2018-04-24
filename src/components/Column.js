@@ -6,6 +6,7 @@ import glamorous from 'glamorous'
 
 import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows } from '../theme'
+import { toAlpha } from '../utils/style'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
 
@@ -28,7 +29,7 @@ const DELETE_COLUMN_MUTATION = gql`
   }
 `
 
-const ColumnContainer = glamorous.div({
+const ColumnContainer = glamorous.div(({ isDragging, draggableStyle }) => ({
   display: 'flex',
   flexDirection: 'column',
   width: 360,
@@ -36,8 +37,11 @@ const ColumnContainer = glamorous.div({
   padding: spacing[3],
   backgroundColor: colors.white,
   borderRadius: radii[1],
-  boxShadow: shadows[1],
-})
+  boxShadow: isDragging ? shadows[3] : shadows[1],
+
+  // styles we need to apply on draggables
+  ...draggableStyle,
+}))
 
 class Column extends Component {
   static propTypes = {
@@ -57,7 +61,7 @@ class Column extends Component {
   toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
 
   render() {
-    const { boardId, column } = this.props
+    const { boardId, column, ...props } = this.props
     const { isEditing, name, query } = this.state
     return (
       <Mutation mutation={UPDATE_COLUMN_MUTATION}>
@@ -84,7 +88,7 @@ class Column extends Component {
             }}
           >
             {deleteColumn => (
-              <ColumnContainer>
+              <ColumnContainer {...props}>
                 <strong>{name || 'Untitled Column'}</strong>
                 {column.name && (
                   <Fragment>

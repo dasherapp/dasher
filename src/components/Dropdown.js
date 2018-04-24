@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { oneOf } from 'prop-types'
+import { oneOf, oneOfType, element, func, node } from 'prop-types'
 import glamorous from 'glamorous'
 
 import {
@@ -11,10 +11,7 @@ import {
   shadows,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
-
-const Relative = glamorous.div({
-  position: 'relative',
-})
+import Relative from './Relative'
 
 const Menu = glamorous.div(props => ({
   position: 'absolute',
@@ -29,6 +26,7 @@ const Menu = glamorous.div(props => ({
 }))
 
 export const MenuItem = glamorous.button({
+  width: '100%',
   padding: joinSpacing(spacing[1], spacing[3]),
   fontFamily: 'inherit',
   fontSize: fontSizes[1],
@@ -42,35 +40,56 @@ export const MenuItem = glamorous.button({
   whiteSpace: 'nowrap',
 
   ':hover,:focus': {
-    backgroundColor: toAlpha(colors.gray[7], colors.gray[8]),
+    backgroundColor: toAlpha(colors.gray[8], colors.black),
   },
 })
 
 class Dropdown extends Component {
   static propTypes = {
+    toggleComponent: oneOfType([element, func]).isRequired,
     align: oneOf(['right', 'left']),
+    children: node,
   }
 
   static defaultProps = {
     align: 'right',
+    children: null,
   }
 
   state = {
     isOpen: false,
   }
 
-  handleOutsideClick = event => {
-    if (this.rootNode && this.rootNode.contains(event.target)) return
+  componentDidMount() {
+    this.rootNode.addEventListener('keydown', this.handleKeydown)
+  }
 
-    this.toggleOpen()
+  componentWillUnmount() {
+    this.rootNode.removeEventListener('keydown', this.handleKeydown)
+  }
+
+  handleKeydown = event => {
+    const escKeyCode = 27
+
+    if (event.which === escKeyCode && this.state.isOpen) {
+      this.toggleOpen()
+    }
+  }
+
+  handleFocus = event => {
+    if (!this.rootNode || !this.rootNode.contains(event.target)) {
+      this.toggleOpen()
+    }
   }
 
   toggleOpen = () => {
-    // Add or remove event listener
+    // Add or remove event listeners
     if (!this.state.isOpen) {
-      document.addEventListener('click', this.handleOutsideClick, false)
+      document.addEventListener('click', this.toggleOpen)
+      document.addEventListener('focus', this.handleFocus, true)
     } else {
-      document.removeEventListener('click', this.handleOutsideClick, false)
+      document.removeEventListener('click', this.toggleOpen)
+      document.removeEventListener('focus', this.handleFocus, true)
     }
 
     this.setState({ isOpen: !this.state.isOpen })
@@ -79,6 +98,7 @@ class Dropdown extends Component {
   render() {
     const { toggleComponent: Toggle, align, children } = this.props
     const { isOpen } = this.state
+
     return (
       <Relative innerRef={node => (this.rootNode = node)}>
         <Toggle

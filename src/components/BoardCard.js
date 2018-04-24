@@ -56,8 +56,8 @@ function BoardCard({ board }) {
             <span>{board.name}</span>
             <Spacer />
             <Dropdown
-              toggleComponent={({ onClick }) => (
-                <Button kind="icon" onClick={onClick}>
+              toggleComponent={props => (
+                <Button kind="icon" {...props}>
                   <EllipsesIcon />
                 </Button>
               )}

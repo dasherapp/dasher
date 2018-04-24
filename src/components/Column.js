@@ -94,8 +94,8 @@ class Column extends Component {
                   <Spacer />
                   {column.name && (
                     <Dropdown
-                      toggleComponent={({ onClick }) => (
-                        <Button kind="icon" onClick={onClick}>
+                      toggleComponent={props => (
+                        <Button kind="icon" {...props}>
                           <EllipsesIcon />
                         </Button>
                       )}

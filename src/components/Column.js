@@ -5,7 +5,7 @@ import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
 
 import { BOARD_QUERY } from './BoardPage'
-import { spacing, colors, radii, shadows } from '../theme'
+import { spacing, colors, radii, shadows, transition } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
 
@@ -37,6 +37,7 @@ const ColumnContainer = glamorous.div(({ isDragging, draggableStyle }) => ({
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: isDragging ? shadows[3] : shadows[1],
+  transition: `box-shadow ${transition.duration} ${transition.easing}`,
 
   // styles we need to apply on draggables
   ...draggableStyle,

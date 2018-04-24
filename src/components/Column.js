@@ -3,7 +3,10 @@ import { shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
+import { Subscribe } from 'unstated'
 
+import ModalContainer from '../containers/ModalContainer'
+import DeleteColumnModal from './DeleteColumnModal'
 import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows } from '../theme'
 import ColumnForm from './ColumnForm'
@@ -93,15 +96,21 @@ class Column extends Component {
                     <Button kind="secondary" onClick={this.toggleEdit}>
                       Edit column
                     </Button>
-                    <Button
-                      kind="secondary"
-                      onClick={() =>
-                        // TODO: open a delete confirmation modal
-                        deleteColumn({ variables: { id: column.id } })
-                      }
-                    >
-                      Delete column
-                    </Button>
+                    <Subscribe to={[ModalContainer]}>
+                      {modal => (
+                        <Button
+                          kind="danger"
+                          onClick={() =>
+                            modal.openModal(DeleteColumnModal, {
+                              boardId,
+                              column,
+                            })
+                          }
+                        >
+                          Delete column
+                        </Button>
+                      )}
+                    </Subscribe>
                   </Fragment>
                 )}
                 {isEditing && (

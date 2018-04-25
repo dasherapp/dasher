@@ -5,7 +5,7 @@ import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 
-import { fontSizes, colors, fontWeights, spacing, lineHeights } from '../theme'
+import { fontSizes, colors, spacing, lineHeights } from '../theme'
 import { toAlpha, joinSpacing } from '../utils/style'
 import { logOut } from '../utils/auth'
 import Button from './Button'

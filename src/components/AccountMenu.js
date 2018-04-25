@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom'
 import { fontSizes, colors, spacing, lineHeights } from '../theme'
 import { toAlpha, joinSpacing } from '../utils/style'
 import { logOut } from '../utils/auth'
-import Avatar from './Avatar'
+import AvatarButton from './AvatarButton'
 import Dropdown, { MenuItem, MenuDivider } from './Dropdown'
 import Flex from './Flex'
 
@@ -49,14 +49,13 @@ function AccountMenu({ history }) {
           <Dropdown
             minWidth={160}
             renderMenuButton={({ getMenuButtonProps }) => (
-              <button {...getMenuButtonProps()}>
-                <Avatar
-                  src={data.me.avatarUrl}
-                  alt={data.me.login}
-                  size={32}
-                  shape="circle"
-                />
-              </button>
+              <AvatarButton
+                {...getMenuButtonProps()}
+                src={data.me.avatarUrl}
+                alt={data.me.login}
+                size={32}
+                shape="circle"
+              />
             )}
           >
             <Flex

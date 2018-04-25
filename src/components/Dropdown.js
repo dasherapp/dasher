@@ -124,6 +124,8 @@ class Dropdown extends Component {
       'keydown',
       this.handlMenuButtonKeyDown,
     )
+
+    document.removeEventListener('click', this.close)
   }
 
   handleMenuButtonKeyDown = event => {

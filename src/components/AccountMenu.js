@@ -1,13 +1,17 @@
 import React from 'react'
 import { shape, func } from 'prop-types'
+import glamorous from 'glamorous'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 
+import { fontSizes, colors, fontWeights, spacing, lineHeights } from '../theme'
+import { toAlpha, joinSpacing } from '../utils/style'
 import { logOut } from '../utils/auth'
 import Button from './Button'
 import Avatar from './Avatar'
-import Dropdown, { MenuItem } from './Dropdown'
+import Dropdown, { MenuItem, MenuDivider } from './Dropdown'
+import Flex from './Flex'
 
 const ME_QUERY = gql`
   query MeQuery {
@@ -18,6 +22,20 @@ const ME_QUERY = gql`
     }
   }
 `
+
+const Name = glamorous.span({
+  fontSize: fontSizes[2],
+  lineHeight: lineHeights.normal,
+  whiteSpace: 'nowrap',
+  color: colors.white,
+})
+
+const Login = glamorous.span({
+  fontSize: fontSizes[1],
+  lineHeight: lineHeights.normal,
+  whiteSpace: 'nowrap',
+  color: toAlpha(colors.gray[6], colors.black),
+})
 
 function AccountMenu({ history }) {
   return (
@@ -38,6 +56,14 @@ function AccountMenu({ history }) {
               />
             )}
           >
+            <Flex
+              flexDirection="column"
+              padding={joinSpacing(spacing[1], spacing[3])}
+            >
+              <Name>{data.me.name}</Name>
+              <Login>{data.me.login}</Login>
+            </Flex>
+            <MenuDivider />
             <MenuItem
               onClick={() => {
                 logOut()

@@ -14,6 +14,7 @@ import Columns from './Columns'
 import Button from './Button'
 import Flex from './Flex'
 import Spacer from './Spacer'
+import { spacing } from '../theme'
 
 export const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {
@@ -42,7 +43,7 @@ function BoardPage({ match }) {
 
             return (
               <div>
-                <Flex>
+                <Flex padding={spacing[3]}>
                   <Link to="/">Back</Link>
                   <Spacer />
                   <AccountMenu />

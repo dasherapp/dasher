@@ -9,6 +9,7 @@ import {
   fontSizes,
   lineHeights,
   shadows,
+  transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
 import Relative from './Relative'
@@ -38,10 +39,19 @@ export const MenuItem = glamorous.button({
   cursor: 'pointer',
   outline: 0,
   whiteSpace: 'nowrap',
+  transition: `background-color ${transition.duration} ${transition.easing}`,
 
   ':hover,:focus': {
     backgroundColor: toAlpha(colors.gray[8], colors.black),
   },
+})
+
+export const MenuDivider = glamorous.div({
+  display: 'block',
+  width: '100%',
+  height: 0,
+  borderTop: `1px solid ${toAlpha(colors.gray[9], colors.black)}`,
+  margin: joinSpacing(spacing[0], 0),
 })
 
 class Dropdown extends Component {

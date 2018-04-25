@@ -5,6 +5,7 @@ import { Query } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
 
+import { spacing } from '../theme'
 import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
 import DeleteBoardModal from './DeleteBoardModal'
@@ -14,7 +15,8 @@ import Columns from './Columns'
 import Button from './Button'
 import Flex from './Flex'
 import Spacer from './Spacer'
-import { spacing } from '../theme'
+import Dropdown, { MenuItem } from './Dropdown'
+import { EllipsesIcon } from './Icon'
 
 export const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {
@@ -50,25 +52,36 @@ function BoardPage({ match }) {
                 </Flex>
 
                 <h1>{data.board.name}</h1>
-                <Button
-                  onClick={() =>
-                    modal.openModal(UpdateBoardModal, {
-                      board: data.board,
-                    })
-                  }
+                <Dropdown
+                  align="left"
+                  renderMenuButton={({ getMenuButtonProps }) => (
+                    <Button
+                      kind="icon"
+                      {...getMenuButtonProps({ refKey: 'innerRef' })}
+                    >
+                      <EllipsesIcon />
+                    </Button>
+                  )}
                 >
-                  Edit
-                </Button>
-                <Button
-                  kind="danger"
-                  onClick={() =>
-                    modal.openModal(DeleteBoardModal, {
-                      board: data.board,
-                    })
-                  }
-                >
-                  Delete board
-                </Button>
+                  <MenuItem
+                    onClick={() =>
+                      modal.openModal(UpdateBoardModal, {
+                        board: data.board,
+                      })
+                    }
+                  >
+                    Edit board
+                  </MenuItem>
+                  <MenuItem
+                    onClick={() =>
+                      modal.openModal(DeleteBoardModal, {
+                        board: data.board,
+                      })
+                    }
+                  >
+                    Delete board
+                  </MenuItem>
+                </Dropdown>
                 <Columns boardId={data.board.id} columns={data.board.columns} />
               </div>
             )

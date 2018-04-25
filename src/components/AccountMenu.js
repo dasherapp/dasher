@@ -45,6 +45,7 @@ function AccountMenu({ history }) {
 
         return (
           <Dropdown
+            minWidth={160}
             renderMenuButton={({ getMenuButtonProps }) => (
               <button {...getMenuButtonProps()}>
                 <Avatar

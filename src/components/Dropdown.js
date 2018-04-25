@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { oneOf, func } from 'prop-types'
+import { oneOf, oneOfType, func, string, number } from 'prop-types'
 import glamorous from 'glamorous'
 
 import {
@@ -23,7 +23,7 @@ const Menu = glamorous('div', { withProps: { role: 'menu' } })(props => ({
   [props.align]: 0,
   display: props.hidden ? 'none' : 'flex',
   flexDirection: 'column',
-  minWidth: 160,
+  minWidth: props.minWidth,
   marginTop: spacing[0],
   padding: joinSpacing(spacing[0], 0),
   backgroundColor: colors.gray[8],
@@ -67,10 +67,12 @@ class Dropdown extends Component {
   static propTypes = {
     renderMenuButton: func.isRequired,
     align: oneOf(['right', 'left']),
+    minWidth: oneOfType([number, string]),
   }
 
   static defaultProps = {
     align: 'right',
+    minWidth: 'auto',
   }
 
   constructor(props) {
@@ -221,7 +223,7 @@ class Dropdown extends Component {
   })
 
   render() {
-    const { renderMenuButton, align, children } = this.props
+    const { renderMenuButton, align, minWidth, children } = this.props
     const { isOpen } = this.state
 
     return (
@@ -232,6 +234,7 @@ class Dropdown extends Component {
           role="menu"
           hidden={!isOpen}
           align={align}
+          minWidth={minWidth}
         >
           {children}
         </Menu>

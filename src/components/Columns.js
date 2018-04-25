@@ -71,6 +71,30 @@ class Columns extends Component {
 
   state = { columns: this.props.columns }
 
+  componentDidUpdate(prevProps) {
+    const prevColumns = prevProps.columns
+    const currColumns = this.props.columns
+    let lengthChange = false
+    let nameChange = false
+
+    if (prevColumns.length !== currColumns.length) {
+      lengthChange = true
+    } else if (prevColumns !== currColumns) {
+      let i
+      for (i = 0; i < currColumns.length; i++) {
+        if (prevColumns[i].name !== currColumns[i].name) {
+          nameChange = true
+        }
+      }
+    }
+
+    if (nameChange || lengthChange) {
+      this.setState({
+        columns: currColumns,
+      })
+    }
+  }
+
   onDragEnd = (result, updateColumn) => {
     if (!result.destination) {
       return
@@ -113,25 +137,7 @@ class Columns extends Component {
         }}
       >
         {createColumn => (
-          <Mutation
-            mutation={UPDATE_COLUMN_MUTATION}
-            update={(cache, { data }) => {
-              const { board } = cache.readQuery({
-                query: BOARD_QUERY,
-                variables: { id: boardId },
-              })
-              cache.writeQuery({
-                query: BOARD_QUERY,
-                variables: { id: boardId },
-                data: {
-                  board: {
-                    ...board,
-                    columns: [...board.columns, data.updateColumn],
-                  },
-                },
-              })
-            }}
-          >
+          <Mutation mutation={UPDATE_COLUMN_MUTATION}>
             {updateColumn => (
               <DragDropContext
                 onDragEnd={result => this.onDragEnd(result, updateColumn)}

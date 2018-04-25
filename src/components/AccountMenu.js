@@ -22,17 +22,19 @@ const ME_QUERY = gql`
   }
 `
 
-const Name = glamorous.span({
-  fontSize: fontSizes[2],
+const textStyle = {
+  textAlign: 'left',
   lineHeight: lineHeights.normal,
   whiteSpace: 'nowrap',
+}
+
+const Name = glamorous.span(textStyle, {
+  fontSize: fontSizes[2],
   color: colors.white,
 })
 
-const Login = glamorous.span({
+const Login = glamorous.span(textStyle, {
   fontSize: fontSizes[1],
-  lineHeight: lineHeights.normal,
-  whiteSpace: 'nowrap',
   color: toAlpha(colors.gray[6], colors.black),
 })
 

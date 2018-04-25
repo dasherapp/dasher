@@ -46,14 +46,15 @@ function AccountMenu({ history }) {
 
         return (
           <Dropdown
-            toggleComponent={props => (
-              <Avatar
-                src={data.me.avatarUrl}
-                alt={data.me.login}
-                size={32}
-                shape="circle"
-                {...props}
-              />
+            renderMenuButton={({ getMenuButtonProps }) => (
+              <button {...getMenuButtonProps()}>
+                <Avatar
+                  src={data.me.avatarUrl}
+                  alt={data.me.login}
+                  size={32}
+                  shape="circle"
+                />
+              </button>
             )}
           >
             <Flex

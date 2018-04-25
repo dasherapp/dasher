@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { oneOf, oneOfType, element, func, node } from 'prop-types'
+import { oneOf, func } from 'prop-types'
 import glamorous from 'glamorous'
 
 import {
@@ -12,21 +12,30 @@ import {
   transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
-import Relative from './Relative'
 
-const Menu = glamorous.div(props => ({
+const MenuContainer = glamorous.div({
+  position: 'relative',
+  display: 'inline-block',
+})
+
+const Menu = glamorous('div', { withProps: { role: 'menu' } })(props => ({
   position: 'absolute',
   [props.align]: 0,
-  marginTop: spacing[0],
-  display: 'flex',
+  display: props.hidden ? 'none' : 'flex',
   flexDirection: 'column',
+  minWidth: 160,
+  marginTop: spacing[0],
   padding: joinSpacing(spacing[0], 0),
   backgroundColor: colors.gray[8],
   borderRadius: radii[1],
   boxShadow: shadows[3],
+  overflow: 'hidden',
 }))
 
-export const MenuItem = glamorous.button({
+export const MenuItem = glamorous('button', {
+  withProps: { role: 'menuitem', tabIndex: -1 },
+})({
+  display: 'block',
   width: '100%',
   padding: joinSpacing(spacing[1], spacing[3]),
   fontFamily: 'inherit',
@@ -35,9 +44,9 @@ export const MenuItem = glamorous.button({
   textAlign: 'left',
   color: colors.white,
   backgroundColor: 'transparent',
-  border: 'none',
-  cursor: 'pointer',
+  border: 0,
   outline: 0,
+  cursor: 'pointer',
   whiteSpace: 'nowrap',
   transition: `background-color ${transition.duration} ${transition.easing}`,
 
@@ -56,72 +65,175 @@ export const MenuDivider = glamorous.div({
 
 class Dropdown extends Component {
   static propTypes = {
-    toggleComponent: oneOfType([element, func]).isRequired,
+    renderMenuButton: func.isRequired,
     align: oneOf(['right', 'left']),
-    children: node,
   }
 
   static defaultProps = {
     align: 'right',
-    children: null,
   }
 
-  state = {
-    isOpen: false,
+  constructor(props) {
+    super(props)
+
+    this.menuButtonRef = React.createRef()
+    this.menuRef = React.createRef()
+
+    this.state = {
+      isOpen: false,
+    }
   }
 
   componentDidMount() {
-    this.rootNode.addEventListener('keydown', this.handleKeydown)
+    this.menuItems = this.menuRef.current.querySelectorAll('[role^="menuitem"]')
+
+    if (this.menuItems.length < 1) {
+      throw new Error('No menu items')
+    }
+
+    const activeMenuItems = Array.prototype.filter.call(
+      this.menuItems,
+      item => !item.disabled,
+    )
+
+    // Disable menu button if all menu items are disabled
+    if (activeMenuItems.length < 1) {
+      this.menuButtonRef.current.disabled = true
+      return
+    }
+
+    this.firstItem = this.menuItems[0]
+    this.lastItem = this.menuItems[this.menuItems.length - 1]
+
+    Array.prototype.forEach.call(this.menuItems, menuItem => {
+      menuItem.addEventListener('keydown', this.handleMenuItemKeyDown)
+    })
+
+    this.menuButtonRef.current.addEventListener(
+      'keydown',
+      this.handleMenuButtonKeyDown,
+    )
   }
 
   componentWillUnmount() {
-    this.rootNode.removeEventListener('keydown', this.handleKeydown)
+    Array.prototype.forEach.call(this.menuItems, menuItem => {
+      menuItem.removeEventListener('keydown', this.handleMenuItemKeyDown)
+    })
+
+    this.menuButtonRef.current.removeEventListener(
+      'keydown',
+      this.handlMenuButtonKeyDown,
+    )
   }
 
-  handleKeydown = event => {
-    const escKeyCode = 27
+  handleMenuButtonKeyDown = event => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      if (this.state.isOpen) {
+        this.menuRef.current
+          .querySelector('[role^="menuitem"]:not([disabled])')
+          .focus()
+      } else {
+        this.open()
+      }
+    }
 
-    if (event.which === escKeyCode && this.state.isOpen) {
-      this.toggleOpen()
+    if (event.key === 'Escape' || event.key === 'Tab') {
+      this.close()
+    }
+
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      this.menuButtonRef.current.focus()
     }
   }
 
-  handleFocus = event => {
-    if (!this.rootNode || !this.rootNode.contains(event.target)) {
-      this.toggleOpen()
+  handleMenuItemKeyDown = event => {
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      this.focusNext(event.target, this.firstItem)
+    }
+
+    if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      this.focusNext(event.target, this.lastItem)
+    }
+
+    if (event.key === 'Escape' || event.key === 'Tab') {
+      this.close()
+    }
+
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      this.menuButtonRef.current.focus()
     }
   }
 
-  toggleOpen = () => {
-    // Add or remove event listeners
-    if (!this.state.isOpen) {
-      document.addEventListener('click', this.toggleOpen)
-      document.addEventListener('focus', this.handleFocus, true)
-    } else {
-      document.removeEventListener('click', this.toggleOpen)
-      document.removeEventListener('focus', this.handleFocus, true)
+  focusNext = (currentItem, startItem) => {
+    // Determine which item is the startItem (first or last)
+    const goingDown = startItem === this.firstItem
+
+    function getNextItem(element) {
+      return (
+        (goingDown
+          ? element.nextElementSibling
+          : element.previousElementSibling) || startItem
+      )
     }
 
-    this.setState({ isOpen: !this.state.isOpen })
+    let nextItem = getNextItem(currentItem)
+
+    while (nextItem.disabled) {
+      nextItem = getNextItem(nextItem)
+    }
+
+    // Focus the next menu item that's not disabled
+    nextItem.focus()
   }
+
+  open = () => {
+    this.setState({ isOpen: true }, () => {
+      document.addEventListener('click', this.close)
+    })
+  }
+
+  close = () => {
+    this.setState({ isOpen: false }, () => {
+      document.removeEventListener('click', this.close)
+    })
+  }
+
+  toggle = () => {
+    this.state.isOpen ? this.close() : this.open()
+  }
+
+  getMenuButtonProps = ({ refKey = 'ref', ...props } = {}) => ({
+    [refKey]: this.menuButtonRef,
+    'aria-haspopup': true,
+    'aria-expanded': this.state.isOpen,
+    onClick: event => {
+      event.preventDefault()
+      this.toggle()
+    },
+    ...props,
+  })
 
   render() {
-    const { toggleComponent: Toggle, align, children } = this.props
+    const { renderMenuButton, align, children } = this.props
     const { isOpen } = this.state
 
     return (
-      <Relative
-        innerRef={node => (this.rootNode = node)}
-        display="inline-block"
-      >
-        <Toggle
-          onClick={event => {
-            event.preventDefault()
-            this.toggleOpen()
-          }}
-        />
-        {isOpen && <Menu align={align}>{children}</Menu>}
-      </Relative>
+      <MenuContainer>
+        {renderMenuButton({ getMenuButtonProps: this.getMenuButtonProps })}
+        <Menu
+          innerRef={this.menuRef}
+          role="menu"
+          hidden={!isOpen}
+          align={align}
+        >
+          {children}
+        </Menu>
+      </MenuContainer>
     )
   }
 }

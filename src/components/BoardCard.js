@@ -56,8 +56,11 @@ function BoardCard({ board }) {
             <span>{board.name}</span>
             <Spacer />
             <Dropdown
-              toggleComponent={props => (
-                <Button kind="icon" {...props}>
+              renderMenuButton={({ getMenuButtonProps }) => (
+                <Button
+                  kind="icon"
+                  {...getMenuButtonProps({ refKey: 'innerRef' })}
+                >
                   <EllipsesIcon />
                 </Button>
               )}

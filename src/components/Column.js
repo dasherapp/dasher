@@ -94,8 +94,11 @@ class Column extends Component {
                   <Spacer />
                   {column.name && (
                     <Dropdown
-                      toggleComponent={props => (
-                        <Button kind="icon" {...props}>
+                      renderMenuButton={({ getMenuButtonProps }) => (
+                        <Button
+                          kind="icon"
+                          {...getMenuButtonProps({ refKey: 'innerRef' })}
+                        >
                           <EllipsesIcon />
                         </Button>
                       )}

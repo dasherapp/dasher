@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { oneOf, oneOfType, func, string, number } from 'prop-types'
 import glamorous from 'glamorous'
+import posed from 'react-pose'
 
 import {
   spacing,
@@ -18,10 +19,25 @@ const MenuContainer = glamorous.div({
   display: 'inline-block',
 })
 
+const MenuTransition = glamorous(
+  posed.div({
+    open: {
+      scale: 1,
+      display: 'block',
+    },
+    closed: {
+      scale: 0,
+      display: 'none',
+    },
+  }),
+)(props => ({
+  transformOrigin: `top ${props.align}`,
+}))
+
 const Menu = glamorous('div', { withProps: { role: 'menu' } })(props => ({
   position: 'absolute',
   [props.align]: 0,
-  display: props.hidden ? 'none' : 'flex',
+  display: 'flex',
   flexDirection: 'column',
   minWidth: props.minWidth,
   marginTop: spacing[0],
@@ -229,15 +245,16 @@ class Dropdown extends Component {
     return (
       <MenuContainer>
         {renderMenuButton({ getMenuButtonProps: this.getMenuButtonProps })}
-        <Menu
-          innerRef={this.menuRef}
-          role="menu"
-          hidden={!isOpen}
-          align={align}
-          minWidth={minWidth}
-        >
-          {children}
-        </Menu>
+        <MenuTransition pose={isOpen ? 'open' : 'closed'} align={align}>
+          <Menu
+            innerRef={this.menuRef}
+            role="menu"
+            align={align}
+            minWidth={minWidth}
+          >
+            {children}
+          </Menu>
+        </MenuTransition>
       </MenuContainer>
     )
   }

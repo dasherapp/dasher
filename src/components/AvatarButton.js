@@ -11,7 +11,6 @@ const UnstyledButton = glamorous.button({
   lineHeight: 0,
   background: 'transparent',
   border: 0,
-  outline: 0,
   cursor: 'pointer',
 })
 

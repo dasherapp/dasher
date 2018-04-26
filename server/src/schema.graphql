@@ -8,12 +8,7 @@ type Query {
 
 type Mutation {
   createBoard(name: String!): Board
-  createColumn(
-    boardId: ID!
-    index: Int!
-    name: String!
-    query: String!
-  ): Column
+  createColumn(boardId: ID!, index: Int!, name: String!, query: String!): Column
   updateBoard(id: ID!, name: String): Board
   updateColumn(id: ID!, index: Int, name: String, query: String): Column
   deleteBoard(id: ID!): Board
@@ -24,4 +19,5 @@ type Mutation {
 type AuthenticateUserPayload {
   user: User!
   token: String!
+  githubToken: String!
 }

@@ -40,7 +40,6 @@ const ColumnContainer = glamorous.div({
   flexDirection: 'column',
   width: COLUMN_WIDTH,
   marginRight: spacing[3],
-  padding: spacing[3],
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: shadows[1],

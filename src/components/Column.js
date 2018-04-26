@@ -100,16 +100,14 @@ class Column extends Component {
     })
   }
 
-  handleSearchQueryChange = value => {
-    const delay = 700
+  handleQueryChange = query => {
+    const delay = 500
 
     clearTimeout(this.setTimeoutId)
 
     this.setTimeoutId = setTimeout(() => {
-      this.applySearch(this.state.query)
+      this.applySearch(query)
     }, delay)
-
-    this.setState({ query: value })
   }
 
   toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
@@ -177,7 +175,13 @@ class Column extends Component {
                 {isEditing && (
                   <ColumnForm
                     formState={{ name, query }}
-                    onChange={change => this.setState(change)}
+                    onChange={change => {
+                      this.setState(change, () => {
+                        if ('query' in change) {
+                          this.handleQueryChange(change.query)
+                        }
+                      })
+                    }}
                     onSubmit={event => {
                       event.preventDefault()
                       updateColumn({

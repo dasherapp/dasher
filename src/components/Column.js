@@ -203,9 +203,9 @@ class Column extends Component {
                     issues.map(issue => <Issue key={issue.id} issue={issue} />)}
                 </div>
                 {hasNextPage && (
-                  <button onClick={() => this.loadMore(query, endCursor)}>
+                  <Button onClick={() => this.loadMore(query, endCursor)}>
                     Load more
-                  </button>
+                  </Button>
                 )}
               </ColumnContainer>
             )}

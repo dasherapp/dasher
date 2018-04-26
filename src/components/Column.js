@@ -71,11 +71,10 @@ class Column extends Component {
         return
       }
 
-      const { issues, issueCount, pageInfo } = data.data.search
+      const { issues, pageInfo } = data.data.search
 
       this.setState({
         issues,
-        issueCount,
         hasNextPage: pageInfo.hasNextPage,
         endCursor: pageInfo.endCursor,
       })
@@ -89,11 +88,10 @@ class Column extends Component {
         return
       }
 
-      const { issues, issueCount, pageInfo } = data.data.search
+      const { issues, pageInfo } = data.data.search
 
       this.setState({
         issues: [...this.state.issues, ...issues],
-        issueCount,
         hasNextPage: pageInfo.hasNextPage,
         endCursor: pageInfo.endCursor,
       })
@@ -119,7 +117,6 @@ class Column extends Component {
       name,
       query,
       issues,
-      issueCount,
       hasNextPage,
       endCursor,
     } = this.state

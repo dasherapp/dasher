@@ -11,6 +11,8 @@ import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
+import { searchIssues } from '../utils/github'
+import Issue from './Issue'
 
 const UPDATE_COLUMN_MUTATION = gql`
   mutation UpdateColumnMutation($id: ID!, $name: String, $query: String) {
@@ -59,11 +61,71 @@ class Column extends Component {
     isEditing: this.props.column.name ? false : true,
   }
 
+  componentDidMount() {
+    this.applySearch(this.state.query)
+  }
+
+  applySearch = query => {
+    searchIssues({ query }).then(data => {
+      if (data.errors) {
+        data.errors.forEach(error => console.error(error.message))
+        return
+      }
+
+      const { issues, issueCount, pageInfo } = data.data.search
+
+      this.setState({
+        issues,
+        issueCount,
+        hasNextPage: pageInfo.hasNextPage,
+        endCursor: pageInfo.endCursor,
+      })
+    })
+  }
+
+  loadMore = (query, endCursor) => {
+    searchIssues({ query, endCursor }).then(data => {
+      if (data.errors) {
+        data.errors.forEach(error => console.error(error.message))
+        return
+      }
+
+      const { issues, issueCount, pageInfo } = data.data.search
+
+      this.setState({
+        issues: [...this.state.issues, ...issues],
+        issueCount,
+        hasNextPage: pageInfo.hasNextPage,
+        endCursor: pageInfo.endCursor,
+      })
+    })
+  }
+
+  handleSearchQueryChange = value => {
+    const delay = 700
+
+    clearTimeout(this.setTimeoutId)
+
+    this.setTimeoutId = setTimeout(() => {
+      this.applySearch(this.state.query)
+    }, delay)
+
+    this.setState({ query: value })
+  }
+
   toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
 
   render() {
     const { boardId, column } = this.props
-    const { isEditing, name, query } = this.state
+    const {
+      isEditing,
+      name,
+      query,
+      issues,
+      issueCount,
+      hasNextPage,
+      endCursor,
+    } = this.state
     return (
       <Mutation mutation={UPDATE_COLUMN_MUTATION}>
         {updateColumn => (
@@ -136,6 +198,15 @@ class Column extends Component {
                       }
                     }}
                   />
+                )}
+                <div>
+                  {issues &&
+                    issues.map(issue => <Issue key={issue.id} issue={issue} />)}
+                </div>
+                {hasNextPage && (
+                  <button onClick={() => this.loadMore(query, endCursor)}>
+                    Load more
+                  </button>
                 )}
               </ColumnContainer>
             )}

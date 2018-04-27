@@ -33,13 +33,12 @@ const CardLink = glamorous(Link)({
   borderRadius: radii[1],
   boxShadow: shadows[1],
   outline: 0,
-  transitionProperty: 'box-shadow, transform',
+  transitionProperty: 'box-shadow',
   transitionDuration: transition.duration,
   transitionTimingFunction: transition.easing,
 
   ':hover,:focus': {
     boxShadow: shadows[2],
-    transform: 'translateY(-2px)',
   },
 
   [breakpoints.sm]: {

@@ -19,34 +19,32 @@ const MenuContainer = glamorous.div({
   display: 'inline-block',
 })
 
-const MenuTransition = glamorous(
-  posed.div({
-    open: {
-      scale: 1,
-      display: 'block',
-    },
-    closed: {
-      scale: 0,
-      display: 'none',
-    },
-  }),
-)(props => ({
-  transformOrigin: `top ${props.align}`,
-}))
+const PosedMenu = posed.div({
+  open: {
+    scale: 1,
+  },
+  closed: {
+    scale: 0,
+    display: 'none',
+  },
+})
 
-const Menu = glamorous('div', { withProps: { role: 'menu' } })(props => ({
-  position: 'absolute',
-  [props.align]: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  minWidth: props.minWidth,
-  marginTop: spacing[0],
-  padding: joinSpacing(spacing[0], 0),
-  backgroundColor: colors.gray[8],
-  borderRadius: radii[1],
-  boxShadow: shadows[3],
-  overflow: 'hidden',
-}))
+const Menu = glamorous(PosedMenu, { filterProps: ['minWidth', 'align'] })(
+  props => ({
+    position: 'absolute',
+    [props.align]: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: props.minWidth,
+    marginTop: spacing[0],
+    padding: joinSpacing(spacing[0], 0),
+    backgroundColor: colors.gray[8],
+    borderRadius: radii[1],
+    boxShadow: shadows[3],
+    overflow: 'hidden',
+    transformOrigin: `top ${props.align}`,
+  }),
+)
 
 export const MenuItem = glamorous('button', {
   withProps: { role: 'menuitem', tabIndex: -1 },
@@ -245,16 +243,15 @@ class Dropdown extends Component {
     return (
       <MenuContainer>
         {renderMenuButton({ getMenuButtonProps: this.getMenuButtonProps })}
-        <MenuTransition pose={isOpen ? 'open' : 'closed'} align={align}>
-          <Menu
-            innerRef={this.menuRef}
-            role="menu"
-            align={align}
-            minWidth={minWidth}
-          >
+        <Menu
+          pose={isOpen ? 'open' : 'closed'}
+          align={align}
+          minWidth={minWidth}
+        >
+          <div role="menu" ref={this.menuRef}>
             {children}
-          </Menu>
-        </MenuTransition>
+          </div>
+        </Menu>
       </MenuContainer>
     )
   }

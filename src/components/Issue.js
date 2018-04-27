@@ -83,7 +83,10 @@ function Issue({ issue }) {
           lineHeight={lineHeights.tight}
           color={colors.gray[7]}
         >
-          #{issue.number} {issue.closed ? '' : 'opened'} by {issue.author.login}
+          #{issue.number} {issue.closed ? '' : 'opened'}
+          {issue.author &&
+            `by
+          ${issue.author.login}`}
         </Small>
       </Div>
     </Div>

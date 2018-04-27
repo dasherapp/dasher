@@ -3,39 +3,46 @@ import { func, shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
-import { withRouter } from 'react-router-dom'
 
 import Button from './Button'
-import { BOARDS_QUERY } from './Boards'
+import { BOARD_QUERY } from './BoardPage'
 
-const DELETE_BOARD_MUTATION = gql`
-  mutation DeleteBoardMutation($id: ID!) {
-    deleteBoard(id: $id) {
+const DELETE_COLUMN_MUTATION = gql`
+  mutation DeleteColumnMutation($id: ID!) {
+    deleteColumn(id: $id) {
       id
     }
   }
 `
 
-function DeleteBoardModal({ closeModal, board, history }) {
+function DeleteColumnModal({ boardId, column, closeModal }) {
   return (
     <Mutation
-      mutation={DELETE_BOARD_MUTATION}
+      mutation={DELETE_COLUMN_MUTATION}
       update={(cache, { data }) => {
-        const { boards } = cache.readQuery({ query: BOARDS_QUERY })
+        const { board } = cache.readQuery({
+          query: BOARD_QUERY,
+          variables: { id: boardId },
+        })
         cache.writeQuery({
-          query: BOARDS_QUERY,
+          query: BOARD_QUERY,
           data: {
-            boards: boards.filter(board => board.id !== data.deleteBoard.id),
+            board: {
+              ...board,
+              columns: board.columns.filter(
+                column => column.id !== data.deleteColumn.id,
+              ),
+            },
           },
         })
       }}
     >
-      {deleteBoard => (
+      {deleteColumn => (
         <Modal isOpen onRequestClose={closeModal}>
           <Fragment>
-            <h1>Delete board</h1>
+            <h1>Delete column</h1>
             <p>
-              Are you sure you want to delete <strong>{board.name}</strong>?
+              Are you sure you want to delete <strong>{column.name}</strong>?
               This action cannot be undone.
             </p>
             <Button kind="secondary" onClick={closeModal}>
@@ -44,9 +51,8 @@ function DeleteBoardModal({ closeModal, board, history }) {
             <Button
               kind="danger"
               onClick={() => {
-                deleteBoard({ variables: { id: board.id } })
+                deleteColumn({ variables: { id: column.id } })
                 closeModal()
-                history.push('/')
               }}
             >
               Delete
@@ -58,12 +64,13 @@ function DeleteBoardModal({ closeModal, board, history }) {
   )
 }
 
-DeleteBoardModal.propTypes = {
-  board: shape({
+DeleteColumnModal.propTypes = {
+  boardId: string.isRequired,
+  column: shape({
+    name: string.isRequired,
     id: string.isRequired,
   }).isRequired,
   closeModal: func.isRequired,
-  history: shape({ push: func.isRequired }).isRequired,
 }
 
-export default withRouter(DeleteBoardModal)
+export default DeleteColumnModal

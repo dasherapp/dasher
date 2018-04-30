@@ -177,12 +177,13 @@ class Dropdown extends Component {
       this.focusNext(event.target, this.lastItem)
     }
 
-    if (event.key === 'Escape' || event.key === 'Tab') {
+    if (event.key === 'Tab') {
       this.close()
     }
 
     if (event.key === 'Escape') {
       event.preventDefault()
+      this.close()
       this.menuButtonRef.current.focus()
     }
   }

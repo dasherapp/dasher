@@ -19,7 +19,7 @@ const MenuContainer = glamorous.div({
   display: 'inline-block',
 })
 
-const PosedMenu = posed.div({
+const MenuTransition = posed.div({
   open: {
     scale: 1,
   },
@@ -29,7 +29,7 @@ const PosedMenu = posed.div({
   },
 })
 
-const Menu = glamorous(PosedMenu, { filterProps: ['minWidth', 'align'] })(
+const Menu = glamorous(MenuTransition, { filterProps: ['minWidth', 'align'] })(
   props => ({
     position: 'absolute',
     [props.align]: 0,

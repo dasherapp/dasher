@@ -53,8 +53,6 @@ function AccountMenu({ history }) {
                 {...getMenuButtonProps({
                   src: data.me.avatarUrl,
                   alt: data.me.login,
-                  size: 24,
-                  shap: 'square',
                 })}
               />
             )}

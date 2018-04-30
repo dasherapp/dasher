@@ -56,8 +56,10 @@ function BoardPage({ match }) {
                   align="left"
                   renderMenuButton={({ getMenuButtonProps }) => (
                     <Button
-                      kind="icon"
-                      {...getMenuButtonProps({ refKey: 'innerRef' })}
+                      {...getMenuButtonProps({
+                        refKey: 'innerRef',
+                        kind: 'icon',
+                      })}
                     >
                       <EllipsesIcon />
                     </Button>

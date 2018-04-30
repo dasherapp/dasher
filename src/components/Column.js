@@ -103,8 +103,10 @@ class Column extends Component {
                         <Dropdown
                           renderMenuButton={({ getMenuButtonProps }) => (
                             <Button
-                              kind="icon"
-                              {...getMenuButtonProps({ refKey: 'innerRef' })}
+                              {...getMenuButtonProps({
+                                refKey: 'innerRef',
+                                kind: 'icon',
+                              })}
                             >
                               <EllipsesIcon />
                             </Button>

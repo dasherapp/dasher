@@ -50,11 +50,12 @@ function AccountMenu({ history }) {
             minWidth={160}
             renderMenuButton={({ getMenuButtonProps }) => (
               <AvatarButton
-                {...getMenuButtonProps()}
-                src={data.me.avatarUrl}
-                alt={data.me.login}
-                size={32}
-                shape="circle"
+                {...getMenuButtonProps({
+                  src: data.me.avatarUrl,
+                  alt: data.me.login,
+                  size: 24,
+                  shap: 'square',
+                })}
               />
             )}
           >

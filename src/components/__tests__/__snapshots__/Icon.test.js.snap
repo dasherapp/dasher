@@ -1,6 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders custom icons 1`] = `
+.css-0,
+[data-css-0] {
+  vertical-align: middle;
+}
+
 <div>
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -12,6 +17,7 @@ exports[`renders custom icons 1`] = `
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="css-0"
   >
     <circle
       cx="12"
@@ -41,6 +47,7 @@ exports[`renders custom icons 1`] = `
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="css-0"
   >
     <circle
       cx="18"
@@ -72,6 +79,7 @@ exports[`renders custom icons 1`] = `
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="css-0"
   >
     <circle
       cx="18"
@@ -97,6 +105,7 @@ exports[`renders custom icons 1`] = `
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="css-0"
   >
     <polyline
       points="20 6 9 17 4 12"
@@ -112,6 +121,7 @@ exports[`renders custom icons 1`] = `
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="css-0"
   >
     <line
       x1="18"
@@ -136,6 +146,7 @@ exports[`renders custom icons 1`] = `
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="css-0"
   >
     <circle
       cx="12"
@@ -153,6 +164,7 @@ exports[`renders custom icons 1`] = `
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    class="css-0"
   >
     <circle
       cx="12"
@@ -174,17 +186,23 @@ exports[`renders custom icons 1`] = `
 `;
 
 exports[`renders with custom color and size 1`] = `
+.css-0,
+[data-css-0] {
+  vertical-align: middle;
+}
+
 <svg
+  stroke="currentColor"
   xmlns="http://www.w3.org/2000/svg"
-  width="16"
   height="16"
   viewBox="0 0 24 24"
   fill="none"
-  stroke="currentColor"
+  width="16"
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
   color="#c27e00"
+  class="css-0"
 >
   <circle
     cx="12"
@@ -195,6 +213,11 @@ exports[`renders with custom color and size 1`] = `
 `;
 
 exports[`renders without crashing 1`] = `
+.css-0,
+[data-css-0] {
+  vertical-align: middle;
+}
+
 <svg
   xmlns="http://www.w3.org/2000/svg"
   width="24"
@@ -205,6 +228,7 @@ exports[`renders without crashing 1`] = `
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
+  class="css-0"
 >
   <circle
     cx="12"

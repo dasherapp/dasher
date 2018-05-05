@@ -9,8 +9,9 @@ import {
   lineHeights,
   spacing,
   transition,
+  focusStyle,
 } from '../theme'
-import { joinSpacing, toAlpha } from '../utils/style'
+import { joinSpacing, toAlpha, propStyles } from '../utils/style'
 
 const kinds = {
   primary: {
@@ -21,9 +22,7 @@ const kinds = {
       backgroundColor: colors.indigo[9],
     },
 
-    ':focus': {
-      boxShadow: `0 0 0 3px ${toAlpha(colors.indigo[3])}`,
-    },
+    ':focus': focusStyle,
   },
   secondary: {
     color: toAlpha(colors.gray[9]),
@@ -33,9 +32,7 @@ const kinds = {
       backgroundColor: toAlpha(colors.gray[1]),
     },
 
-    ':focus': {
-      boxShadow: `0 0 0 3px ${toAlpha(colors.gray[3])}`,
-    },
+    ':focus': focusStyle,
   },
   danger: {
     color: colors.white,
@@ -45,8 +42,16 @@ const kinds = {
       backgroundColor: colors.red[9],
     },
 
-    ':focus': {
-      boxShadow: `0 0 0 3px ${toAlpha(colors.red[3])}`,
+    ':focus': focusStyle,
+  },
+  icon: {
+    padding: spacing[0],
+    color: toAlpha(colors.gray[6]),
+    backgroundColor: 'transparent',
+    verticalAlign: 'middle',
+
+    ':hover,:focus': {
+      backgroundColor: toAlpha(colors.gray[1]),
     },
   },
 }
@@ -60,7 +65,7 @@ const Button = glamorous.button(
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.tight,
     textDecoration: 'none',
-    border: 'none',
+    border: 0,
     borderRadius: radii[0],
     outline: 0,
     whiteSpace: 'nowrap',
@@ -69,29 +74,23 @@ const Button = glamorous.button(
     transition: `all ${transition.duration} ${transition.easing}`,
   },
   ({ kind }) => kinds[kind],
-  ({ fullWidth }) =>
-    fullWidth && {
-      display: 'flex',
-      width: '100%',
-    },
-  ({ disabled }) =>
-    disabled && {
+  propStyles({
+    disabled: {
       opacity: 0.5,
       pointerEvents: 'none',
     },
+  }),
 )
 
 Button.propTypes = {
-  kind: oneOf(['primary', 'secondary', 'danger']),
+  kind: oneOf(['primary', 'secondary', 'danger', 'icon']),
   disabled: bool,
-  fullWidth: bool,
   onClick: func,
 }
 
 Button.defaultProps = {
   kind: 'primary',
   disabled: false,
-  fullWidth: false,
   onClick: () => {},
 }
 

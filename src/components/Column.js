@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -11,6 +11,10 @@ import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
+import Dropdown, { MenuItem } from './Dropdown'
+import { EllipsesIcon } from './Icon'
+import Flex from './Flex'
+import Spacer from './Spacer'
 
 const UPDATE_COLUMN_MUTATION = gql`
   mutation UpdateColumnMutation($id: ID!, $name: String, $query: String) {
@@ -38,7 +42,7 @@ const ColumnContainer = glamorous.div({
   flexDirection: 'column',
   width: COLUMN_WIDTH,
   marginRight: spacing[3],
-  padding: spacing[3],
+  padding: spacing[2],
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: shadows[1],
@@ -90,29 +94,42 @@ class Column extends Component {
           >
             {deleteColumn => (
               <ColumnContainer>
-                <strong>{name || 'Untitled Column'}</strong>
-                {column.name && (
-                  <Fragment>
-                    <Button kind="secondary" onClick={this.toggleEdit}>
-                      Edit column
-                    </Button>
-                    <Subscribe to={[ModalContainer]}>
-                      {modal => (
-                        <Button
-                          kind="danger"
-                          onClick={() =>
-                            modal.openModal(DeleteColumnModal, {
-                              boardId,
-                              column,
-                            })
-                          }
+                <Subscribe to={[ModalContainer]}>
+                  {modal => (
+                    <Flex alignItems="center">
+                      <strong>{name || 'Untitled Column'}</strong>
+                      <Spacer />
+                      {column.name && (
+                        <Dropdown
+                          renderMenuButton={({ getMenuButtonProps }) => (
+                            <Button
+                              {...getMenuButtonProps({
+                                refKey: 'innerRef',
+                                kind: 'icon',
+                              })}
+                            >
+                              <EllipsesIcon />
+                            </Button>
+                          )}
                         >
-                          Delete column
-                        </Button>
+                          <MenuItem onClick={this.toggleEdit}>
+                            Edit column
+                          </MenuItem>
+                          <MenuItem
+                            onClick={() =>
+                              modal.openModal(DeleteColumnModal, {
+                                boardId,
+                                column,
+                              })
+                            }
+                          >
+                            Delete column
+                          </MenuItem>
+                        </Dropdown>
                       )}
-                    </Subscribe>
-                  </Fragment>
-                )}
+                    </Flex>
+                  )}
+                </Subscribe>
                 {isEditing && (
                   <ColumnForm
                     formState={{ name, query }}

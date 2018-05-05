@@ -10,7 +10,7 @@ exports[`renders as danger 1`] = `
   font-weight: 600;
   line-height: 1.25;
   text-decoration: none;
-  border: none;
+  border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
@@ -33,13 +33,86 @@ exports[`renders as danger 1`] = `
 
 .css-0:focus,
 [data-css-0]:focus {
-  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.34);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
 }
 
 <button
   class="css-0"
 >
   Primary Button
+</button>
+`;
+
+exports[`renders as icon 1`] = `
+.css-0,
+[data-css-0] {
+  display: inline-block;
+  padding: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  border: 0;
+  border-radius: 3px;
+  outline: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: all 150ms ease-in-out;
+  color: rgba(0, 17, 34, 0.47);
+  background-color: transparent;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
+  -moz-transition: all 150ms ease-in-out;
+}
+
+.css-0:hover,
+[data-css-0]:hover,
+.css-0:focus,
+[data-css-0]:focus {
+  background-color: rgba(0, 36, 73, 0.05);
+}
+
+.css-3,
+[data-css-3] {
+  vertical-align: middle;
+}
+
+<button
+  class="css-0"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="css-3"
+  >
+    <circle
+      cx="12"
+      cy="12"
+      r="1"
+    />
+    <circle
+      cx="19"
+      cy="12"
+      r="1"
+    />
+    <circle
+      cx="5"
+      cy="12"
+      r="1"
+    />
+  </svg>
 </button>
 `;
 
@@ -53,7 +126,7 @@ exports[`renders as primary 1`] = `
   font-weight: 600;
   line-height: 1.25;
   text-decoration: none;
-  border: none;
+  border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
@@ -76,7 +149,7 @@ exports[`renders as primary 1`] = `
 
 .css-0:focus,
 [data-css-0]:focus {
-  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
 }
 
 <button
@@ -96,7 +169,7 @@ exports[`renders as secondary 1`] = `
   font-weight: 600;
   line-height: 1.25;
   text-decoration: none;
-  border: none;
+  border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
@@ -119,61 +192,13 @@ exports[`renders as secondary 1`] = `
 
 .css-0:focus,
 [data-css-0]:focus {
-  box-shadow: 0 0 0 3px rgba(0, 31, 62, 0.13);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
 }
 
 <button
   class="css-0"
 >
   Primary Button
-</button>
-`;
-
-exports[`renders at fullWidth 1`] = `
-.css-0,
-[data-css-0] {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  padding: 8px 12px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.25;
-  text-decoration: none;
-  border: none;
-  border-radius: 3px;
-  outline: 0;
-  white-space: nowrap;
-  cursor: pointer;
-  user-select: none;
-  transition: all 150ms ease-in-out;
-  color: #ffffff;
-  background-color: #4263eb;
-  width: 100%;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-}
-
-.css-0:hover,
-[data-css-0]:hover {
-  background-color: #364fc7;
-}
-
-.css-0:focus,
-[data-css-0]:focus {
-  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
-}
-
-<button
-  class="css-0"
->
-  Full Width Button
 </button>
 `;
 
@@ -187,7 +212,7 @@ exports[`renders when disabled 1`] = `
   font-weight: 600;
   line-height: 1.25;
   text-decoration: none;
-  border: none;
+  border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
@@ -212,7 +237,7 @@ exports[`renders when disabled 1`] = `
 
 .css-0:focus,
 [data-css-0]:focus {
-  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
 }
 
 <button
@@ -233,7 +258,7 @@ exports[`renders without crashing 1`] = `
   font-weight: 600;
   line-height: 1.25;
   text-decoration: none;
-  border: none;
+  border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
@@ -256,7 +281,7 @@ exports[`renders without crashing 1`] = `
 
 .css-0:focus,
 [data-css-0]:focus {
-  box-shadow: 0 0 0 3px rgba(0, 51, 255, 0.43);
+  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
 }
 
 <button

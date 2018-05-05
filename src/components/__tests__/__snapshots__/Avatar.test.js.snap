@@ -6,6 +6,7 @@ exports[`renders as circle 1`] = `
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
+  vertical-align: middle;
 }
 
 <img
@@ -21,6 +22,7 @@ exports[`renders with custom size (number) 1`] = `
   width: 32px;
   height: 32px;
   border-radius: 3px;
+  vertical-align: middle;
 }
 
 <img
@@ -36,6 +38,7 @@ exports[`renders with custom size (string) 1`] = `
   width: 4rem;
   height: 4rem;
   border-radius: 3px;
+  vertical-align: middle;
 }
 
 <img
@@ -51,6 +54,7 @@ exports[`renders without crashing 1`] = `
   width: 24px;
   height: 24px;
   border-radius: 3px;
+  vertical-align: middle;
 }
 
 <img

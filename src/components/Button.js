@@ -65,7 +65,7 @@ const Button = glamorous.button(
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.tight,
     textDecoration: 'none',
-    border: 'none',
+    border: 0,
     borderRadius: radii[0],
     outline: 0,
     whiteSpace: 'nowrap',

@@ -61,3 +61,9 @@ export const transition = {
   duration: '150ms',
   easing: 'ease-in-out',
 }
+
+export const focusStyle = {
+  boxShadow: `0 0 0 2px ${colors.white}, 0 0 2px 4px ${toAlpha(
+    colors.gray[4],
+  )}`,
+}

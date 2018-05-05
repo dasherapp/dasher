@@ -7,6 +7,7 @@ const Avatar = glamorous.img(props => ({
   width: props.size,
   height: props.size,
   borderRadius: props.shape === 'square' ? radii[0] : '50%',
+  verticalAlign: 'middle',
 }))
 
 Avatar.propTypes = {

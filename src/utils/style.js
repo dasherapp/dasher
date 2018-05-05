@@ -86,7 +86,7 @@ export const toAlpha = memoize(
  * @param {Object} styles - An object mapping props to styles
  * @return {Function} - A dynamic styles function
  */
-export const propStyles = styles => props =>
+export const propStyles = styles => (props = {}) =>
   Object.keys(props).map(key => {
     if (props[key]) {
       return typeof styles[key] === 'function'

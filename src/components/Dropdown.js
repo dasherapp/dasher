@@ -146,6 +146,8 @@ class Dropdown extends Component {
   }
 
   componentWillUnmount() {
+    // Remove all event listeners when component unmounts
+
     Array.prototype.forEach.call(this.menuItems, menuItem => {
       menuItem.removeEventListener('keydown', this.handleMenuItemKeyDown)
     })
@@ -161,6 +163,8 @@ class Dropdown extends Component {
   handleMenuButtonKeyDown = event => {
     if (event.key === 'ArrowDown') {
       event.preventDefault()
+      // If the menu is open, then select the first active menu item.
+      // Otherwise, open the menu.
       if (this.state.isOpen) {
         this.menuRef.current
           .querySelector('[role^="menuitem"]:not([disabled])')
@@ -203,7 +207,10 @@ class Dropdown extends Component {
   }
 
   focusNext = (currentItem, startItem) => {
-    // Determine which item is the startItem (first or last)
+    // Menu items can be traversed circularly. startItem indicates
+    // the next item to focus after reaching the end of the list.
+    // startItem will either be the first or the last item.
+    // If it is the first item, then traverse down the list.
     const goingDown = startItem === this.firstItem
 
     function getNextItem(element) {

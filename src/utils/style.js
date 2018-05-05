@@ -81,7 +81,7 @@ export const toAlpha = memoize(
  * the styles object that should be applied if that prop is passed.
  * Returns a function which you pass to a glamorousComponentFactory.
  *
- * Credit: https://codesandbox.io/s/AGRRMl63 by @kentcdodds
+ * Source: https://codesandbox.io/s/AGRRMl63 by @kentcdodds
  *
  * @param {Object} styles - An object mapping props to styles
  * @return {Function} - A dynamic styles function

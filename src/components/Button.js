@@ -9,6 +9,7 @@ import {
   lineHeights,
   spacing,
   transition,
+  focusStyle,
 } from '../theme'
 import { joinSpacing, toAlpha, propStyles } from '../utils/style'
 
@@ -21,9 +22,7 @@ const kinds = {
       backgroundColor: colors.indigo[9],
     },
 
-    ':focus': {
-      boxShadow: `0 0 0 3px ${toAlpha(colors.indigo[3])}`,
-    },
+    ':focus': focusStyle,
   },
   secondary: {
     color: toAlpha(colors.gray[9]),
@@ -33,9 +32,7 @@ const kinds = {
       backgroundColor: toAlpha(colors.gray[1]),
     },
 
-    ':focus': {
-      boxShadow: `0 0 0 3px ${toAlpha(colors.gray[4])}`,
-    },
+    ':focus': focusStyle,
   },
   danger: {
     color: colors.white,
@@ -45,15 +42,13 @@ const kinds = {
       backgroundColor: colors.red[9],
     },
 
-    ':focus': {
-      boxShadow: `0 0 0 3px ${toAlpha(colors.red[3])}`,
-    },
+    ':focus': focusStyle,
   },
   icon: {
+    padding: spacing[0],
     color: toAlpha(colors.gray[6]),
     backgroundColor: 'transparent',
-    lineHeight: 0,
-    padding: spacing[0],
+    verticalAlign: 'middle',
 
     ':hover,:focus': {
       backgroundColor: toAlpha(colors.gray[1]),

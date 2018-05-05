@@ -1,9 +1,10 @@
 import React from 'react'
+import { Svg } from 'glamorous'
 import { oneOfType, number, string } from 'prop-types'
 
 function Icon({ size, ...props }) {
   return (
-    <svg
+    <Svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
@@ -13,6 +14,7 @@ function Icon({ size, ...props }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+      verticalAlign="middle"
       {...props}
     />
   )

@@ -36,7 +36,7 @@ const Menu = glamorous(MenuTransition, { filterProps: ['minWidth', 'align'] })(
     display: 'flex',
     flexDirection: 'column',
     minWidth: props.minWidth,
-    marginTop: spacing[0],
+    marginTop: props.offsetTop,
     padding: joinSpacing(spacing[0], 0),
     backgroundColor: colors.gray[8],
     borderRadius: radii[1],
@@ -45,6 +45,18 @@ const Menu = glamorous(MenuTransition, { filterProps: ['minWidth', 'align'] })(
     transformOrigin: `top ${props.align}`,
   }),
 )
+
+Menu.propTypes = {
+  align: oneOf(['right', 'left']),
+  minWidth: oneOfType([number, string]),
+  offsetTop: oneOfType([number, string]),
+}
+
+Menu.defaultProps = {
+  align: 'right',
+  minWidth: 'auto',
+  offsetTop: spacing[0],
+}
 
 export const MenuItem = glamorous('button', {
   withProps: { role: 'menuitem', tabIndex: -1 },
@@ -82,11 +94,13 @@ class Dropdown extends Component {
     renderMenuButton: func.isRequired,
     align: oneOf(['right', 'left']),
     minWidth: oneOfType([number, string]),
+    offsetTop: oneOfType([number, string]),
   }
 
   static defaultProps = {
     align: 'right',
     minWidth: 'auto',
+    offsetTop: spacing[0],
   }
 
   constructor(props) {
@@ -238,7 +252,13 @@ class Dropdown extends Component {
   })
 
   render() {
-    const { renderMenuButton, align, minWidth, children } = this.props
+    const {
+      renderMenuButton,
+      align,
+      minWidth,
+      offsetTop,
+      children,
+    } = this.props
     const { isOpen } = this.state
 
     return (
@@ -248,6 +268,7 @@ class Dropdown extends Component {
           pose={isOpen ? 'open' : 'closed'}
           align={align}
           minWidth={minWidth}
+          offsetTop={offsetTop}
         >
           <div role="menu" ref={this.menuRef}>
             {children}

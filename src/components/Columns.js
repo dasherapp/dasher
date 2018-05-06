@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import { arrayOf, shape, string, number } from 'prop-types'
-import { gql } from 'apollo-boost'
-import { Mutation } from 'react-apollo'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import glamorous from 'glamorous'
+import { gql } from 'apollo-boost'
+import { Mutation, ApolloConsumer } from 'react-apollo'
 
 import { BOARD_QUERY } from './BoardPage'
 import { spacing } from '../theme'
@@ -45,17 +45,12 @@ const ColumnsContainer = glamorous.div({
   padding: spacing[3],
 })
 
-const reorderColumns = (columns, startingIndex, endingIndex, updateColumn) => {
-  const [removed] = columns.splice(startingIndex, 1)
-  columns.splice(endingIndex, 0, removed)
 
-  columns.forEach((column, index) => {
-    updateColumn({
-      variables: { id: column.id, index },
-    })
-  })
-
-  return columns
+function arrayMove(array, from, to) {
+  const arrayCopy = [...array]
+  const [removed] = arrayCopy.splice(from, 1)
+  arrayCopy.splice(to, 0, removed)
+  return arrayCopy
 }
 
 class Columns extends Component {
@@ -69,52 +64,32 @@ class Columns extends Component {
     ).isRequired,
   }
 
-  state = { columns: this.props.columns }
+  onDragEnd = ({ source, destination }, cache, updateColumn) => {
+    if (!destination) return
 
-  componentDidUpdate(prevProps) {
-    const prevColumns = prevProps.columns
-    const currColumns = this.props.columns
-    let lengthChange = false
-    let nameChange = false
+    const columns = arrayMove(
+      this.props.columns,
+      source.index,
+      destination.index,
+    ).map((column, index) => {
+      updateColumn({ variables: { id: column.id, index } })
+      return { ...column, index }
+    })
 
-    if (prevColumns.length !== currColumns.length) {
-      lengthChange = true
-    } else if (prevColumns !== currColumns) {
-      let i
-      for (i = 0; i < currColumns.length; i++) {
-        if (prevColumns[i].name !== currColumns[i].name) {
-          nameChange = true
-        }
-      }
-    }
+    const { board } = cache.readQuery({
+      query: BOARD_QUERY,
+      variables: { id: this.props.boardId },
+    })
 
-    if (nameChange || lengthChange) {
-      this.setState({
-        columns: currColumns,
-      })
-    }
-  }
-
-  onDragEnd = (result, updateColumn) => {
-    if (!result.destination) {
-      return
-    }
-
-    const columns = reorderColumns(
-      [...this.state.columns],
-      result.source.index,
-      result.destination.index,
-      updateColumn,
-    )
-
-    this.setState({
-      columns,
+    cache.writeQuery({
+      query: BOARD_QUERY,
+      variables: { id: this.props.boardId },
+      data: { board: { ...board, columns } },
     })
   }
 
   render() {
-    const { boardId } = this.props
-    const { columns } = this.state
+    const { boardId, columns } = this.props
 
     return (
       <Mutation
@@ -139,54 +114,63 @@ class Columns extends Component {
         {createColumn => (
           <Mutation mutation={UPDATE_COLUMN_MUTATION}>
             {updateColumn => (
-              <DragDropContext
-                onDragEnd={result => this.onDragEnd(result, updateColumn)}
-              >
-                <HorizontalScroll>
-                  <Droppable droppableId="droppable" direction="horizontal">
-                    {(provided, snapshot) => (
-                      <ColumnsContainer
-                        innerRef={provided.innerRef}
-                        {...provided.droppableProps}
-                      >
-                        {columns.map((column, index) => (
-                          <Draggable
-                            key={column.id}
-                            draggableId={column.id}
-                            index={index}
+              <ApolloConsumer>
+                {cache => (
+                  <DragDropContext
+                    onDragEnd={result =>
+                      this.onDragEnd(result, cache, updateColumn)
+                    }
+                  >
+                    <HorizontalScroll>
+                      <Droppable droppableId="droppable" direction="horizontal">
+                        {(provided, snapshot) => (
+                          <ColumnsContainer
+                            innerRef={provided.innerRef}
+                            {...provided.droppableProps}
                           >
-                            {(provided, snapshot) => (
-                              <Column
-                                boardId={boardId}
-                                column={column}
-                                isDragging={snapshot.isDragging}
-                                draggableStyle={provided.draggableProps.style}
-                                innerRef={provided.innerRef}
-                                {...provided.draggableProps}
-                                {...provided.dragHandleProps}
-                              />
-                            )}
-                          </Draggable>
-                        ))}
-                        <SkeletonButton
-                          onClick={() =>
-                            createColumn({
-                              variables: {
-                                boardId,
-                                index: columns.length,
-                                name: '',
-                                query: '',
-                              },
-                            })
-                          }
-                        >
-                          Add column
-                        </SkeletonButton>
-                      </ColumnsContainer>
-                    )}
-                  </Droppable>
-                </HorizontalScroll>
-              </DragDropContext>
+                            {columns.map((column, index) => (
+                              <Draggable
+                                key={column.id}
+                                draggableId={column.id}
+                                index={index}
+                              >
+                                {(provided, snapshot) => (
+                                  <Column
+                                    boardId={boardId}
+                                    column={column}
+                                    isDragging={snapshot.isDragging}
+                                    draggableStyle={
+                                      provided.draggableProps.style
+                                    }
+                                    innerRef={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                  />
+                                )}
+                              </Draggable>
+                            ))}
+                            <SkeletonButton
+                              width={COLUMN_WIDTH}
+                              onClick={() =>
+                                createColumn({
+                                  variables: {
+                                    boardId,
+                                    index: columns.length,
+                                    name: '',
+                                    query: '',
+                                  },
+                                })
+                              }
+                            >
+                              Add column
+                            </SkeletonButton>
+                          </ColumnsContainer>
+                        )}
+                      </Droppable>
+                    </HorizontalScroll>
+                  </DragDropContext>
+                )}
+              </ApolloConsumer>
             )}
           </Mutation>
         )}

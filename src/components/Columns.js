@@ -45,12 +45,11 @@ const ColumnsContainer = glamorous.div({
   padding: spacing[3],
 })
 
-
-function arrayMove(array, from, to) {
-  const arrayCopy = [...array]
-  const [removed] = arrayCopy.splice(from, 1)
-  arrayCopy.splice(to, 0, removed)
-  return arrayCopy
+function reorder(list, from, to) {
+  const listCopy = [...list]
+  const [removed] = listCopy.splice(from, 1)
+  listCopy.splice(to, 0, removed)
+  return listCopy
 }
 
 class Columns extends Component {
@@ -67,7 +66,7 @@ class Columns extends Component {
   onDragEnd = ({ source, destination }, cache, updateColumn) => {
     if (!destination) return
 
-    const columns = arrayMove(
+    const columns = reorder(
       this.props.columns,
       source.index,
       destination.index,

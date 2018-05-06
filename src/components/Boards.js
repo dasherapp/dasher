@@ -10,6 +10,7 @@ import BoardCard from './BoardCard'
 import Grid from './Grid'
 import Button from './Button'
 import Flex from './Flex'
+import SkeletonButton from './SkeletonButton'
 
 export const BOARDS_QUERY = gql`
   query BoardsQuery {
@@ -41,6 +42,12 @@ function Boards() {
                   {data.boards.map(board => (
                     <BoardCard key={board.id} board={board} />
                   ))}
+
+                  <SkeletonButton
+                    onClick={() => modal.openModal(CreateBoardModal)}
+                  >
+                    New board
+                  </SkeletonButton>
                 </Grid>
               )
             }}

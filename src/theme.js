@@ -49,10 +49,10 @@ export const radii = [3, 6]
 export const shadows = [
   `0 0 0 1px ${toAlpha(colors.gray[3])}`,
   `0 1px 1px 1px ${toAlpha(colors.gray[3])}`,
-  `0 4px 8px 0 ${toAlpha(colors.gray[3])}, 0 2px 4px 0 ${toAlpha(
+  `0 4px 8px 0 ${toAlpha(colors.gray[3])}, 0 2px 4px 1px ${toAlpha(
     colors.gray[2],
   )}`,
-  `0 15px 30px 0 ${toAlpha(colors.gray[3])}, 0 5px 15px 0 ${toAlpha(
+  `0 15px 30px 0 ${toAlpha(colors.gray[3])}, 0 5px 15px 1px ${toAlpha(
     colors.gray[2],
   )}`,
 ]
@@ -60,4 +60,10 @@ export const shadows = [
 export const transition = {
   duration: '150ms',
   easing: 'ease-in-out',
+}
+
+export const focusStyle = {
+  boxShadow: `0 0 0 2px ${colors.white}, 0 0 2px 4px ${toAlpha(
+    colors.gray[4],
+  )}`,
 }

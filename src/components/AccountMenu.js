@@ -1,12 +1,16 @@
 import React from 'react'
 import { shape, func } from 'prop-types'
+import glamorous from 'glamorous'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
 
+import { fontSizes, colors, spacing, lineHeights } from '../theme'
+import { toAlpha, joinSpacing } from '../utils/style'
 import { logOut } from '../utils/auth'
-import Button from './Button'
-import Avatar from './Avatar'
+import AvatarButton from './AvatarButton'
+import Dropdown, { MenuItem, MenuDivider } from './Dropdown'
+import Flex from './Flex'
 
 const ME_QUERY = gql`
   query MeQuery {
@@ -18,6 +22,22 @@ const ME_QUERY = gql`
   }
 `
 
+const textStyle = {
+  textAlign: 'left',
+  lineHeight: lineHeights.normal,
+  whiteSpace: 'nowrap',
+}
+
+const Name = glamorous.span(textStyle, {
+  fontSize: fontSizes[2],
+  color: colors.white,
+})
+
+const Login = glamorous.span(textStyle, {
+  fontSize: fontSizes[1],
+  color: toAlpha(colors.gray[6], colors.black),
+})
+
 function AccountMenu({ history }) {
   return (
     <Query query={ME_QUERY}>
@@ -26,27 +46,35 @@ function AccountMenu({ history }) {
         if (error) return <div>Error</div>
 
         return (
-          <details>
-            <summary>
-              <Avatar
-                src={data.me.avatarUrl}
-                alt={data.me.login}
-                size={32}
-                shape="circle"
+          <Dropdown
+            minWidth={160}
+            offsetTop={spacing[1]}
+            renderMenuButton={({ getMenuButtonProps }) => (
+              <AvatarButton
+                {...getMenuButtonProps({
+                  src: data.me.avatarUrl,
+                  alt: data.me.login,
+                })}
               />
-            </summary>
-
-            <p>{data.me.name}</p>
-            <p>{data.me.login}</p>
-            <Button
+            )}
+          >
+            <Flex
+              flexDirection="column"
+              padding={joinSpacing(spacing[1], spacing[3])}
+            >
+              <Name>{data.me.name}</Name>
+              <Login>{data.me.login}</Login>
+            </Flex>
+            <MenuDivider />
+            <MenuItem
               onClick={() => {
                 logOut()
                 history.push('/login')
               }}
             >
               Log out
-            </Button>
-          </details>
+            </MenuItem>
+          </Dropdown>
         )
       }}
     </Query>

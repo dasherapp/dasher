@@ -11,24 +11,34 @@ import {
   fontSizes,
   shadows,
   transition,
+  fontWeights,
 } from '../theme'
+import { toAlpha } from '../utils/style'
 import ModalContainer from '../containers/ModalContainer'
 import UpdateBoardModal from './UpdateBoardModal'
 import DeleteBoardModal from './DeleteBoardModal'
+import Button from './Button'
+import { EllipsesIcon } from './Icon'
+import Flex from './Flex'
+import Spacer from './Spacer'
+import Dropdown, { MenuItem } from './Dropdown'
 
 const CardLink = glamorous(Link)({
-  padding: spacing[4],
+  padding: spacing[3],
   fontSize: fontSizes[3],
+  fontWeight: fontWeights.bold,
   textDecoration: 'none',
-  color: colors.gray[9],
+  color: toAlpha(colors.gray[9]),
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: shadows[1],
   outline: 0,
-  transition: `box-shadow ${transition.duration} ${transition.easing}`,
+  transitionProperty: 'box-shadow',
+  transitionDuration: transition.duration,
+  transitionTimingFunction: transition.easing,
 
   ':hover,:focus': {
-    boxShadow: shadows[3],
+    boxShadow: shadows[2],
   },
 
   [breakpoints.sm]: {
@@ -41,27 +51,36 @@ function BoardCard({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <CardLink to={`/board/${board.id}`}>
-          {board.name}
-          <button
-            onClick={event => {
-              event.preventDefault()
-              modal.openModal(UpdateBoardModal, {
-                board,
-              })
-            }}
-          >
-            Edit board
-          </button>
-          <button
-            onClick={event => {
-              event.preventDefault()
-              modal.openModal(DeleteBoardModal, {
-                board: board,
-              })
-            }}
-          >
-            Delete board
-          </button>
+          <Flex alignItems="center" paddingLeft={spacing[1]}>
+            <span>{board.name}</span>
+            <Spacer />
+            <Dropdown
+              renderMenuButton={({ getMenuButtonProps }) => (
+                <Button
+                  {...getMenuButtonProps({ refKey: 'innerRef', kind: 'icon' })}
+                >
+                  <EllipsesIcon />
+                </Button>
+              )}
+            >
+              <MenuItem
+                onClick={event => {
+                  event.preventDefault()
+                  modal.openModal(UpdateBoardModal, { board })
+                }}
+              >
+                Edit board
+              </MenuItem>
+              <MenuItem
+                onClick={event => {
+                  event.preventDefault()
+                  modal.openModal(DeleteBoardModal, { board })
+                }}
+              >
+                Delete board
+              </MenuItem>
+            </Dropdown>
+          </Flex>
         </CardLink>
       )}
     </Subscribe>

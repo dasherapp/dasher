@@ -12,3 +12,7 @@ css.global('body', {
 css.global('*, *:before, *:after', {
   boxSizing: 'inherit',
 })
+
+css.global('button::-moz-focus-inner', {
+  border: 0,
+})

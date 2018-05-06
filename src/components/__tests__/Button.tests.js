@@ -1,6 +1,8 @@
 import React from 'react'
 import { renderIntoDocument, render, fireEvent } from 'react-testing-library'
+
 import Button from '../Button'
+import { EllipsesIcon } from '../Icon'
 
 it('renders without crashing', () => {
   const { container } = render(<Button>Test Button</Button>)
@@ -27,8 +29,12 @@ it('renders as danger', () => {
   expect(container.firstChild).toMatchSnapshot()
 })
 
-it('renders at fullWidth', () => {
-  const { container } = render(<Button fullWidth>Full Width Button</Button>)
+it('renders as icon', () => {
+  const { container } = render(
+    <Button kind="icon">
+      <EllipsesIcon />
+    </Button>,
+  )
   expect(container.firstChild).toMatchSnapshot()
 })
 
@@ -44,6 +50,5 @@ it('calls onClick when button is clicked', () => {
       cancelable: true,
     }),
   )
-
   expect(handleClick).toHaveBeenCalledTimes(1)
 })

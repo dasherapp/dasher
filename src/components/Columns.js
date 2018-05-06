@@ -7,7 +7,7 @@ import glamorous from 'glamorous'
 
 import { BOARD_QUERY } from './BoardPage'
 import { spacing } from '../theme'
-import Column from './Column'
+import Column, { COLUMN_WIDTH } from './Column'
 import SkeletonButton from './SkeletonButton'
 
 const CREATE_COLUMN_MUTATION = gql`

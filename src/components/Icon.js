@@ -1,9 +1,10 @@
 import React from 'react'
+import { Svg } from 'glamorous'
 import { oneOfType, number, string } from 'prop-types'
 
 function Icon({ size, ...props }) {
   return (
-    <svg
+    <Svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
@@ -13,6 +14,7 @@ function Icon({ size, ...props }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
+      verticalAlign="middle"
       {...props}
     />
   )
@@ -84,7 +86,7 @@ export function CircleIcon(props) {
 
 export function EllipsesIcon(props) {
   return (
-    <Icon>
+    <Icon {...props}>
       <circle cx="12" cy="12" r="1" />
       <circle cx="19" cy="12" r="1" />
       <circle cx="5" cy="12" r="1" />

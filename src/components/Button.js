@@ -46,7 +46,7 @@ const kinds = {
   },
   icon: {
     padding: spacing[0],
-    color: toAlpha(colors.gray[6]),
+    color: colors.gray[6],
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
 

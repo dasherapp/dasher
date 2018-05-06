@@ -1,6 +1,5 @@
 import React from 'react'
 import glamorous from 'glamorous'
-import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
 
 import { fontSizes, fontWeights, colors, spacing } from '../theme'
@@ -10,8 +9,9 @@ import UpdateBoardModal from './UpdateBoardModal'
 import DeleteBoardModal from './DeleteBoardModal'
 import Header from './Header'
 import Dropdown, { MenuItem } from './Dropdown'
-import { EllipsesIcon } from './Icon'
+import { ChevronDownIcon, ArrowLeftIcon } from './Icon'
 import Button from './Button'
+import ButtonLink from './ButtonLink'
 import AccountMenu from './AccountMenu'
 import Spacer from './Spacer'
 
@@ -27,7 +27,9 @@ function BoardHeader({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <Header>
-          <Link to="/">Back</Link>
+          <ButtonLink to="/" kind="icon">
+            <ArrowLeftIcon />
+          </ButtonLink>
           <Spacer />
           <BoardName>{board.name}</BoardName>
           <Dropdown
@@ -39,7 +41,7 @@ function BoardHeader({ board }) {
                   kind: 'icon',
                 })}
               >
-                <EllipsesIcon />
+                <ChevronDownIcon size={16} />
               </Button>
             )}
           >

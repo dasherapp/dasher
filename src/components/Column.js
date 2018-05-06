@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { shape, string, object, bool, func } from 'prop-types'
+import { shape, string, bool, func } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
@@ -46,9 +46,6 @@ const ColumnContainer = glamorous.div(props => ({
   borderRadius: radii[1],
   boxShadow: props.isDragging ? shadows[3] : shadows[1],
   transition: `box-shadow ${transition.duration} ${transition.easing}`,
-
-  // styles we need to apply on draggables
-  ...props.draggableStyle,
 }))
 
 class Column extends Component {
@@ -59,7 +56,6 @@ class Column extends Component {
       query: string.isRequired,
     }).isRequired,
     isDragging: bool.isRequired,
-    draggableStyle: object.isRequired,
     innerRef: func.isRequired,
   }
 
@@ -69,33 +65,13 @@ class Column extends Component {
     isEditing: this.props.column.name ? false : true,
   }
 
-  toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
+  toggleEdit = () => this.setState(state => ({ isEditing: !state.isEditing }))
 
   render() {
     const { boardId, column, ...props } = this.props
     const { isEditing, name, query } = this.state
     return (
-      <Mutation
-        mutation={UPDATE_COLUMN_MUTATION}
-        /* update={(cache, { data }) => {
-          const { board } = cache.readQuery({
-            query: BOARD_QUERY,
-            variables: { id: boardId },
-          })
-          cache.writeQuery({
-            query: BOARD_QUERY,
-            variables: { id: boardId },
-            data: {
-              board: {
-                ...board,
-                columns: board.columns.map(
-                  column => (column.name = column.name),
-                ),
-              },
-            },
-          })
-        }}*/
-      >
+      <Mutation mutation={UPDATE_COLUMN_MUTATION}>
         {updateColumn => (
           <Mutation
             mutation={DELETE_COLUMN_MUTATION}

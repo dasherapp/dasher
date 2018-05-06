@@ -139,9 +139,6 @@ class Columns extends Component {
                                     boardId={boardId}
                                     column={column}
                                     isDragging={snapshot.isDragging}
-                                    draggableStyle={
-                                      provided.draggableProps.style
-                                    }
                                     innerRef={provided.innerRef}
                                     {...provided.draggableProps}
                                     {...provided.dragHandleProps}

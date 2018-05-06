@@ -6,17 +6,23 @@ exports[`renders custom icons 1`] = `
   vertical-align: middle;
 }
 
+.css-0 *,
+[data-css-0] * {
+  vector-effect: inherit;
+}
+
 <div>
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-0"
   >
     <circle
@@ -38,15 +44,16 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-0"
   >
     <circle
@@ -70,15 +77,16 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-0"
   >
     <circle
@@ -96,15 +104,16 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-0"
   >
     <polyline
@@ -112,15 +121,16 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-0"
   >
     <line
@@ -137,15 +147,16 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-0"
   >
     <circle
@@ -155,15 +166,16 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-0"
   >
     <circle
@@ -182,6 +194,46 @@ exports[`renders custom icons 1`] = `
       r="1"
     />
   </svg>
+  <svg
+    stroke="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    width="24"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
+    class="css-0"
+  >
+    <polyline
+      points="6 9 12 15 18 9"
+    />
+  </svg>
+  <svg
+    stroke="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    width="24"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
+    class="css-0"
+  >
+    <line
+      x1="19"
+      y1="12"
+      x2="5"
+      y2="12"
+    />
+    <polyline
+      points="12 19 5 12 12 5"
+    />
+  </svg>
 </div>
 `;
 
@@ -191,16 +243,22 @@ exports[`renders with custom color and size 1`] = `
   vertical-align: middle;
 }
 
+.css-0 *,
+[data-css-0] * {
+  vector-effect: inherit;
+}
+
 <svg
-  stroke="currentColor"
+  stroke-width="2"
   xmlns="http://www.w3.org/2000/svg"
   height="16"
   viewBox="0 0 24 24"
   fill="none"
+  stroke="currentColor"
   width="16"
-  stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
+  vector-effect="non-scaling-stroke"
   color="#c27e00"
   class="css-0"
 >
@@ -218,16 +276,22 @@ exports[`renders without crashing 1`] = `
   vertical-align: middle;
 }
 
+.css-0 *,
+[data-css-0] * {
+  vector-effect: inherit;
+}
+
 <svg
+  stroke="currentColor"
   xmlns="http://www.w3.org/2000/svg"
-  width="24"
   height="24"
   viewBox="0 0 24 24"
   fill="none"
-  stroke="currentColor"
+  width="24"
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
+  vector-effect="non-scaling-stroke"
   class="css-0"
 >
   <circle

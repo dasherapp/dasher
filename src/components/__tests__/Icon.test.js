@@ -9,6 +9,8 @@ import Icon, {
   XIcon,
   CircleIcon,
   EllipsesIcon,
+  ChevronDownIcon,
+  ArrowLeftIcon,
 } from '../Icon'
 
 it('renders without crashing', () => {
@@ -41,6 +43,8 @@ it('renders custom icons', () => {
       <XIcon />
       <CircleIcon />
       <EllipsesIcon />
+      <ChevronDownIcon />
+      <ArrowLeftIcon />
     </div>,
   )
 

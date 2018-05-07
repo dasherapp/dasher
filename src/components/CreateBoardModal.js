@@ -3,6 +3,7 @@ import { func } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
+import { withRouter } from 'react-router-dom'
 
 import BoardForm from './BoardForm'
 import Button from './Button'
@@ -16,7 +17,7 @@ const CREATE_BOARD_MUTATION = gql`
     }
   }
 `
-function CreateBoardModal({ closeModal }) {
+function CreateBoardModal({ closeModal, history }) {
   return (
     <Mutation
       mutation={CREATE_BOARD_MUTATION}
@@ -32,10 +33,11 @@ function CreateBoardModal({ closeModal }) {
         <Modal isOpen onRequestClose={closeModal}>
           <BoardForm
             id="create-board"
-            onSubmit={(event, { name }) => {
+            onSubmit={async (event, { name }) => {
               event.preventDefault()
-              createBoard({ variables: { name } })
+              const { data } = await createBoard({ variables: { name } })
               closeModal()
+              history.push(`/board/${data.createBoard.id}`)
             }}
           />
           <Button kind="secondary" onClick={closeModal}>
@@ -54,4 +56,4 @@ CreateBoardModal.propTypes = {
   closeModal: func.isRequired,
 }
 
-export default CreateBoardModal
+export default withRouter(CreateBoardModal)

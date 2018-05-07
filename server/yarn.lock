@@ -1219,7 +1219,7 @@ dot-prop@^4.1.0:
   dependencies:
     is-obj "^1.0.0"
 
-dotenv-cli@^1.4.0:
+dotenv-cli@1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/dotenv-cli/-/dotenv-cli-1.4.0.tgz#e8e80830ed88b48a03b5eb7ec26147ca717f7409"
   dependencies:
@@ -2774,7 +2774,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
 
-isomorphic-fetch@^2.2.1:
+isomorphic-fetch@2.2.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   dependencies:
@@ -2872,9 +2872,9 @@ jsonify@~0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/jsonify/-/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
 
-jsonwebtoken@^8.1.0:
-  version "8.1.1"
-  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.1.1.tgz#b04d8bb2ad847bc93238c3c92170ffdbdd1cb2ea"
+jsonwebtoken@8.2.1:
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.2.1.tgz#333ee39aa8f238f32fa41693e7a2fb7e42f82b31"
   dependencies:
     jws "^3.1.4"
     lodash.includes "^4.3.0"
@@ -2887,9 +2887,9 @@ jsonwebtoken@^8.1.0:
     ms "^2.1.1"
     xtend "^4.0.1"
 
-jsonwebtoken@^8.2.1:
-  version "8.2.1"
-  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.2.1.tgz#333ee39aa8f238f32fa41693e7a2fb7e42f82b31"
+jsonwebtoken@^8.1.0:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-8.1.1.tgz#b04d8bb2ad847bc93238c3c92170ffdbdd1cb2ea"
   dependencies:
     jws "^3.1.4"
     lodash.includes "^4.3.0"
@@ -3391,7 +3391,7 @@ node-request-by-swagger@^1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/node-request-by-swagger/-/node-request-by-swagger-1.0.6.tgz#3129510e33232e4d37be4cce94c704670bc5b135"
 
-nodemon@^1.17.3:
+nodemon@1.17.3:
   version "1.17.3"
   resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-1.17.3.tgz#3b0bbc2ee05ccb43b1aef15ba05c63c7bc9b8530"
   dependencies:
@@ -4935,7 +4935,7 @@ trim-repeated@^1.0.0:
   dependencies:
     escape-string-regexp "^1.0.2"
 
-ts-node@^5.0.1:
+ts-node@5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-5.0.1.tgz#78e5d1cb3f704de1b641e43b76be2d4094f06f81"
   dependencies:
@@ -4972,7 +4972,7 @@ type-is@~1.6.16:
     media-typer "0.3.0"
     mime-types "~2.1.18"
 
-typescript@^2.8.1:
+typescript@2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.8.1.tgz#6160e4f8f195d5ba81d4876f9c0cc1fbc0820624"
 

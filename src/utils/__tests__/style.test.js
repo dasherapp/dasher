@@ -1,4 +1,4 @@
-import { toMediaQuery, joinSpacing, toAlpha } from '../style'
+import { toMediaQuery, joinSpacing, toAlpha, propStyles } from '../style'
 
 describe('toMediaQuery()', () => {
   it('uses em by default', () => {
@@ -50,5 +50,27 @@ describe('toAlpha()', () => {
 
   it('works with an rgb color value', () => {
     expect(toAlpha('rgb(128, 128, 128)')).toBe('rgba(0, 0, 0, 0.5)')
+  })
+})
+
+describe('propStyles()', () => {
+  it('returns a function that returns the an array of style objects', () => {
+    const dynamicStyles = propStyles({
+      disabled: { backgroundColor: 'gray' },
+      fullWidth: { width: '100%' },
+    })
+
+    expect(dynamicStyles()).toEqual([])
+    expect(dynamicStyles({ disabled: true })).toEqual([
+      { backgroundColor: 'gray' },
+    ])
+    expect(dynamicStyles({ disabled: false, fullWidth: true })).toEqual([
+      null,
+      { width: '100%' },
+    ])
+    expect(dynamicStyles({ disabled: true, fullWidth: true })).toEqual([
+      { backgroundColor: 'gray' },
+      { width: '100%' },
+    ])
   })
 })

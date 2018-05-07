@@ -46,7 +46,7 @@ function DeleteBoardModal({ closeModal, board, history }) {
               onClick={() => {
                 deleteBoard({ variables: { id: board.id } })
                 closeModal()
-                history.push('/')
+                history.replace('/')
               }}
             >
               Delete

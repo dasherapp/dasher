@@ -2823,6 +2823,10 @@ forwarded@~0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/forwarded/-/forwarded-0.1.2.tgz#98c23dab1175657b8c0573e8ceccd91b0ff18c84"
 
+framesync@^3.0.2, framesync@^3.1.7:
+  version "3.1.7"
+  resolved "https://registry.yarnpkg.com/framesync/-/framesync-3.1.7.tgz#9b9aa3eff8598625302597851a428f40c3dc1c6b"
+
 fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
@@ -4978,6 +4982,20 @@ pluralize@^7.0.0:
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-7.0.0.tgz#298b89df8b93b0221dbf421ad2b1b1ea23fc6777"
 
+popmotion-pose@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/popmotion-pose/-/popmotion-pose-1.3.0.tgz#1dd082b4d18770c552b3bc6d89f270e78683909e"
+  dependencies:
+    popmotion "^8.1.22"
+
+popmotion@^8.1.22:
+  version "8.1.22"
+  resolved "https://registry.yarnpkg.com/popmotion/-/popmotion-8.1.22.tgz#71857484546ae5b7335b0704423a3a761de1fe67"
+  dependencies:
+    framesync "^3.1.7"
+    style-value-types "^1.0.4"
+    stylefire "^1.2.9"
+
 portfinder@^1.0.9:
   version "1.0.13"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.13.tgz#bb32ecd87c27104ae6ee44b5a3ccbf0ebb1aede9"
@@ -5519,6 +5537,10 @@ react-html-attributes@^1.3.0:
   dependencies:
     html-element-attributes "^1.0.0"
 
+react-lifecycles-compat@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-1.1.4.tgz#fc005c72849b7ed364de20a0f64ff58ebdc2009a"
+
 react-modal@3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.3.2.tgz#b13da9490653a7c76bc0e9600323eb1079c620e7"
@@ -5526,6 +5548,13 @@ react-modal@3.3.2:
     exenv "^1.2.0"
     prop-types "^15.5.10"
     warning "^3.0.0"
+
+react-pose@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/react-pose/-/react-pose-1.5.2.tgz#0dcba78cf76510b4467be8d65f378627bcd73d50"
+  dependencies:
+    popmotion-pose "^1.3.0"
+    react-lifecycles-compat "^1.1.4"
 
 react-router-dom@4.2.2:
   version "4.2.2"
@@ -6365,6 +6394,17 @@ style-loader@0.19.0:
   dependencies:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
+
+style-value-types@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/style-value-types/-/style-value-types-1.0.4.tgz#58df3a09281d719d981ee4a317addc434eecc877"
+
+stylefire@^1.2.9:
+  version "1.2.14"
+  resolved "https://registry.yarnpkg.com/stylefire/-/stylefire-1.2.14.tgz#33c711e3f79da8e8ab80e4a935b12576a4b92c8e"
+  dependencies:
+    framesync "^3.0.2"
+    style-value-types "^1.0.4"
 
 supports-color@^2.0.0:
   version "2.0.0"

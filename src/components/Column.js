@@ -36,7 +36,7 @@ const DELETE_COLUMN_MUTATION = gql`
   }
 `
 
-export const COLUMN_WIDTH = 360
+export const COLUMN_WIDTH = 330
 
 const ColumnContainer = glamorous.div({
   display: 'flex',

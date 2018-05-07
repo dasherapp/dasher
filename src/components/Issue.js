@@ -54,16 +54,15 @@ function renderStatusIcon(issue) {
     issue,
   )
 
-  if (buildStatus === 'SUCCESS') {
-    return <CheckIcon color={colors.green[8]} size={16} />
-  }
+  switch (buildStatus) {
+    case 'SUCCESS':
+      return <CheckIcon color={colors.green[8]} size={16} />
 
-  if (buildStatus === 'PENDING') {
-    return <SmallCircleIcon color={colors.yellow[8]} size={16} />
-  }
+    case 'PENDING':
+      return <SmallCircleIcon color={colors.yellow[8]} size={16} />
 
-  if (buildStatus === 'FAILURE') {
-    return <XIcon color={colors.red[8]} size={16} />
+    case 'FAILURE':
+      return <XIcon color={colors.red[8]} size={16} />
   }
 }
 

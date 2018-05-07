@@ -1,6 +1,5 @@
 import React from 'react'
 import glamorous, { Div, Small } from 'glamorous'
-import { Link } from 'react-router-dom'
 
 import { spacing, fontSizes, fontWeights, lineHeights, colors } from '../theme'
 import {
@@ -12,12 +11,16 @@ import {
   SmallCircleIcon,
 } from './Icon'
 
-const IssueTitle = glamorous(Link)({
+const IssueTitle = glamorous.a({
   fontSize: fontSizes[1],
   fontWeight: fontWeights.bold,
-  lineHeight: lineHeights.tight,
+  lineHeight: lineHeights.normal,
   color: colors.gray[8],
   textDecoration: 'none',
+
+  ':hover': {
+    color: colors.indigo[8],
+  },
 })
 
 function renderStateIcon(issue) {
@@ -76,7 +79,9 @@ function Issue({ issue }) {
         </Div>
       </Div>
       <Div display="flex" flexDirection="column" alignItems="flex-start">
-        <IssueTitle to={issue.url}>{issue.title}</IssueTitle>
+        <IssueTitle href={issue.url} target="_blank" rel="noopener noreferrer">
+          {issue.title}
+        </IssueTitle>
         <Small
           marginTop={spacing[1]}
           fontSize={fontSizes[0]}

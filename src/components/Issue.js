@@ -3,6 +3,7 @@ import glamorous, { Div, Small } from 'glamorous'
 
 import { spacing, fontSizes, fontWeights, lineHeights, colors } from '../theme'
 import { joinSpacing } from '../utils/style'
+import { get } from '../utils/utils'
 import {
   IssueIcon,
   PullRequestIcon,
@@ -48,11 +49,10 @@ function renderStateIcon(issue) {
 }
 
 function renderStatusIcon(issue) {
-  const buildStatus =
-    issue.commits &&
-    issue.commits.commits[0].commit &&
-    issue.commits.commits[0].commit.status &&
-    issue.commits.commits[0].commit.status.state
+  const buildStatus = get(
+    ['commits', 'commits', 0, 'commit', 'status', 'state'],
+    issue,
+  )
 
   if (buildStatus === 'SUCCESS') {
     return <CheckIcon color={colors.green[8]} size={16} />

@@ -1,19 +1,20 @@
 import React from 'react'
 
-import { spacing } from '../theme'
 import PageContainer from './PageContainer'
+import Header from './Header'
+import Logo from './Logo'
 import AccountMenu from './AccountMenu'
 import Boards from './Boards'
-import Flex from './Flex'
 import Spacer from './Spacer'
 
 function HomePage() {
   return (
     <div>
-      <Flex padding={spacing[3]}>
+      <Header>
+        <Logo />
         <Spacer />
         <AccountMenu />
-      </Flex>
+      </Header>
       <PageContainer>
         <Boards />
       </PageContainer>

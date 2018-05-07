@@ -60,7 +60,7 @@ exports[`renders as icon 1`] = `
   cursor: pointer;
   user-select: none;
   transition: all 150ms ease-in-out;
-  color: rgba(0, 17, 34, 0.47);
+  color: #868e96;
   background-color: transparent;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -82,19 +82,25 @@ exports[`renders as icon 1`] = `
   vertical-align: middle;
 }
 
+.css-3 *,
+[data-css-3] * {
+  vector-effect: inherit;
+}
+
 <button
   class="css-0"
 >
   <svg
+    stroke="currentColor"
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
     height="24"
     viewBox="0 0 24 24"
     fill="none"
-    stroke="currentColor"
+    width="24"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
+    vector-effect="non-scaling-stroke"
     class="css-3"
   >
     <circle

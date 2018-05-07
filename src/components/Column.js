@@ -96,7 +96,11 @@ class Column extends Component {
               <ColumnContainer>
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
-                    <Flex alignItems="center">
+                    <Flex
+                      alignItems="center"
+                      padding={spacing[1]}
+                      paddingLeft={spacing[3]}
+                    >
                       <strong>{name || 'Untitled Column'}</strong>
                       <Spacer />
                       {column.name && (

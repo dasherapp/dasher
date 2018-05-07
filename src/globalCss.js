@@ -7,6 +7,7 @@ css.global('body', {
   margin: 0,
   fontFamily: fonts.sans,
   backgroundColor: colors.gray[1],
+  cursor: 'default',
 })
 
 css.global('*, *:before, *:after', {

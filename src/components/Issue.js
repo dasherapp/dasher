@@ -2,6 +2,7 @@ import React from 'react'
 import glamorous, { Div, Small } from 'glamorous'
 
 import { spacing, fontSizes, fontWeights, lineHeights, colors } from '../theme'
+import { joinSpacing } from '../utils/style'
 import {
   IssueIcon,
   PullRequestIcon,
@@ -10,6 +11,7 @@ import {
   XIcon,
   SmallCircleIcon,
 } from './Icon'
+import Flex from './Flex'
 
 const IssueTitle = glamorous.a({
   fontSize: fontSizes[1],
@@ -67,34 +69,33 @@ function renderStatusIcon(issue) {
 
 function Issue({ issue }) {
   return (
-    <Div
-      display="flex"
-      padding={spacing[4]}
-      borderBottom={`1px solid ${colors.gray[2]}`}
+    <Flex
+      padding={joinSpacing(spacing[3], spacing[4], spacing[3], spacing[3])}
+      borderTop={`1px solid ${colors.gray[2]}`}
     >
-      <Div display="flex" flexDirection="column" alignItems="center">
-        <Div marginRight={spacing[4]}>{renderStateIcon(issue)}</Div>
-        <Div marginRight={spacing[4]} marginTop={spacing[1]}>
-          {renderStatusIcon(issue)}
-        </Div>
-      </Div>
-      <Div display="flex" flexDirection="column" alignItems="flex-start">
+      <Flex flexDirection="column" alignItems="center" marginRight={spacing[3]}>
+        {renderStateIcon(issue)}
+        <Div marginTop={spacing[1]} />
+        {renderStatusIcon(issue)}
+      </Flex>
+      <Flex flexDirection="column" alignItems="flex-start">
         <IssueTitle href={issue.url} target="_blank" rel="noopener noreferrer">
           {issue.title}
         </IssueTitle>
         <Small
-          marginTop={spacing[1]}
+          marginTop={spacing[0]}
           fontSize={fontSizes[0]}
-          lineHeight={lineHeights.tight}
-          color={colors.gray[7]}
+          lineHeight={lineHeights.normal}
+          color={colors.gray[6]}
         >
-          #{issue.number} {issue.closed ? '' : 'opened'}
+          #{issue.number}
+          {issue.closed ? '' : ' opened'}
           {issue.author &&
-            `by
+            ` by
           ${issue.author.login}`}
         </Small>
-      </Div>
-    </Div>
+      </Flex>
+    </Flex>
   )
 }
 

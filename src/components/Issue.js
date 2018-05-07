@@ -9,7 +9,7 @@ import {
   MergeIcon,
   CheckIcon,
   XIcon,
-  CircleIcon,
+  SmallCircleIcon,
 } from './Icon'
 
 const IssueTitle = glamorous(Link)({
@@ -54,7 +54,7 @@ function renderStatusIcon(issue) {
   }
 
   if (buildStatus === 'PENDING') {
-    return <CircleIcon color={colors.yellow[8]} size={12} strokeWidth={3} />
+    return <SmallCircleIcon color={colors.yellow[8]} size={16} />
   }
 
   if (buildStatus === 'FAILURE') {

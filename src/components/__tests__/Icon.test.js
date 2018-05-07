@@ -7,7 +7,7 @@ import Icon, {
   MergeIcon,
   CheckIcon,
   XIcon,
-  CircleIcon,
+  SmallCircleIcon,
   EllipsesIcon,
   ChevronDownIcon,
   ArrowLeftIcon,
@@ -41,7 +41,7 @@ it('renders custom icons', () => {
       <MergeIcon />
       <CheckIcon />
       <XIcon />
-      <CircleIcon />
+      <SmallCircleIcon />
       <EllipsesIcon />
       <ChevronDownIcon />
       <ArrowLeftIcon />

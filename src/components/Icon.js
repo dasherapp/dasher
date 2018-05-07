@@ -84,10 +84,10 @@ export function XIcon(props) {
   )
 }
 
-export function CircleIcon(props) {
+export function SmallCircleIcon(props) {
   return (
     <Icon {...props}>
-      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
     </Icon>
   )
 }

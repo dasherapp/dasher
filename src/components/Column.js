@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { shape, string } from 'prop-types'
+import { shape, string, bool, func } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import glamorous from 'glamorous'
@@ -8,7 +8,7 @@ import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
 import DeleteColumnModal from './DeleteColumnModal'
 import { BOARD_QUERY } from './BoardPage'
-import { spacing, colors, radii, shadows } from '../theme'
+import { spacing, colors, radii, shadows, transition } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
 import Issues from './Issues'
@@ -38,15 +38,16 @@ const DELETE_COLUMN_MUTATION = gql`
 
 export const COLUMN_WIDTH = 330
 
-const ColumnContainer = glamorous.div({
+const ColumnContainer = glamorous.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,
   marginRight: spacing[3],
   backgroundColor: colors.white,
   borderRadius: radii[1],
-  boxShadow: shadows[1],
-})
+  boxShadow: props.isDragging ? shadows[3] : shadows[1],
+  transition: `box-shadow ${transition.duration} ${transition.easing}`,
+}))
 
 class Column extends Component {
   static propTypes = {
@@ -55,6 +56,8 @@ class Column extends Component {
       name: string.isRequired,
       query: string.isRequired,
     }).isRequired,
+    isDragging: bool.isRequired,
+    innerRef: func.isRequired,
   }
 
   state = {
@@ -63,10 +66,10 @@ class Column extends Component {
     isEditing: this.props.column.name ? false : true,
   }
 
-  toggleEdit = () => this.setState({ isEditing: !this.state.isEditing })
+  toggleEdit = () => this.setState(state => ({ isEditing: !state.isEditing }))
 
   render() {
-    const { boardId, column } = this.props
+    const { boardId, column, ...props } = this.props
     const { isEditing, name, query } = this.state
     return (
       <Mutation mutation={UPDATE_COLUMN_MUTATION}>
@@ -93,7 +96,7 @@ class Column extends Component {
             }}
           >
             {deleteColumn => (
-              <ColumnContainer>
+              <ColumnContainer {...props}>
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
                     <Flex

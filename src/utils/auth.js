@@ -30,7 +30,7 @@ export function logOut() {
 }
 
 export function isLoggedIn() {
-  return Boolean(getAuthToken())
+  return Boolean(getAuthToken()) && Boolean(getGithubToken())
 }
 
 export function setAuthToken(token) {

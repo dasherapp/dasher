@@ -30,6 +30,7 @@ async function authenticate(root, { githubCode }, context: Context, info) {
 
   return {
     token: jwt.sign({ userId: user.id }, process.env.APP_SECRET),
+    githubToken,
     user,
   }
 }

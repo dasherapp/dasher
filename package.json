@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "apollo-boost": "0.1.4",
+    "axios": "^0.18.0",
     "color-string": "^1.5.2",
     "fast-memoize": "^2.3.2",
     "glamor": "^2.20.40",

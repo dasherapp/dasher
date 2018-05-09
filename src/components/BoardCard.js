@@ -28,7 +28,7 @@ const CardLink = glamorous(Link)({
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,
   textDecoration: 'none',
-  color: toAlpha(colors.gray[9]),
+  color: toAlpha(colors.gray[8]),
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: shadows[1],

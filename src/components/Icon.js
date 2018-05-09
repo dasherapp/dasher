@@ -1,6 +1,14 @@
 import React from 'react'
-import { Svg } from 'glamorous'
+import glamorous from 'glamorous'
 import { oneOfType, number, string } from 'prop-types'
+
+const Svg = glamorous.svg({
+  verticalAlign: 'middle',
+
+  ' *': {
+    vectorEffect: 'inherit',
+  },
+})
 
 function Icon({ size, ...props }) {
   return (
@@ -14,7 +22,7 @@ function Icon({ size, ...props }) {
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
-      verticalAlign="middle"
+      vectorEffect="non-scaling-stroke"
       {...props}
     />
   )
@@ -76,10 +84,10 @@ export function XIcon(props) {
   )
 }
 
-export function CircleIcon(props) {
+export function SmallCircleIcon(props) {
   return (
     <Icon {...props}>
-      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
     </Icon>
   )
 }
@@ -90,6 +98,23 @@ export function EllipsesIcon(props) {
       <circle cx="12" cy="12" r="1" />
       <circle cx="19" cy="12" r="1" />
       <circle cx="5" cy="12" r="1" />
+    </Icon>
+  )
+}
+
+export function ChevronDownIcon(props) {
+  return (
+    <Icon {...props}>
+      <polyline points="6 9 12 15 18 9" />
+    </Icon>
+  )
+}
+
+export function ArrowLeftIcon(props) {
+  return (
+    <Icon {...props}>
+      <line x1="19" y1="12" x2="5" y2="12" />
+      <polyline points="12 19 5 12 12 5" />
     </Icon>
   )
 }

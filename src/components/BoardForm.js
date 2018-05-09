@@ -27,7 +27,12 @@ class BoardForm extends Component {
         <label>
           Name
           <div>
-            <input value={name} onChange={this.handleNameChange} required />
+            <input
+              value={name}
+              onChange={this.handleNameChange}
+              required
+              autoFocus
+            />
           </div>
         </label>
       </form>

@@ -3,7 +3,7 @@ import { render } from 'react-testing-library'
 import { MemoryRouter, Route } from 'react-router-dom'
 import 'dom-testing-library/extend-expect'
 
-import { AUTH_TOKEN_KEY } from '../../utils/auth'
+import { AUTH_TOKEN_KEY, GITHUB_TOKEN_KEY } from '../../utils/auth'
 import PrivateRoute from '../PrivateRoute'
 
 function renderRoutes() {
@@ -23,6 +23,7 @@ function renderRoutes() {
 
 it('renders correctly when logged in', () => {
   localStorage.setItem(AUTH_TOKEN_KEY, 'fake_auth_token')
+  localStorage.setItem(GITHUB_TOKEN_KEY, 'fake_github_token')
 
   const { queryByText } = renderRoutes()
 

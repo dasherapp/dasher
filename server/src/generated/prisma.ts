@@ -141,6 +141,10 @@ input BoardSubscriptionWhereInput {
   """
   OR: [BoardSubscriptionWhereInput!]
   """
+  Logical NOT on all given filters combined by AND.
+  """
+  NOT: [BoardSubscriptionWhereInput!]
+  """
   The subscription event gets dispatched when it's listed in mutation_in
   """
   mutation_in: [MutationType!]
@@ -217,6 +221,10 @@ input BoardWhereInput {
   Logical OR on all given filters.
   """
   OR: [BoardWhereInput!]
+  """
+  Logical NOT on all given filters combined by AND.
+  """
+  NOT: [BoardWhereInput!]
   id: ID
   """
   All values that are not equal to given value.
@@ -479,6 +487,10 @@ input ColumnSubscriptionWhereInput {
   """
   OR: [ColumnSubscriptionWhereInput!]
   """
+  Logical NOT on all given filters combined by AND.
+  """
+  NOT: [ColumnSubscriptionWhereInput!]
+  """
   The subscription event gets dispatched when it's listed in mutation_in
   """
   mutation_in: [MutationType!]
@@ -539,6 +551,10 @@ input ColumnWhereInput {
   Logical OR on all given filters.
   """
   OR: [ColumnWhereInput!]
+  """
+  Logical NOT on all given filters combined by AND.
+  """
+  NOT: [ColumnWhereInput!]
   id: ID
   """
   All values that are not equal to given value.
@@ -931,6 +947,10 @@ input UserSubscriptionWhereInput {
   """
   OR: [UserSubscriptionWhereInput!]
   """
+  Logical NOT on all given filters combined by AND.
+  """
+  NOT: [UserSubscriptionWhereInput!]
+  """
   The subscription event gets dispatched when it's listed in mutation_in
   """
   mutation_in: [MutationType!]
@@ -986,6 +1006,10 @@ input UserWhereInput {
   Logical OR on all given filters.
   """
   OR: [UserWhereInput!]
+  """
+  Logical NOT on all given filters combined by AND.
+  """
+  NOT: [UserWhereInput!]
   id: ID
   """
   All values that are not equal to given value.
@@ -1420,6 +1444,7 @@ export interface UserCreateOneWithoutBoardsInput {
 export interface UserWhereInput {
   AND?: UserWhereInput[] | UserWhereInput
   OR?: UserWhereInput[] | UserWhereInput
+  NOT?: UserWhereInput[] | UserWhereInput
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -1541,6 +1566,7 @@ export interface ColumnUpdateWithWhereUniqueWithoutBoardInput {
 export interface BoardSubscriptionWhereInput {
   AND?: BoardSubscriptionWhereInput[] | BoardSubscriptionWhereInput
   OR?: BoardSubscriptionWhereInput[] | BoardSubscriptionWhereInput
+  NOT?: BoardSubscriptionWhereInput[] | BoardSubscriptionWhereInput
   mutation_in?: MutationType[] | MutationType
   updatedFields_contains?: String
   updatedFields_contains_every?: String[] | String
@@ -1629,6 +1655,7 @@ export interface ColumnUpdateManyWithoutBoardInput {
 export interface ColumnSubscriptionWhereInput {
   AND?: ColumnSubscriptionWhereInput[] | ColumnSubscriptionWhereInput
   OR?: ColumnSubscriptionWhereInput[] | ColumnSubscriptionWhereInput
+  NOT?: ColumnSubscriptionWhereInput[] | ColumnSubscriptionWhereInput
   mutation_in?: MutationType[] | MutationType
   updatedFields_contains?: String
   updatedFields_contains_every?: String[] | String
@@ -1646,6 +1673,7 @@ export interface UserCreateWithoutBoardsInput {
 export interface UserSubscriptionWhereInput {
   AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
   OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput
   mutation_in?: MutationType[] | MutationType
   updatedFields_contains?: String
   updatedFields_contains_every?: String[] | String
@@ -1667,6 +1695,7 @@ export interface ColumnWhereUniqueInput {
 export interface ColumnWhereInput {
   AND?: ColumnWhereInput[] | ColumnWhereInput
   OR?: ColumnWhereInput[] | ColumnWhereInput
+  NOT?: ColumnWhereInput[] | ColumnWhereInput
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input
@@ -1793,6 +1822,7 @@ export interface UserWhereUniqueInput {
 export interface BoardWhereInput {
   AND?: BoardWhereInput[] | BoardWhereInput
   OR?: BoardWhereInput[] | BoardWhereInput
+  NOT?: BoardWhereInput[] | BoardWhereInput
   id?: ID_Input
   id_not?: ID_Input
   id_in?: ID_Input[] | ID_Input

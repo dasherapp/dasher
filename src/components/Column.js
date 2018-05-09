@@ -11,6 +11,7 @@ import { BOARD_QUERY } from './BoardPage'
 import { spacing, colors, radii, shadows, transition } from '../theme'
 import ColumnForm from './ColumnForm'
 import Button from './Button'
+import Issues from './Issues'
 import Dropdown, { MenuItem } from './Dropdown'
 import { EllipsesIcon } from './Icon'
 import Flex from './Flex'
@@ -34,14 +35,14 @@ const DELETE_COLUMN_MUTATION = gql`
     }
   }
 `
-export const COLUMN_WIDTH = 360
+
+export const COLUMN_WIDTH = 330
 
 const ColumnContainer = glamorous.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,
   marginRight: spacing[3],
-  padding: spacing[2],
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: props.isDragging ? shadows[3] : shadows[1],
@@ -98,7 +99,11 @@ class Column extends Component {
               <ColumnContainer {...props}>
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
-                    <Flex alignItems="center">
+                    <Flex
+                      alignItems="center"
+                      padding={spacing[1]}
+                      paddingLeft={spacing[3]}
+                    >
                       <strong>{name || 'Untitled Column'}</strong>
                       <Spacer />
                       {column.name && (
@@ -156,6 +161,7 @@ class Column extends Component {
                     }}
                   />
                 )}
+                <Issues query={query} />
               </ColumnContainer>
             )}
           </Mutation>

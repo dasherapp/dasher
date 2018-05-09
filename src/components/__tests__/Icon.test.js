@@ -7,8 +7,10 @@ import Icon, {
   MergeIcon,
   CheckIcon,
   XIcon,
-  CircleIcon,
+  SmallCircleIcon,
   EllipsesIcon,
+  ChevronDownIcon,
+  ArrowLeftIcon,
 } from '../Icon'
 
 it('renders without crashing', () => {
@@ -39,8 +41,10 @@ it('renders custom icons', () => {
       <MergeIcon />
       <CheckIcon />
       <XIcon />
-      <CircleIcon />
+      <SmallCircleIcon />
       <EllipsesIcon />
+      <ChevronDownIcon />
+      <ArrowLeftIcon />
     </div>,
   )
 

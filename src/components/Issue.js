@@ -63,6 +63,9 @@ function renderStatusIcon(issue) {
 
     case 'FAILURE':
       return <XIcon color={colors.red[8]} size={16} />
+
+    default:
+      return null
   }
 }
 

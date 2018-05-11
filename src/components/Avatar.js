@@ -1,9 +1,9 @@
 import { oneOfType, oneOf, string, number } from 'prop-types'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
 import { radii } from '../theme'
 
-const Avatar = glamorous.img(props => ({
+const Avatar = styled('img')(props => ({
   width: props.size,
   height: props.size,
   borderRadius: props.shape === 'square' ? radii[0] : '50%',

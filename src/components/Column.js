@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { shape, string, bool, func } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
 
 import ModalContainer from '../containers/ModalContainer'
@@ -38,7 +38,7 @@ const DELETE_COLUMN_MUTATION = gql`
 
 export const COLUMN_WIDTH = 330
 
-const ColumnContainer = glamorous.div(props => ({
+const ColumnContainer = styled('div')(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,

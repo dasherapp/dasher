@@ -1,8 +1,8 @@
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
 import { transition, focusStyle } from '../theme'
 
-const Clickable = glamorous('button', { propsAreCssOverrides: true })({
+const Clickable = styled.button({
   display: 'inline-block',
   margin: 0,
   padding: 0,

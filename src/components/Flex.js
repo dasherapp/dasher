@@ -1,6 +1,6 @@
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
-const Flex = glamorous('div', { propsAreCssOverrides: true })({
+const Flex = styled.div({
   display: 'flex',
 })
 

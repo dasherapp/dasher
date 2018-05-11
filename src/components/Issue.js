@@ -1,9 +1,7 @@
 import React from 'react'
-import { Div, Small } from 'glamorous'
 import styled from 'react-emotion'
 
 import { spacing, fontSizes, fontWeights, lineHeights, colors } from '../theme'
-import { joinSpacing } from '../utils/style'
 import { get } from '../utils/utils'
 import {
   IssueIcon,
@@ -73,30 +71,41 @@ function renderStatusIcon(issue) {
 function Issue({ issue }) {
   return (
     <Flex
-      padding={joinSpacing(spacing[3], spacing[4], spacing[3], spacing[3])}
-      borderTop={`1px solid ${colors.gray[2]}`}
+      css={{
+        padding: spacing[3],
+        paddingRight: spacing[4],
+        borderTop: `1px solid ${colors.gray[2]}`,
+      }}
     >
-      <Flex flexDirection="column" alignItems="center" marginRight={spacing[3]}>
+      <Flex
+        css={{
+          flexDirection: 'column',
+          alignItems: 'center',
+          marginRight: spacing[3],
+        }}
+      >
         {renderStateIcon(issue)}
-        <Div marginTop={spacing[1]} />
+        <div css={{ marginTop: spacing[1] }} />
         {renderStatusIcon(issue)}
       </Flex>
-      <Flex flexDirection="column" alignItems="flex-start">
+      <Flex css={{ flexDirection: 'column', alignItems: 'flex-start' }}>
         <IssueTitle href={issue.url} target="_blank" rel="noopener noreferrer">
           {issue.title}
         </IssueTitle>
-        <Small
-          marginTop={spacing[0]}
-          fontSize={fontSizes[0]}
-          lineHeight={lineHeights.normal}
-          color={colors.gray[6]}
+        <small
+          css={{
+            marginTop: spacing[0],
+            fontSize: fontSizes[0],
+            lineHeight: lineHeights.normal,
+            color: colors.gray[6],
+          }}
         >
           #{issue.number}
           {issue.closed ? '' : ' opened'}
           {issue.author &&
             ` by
           ${issue.author.login}`}
-        </Small>
+        </small>
       </Flex>
     </Flex>
   )

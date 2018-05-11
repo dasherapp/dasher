@@ -59,8 +59,10 @@ function AccountMenu({ history }) {
             )}
           >
             <Flex
-              flexDirection="column"
-              padding={joinSpacing(spacing[1], spacing[3])}
+              css={{
+                flexDirection: 'column',
+                padding: joinSpacing(spacing[1], spacing[3]),
+              }}
             >
               <Name>{data.me.name}</Name>
               <Login>{data.me.login}</Login>

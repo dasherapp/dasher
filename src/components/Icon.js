@@ -1,18 +1,9 @@
 import React from 'react'
-import glamorous from 'glamorous'
 import { oneOfType, number, string } from 'prop-types'
-
-const Svg = glamorous.svg({
-  verticalAlign: 'middle',
-
-  ' *': {
-    vectorEffect: 'inherit',
-  },
-})
 
 function Icon({ size, ...props }) {
   return (
-    <Svg
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
@@ -23,6 +14,13 @@ function Icon({ size, ...props }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       vectorEffect="non-scaling-stroke"
+      css={{
+        verticalAlign: 'middle',
+
+        ' *': {
+          vectorEffect: 'inherit',
+        },
+      }}
       {...props}
     />
   )

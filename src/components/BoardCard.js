@@ -51,7 +51,7 @@ function BoardCard({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <CardLink to={`/board/${board.id}`}>
-          <Flex alignItems="center" paddingLeft={spacing[1]}>
+          <Flex css={{ alignItems: 'center', paddingLeft: spacing[1] }}>
             <span>{board.name}</span>
             <Spacer />
             <Dropdown

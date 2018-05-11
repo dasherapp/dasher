@@ -16,7 +16,7 @@ import {
 import { joinSpacing, toAlpha } from '../utils/style'
 import { omitProps } from '../utils/utils'
 
-const MenuContainer = styled('div')({
+const MenuContainer = styled.div({
   position: 'relative',
   display: 'inline-block',
 })
@@ -84,7 +84,7 @@ export const MenuItem = styled(
   },
 })
 
-export const MenuDivider = styled('div')({
+export const MenuDivider = styled.div({
   display: 'block',
   width: '100%',
   height: 0,

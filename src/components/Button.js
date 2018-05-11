@@ -56,7 +56,7 @@ const kinds = {
   },
 }
 
-const Button = styled('button')(
+const Button = styled.button(
   {
     display: 'inline-block',
     padding: joinSpacing(spacing[1], spacing[2]),

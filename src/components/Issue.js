@@ -15,7 +15,7 @@ import {
 } from './Icon'
 import Flex from './Flex'
 
-const IssueTitle = styled('a')({
+const IssueTitle = styled.a({
   fontSize: fontSizes[1],
   fontWeight: fontWeights.bold,
   lineHeight: lineHeights.normal,

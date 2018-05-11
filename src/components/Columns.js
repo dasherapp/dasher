@@ -35,12 +35,12 @@ const UPDATE_COLUMN_MUTATION = gql`
   }
 `
 
-const HorizontalScroll = styled('div')({
+const HorizontalScroll = styled.div({
   display: 'flex',
   overflowX: 'auto',
 })
 
-const ColumnsContainer = styled('div')({
+const ColumnsContainer = styled.div({
   display: 'flex',
   alignItems: 'flex-start',
   padding: spacing[3],

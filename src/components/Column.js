@@ -38,7 +38,7 @@ const DELETE_COLUMN_MUTATION = gql`
 
 export const COLUMN_WIDTH = 330
 
-const ColumnContainer = styled('div')(props => ({
+const ColumnContainer = styled.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,

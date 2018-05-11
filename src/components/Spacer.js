@@ -1,6 +1,6 @@
 import styled from 'react-emotion'
 
-const Spacer = styled('div')({
+const Spacer = styled.div({
   margin: '0 auto',
 })
 

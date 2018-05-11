@@ -28,12 +28,12 @@ const textStyle = {
   whiteSpace: 'nowrap',
 }
 
-const Name = styled('span')(textStyle, {
+const Name = styled.span(textStyle, {
   fontSize: fontSizes[2],
   color: colors.white,
 })
 
-const Login = styled('span')(textStyle, {
+const Login = styled.span(textStyle, {
   fontSize: fontSizes[1],
   color: toAlpha(colors.gray[6], colors.black),
 })

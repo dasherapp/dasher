@@ -13,7 +13,7 @@ import {
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
 
-const SkeletonButton = styled('button')(props => ({
+const SkeletonButton = styled.button(props => ({
   width: props.width,
   padding: joinSpacing(spacing[4], 0),
   fontFamily: 'inherit',

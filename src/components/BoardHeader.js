@@ -15,7 +15,7 @@ import ButtonLink from './ButtonLink'
 import AccountMenu from './AccountMenu'
 import Spacer from './Spacer'
 
-const BoardName = styled('h1')({
+const BoardName = styled.h1({
   marginRight: spacing[0],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,

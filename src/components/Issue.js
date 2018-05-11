@@ -1,5 +1,6 @@
 import React from 'react'
 import glamorous, { Div, Small } from 'glamorous'
+import styled from 'react-emotion'
 
 import { spacing, fontSizes, fontWeights, lineHeights, colors } from '../theme'
 import { joinSpacing } from '../utils/style'
@@ -14,7 +15,7 @@ import {
 } from './Icon'
 import Flex from './Flex'
 
-const IssueTitle = glamorous.a({
+const IssueTitle = styled('a')({
   fontSize: fontSizes[1],
   fontWeight: fontWeights.bold,
   lineHeight: lineHeights.normal,

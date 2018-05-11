@@ -1,10 +1,10 @@
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { oneOfType, number, string } from 'prop-types'
 
 import { toPx } from '../utils/style'
 import { spacing } from '../theme'
 
-const Grid = glamorous.div(props => ({
+const Grid = styled('div')(props => ({
   display: 'grid',
   alignItems: props.align,
   gridGap: props.gap,

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { oneOf, oneOfType, func, string, number } from 'prop-types'
+import styled from 'react-emotion'
 import glamorous from 'glamorous'
 import posed from 'react-pose'
 
@@ -14,7 +15,7 @@ import {
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
 
-const MenuContainer = glamorous.div({
+const MenuContainer = styled('div')({
   position: 'relative',
   display: 'inline-block',
 })
@@ -82,7 +83,7 @@ export const MenuItem = glamorous('button', {
   },
 })
 
-export const MenuDivider = glamorous.div({
+export const MenuDivider = styled('div')({
   display: 'block',
   width: '100%',
   height: 0,

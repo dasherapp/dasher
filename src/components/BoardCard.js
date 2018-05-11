@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
 
 import {
@@ -23,7 +23,7 @@ import Flex from './Flex'
 import Spacer from './Spacer'
 import Dropdown, { MenuItem } from './Dropdown'
 
-const CardLink = glamorous(Link)({
+const CardLink = styled(Link)({
   padding: spacing[3],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,

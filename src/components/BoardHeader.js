@@ -1,5 +1,5 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
 
 import { fontSizes, fontWeights, colors, spacing } from '../theme'
@@ -15,7 +15,7 @@ import ButtonLink from './ButtonLink'
 import AccountMenu from './AccountMenu'
 import Spacer from './Spacer'
 
-const BoardName = glamorous.h1({
+const BoardName = styled('h1')({
   marginRight: spacing[0],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,

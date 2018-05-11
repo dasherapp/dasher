@@ -1,5 +1,5 @@
 import { bool, func, oneOf } from 'prop-types'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
 import {
   radii,
@@ -56,7 +56,7 @@ const kinds = {
   },
 }
 
-const Button = glamorous.button(
+const Button = styled('button')(
   {
     display: 'inline-block',
     padding: joinSpacing(spacing[1], spacing[2]),

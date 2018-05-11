@@ -1,5 +1,5 @@
 import React from 'react'
-import glamorous, { Div, Small } from 'glamorous'
+import { Div, Small } from 'glamorous'
 import styled from 'react-emotion'
 
 import { spacing, fontSizes, fontWeights, lineHeights, colors } from '../theme'

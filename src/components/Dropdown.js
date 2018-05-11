@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { oneOf, oneOfType, func, string, number } from 'prop-types'
 import styled from 'react-emotion'
-import glamorous from 'glamorous'
 import posed from 'react-pose'
+import { withProps } from 'recompose'
 
 import {
   spacing,
@@ -14,6 +14,7 @@ import {
   transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
+import { omitProps } from '../utils/utils'
 
 const MenuContainer = styled('div')({
   position: 'relative',
@@ -30,9 +31,9 @@ const MenuTransition = posed.div({
   },
 })
 
-const Menu = glamorous(MenuTransition, {
-  filterProps: ['minWidth', 'align', 'offsetTop'],
-})(props => ({
+const Menu = styled(
+  omitProps(['minWidth', 'align', 'offsetTop'])(MenuTransition),
+)(props => ({
   position: 'absolute',
   [props.align]: 0,
   display: 'flex',
@@ -60,9 +61,9 @@ Menu.defaultProps = {
   offsetTop: spacing[0],
 }
 
-export const MenuItem = glamorous('button', {
-  withProps: { role: 'menuitem', tabIndex: -1 },
-})({
+export const MenuItem = styled(
+  withProps({ role: 'menuitem', tabIndex: -1 })('button'),
+)({
   display: 'block',
   width: '100%',
   padding: joinSpacing(spacing[1], spacing[3]),

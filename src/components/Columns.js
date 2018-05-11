@@ -5,8 +5,9 @@ import glamorous from 'glamorous'
 import { gql } from 'apollo-boost'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 
-import { BOARD_QUERY } from './BoardPage'
 import { spacing } from '../theme'
+import { reorder } from '../utils/utils'
+import { BOARD_QUERY } from './BoardPage'
 import Column, { COLUMN_WIDTH } from './Column'
 import SkeletonButton from './SkeletonButton'
 
@@ -44,13 +45,6 @@ const ColumnsContainer = glamorous.div({
   alignItems: 'flex-start',
   padding: spacing[3],
 })
-
-function reorder(list, from, to) {
-  const listCopy = [...list]
-  const [removed] = listCopy.splice(from, 1)
-  listCopy.splice(to, 0, removed)
-  return listCopy
-}
 
 class Columns extends Component {
   static propTypes = {

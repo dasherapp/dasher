@@ -14,7 +14,7 @@ import {
   transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
-import { createComponent } from '../utils/utils'
+import { cleanElement } from '../utils/utils'
 
 const MenuContainer = styled.div({
   position: 'relative',
@@ -32,7 +32,7 @@ const MenuTransition = posed.div({
 })
 
 const Menu = styled(
-  createComponent({ type: MenuTransition, includeProps: ['pose'] }),
+  cleanElement({ type: MenuTransition, includeProps: ['pose'] }),
 )(props => ({
   position: 'absolute',
   [props.align]: 0,

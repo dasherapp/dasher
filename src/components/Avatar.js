@@ -2,10 +2,10 @@ import { oneOfType, oneOf, string, number } from 'prop-types'
 import styled from 'react-emotion'
 
 import { radii } from '../theme'
-import { createComponent } from '../utils/utils'
+import { cleanElement } from '../utils/utils'
 
 const Avatar = styled(
-  createComponent({ type: 'img', excludeProps: ['size', 'shape'] }),
+  cleanElement({ type: 'img', excludeProps: ['size', 'shape'] }),
 )(props => ({
   width: props.size,
   height: props.size,

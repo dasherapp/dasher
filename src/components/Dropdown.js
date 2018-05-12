@@ -14,7 +14,7 @@ import {
   transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
-import { omitProps } from '../utils/utils'
+import { createComponent } from '../utils/utils'
 
 const MenuContainer = styled.div({
   position: 'relative',
@@ -32,7 +32,7 @@ const MenuTransition = posed.div({
 })
 
 const Menu = styled(
-  omitProps(['minWidth', 'align', 'offsetTop'])(MenuTransition),
+  createComponent({ type: MenuTransition, includeProps: ['pose'] }),
 )(props => ({
   position: 'absolute',
   [props.align]: 0,
@@ -61,30 +61,30 @@ Menu.defaultProps = {
   offsetTop: spacing[0],
 }
 
-export const MenuItem = styled(
-  withProps({ role: 'menuitem', tabIndex: -1 })('button'),
-)({
-  display: 'block',
-  width: '100%',
-  padding: joinSpacing(spacing[1], spacing[3]),
-  fontFamily: 'inherit',
-  fontSize: fontSizes[1],
-  lineHeight: lineHeights.tight,
-  textAlign: 'left',
-  color: colors.white,
-  backgroundColor: 'transparent',
-  border: 0,
-  outline: 0,
-  cursor: 'pointer',
-  whiteSpace: 'nowrap',
-  transition: `background-color ${transition.duration} ${transition.easing}`,
+const MenuItem = withProps({ role: 'menuitem', tabIndex: -1 })(
+  styled.button({
+    display: 'block',
+    width: '100%',
+    padding: joinSpacing(spacing[1], spacing[3]),
+    fontFamily: 'inherit',
+    fontSize: fontSizes[1],
+    lineHeight: lineHeights.tight,
+    textAlign: 'left',
+    color: colors.white,
+    backgroundColor: 'transparent',
+    border: 0,
+    outline: 0,
+    cursor: 'pointer',
+    whiteSpace: 'nowrap',
+    transition: `background-color ${transition.duration} ${transition.easing}`,
 
-  ':hover,:focus': {
-    backgroundColor: toAlpha(colors.gray[8], colors.black),
-  },
-})
+    ':hover,:focus': {
+      backgroundColor: toAlpha(colors.gray[8], colors.black),
+    },
+  }),
+)
 
-export const MenuDivider = styled.div({
+const MenuDivider = styled.div({
   display: 'block',
   width: '100%',
   height: 0,
@@ -289,4 +289,5 @@ class Dropdown extends Component {
   }
 }
 
+export { MenuItem, MenuDivider }
 export default Dropdown

@@ -12,8 +12,11 @@ import {
   breakpoints,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
+import { createComponent } from '../utils/utils'
 
-const SkeletonButton = styled.button(props => ({
+const SkeletonButton = styled(
+  createComponent({ type: 'button', excludeProps: ['width'] }),
+)(props => ({
   width: props.width,
   padding: joinSpacing(spacing[4], 0),
   fontFamily: 'inherit',

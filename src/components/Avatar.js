@@ -2,8 +2,11 @@ import { oneOfType, oneOf, string, number } from 'prop-types'
 import styled from 'react-emotion'
 
 import { radii } from '../theme'
+import { createComponent } from '../utils/utils'
 
-const Avatar = styled.img(props => ({
+const Avatar = styled(
+  createComponent({ type: 'img', excludeProps: ['size', 'shape'] }),
+)(props => ({
   width: props.size,
   height: props.size,
   borderRadius: props.shape === 'square' ? radii[0] : '50%',

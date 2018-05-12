@@ -12,6 +12,7 @@ import {
   focusStyle,
 } from '../theme'
 import { joinSpacing, toAlpha, propStyles } from '../utils/style'
+import { createComponent } from '../utils/utils'
 
 const kinds = {
   primary: {
@@ -56,7 +57,9 @@ const kinds = {
   },
 }
 
-const Button = styled.button(
+const Button = styled(
+  createComponent({ type: 'button', excludeProps: ['kind'] }),
+)(
   {
     display: 'inline-block',
     padding: joinSpacing(spacing[1], spacing[2]),
@@ -73,7 +76,7 @@ const Button = styled.button(
     userSelect: 'none',
     transition: `all ${transition.duration} ${transition.easing}`,
   },
-  ({ kind }) => kinds[kind],
+  props => kinds[props.kind],
   propStyles({
     disabled: {
       opacity: 0.5,

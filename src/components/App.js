@@ -1,15 +1,14 @@
 import React, { Fragment } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'unstated'
-
 import Apollo from './Apollo'
-import PrivateRoute from './PrivateRoute'
-import ModalRoot from './ModalRoot'
-import HomePage from './HomePage'
 import BoardPage from './BoardPage'
-import LoginPage from './LoginPage'
 import CallbackPage from './CallbackPage'
+import HomePage from './HomePage'
+import LoginPage from './LoginPage'
+import ModalRoot from './ModalRoot'
 import NotFoundPage from './NotFoundPage'
+import PrivateRoute from './PrivateRoute'
 
 function App() {
   return (

@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { colors } from '../theme'
 
 function Logo({ size, ...props }) {

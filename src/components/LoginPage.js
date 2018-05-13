@@ -1,8 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-
-import { getGithubAuthUrl } from '../utils/github'
 import { isLoggedIn } from '../utils/auth'
+import { getGithubAuthUrl } from '../utils/github'
 import Button from './Button'
 
 function goToGithubAuthPage() {

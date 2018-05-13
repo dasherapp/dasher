@@ -1,15 +1,14 @@
-import React from 'react'
-import { shape, func } from 'prop-types'
-import styled from 'react-emotion'
 import { gql } from 'apollo-boost'
+import { func, shape } from 'prop-types'
+import React from 'react'
 import { Query } from 'react-apollo'
+import styled from 'react-emotion'
 import { withRouter } from 'react-router-dom'
-
-import { fontSizes, colors, spacing, lineHeights } from '../theme'
-import { toAlpha, joinSpacing } from '../utils/style'
+import { colors, fontSizes, lineHeights, spacing } from '../theme'
 import { logOut } from '../utils/auth'
+import { joinSpacing, toAlpha } from '../utils/style'
 import AvatarButton from './AvatarButton'
-import Dropdown, { MenuItem, MenuDivider } from './Dropdown'
+import Dropdown, { MenuDivider, MenuItem } from './Dropdown'
 import Flex from './Flex'
 
 const ME_QUERY = gql`

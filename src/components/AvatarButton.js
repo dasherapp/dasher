@@ -1,9 +1,8 @@
+import { func, number, oneOf, oneOfType, string } from 'prop-types'
 import React from 'react'
-import { oneOfType, oneOf, string, number, func } from 'prop-types'
-
 import { radii } from '../theme'
-import Clickable from './Clickable'
 import Avatar from './Avatar'
+import Clickable from './Clickable'
 
 const AvatarButton = React.forwardRef(({ src, size, shape, ...props }, ref) => {
   return (

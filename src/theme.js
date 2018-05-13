@@ -1,6 +1,5 @@
 import openColor from 'open-color'
-
-import { toMediaQuery, toAlpha } from './utils/style'
+import { toAlpha, toMediaQuery } from './utils/style'
 
 export const breakpoints = {
   sm: toMediaQuery(32),

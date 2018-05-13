@@ -1,7 +1,7 @@
-import React from 'react'
+import isPropValid from '@emotion/is-prop-valid'
 import omit from 'lodash.omit'
 import pickBy from 'lodash.pickby'
-import isPropValid from '@emotion/is-prop-valid'
+import React from 'react'
 
 export const get = (path, object) =>
   path.reduce(

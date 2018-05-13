@@ -1,8 +1,7 @@
+import { number, oneOfType, string } from 'prop-types'
 import styled from 'react-emotion'
-import { oneOfType, number, string } from 'prop-types'
-
-import { toPx } from '../utils/style'
 import { spacing } from '../theme'
+import { toPx } from '../utils/style'
 
 const Grid = styled.div(props => ({
   display: 'grid',

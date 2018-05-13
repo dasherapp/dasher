@@ -1,15 +1,14 @@
-import { number, oneOfType, string, func } from 'prop-types'
+import { func, number, oneOfType, string } from 'prop-types'
 import styled from 'react-emotion'
-
 import {
-  spacing,
+  breakpoints,
+  colors,
   fontSizes,
   fontWeights,
   lineHeights,
-  colors,
   radii,
+  spacing,
   transition,
-  breakpoints,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
 import { cleanElement } from '../utils/utils'

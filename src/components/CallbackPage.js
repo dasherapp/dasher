@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
 import qs from 'qs'
-
+import React, { Component } from 'react'
 import { logIn } from '../utils/auth'
 
 class CallbackPage extends Component {

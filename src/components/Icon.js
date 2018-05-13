@@ -1,5 +1,5 @@
+import { number, oneOfType, string } from 'prop-types'
 import React from 'react'
-import { oneOfType, number, string } from 'prop-types'
 
 function Icon({ size, ...props }) {
   return (

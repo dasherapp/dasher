@@ -1,15 +1,14 @@
-import React from 'react'
 import { gql } from 'apollo-boost'
+import React from 'react'
 import { Query } from 'react-apollo'
 import { Subscribe } from 'unstated'
-
-import { spacing } from '../theme'
 import ModalContainer from '../containers/ModalContainer'
-import CreateBoardModal from './CreateBoardModal'
+import { spacing } from '../theme'
 import BoardCard from './BoardCard'
-import Grid from './Grid'
 import Button from './Button'
+import CreateBoardModal from './CreateBoardModal'
 import Flex from './Flex'
+import Grid from './Grid'
 import SkeletonButton from './SkeletonButton'
 
 export const BOARDS_QUERY = gql`

@@ -1,6 +1,5 @@
 import axios from 'axios'
 import qs from 'qs'
-
 import { getGithubToken } from './auth'
 
 const GITHUB_ENDPOINT = 'https://api.github.com/graphql'

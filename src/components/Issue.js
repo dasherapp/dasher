@@ -1,17 +1,16 @@
 import React from 'react'
 import styled from 'react-emotion'
-
-import { spacing, fontSizes, fontWeights, lineHeights, colors } from '../theme'
+import { colors, fontSizes, fontWeights, lineHeights, spacing } from '../theme'
 import { get } from '../utils/utils'
-import {
-  IssueIcon,
-  PullRequestIcon,
-  MergeIcon,
-  CheckIcon,
-  XIcon,
-  SmallCircleIcon,
-} from './Icon'
 import Flex from './Flex'
+import {
+  CheckIcon,
+  IssueIcon,
+  MergeIcon,
+  PullRequestIcon,
+  SmallCircleIcon,
+  XIcon,
+} from './Icon'
 
 const IssueTitle = styled.a({
   fontSize: fontSizes[1],

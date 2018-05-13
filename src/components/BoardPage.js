@@ -1,11 +1,10 @@
-import React from 'react'
-import { shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
+import { shape, string } from 'prop-types'
+import React from 'react'
 import { Query } from 'react-apollo'
-
-import NotFoundPage from './NotFoundPage'
 import BoardHeader from './BoardHeader'
 import Columns from './Columns'
+import NotFoundPage from './NotFoundPage'
 
 export const BOARD_QUERY = gql`
   query BoardQuery($id: ID!) {

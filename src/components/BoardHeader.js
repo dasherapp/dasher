@@ -1,19 +1,18 @@
 import React from 'react'
 import styled from 'react-emotion'
-import { Subscribe } from 'unstated'
 import { Link } from 'react-router-dom'
-
-import { fontSizes, fontWeights, colors, spacing } from '../theme'
-import { toAlpha } from '../utils/style'
+import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import UpdateBoardModal from './UpdateBoardModal'
-import DeleteBoardModal from './DeleteBoardModal'
-import Header from './Header'
-import Dropdown, { MenuItem } from './Dropdown'
-import { ChevronDownIcon, ArrowLeftIcon } from './Icon'
-import Button from './Button'
+import { colors, fontSizes, fontWeights, spacing } from '../theme'
+import { toAlpha } from '../utils/style'
 import AccountMenu from './AccountMenu'
+import Button from './Button'
+import DeleteBoardModal from './DeleteBoardModal'
+import Dropdown, { MenuItem } from './Dropdown'
+import Header from './Header'
+import { ArrowLeftIcon, ChevronDownIcon } from './Icon'
 import Spacer from './Spacer'
+import UpdateBoardModal from './UpdateBoardModal'
 
 const BoardName = styled.h1({
   marginRight: spacing[0],

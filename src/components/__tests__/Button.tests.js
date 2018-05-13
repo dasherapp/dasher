@@ -1,6 +1,5 @@
 import React from 'react'
-import { renderIntoDocument, render, fireEvent } from 'react-testing-library'
-
+import { fireEvent, render, renderIntoDocument } from 'react-testing-library'
 import Button from '../Button'
 import { EllipsesIcon } from '../Icon'
 

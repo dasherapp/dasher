@@ -1,11 +1,10 @@
-import React, { Fragment } from 'react'
-import { func, shape, string } from 'prop-types'
 import { gql } from 'apollo-boost'
+import { func, shape, string } from 'prop-types'
+import React, { Fragment } from 'react'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
-
-import Button from './Button'
 import { BOARD_QUERY } from './BoardPage'
+import Button from './Button'
 
 const DELETE_COLUMN_MUTATION = gql`
   mutation DeleteColumnMutation($id: ID!) {

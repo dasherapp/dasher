@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, container } from 'react-testing-library'
+import { render } from 'react-testing-library'
 import Avatar from '../Avatar'
 
 it('renders without crashing', () => {

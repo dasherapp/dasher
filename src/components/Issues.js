@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
 import { string } from 'prop-types'
-
-import Button from './Button'
+import React, { Component } from 'react'
 import { searchIssues } from '../utils/github'
+import Button from './Button'
 import Issue from './Issue'
 
 class Issues extends Component {

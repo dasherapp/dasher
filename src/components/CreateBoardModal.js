@@ -1,13 +1,12 @@
-import React from 'react'
-import { func } from 'prop-types'
 import { gql } from 'apollo-boost'
+import { func } from 'prop-types'
+import React from 'react'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
 import { withRouter } from 'react-router-dom'
-
 import BoardForm from './BoardForm'
-import Button from './Button'
 import { BOARDS_QUERY } from './Boards'
+import Button from './Button'
 
 const CREATE_BOARD_MUTATION = gql`
   mutation CreateBoardMutation($name: String!) {

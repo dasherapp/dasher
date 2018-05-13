@@ -1,27 +1,26 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'react-emotion'
+import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
-
+import ModalContainer from '../containers/ModalContainer'
 import {
   breakpoints,
-  spacing,
   colors,
-  radii,
   fontSizes,
-  shadows,
-  transition,
   fontWeights,
+  radii,
+  shadows,
+  spacing,
+  transition,
 } from '../theme'
 import { toAlpha } from '../utils/style'
-import ModalContainer from '../containers/ModalContainer'
-import UpdateBoardModal from './UpdateBoardModal'
-import DeleteBoardModal from './DeleteBoardModal'
 import Button from './Button'
-import { EllipsesIcon } from './Icon'
-import Flex from './Flex'
-import Spacer from './Spacer'
+import DeleteBoardModal from './DeleteBoardModal'
 import Dropdown, { MenuItem } from './Dropdown'
+import Flex from './Flex'
+import { EllipsesIcon } from './Icon'
+import Spacer from './Spacer'
+import UpdateBoardModal from './UpdateBoardModal'
 
 const CardLink = styled(Link)({
   padding: spacing[3],
@@ -57,7 +56,10 @@ function BoardCard({ board }) {
             <Dropdown
               renderMenuButton={({ getMenuButtonProps }) => (
                 <Button
-                  {...getMenuButtonProps({ refKey: 'innerRef', buttonStyle: 'icon' })}
+                  {...getMenuButtonProps({
+                    refKey: 'innerRef',
+                    buttonStyle: 'icon',
+                  })}
                 >
                   <EllipsesIcon />
                 </Button>

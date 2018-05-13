@@ -1,6 +1,5 @@
 import styled from 'react-emotion'
-
-import { transition, focusStyle } from '../theme'
+import { focusStyle, transition } from '../theme'
 
 const Clickable = styled.button({
   display: 'inline-block',

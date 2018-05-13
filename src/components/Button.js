@@ -1,17 +1,16 @@
 import { bool, func, oneOf } from 'prop-types'
 import styled from 'react-emotion'
-
 import {
-  radii,
   colors,
+  focusStyle,
   fontSizes,
   fontWeights,
   lineHeights,
+  radii,
   spacing,
   transition,
-  focusStyle,
 } from '../theme'
-import { joinSpacing, toAlpha, propStyles } from '../utils/style'
+import { joinSpacing, propStyles, toAlpha } from '../utils/style'
 import { cleanElement } from '../utils/utils'
 
 const buttonStyles = {

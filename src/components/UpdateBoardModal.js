@@ -1,11 +1,10 @@
-import React from 'react'
-import { func, string, shape } from 'prop-types'
 import { gql } from 'apollo-boost'
+import { func, shape, string } from 'prop-types'
+import React from 'react'
 import { Mutation } from 'react-apollo'
 import Modal from 'react-modal'
-
-import Button from './Button'
 import BoardForm from './BoardForm'
+import Button from './Button'
 
 const UPDATE_BOARD_MUTATION = gql`
   mutation UpdateBoardMutation($boardId: ID!, $name: String) {

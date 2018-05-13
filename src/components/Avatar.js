@@ -1,6 +1,5 @@
-import { oneOfType, oneOf, string, number } from 'prop-types'
+import { number, oneOf, oneOfType, string } from 'prop-types'
 import styled from 'react-emotion'
-
 import { radii } from '../theme'
 import { cleanElement } from '../utils/utils'
 

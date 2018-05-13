@@ -1,6 +1,5 @@
 import styled from 'react-emotion'
-
-import { spacing, colors } from '../theme'
+import { colors, spacing } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
 
 const Header = styled.div({

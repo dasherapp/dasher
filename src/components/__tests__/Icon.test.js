@@ -1,16 +1,15 @@
 import React from 'react'
 import { render } from 'react-testing-library'
-
 import Icon, {
-  IssueIcon,
-  PullRequestIcon,
-  MergeIcon,
-  CheckIcon,
-  XIcon,
-  SmallCircleIcon,
-  EllipsesIcon,
-  ChevronDownIcon,
   ArrowLeftIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  EllipsesIcon,
+  IssueIcon,
+  MergeIcon,
+  PullRequestIcon,
+  SmallCircleIcon,
+  XIcon,
 } from '../Icon'
 
 it('renders without crashing', () => {

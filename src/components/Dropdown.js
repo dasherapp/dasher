@@ -1,15 +1,14 @@
+import { func, number, oneOf, oneOfType, string } from 'prop-types'
 import React, { Component } from 'react'
-import { oneOf, oneOfType, func, string, number } from 'prop-types'
 import styled from 'react-emotion'
 import posed from 'react-pose'
-
 import {
-  spacing,
   colors,
-  radii,
   fontSizes,
   lineHeights,
+  radii,
   shadows,
+  spacing,
   transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'

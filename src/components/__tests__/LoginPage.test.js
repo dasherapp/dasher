@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react'
-import { render } from 'react-testing-library'
-import { MemoryRouter, Route } from 'react-router-dom'
 import 'dom-testing-library/extend-expect'
-
+import React, { Fragment } from 'react'
+import { MemoryRouter, Route } from 'react-router-dom'
+import { render } from 'react-testing-library'
 import { AUTH_TOKEN_KEY, GITHUB_TOKEN_KEY } from '../../utils/auth'
 import LoginPage from '../LoginPage'
 

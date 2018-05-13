@@ -1,6 +1,5 @@
+import { func, shape, string } from 'prop-types'
 import React from 'react'
-import { string, shape, func } from 'prop-types'
-
 import Button from './Button'
 
 function ColumnForm({ formState, onChange, onSubmit, onCancel }) {

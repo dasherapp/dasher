@@ -1,6 +1,5 @@
 import { injectGlobal } from 'react-emotion'
-
-import { fonts, colors } from './theme'
+import { colors, fonts } from './theme'
 
 injectGlobal({
   body: {

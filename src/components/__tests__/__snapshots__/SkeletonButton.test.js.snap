@@ -1,123 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders with custom number width 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   width: 360px;
   padding: 24px 0;
   font-family: inherit;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: rgba(0, 17, 34, 0.47);
+  color: rgba(0,17,34,0.47);
   background-color: transparent;
-  border: 2px dashed rgba(0, 31, 62, 0.19);
+  border: 2px dashed rgba(0,31,62,0.19);
   border-radius: 6px;
   cursor: pointer;
   outline: 0;
-  transition: background-color 150ms ease-in-out;
   -webkit-transition: background-color 150ms ease-in-out;
-  -moz-transition: background-color 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out;
 }
 
-.css-0:hover,
-[data-css-0]:hover,
-.css-0:focus,
-[data-css-0]:focus {
-  background-color: rgba(0, 36, 73, 0.05);
+.emotion-0:hover,
+.emotion-0:focus {
+  background-color: rgba(0,36,73,0.05);
 }
 
-@media screen and (min-width: 32em) {
-  .css-0,
-  [data-css-0] {
+@media screen and (min-width:32em) {
+  .emotion-0 {
     padding: 64px 0;
   }
 }
 
 <button
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Custom Width SkeletonButton
 </button>
 `;
 
 exports[`renders with custom percentage width 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   width: 100%;
   padding: 24px 0;
   font-family: inherit;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: rgba(0, 17, 34, 0.47);
+  color: rgba(0,17,34,0.47);
   background-color: transparent;
-  border: 2px dashed rgba(0, 31, 62, 0.19);
+  border: 2px dashed rgba(0,31,62,0.19);
   border-radius: 6px;
   cursor: pointer;
   outline: 0;
-  transition: background-color 150ms ease-in-out;
   -webkit-transition: background-color 150ms ease-in-out;
-  -moz-transition: background-color 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out;
 }
 
-.css-0:hover,
-[data-css-0]:hover,
-.css-0:focus,
-[data-css-0]:focus {
-  background-color: rgba(0, 36, 73, 0.05);
+.emotion-0:hover,
+.emotion-0:focus {
+  background-color: rgba(0,36,73,0.05);
 }
 
-@media screen and (min-width: 32em) {
-  .css-0,
-  [data-css-0] {
+@media screen and (min-width:32em) {
+  .emotion-0 {
     padding: 64px 0;
   }
 }
 
 <button
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Custom Width SkeletonButton
 </button>
 `;
 
 exports[`renders without crashing 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   width: 100%;
   padding: 24px 0;
   font-family: inherit;
   font-weight: 600;
   font-size: 16px;
   line-height: 1.5;
-  color: rgba(0, 17, 34, 0.47);
+  color: rgba(0,17,34,0.47);
   background-color: transparent;
-  border: 2px dashed rgba(0, 31, 62, 0.19);
+  border: 2px dashed rgba(0,31,62,0.19);
   border-radius: 6px;
   cursor: pointer;
   outline: 0;
-  transition: background-color 150ms ease-in-out;
   -webkit-transition: background-color 150ms ease-in-out;
-  -moz-transition: background-color 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out;
 }
 
-.css-0:hover,
-[data-css-0]:hover,
-.css-0:focus,
-[data-css-0]:focus {
-  background-color: rgba(0, 36, 73, 0.05);
+.emotion-0:hover,
+.emotion-0:focus {
+  background-color: rgba(0,36,73,0.05);
 }
 
-@media screen and (min-width: 32em) {
-  .css-0,
-  [data-css-0] {
+@media screen and (min-width:32em) {
+  .emotion-0 {
     padding: 64px 0;
   }
 }
 
 <button
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Test SkeletonButton
 </button>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { shape, func } from 'prop-types'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
 import { withRouter } from 'react-router-dom'
@@ -28,12 +28,12 @@ const textStyle = {
   whiteSpace: 'nowrap',
 }
 
-const Name = glamorous.span(textStyle, {
+const Name = styled.span(textStyle, {
   fontSize: fontSizes[2],
   color: colors.white,
 })
 
-const Login = glamorous.span(textStyle, {
+const Login = styled.span(textStyle, {
   fontSize: fontSizes[1],
   color: toAlpha(colors.gray[6], colors.black),
 })
@@ -59,8 +59,10 @@ function AccountMenu({ history }) {
             )}
           >
             <Flex
-              flexDirection="column"
-              padding={joinSpacing(spacing[1], spacing[3])}
+              css={{
+                flexDirection: 'column',
+                padding: joinSpacing(spacing[1], spacing[3]),
+              }}
             >
               <Name>{data.me.name}</Name>
               <Login>{data.me.login}</Login>

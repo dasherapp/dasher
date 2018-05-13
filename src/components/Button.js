@@ -1,5 +1,5 @@
 import { bool, func, oneOf } from 'prop-types'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
 import {
   radii,
@@ -12,8 +12,9 @@ import {
   focusStyle,
 } from '../theme'
 import { joinSpacing, toAlpha, propStyles } from '../utils/style'
+import { cleanElement } from '../utils/utils'
 
-const kinds = {
+const buttonStyles = {
   primary: {
     color: colors.white,
     backgroundColor: colors.indigo[7],
@@ -56,7 +57,7 @@ const kinds = {
   },
 }
 
-const Button = glamorous.button(
+const Button = styled(cleanElement({ type: 'button' }))(
   {
     display: 'inline-block',
     padding: joinSpacing(spacing[1], spacing[2]),
@@ -73,7 +74,7 @@ const Button = glamorous.button(
     userSelect: 'none',
     transition: `all ${transition.duration} ${transition.easing}`,
   },
-  ({ kind }) => kinds[kind],
+  props => buttonStyles[props.buttonStyle],
   propStyles({
     disabled: {
       opacity: 0.5,
@@ -83,13 +84,13 @@ const Button = glamorous.button(
 )
 
 Button.propTypes = {
-  kind: oneOf(['primary', 'secondary', 'danger', 'icon']),
+  buttonStyle: oneOf(['primary', 'secondary', 'danger', 'icon']),
   disabled: bool,
   onClick: func,
 }
 
 Button.defaultProps = {
-  kind: 'primary',
+  buttonStyle: 'primary',
   disabled: false,
   onClick: () => {},
 }

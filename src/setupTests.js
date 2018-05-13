@@ -1,7 +1,8 @@
-import serializer from 'jest-glamor-react'
+import { createSerializer } from 'jest-emotion'
+import * as emotion from 'emotion'
 
-// Add jest-glamor-react snapshot serializer
-expect.addSnapshotSerializer(serializer)
+// Set up emotion snapshot serializer
+expect.addSnapshotSerializer(createSerializer(emotion))
 
 class LocalStorageMock {
   constructor() {

@@ -74,12 +74,11 @@ export const toAlpha = memoize(
 )
 
 /**
- * Makes it easier to create glamorous components that
+ * Makes it easier to create components that
  * accept props to enable/disable styles.
  *
  * Accepts an object where the key is a prop and the value is
  * the styles object that should be applied if that prop is passed.
- * Returns a function which you pass to a glamorousComponentFactory.
  *
  * Source: https://codesandbox.io/s/AGRRMl63 by @kentcdodds
  *

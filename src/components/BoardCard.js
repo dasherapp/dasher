@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
 
 import {
@@ -23,7 +23,7 @@ import Flex from './Flex'
 import Spacer from './Spacer'
 import Dropdown, { MenuItem } from './Dropdown'
 
-const CardLink = glamorous(Link)({
+const CardLink = styled(Link)({
   padding: spacing[3],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,
@@ -51,13 +51,13 @@ function BoardCard({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <CardLink to={`/board/${board.id}`}>
-          <Flex alignItems="center" paddingLeft={spacing[1]}>
+          <Flex css={{ alignItems: 'center', paddingLeft: spacing[1] }}>
             <span>{board.name}</span>
             <Spacer />
             <Dropdown
               renderMenuButton={({ getMenuButtonProps }) => (
                 <Button
-                  {...getMenuButtonProps({ refKey: 'innerRef', kind: 'icon' })}
+                  {...getMenuButtonProps({ refKey: 'innerRef', buttonStyle: 'icon' })}
                 >
                   <EllipsesIcon />
                 </Button>

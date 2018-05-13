@@ -45,11 +45,11 @@ function DeleteColumnModal({ boardId, column, closeModal }) {
               Are you sure you want to delete <strong>{column.name}</strong>?
               This action cannot be undone.
             </p>
-            <Button kind="secondary" onClick={closeModal}>
+            <Button buttonStyle="secondary" onClick={closeModal}>
               Cancel
             </Button>
             <Button
-              kind="danger"
+              buttonStyle="danger"
               onClick={() => {
                 deleteColumn({ variables: { id: column.id } })
                 closeModal()

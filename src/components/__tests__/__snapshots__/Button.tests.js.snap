@@ -1,94 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders as danger 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   display: inline-block;
   padding: 8px 12px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  -webkit-text-decoration: none;
   text-decoration: none;
   border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
-  user-select: none;
-  transition: all 150ms ease-in-out;
-  color: #ffffff;
-  background-color: #f03e3e;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #f03e3e;
 }
 
-.css-0:hover,
-[data-css-0]:hover {
+.emotion-0:hover {
   background-color: #c92a2a;
 }
 
-.css-0:focus,
-[data-css-0]:focus {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
+.emotion-0:focus {
+  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Primary Button
 </button>
 `;
 
 exports[`renders as icon 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-1 {
   display: inline-block;
-  padding: 4px;
+  padding: 8px 12px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  -webkit-text-decoration: none;
   text-decoration: none;
   border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
-  user-select: none;
-  transition: all 150ms ease-in-out;
-  color: #868e96;
-  background-color: transparent;
-  vertical-align: middle;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
-}
-
-.css-0:hover,
-[data-css-0]:hover,
-.css-0:focus,
-[data-css-0]:focus {
-  background-color: rgba(0, 36, 73, 0.05);
-}
-
-.css-3,
-[data-css-3] {
+  transition: all 150ms ease-in-out;
+  padding: 4px;
+  color: #868e96;
+  background-color: transparent;
   vertical-align: middle;
 }
 
-.css-3 *,
-[data-css-3] * {
+.emotion-1:hover,
+.emotion-1:focus {
+  background-color: rgba(0,36,73,0.05);
+}
+
+.emotion-0 {
+  vertical-align: middle;
+}
+
+.emotion-0 * {
   vector-effect: inherit;
 }
 
 <button
-  class="css-0"
+  class="emotion-1 emotion-2"
 >
   <svg
     stroke="currentColor"
@@ -101,7 +94,7 @@ exports[`renders as icon 1`] = `
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
-    class="css-3"
+    class="emotion-0"
   >
     <circle
       cx="12"
@@ -123,175 +116,163 @@ exports[`renders as icon 1`] = `
 `;
 
 exports[`renders as primary 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   display: inline-block;
   padding: 8px 12px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  -webkit-text-decoration: none;
   text-decoration: none;
   border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
-  user-select: none;
-  transition: all 150ms ease-in-out;
-  color: #ffffff;
-  background-color: #4263eb;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #4263eb;
 }
 
-.css-0:hover,
-[data-css-0]:hover {
+.emotion-0:hover {
   background-color: #364fc7;
 }
 
-.css-0:focus,
-[data-css-0]:focus {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
+.emotion-0:focus {
+  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Primary Button
 </button>
 `;
 
 exports[`renders as secondary 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   display: inline-block;
   padding: 8px 12px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  -webkit-text-decoration: none;
   text-decoration: none;
   border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
-  user-select: none;
-  transition: all 150ms ease-in-out;
-  color: rgba(0, 5, 9, 0.87);
-  background-color: transparent;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  color: rgba(0,5,9,0.87);
+  background-color: transparent;
 }
 
-.css-0:hover,
-[data-css-0]:hover {
-  background-color: rgba(0, 36, 73, 0.05);
+.emotion-0:hover {
+  background-color: rgba(0,36,73,0.05);
 }
 
-.css-0:focus,
-[data-css-0]:focus {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
+.emotion-0:focus {
+  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Primary Button
 </button>
 `;
 
 exports[`renders when disabled 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   display: inline-block;
   padding: 8px 12px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  -webkit-text-decoration: none;
   text-decoration: none;
   border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
+  -webkit-transition: all 150ms ease-in-out;
   transition: all 150ms ease-in-out;
   color: #ffffff;
   background-color: #4263eb;
   opacity: 0.5;
   pointer-events: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
 }
 
-.css-0:hover,
-[data-css-0]:hover {
+.emotion-0:hover {
   background-color: #364fc7;
 }
 
-.css-0:focus,
-[data-css-0]:focus {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
+.emotion-0:focus {
+  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
   disabled=""
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Disabled Button
 </button>
 `;
 
 exports[`renders without crashing 1`] = `
-.css-0,
-[data-css-0] {
+.emotion-0 {
   display: inline-block;
   padding: 8px 12px;
   font-family: inherit;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  -webkit-text-decoration: none;
   text-decoration: none;
   border: 0;
   border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
-  user-select: none;
-  transition: all 150ms ease-in-out;
-  color: #ffffff;
-  background-color: #4263eb;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  user-select: none;
   -webkit-transition: all 150ms ease-in-out;
-  -moz-transition: all 150ms ease-in-out;
+  transition: all 150ms ease-in-out;
+  color: #ffffff;
+  background-color: #4263eb;
 }
 
-.css-0:hover,
-[data-css-0]:hover {
+.emotion-0:hover {
   background-color: #364fc7;
 }
 
-.css-0:focus,
-[data-css-0]:focus {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 31, 62, 0.19);
+.emotion-0:focus {
+  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
-  class="css-0"
+  class="emotion-0 emotion-1"
 >
   Test Button
 </button>

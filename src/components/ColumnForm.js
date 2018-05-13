@@ -28,7 +28,7 @@ function ColumnForm({ formState, onChange, onSubmit, onCancel }) {
         </label>
       </div>
       <div>
-        <Button type="button" kind="secondary" onClick={onCancel}>
+        <Button type="button" buttonStyle="secondary" onClick={onCancel}>
           Cancel
         </Button>
         <Button type="submit">Save</Button>

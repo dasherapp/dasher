@@ -1,5 +1,5 @@
 import { number, oneOfType, string, func } from 'prop-types'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
 import {
   spacing,
@@ -12,8 +12,11 @@ import {
   breakpoints,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
+import { cleanElement } from '../utils/utils'
 
-const SkeletonButton = glamorous.button(props => ({
+const SkeletonButton = styled(
+  cleanElement({ type: 'button', excludeProps: ['width'] }),
+)(props => ({
   width: props.width,
   padding: joinSpacing(spacing[4], 0),
   fontFamily: 'inherit',

@@ -26,7 +26,7 @@ function Boards() {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <div>
-          <Flex alignItems="center" justifyContent="space-between">
+          <Flex css={{ alignItems: 'center', justifyContent: 'space-between' }}>
             <h1>Boards</h1>
             <Button onClick={() => modal.openModal(CreateBoardModal)}>
               New board

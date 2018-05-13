@@ -9,7 +9,9 @@ const AvatarButton = React.forwardRef(({ src, size, shape, ...props }, ref) => {
   return (
     <Clickable
       innerRef={ref}
-      borderRadius={shape === 'square' ? radii[0] : '50%'}
+      css={{
+        borderRadius: shape === 'square' ? radii[0] : '50%',
+      }}
       {...props}
     >
       <Avatar src={src} size={size} shape={shape} />

@@ -1,9 +1,12 @@
 import { oneOfType, oneOf, string, number } from 'prop-types'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
 import { radii } from '../theme'
+import { cleanElement } from '../utils/utils'
 
-const Avatar = glamorous.img(props => ({
+const Avatar = styled(
+  cleanElement({ type: 'img', excludeProps: ['size', 'shape'] }),
+)(props => ({
   width: props.size,
   height: props.size,
   borderRadius: props.shape === 'square' ? radii[0] : '50%',

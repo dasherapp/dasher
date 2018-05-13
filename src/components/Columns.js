@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { arrayOf, shape, string, number } from 'prop-types'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { gql } from 'apollo-boost'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 
@@ -35,12 +35,12 @@ const UPDATE_COLUMN_MUTATION = gql`
   }
 `
 
-const HorizontalScroll = glamorous.div({
+const HorizontalScroll = styled.div({
   display: 'flex',
   overflowX: 'auto',
 })
 
-const ColumnsContainer = glamorous.div({
+const ColumnsContainer = styled.div({
   display: 'flex',
   alignItems: 'flex-start',
   padding: spacing[3],

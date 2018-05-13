@@ -1,6 +1,7 @@
 import React from 'react'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
+import { Link } from 'react-router-dom'
 
 import { fontSizes, fontWeights, colors, spacing } from '../theme'
 import { toAlpha } from '../utils/style'
@@ -11,11 +12,10 @@ import Header from './Header'
 import Dropdown, { MenuItem } from './Dropdown'
 import { ChevronDownIcon, ArrowLeftIcon } from './Icon'
 import Button from './Button'
-import ButtonLink from './ButtonLink'
 import AccountMenu from './AccountMenu'
 import Spacer from './Spacer'
 
-const BoardName = glamorous.h1({
+const BoardName = styled.h1({
   marginRight: spacing[0],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,
@@ -27,9 +27,9 @@ function BoardHeader({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <Header>
-          <ButtonLink to="/" kind="icon">
+          <Button is={Link} to="/" buttonStyle="icon">
             <ArrowLeftIcon />
-          </ButtonLink>
+          </Button>
           <Spacer />
           <BoardName>{board.name}</BoardName>
           <Dropdown
@@ -38,7 +38,7 @@ function BoardHeader({ board }) {
               <Button
                 {...getMenuButtonProps({
                   refKey: 'innerRef',
-                  kind: 'icon',
+                  buttonStyle: 'icon',
                 })}
               >
                 <ChevronDownIcon size={16} />

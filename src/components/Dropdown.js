@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { oneOf, oneOfType, func, string, number } from 'prop-types'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import posed from 'react-pose'
 
 import {
@@ -13,8 +13,9 @@ import {
   transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
+import { cleanElement } from '../utils/utils'
 
-const MenuContainer = glamorous.div({
+const MenuContainer = styled.div({
   position: 'relative',
   display: 'inline-block',
 })
@@ -29,9 +30,9 @@ const MenuTransition = posed.div({
   },
 })
 
-const Menu = glamorous(MenuTransition, {
-  filterProps: ['minWidth', 'align', 'offsetTop'],
-})(props => ({
+const Menu = styled(
+  cleanElement({ type: MenuTransition, includeProps: ['pose'] }),
+)(props => ({
   position: 'absolute',
   [props.align]: 0,
   display: 'flex',
@@ -59,9 +60,7 @@ Menu.defaultProps = {
   offsetTop: spacing[0],
 }
 
-export const MenuItem = glamorous('button', {
-  withProps: { role: 'menuitem', tabIndex: -1 },
-})({
+const MenuItem = styled.button({
   display: 'block',
   width: '100%',
   padding: joinSpacing(spacing[1], spacing[3]),
@@ -82,7 +81,12 @@ export const MenuItem = glamorous('button', {
   },
 })
 
-export const MenuDivider = glamorous.div({
+MenuItem.defaultProps = {
+  role: 'menuitem',
+  tabIndex: -1,
+}
+
+const MenuDivider = styled.div({
   display: 'block',
   width: '100%',
   height: 0,
@@ -287,4 +291,5 @@ class Dropdown extends Component {
   }
 }
 
+export { MenuItem, MenuDivider }
 export default Dropdown

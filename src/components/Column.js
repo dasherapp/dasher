@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { shape, string, bool, func, object } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
 
 import ModalContainer from '../containers/ModalContainer'
@@ -38,7 +38,7 @@ const DELETE_COLUMN_MUTATION = gql`
 
 export const COLUMN_WIDTH = 330
 
-const ColumnContainer = glamorous.div(props => ({
+const ColumnContainer = styled.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,
@@ -101,9 +101,11 @@ class Column extends Component {
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
                     <Flex
-                      alignItems="center"
-                      padding={spacing[1]}
-                      paddingLeft={spacing[3]}
+                      css={{
+                        alignItems: 'center',
+                        padding: spacing[1],
+                        paddingLeft: spacing[3],
+                      }}
                       {...dragHandleProps}
                     >
                       <strong>{name || 'Untitled Column'}</strong>
@@ -114,7 +116,7 @@ class Column extends Component {
                             <Button
                               {...getMenuButtonProps({
                                 refKey: 'innerRef',
-                                kind: 'icon',
+                                buttonStyle: 'icon',
                               })}
                             >
                               <EllipsesIcon />

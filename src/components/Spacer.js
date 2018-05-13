@@ -1,6 +1,6 @@
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
-const Spacer = glamorous.div({
+const Spacer = styled.div({
   margin: '0 auto',
 })
 

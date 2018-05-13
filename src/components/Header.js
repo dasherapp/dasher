@@ -1,9 +1,9 @@
-import glamorous from 'glamorous'
+import styled from 'react-emotion'
 
 import { spacing, colors } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
 
-const Header = glamorous.div({
+const Header = styled.div({
   display: 'flex',
   alignItems: 'center',
   height: 56,

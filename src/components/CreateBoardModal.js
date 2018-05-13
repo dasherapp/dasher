@@ -40,7 +40,7 @@ function CreateBoardModal({ closeModal, history }) {
               history.push(`/board/${data.createBoard.id}`)
             }}
           />
-          <Button kind="secondary" onClick={closeModal}>
+          <Button buttonStyle="secondary" onClick={closeModal}>
             Cancel
           </Button>
           <Button type="submit" form="create-board">

@@ -114,7 +114,7 @@ class Column extends Component {
                             <Button
                               {...getMenuButtonProps({
                                 refKey: 'innerRef',
-                                kind: 'icon',
+                                buttonStyle: 'icon',
                               })}
                             >
                               <EllipsesIcon />

@@ -38,11 +38,11 @@ function DeleteBoardModal({ closeModal, board, history }) {
               Are you sure you want to delete <strong>{board.name}</strong>?
               This action cannot be undone.
             </p>
-            <Button kind="secondary" onClick={closeModal}>
+            <Button buttonStyle="secondary" onClick={closeModal}>
               Cancel
             </Button>
             <Button
-              kind="danger"
+              buttonStyle="danger"
               onClick={() => {
                 deleteBoard({ variables: { id: board.id } })
                 closeModal()

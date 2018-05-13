@@ -15,23 +15,29 @@ it('renders when disabled', () => {
 })
 
 it('renders as primary', () => {
-  const { container } = render(<Button kind="primary">Primary Button</Button>)
+  const { container } = render(
+    <Button buttonStyle="primary">Primary Button</Button>,
+  )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders as secondary', () => {
-  const { container } = render(<Button kind="secondary">Primary Button</Button>)
+  const { container } = render(
+    <Button buttonStyle="secondary">Primary Button</Button>,
+  )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders as danger', () => {
-  const { container } = render(<Button kind="danger">Primary Button</Button>)
+  const { container } = render(
+    <Button buttonStyle="danger">Primary Button</Button>,
+  )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders as icon', () => {
   const { container } = render(
-    <Button kind="icon">
+    <Button buttonStyle="icon">
       <EllipsesIcon />
     </Button>,
   )

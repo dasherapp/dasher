@@ -14,7 +14,7 @@ import {
 import { joinSpacing, toAlpha, propStyles } from '../utils/style'
 import { cleanElement } from '../utils/utils'
 
-const kinds = {
+const buttonStyles = {
   primary: {
     color: colors.white,
     backgroundColor: colors.indigo[7],
@@ -57,7 +57,7 @@ const kinds = {
   },
 }
 
-const Button = styled(cleanElement({ type: 'button', excludeProps: ['kind'] }))(
+const Button = styled(cleanElement({ type: 'button' }))(
   {
     display: 'inline-block',
     padding: joinSpacing(spacing[1], spacing[2]),
@@ -74,7 +74,7 @@ const Button = styled(cleanElement({ type: 'button', excludeProps: ['kind'] }))(
     userSelect: 'none',
     transition: `all ${transition.duration} ${transition.easing}`,
   },
-  props => kinds[props.kind],
+  props => buttonStyles[props.buttonStyle],
   propStyles({
     disabled: {
       opacity: 0.5,
@@ -84,13 +84,13 @@ const Button = styled(cleanElement({ type: 'button', excludeProps: ['kind'] }))(
 )
 
 Button.propTypes = {
-  kind: oneOf(['primary', 'secondary', 'danger', 'icon']),
+  buttonStyle: oneOf(['primary', 'secondary', 'danger', 'icon']),
   disabled: bool,
   onClick: func,
 }
 
 Button.defaultProps = {
-  kind: 'primary',
+  buttonStyle: 'primary',
   disabled: false,
   onClick: () => {},
 }

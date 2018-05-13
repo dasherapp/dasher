@@ -27,7 +27,7 @@ function BoardHeader({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <Header>
-          <Button is={Link} to="/" kind="icon">
+          <Button is={Link} to="/" buttonStyle="icon">
             <ArrowLeftIcon />
           </Button>
           <Spacer />
@@ -38,7 +38,7 @@ function BoardHeader({ board }) {
               <Button
                 {...getMenuButtonProps({
                   refKey: 'innerRef',
-                  kind: 'icon',
+                  buttonStyle: 'icon',
                 })}
               >
                 <ChevronDownIcon size={16} />

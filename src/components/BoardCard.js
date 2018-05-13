@@ -57,7 +57,7 @@ function BoardCard({ board }) {
             <Dropdown
               renderMenuButton={({ getMenuButtonProps }) => (
                 <Button
-                  {...getMenuButtonProps({ refKey: 'innerRef', kind: 'icon' })}
+                  {...getMenuButtonProps({ refKey: 'innerRef', buttonStyle: 'icon' })}
                 >
                   <EllipsesIcon />
                 </Button>

@@ -32,7 +32,7 @@ function UpdateBoardModal({ closeModal, board }) {
               closeModal()
             }}
           />
-          <Button kind="secondary" onClick={closeModal}>
+          <Button buttonStyle="secondary" onClick={closeModal}>
             Cancel
           </Button>
           <Button type="submit" form="update-board">

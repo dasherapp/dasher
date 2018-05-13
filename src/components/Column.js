@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { shape, string, bool, func } from 'prop-types'
+import { shape, string, bool, func, object } from 'prop-types'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 import styled from 'react-emotion'
@@ -58,6 +58,7 @@ class Column extends Component {
     }).isRequired,
     isDragging: bool.isRequired,
     innerRef: func.isRequired,
+    dragHandleProps: object.isRequired,
   }
 
   state = {
@@ -69,7 +70,7 @@ class Column extends Component {
   toggleEdit = () => this.setState(state => ({ isEditing: !state.isEditing }))
 
   render() {
-    const { boardId, column, ...props } = this.props
+    const { boardId, column, dragHandleProps, ...props } = this.props
     const { isEditing, name, query } = this.state
     return (
       <Mutation mutation={UPDATE_COLUMN_MUTATION}>
@@ -105,6 +106,7 @@ class Column extends Component {
                         padding: spacing[1],
                         paddingLeft: spacing[3],
                       }}
+                      {...dragHandleProps}
                     >
                       <strong>{name || 'Untitled Column'}</strong>
                       <Spacer />

@@ -133,8 +133,8 @@ class Columns extends Component {
                                     column={column}
                                     isDragging={snapshot.isDragging}
                                     innerRef={provided.innerRef}
+                                    dragHandleProps={provided.dragHandleProps}
                                     {...provided.draggableProps}
-                                    {...provided.dragHandleProps}
                                   />
                                 )}
                               </Draggable>

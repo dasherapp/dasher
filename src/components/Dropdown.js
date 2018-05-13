@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { oneOf, oneOfType, func, string, number } from 'prop-types'
 import styled from 'react-emotion'
 import posed from 'react-pose'
-import { withProps } from 'recompose'
 
 import {
   spacing,
@@ -61,28 +60,31 @@ Menu.defaultProps = {
   offsetTop: spacing[0],
 }
 
-const MenuItem = withProps({ role: 'menuitem', tabIndex: -1 })(
-  styled.button({
-    display: 'block',
-    width: '100%',
-    padding: joinSpacing(spacing[1], spacing[3]),
-    fontFamily: 'inherit',
-    fontSize: fontSizes[1],
-    lineHeight: lineHeights.tight,
-    textAlign: 'left',
-    color: colors.white,
-    backgroundColor: 'transparent',
-    border: 0,
-    outline: 0,
-    cursor: 'pointer',
-    whiteSpace: 'nowrap',
-    transition: `background-color ${transition.duration} ${transition.easing}`,
+const MenuItem = styled.button({
+  display: 'block',
+  width: '100%',
+  padding: joinSpacing(spacing[1], spacing[3]),
+  fontFamily: 'inherit',
+  fontSize: fontSizes[1],
+  lineHeight: lineHeights.tight,
+  textAlign: 'left',
+  color: colors.white,
+  backgroundColor: 'transparent',
+  border: 0,
+  outline: 0,
+  cursor: 'pointer',
+  whiteSpace: 'nowrap',
+  transition: `background-color ${transition.duration} ${transition.easing}`,
 
-    ':hover,:focus': {
-      backgroundColor: toAlpha(colors.gray[8], colors.black),
-    },
-  }),
-)
+  ':hover,:focus': {
+    backgroundColor: toAlpha(colors.gray[8], colors.black),
+  },
+})
+
+MenuItem.defaultProps = {
+  role: 'menuitem',
+  tabIndex: -1,
+}
 
 const MenuDivider = styled.div({
   display: 'block',

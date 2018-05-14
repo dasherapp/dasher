@@ -9,8 +9,8 @@ import {
   radii,
   spacing,
 } from '../theme'
+import { joinSpacing, toAlpha } from '../utils/style'
 import { cleanElement } from '../utils/utils'
-import { toAlpha } from '../utils/style'
 
 function getReadableColor(hex) {
   // Color brightness is determined by the following formula:
@@ -30,7 +30,7 @@ function getReadableColor(hex) {
 const Label = styled(cleanElement({ type: 'span', excludeProps: ['color'] }))(
   props => ({
     display: 'inline-block',
-    padding: `${spacing[0]}px ${spacing[1]}px`,
+    padding: joinSpacing(spacing[0], spacing[1]),
     marginTop: spacing[0],
     marginRight: spacing[0],
     fontSize: fontSizes[0],

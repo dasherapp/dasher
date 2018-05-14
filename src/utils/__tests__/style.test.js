@@ -38,7 +38,7 @@ describe('joinSpacing()', () => {
 })
 
 describe('getReadableColor()', () => {
-  it('returns the most readable text color given a background', () => {
+  it('returns the more readable text color given a background color', () => {
     expect(getReadableColor('#fff')).toBe('#000')
     expect(getReadableColor('#eee')).toBe('#000')
     expect(getReadableColor('#d4c5f9')).toBe('#000')

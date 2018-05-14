@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'react-emotion'
+import 'react-tippy/dist/tippy.css'
+import { Tooltip } from 'react-tippy'
 import { colors, fontSizes, fontWeights, lineHeights, spacing } from '../theme'
 import { get } from '../utils/utils'
 import Flex from './Flex'
@@ -112,7 +114,16 @@ function Issue({ issue }) {
               <IssueLabel color={`#${label.color}`}>{label.name}</IssueLabel>
             ))}
             {issue.labels.totalCount > issue.labels.labels.length && (
-              <IssueLabel>...</IssueLabel>
+              <Tooltip
+                title={`${issue.labels.totalCount -
+                  issue.labels.labels.length} more labels`}
+                animation="scale"
+                size="small"
+                position="bottom"
+                distance={spacing[0]}
+              >
+                <IssueLabel>...</IssueLabel>
+              </Tooltip>
             )}
           </Flex>
         )}

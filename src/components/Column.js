@@ -5,7 +5,14 @@ import { Mutation } from 'react-apollo'
 import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import { colors, radii, shadows, spacing, transition } from '../theme'
+import {
+  colors,
+  radii,
+  shadows,
+  spacing,
+  transition,
+  fontWeights,
+} from '../theme'
 import { BOARD_QUERY } from './BoardPage'
 import Button from './Button'
 import ColumnForm from './ColumnForm'
@@ -41,6 +48,7 @@ const ColumnContainer = styled.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,
+  maxHeight: '100%',
   marginRight: spacing[3],
   backgroundColor: colors.white,
   borderRadius: radii[1],
@@ -102,12 +110,20 @@ class Column extends Component {
                     <Flex
                       css={{
                         alignItems: 'center',
+                        flex: '0 0 auto',
                         padding: spacing[1],
                         paddingLeft: spacing[3],
                       }}
                       {...dragHandleProps}
                     >
-                      <strong>{name || 'Untitled Column'}</strong>
+                      <span
+                        css={{
+                          fontWeight: fontWeights.bold,
+                          color: colors.gray[8],
+                        }}
+                      >
+                        {name || 'Untitled Column'}
+                      </span>
                       <Spacer />
                       {column.name && (
                         <Dropdown

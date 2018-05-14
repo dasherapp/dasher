@@ -74,7 +74,7 @@ class Issues extends Component {
     const { issues, hasNextPage, endCursor } = this.state
 
     return (
-      <div>
+      <div css={{ overflowY: 'auto' }}>
         <div>{issues.map(issue => <Issue key={issue.id} issue={issue} />)}</div>
         {hasNextPage && (
           <Button onClick={() => this.loadMore(query, endCursor)}>

@@ -21,11 +21,11 @@ const BoardName = styled.h1({
   color: toAlpha(colors.gray[8]),
 })
 
-function BoardHeader({ board }) {
+function BoardHeader({ className, board }) {
   return (
     <Subscribe to={[ModalContainer]}>
       {modal => (
-        <Header>
+        <Header className={className}>
           <Button is={Link} to="/" buttonStyle="icon">
             <ArrowLeftIcon />
           </Button>

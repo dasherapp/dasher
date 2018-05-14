@@ -37,6 +37,7 @@ const UPDATE_COLUMN_MUTATION = gql`
 const HorizontalScroll = styled.div({
   display: 'flex',
   overflowX: 'auto',
+  overflowY: 'hidden',
 })
 
 const ColumnsContainer = styled.div({

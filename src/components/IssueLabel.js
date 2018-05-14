@@ -29,9 +29,9 @@ function getReadableColor(hex) {
 const Label = styled(cleanElement({ type: 'span', excludeProps: ['color'] }))(
   props => ({
     display: 'inline-block',
-    padding: `${spacing[1]}px ${spacing[2]}px`,
-    marginTop: spacing[1],
-    marginRight: spacing[1],
+    padding: `${spacing[0]}px ${spacing[1]}px`,
+    marginTop: spacing[0],
+    marginRight: spacing[0],
     fontSize: fontSizes[0],
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.none,

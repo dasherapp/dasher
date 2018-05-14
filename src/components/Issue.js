@@ -108,7 +108,7 @@ function Issue({ issue }) {
         </small>
         {issue.labels.totalCount > 0 && (
           <div
-            css={{ display: 'flex', flexWrap: 'wrap', marginTop: spacing[1] }}
+            css={{ display: 'flex', flexWrap: 'wrap', marginTop: spacing[0] }}
           >
             {issue.labels.labels.map(label => (
               <IssueLabel color={`#${label.color}`}>{label.name}</IssueLabel>

@@ -14,7 +14,7 @@ import { cleanElement } from '../utils/utils'
 
 function getReadableColor(hex) {
   // Color brightness is determined by the following formula:
-  // ((Red value X 299) + (Green value X 587) + (Blue value X 114)) / 1000
+  // ((Red value * 299) + (Green value * 587) + (Blue value * 114)) / 1000
   // Source: https://www.w3.org/TR/AERT/#color
 
   // Lower threshold means more dark text on dark background

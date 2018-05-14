@@ -10,6 +10,7 @@ import {
   spacing,
 } from '../theme'
 import { cleanElement } from '../utils/utils'
+import { toAlpha } from '../utils/style'
 
 function getReadableColor(hex) {
   // Color brightness is determined by the following formula:
@@ -23,7 +24,7 @@ function getReadableColor(hex) {
 
   const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
 
-  return brightness > threshold ? '#000000' : '#ffffff'
+  return brightness > threshold ? colors.black : colors.white
 }
 
 const Label = styled(cleanElement({ type: 'span', excludeProps: ['color'] }))(
@@ -38,7 +39,7 @@ const Label = styled(cleanElement({ type: 'span', excludeProps: ['color'] }))(
     color: getReadableColor(props.color),
     backgroundColor: props.color,
     borderRadius: radii[0],
-    boxShadow: 'inset 0 -1px 0 rgba(0, 0, 0, 0.10)',
+    boxShadow: `inset 0 -1px 0 ${toAlpha(colors.gray[2])}`,
   }),
 )
 

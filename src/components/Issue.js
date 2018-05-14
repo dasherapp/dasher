@@ -107,16 +107,14 @@ function Issue({ issue }) {
           ${issue.author.login}`}
         </small>
         {issue.labels.totalCount > 0 && (
-          <div
-            css={{ display: 'flex', flexWrap: 'wrap', marginTop: spacing[0] }}
-          >
+          <Flex css={{ flexWrap: 'wrap', marginTop: spacing[0] }}>
             {issue.labels.labels.map(label => (
               <IssueLabel color={`#${label.color}`}>{label.name}</IssueLabel>
             ))}
             {issue.labels.totalCount > issue.labels.labels.length && (
               <IssueLabel>...</IssueLabel>
             )}
-          </div>
+          </Flex>
         )}
       </Flex>
     </Flex>

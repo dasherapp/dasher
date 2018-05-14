@@ -1,7 +1,5 @@
 import React from 'react'
 import styled from 'react-emotion'
-import 'react-tippy/dist/tippy.css'
-import { Tooltip } from 'react-tippy'
 import { colors, fontSizes, fontWeights, lineHeights, spacing } from '../theme'
 import { get } from '../utils/utils'
 import Flex from './Flex'
@@ -13,7 +11,7 @@ import {
   SmallCircleIcon,
   XIcon,
 } from './Icon'
-import IssueLabel from './IssueLabel'
+import IssueLabels from './IssueLabels'
 
 const IssueTitle = styled.a({
   fontSize: fontSizes[1],
@@ -108,25 +106,10 @@ function Issue({ issue }) {
             ` by
           ${issue.author.login}`}
         </small>
-        {issue.labels.totalCount > 0 && (
-          <Flex css={{ flexWrap: 'wrap', marginTop: spacing[0] }}>
-            {issue.labels.labels.map(label => (
-              <IssueLabel color={`#${label.color}`}>{label.name}</IssueLabel>
-            ))}
-            {issue.labels.totalCount > issue.labels.labels.length && (
-              <Tooltip
-                title={`${issue.labels.totalCount -
-                  issue.labels.labels.length} more labels`}
-                animation="scale"
-                size="small"
-                position="bottom"
-                distance={spacing[0]}
-              >
-                <IssueLabel>...</IssueLabel>
-              </Tooltip>
-            )}
-          </Flex>
-        )}
+        <IssueLabels
+          labels={issue.labels.labels}
+          totalCount={issue.labels.totalCount}
+        />
       </Flex>
     </Flex>
   )

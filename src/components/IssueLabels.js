@@ -1,7 +1,6 @@
 import { array, number } from 'prop-types'
+import { css } from 'react-emotion'
 import React from 'react'
-import { Tooltip } from 'react-tippy'
-import 'react-tippy/dist/tippy.css'
 import { spacing } from '../theme'
 import Flex from './Flex'
 import IssueLabel from './IssueLabel'
@@ -17,20 +16,7 @@ function IssueLabels({ labels, totalCount }) {
             {label.name}
           </IssueLabel>
         ))}
-        {Boolean(remainingLabels) && (
-          <Tooltip
-            title={
-              `${remainingLabels} more ` +
-              (remainingLabels === 1 ? 'label' : 'labels')
-            }
-            animation="scale"
-            size="small"
-            position="bottom"
-            distance={spacing[0]}
-          >
-            <IssueLabel>...</IssueLabel>
-          </Tooltip>
-        )}
+        {Boolean(remainingLabels) && <IssueLabel>...</IssueLabel>}
       </Flex>
     )
   )

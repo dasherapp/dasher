@@ -1,5 +1,4 @@
 import { array, number } from 'prop-types'
-import { css } from 'react-emotion'
 import React from 'react'
 import { spacing } from '../theme'
 import Flex from './Flex'

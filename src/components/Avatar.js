@@ -3,14 +3,14 @@ import styled from 'react-emotion'
 import { radii } from '../theme'
 import { cleanElement } from '../utils/utils'
 
-const Avatar = styled(
-  cleanElement({ type: 'img', excludeProps: ['size', 'shape'] }),
-)(props => ({
-  width: props.size,
-  height: props.size,
-  borderRadius: props.shape === 'square' ? radii[0] : '50%',
-  verticalAlign: 'middle',
-}))
+const Avatar = styled(cleanElement('img', { excludeProps: ['size', 'shape'] }))(
+  props => ({
+    width: props.size,
+    height: props.size,
+    borderRadius: props.shape === 'square' ? radii[0] : '50%',
+    verticalAlign: 'middle',
+  }),
+)
 
 Avatar.propTypes = {
   src: string.isRequired,

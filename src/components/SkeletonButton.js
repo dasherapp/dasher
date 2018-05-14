@@ -14,7 +14,7 @@ import { joinSpacing, toAlpha } from '../utils/style'
 import { cleanElement } from '../utils/utils'
 
 const SkeletonButton = styled(
-  cleanElement({ type: 'button', excludeProps: ['width'] }),
+  cleanElement('button', { excludeProps: ['width'] }),
 )(props => ({
   width: props.width,
   padding: joinSpacing(spacing[4], 0),

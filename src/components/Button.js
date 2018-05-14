@@ -56,7 +56,7 @@ const buttonStyles = {
   },
 }
 
-const Button = styled(cleanElement({ type: 'button' }))(
+const Button = styled(cleanElement('button'))(
   {
     display: 'inline-block',
     padding: joinSpacing(spacing[1], spacing[2]),

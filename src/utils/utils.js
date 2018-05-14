@@ -16,7 +16,10 @@ export const reorder = (list, from, to) => {
   return listCopy
 }
 
-export const cleanElement = ({ type, excludeProps = [], includeProps = [] }) =>
+export const cleanElement = (
+  type,
+  { excludeProps = [], includeProps = [] } = {},
+) =>
   React.forwardRef(({ is = type, ...props }, ref) =>
     React.createElement(is, {
       ref,

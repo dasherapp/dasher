@@ -29,23 +29,23 @@ const MenuTransition = posed.div({
   },
 })
 
-const Menu = styled(
-  cleanElement({ type: MenuTransition, includeProps: ['pose'] }),
-)(props => ({
-  position: 'absolute',
-  [props.align]: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  minWidth: props.minWidth,
-  marginTop: props.offsetTop,
-  padding: joinSpacing(spacing[0], 0),
-  backgroundColor: colors.gray[8],
-  borderRadius: radii[1],
-  boxShadow: shadows[3],
-  overflow: 'hidden',
-  transformOrigin: `top ${props.align}`,
-  zIndex: 1,
-}))
+const Menu = styled(cleanElement(MenuTransition, { includeProps: ['pose'] }))(
+  props => ({
+    position: 'absolute',
+    [props.align]: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: props.minWidth,
+    marginTop: props.offsetTop,
+    padding: joinSpacing(spacing[0], 0),
+    backgroundColor: colors.gray[8],
+    borderRadius: radii[1],
+    boxShadow: shadows[3],
+    overflow: 'hidden',
+    transformOrigin: `top ${props.align}`,
+    zIndex: 1,
+  }),
+)
 
 Menu.propTypes = {
   align: oneOf(['right', 'left']),

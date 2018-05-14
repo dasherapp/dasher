@@ -11,6 +11,7 @@ import {
   SmallCircleIcon,
   XIcon,
 } from './Icon'
+import IssueLabel from './IssueLabel'
 
 const IssueTitle = styled.a({
   fontSize: fontSizes[1],
@@ -105,6 +106,18 @@ function Issue({ issue }) {
             ` by
           ${issue.author.login}`}
         </small>
+        {issue.labels.totalCount > 0 && (
+          <div
+            css={{ display: 'flex', flexWrap: 'wrap', marginTop: spacing[1] }}
+          >
+            {issue.labels.labels.map(label => (
+              <IssueLabel color={`#${label.color}`}>{label.name}</IssueLabel>
+            ))}
+            {issue.labels.totalCount > issue.labels.labels.length && (
+              <IssueLabel>...</IssueLabel>
+            )}
+          </div>
+        )}
       </Flex>
     </Flex>
   )

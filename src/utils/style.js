@@ -1,6 +1,6 @@
 import color from 'color-string'
-import { colors } from '../theme'
 import memoize from 'fast-memoize'
+import { colors } from '../theme'
 
 const isNumber = value => typeof value === 'number' && !isNaN(value)
 

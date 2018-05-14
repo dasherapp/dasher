@@ -5,7 +5,7 @@ import Flex from './Flex'
 import IssueLabel from './IssueLabel'
 
 function IssueLabels({ labels, totalCount }) {
-  const remainingLabels = totalCount - labels.length
+  const remainingCount = totalCount - labels.length
 
   return (
     totalCount > 0 && (
@@ -15,7 +15,7 @@ function IssueLabels({ labels, totalCount }) {
             {label.name}
           </IssueLabel>
         ))}
-        {Boolean(remainingLabels) && <IssueLabel>...</IssueLabel>}
+        {Boolean(remainingCount) && <IssueLabel>...</IssueLabel>}
       </Flex>
     )
   )

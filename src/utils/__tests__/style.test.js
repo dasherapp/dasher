@@ -39,16 +39,16 @@ describe('joinSpacing()', () => {
 
 describe('getReadableColor()', () => {
   it('returns the more readable text color given a background color', () => {
-    expect(getReadableColor('#fff')).toBe('#000')
-    expect(getReadableColor('#eee')).toBe('#000')
-    expect(getReadableColor('#d4c5f9')).toBe('#000')
-    expect(getReadableColor('#000')).toBe('#fff')
-    expect(getReadableColor('#333')).toBe('#fff')
-    expect(getReadableColor('#006b75')).toBe('#fff')
+    expect(getReadableColor('#fff')).toBe('#000000')
+    expect(getReadableColor('#eee')).toBe('#000000')
+    expect(getReadableColor('#d4c5f9')).toBe('#000000')
+    expect(getReadableColor('#000')).toBe('#ffffff')
+    expect(getReadableColor('#333')).toBe('#ffffff')
+    expect(getReadableColor('#006b75')).toBe('#ffffff')
   })
 
   it('works with an rgb color value', () => {
-    expect(getReadableColor('rgb(238, 238, 238)')).toBe('#000')
+    expect(getReadableColor('rgb(238, 238, 238)')).toBe('#000000')
   })
 })
 

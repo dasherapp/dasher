@@ -1,6 +1,5 @@
 import color from 'color-string'
 import memoize from 'fast-memoize'
-import { colors } from '../theme'
 
 const isNumber = value => typeof value === 'number' && !isNaN(value)
 
@@ -45,7 +44,7 @@ export const getReadableColor = background => {
 
   const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
 
-  return brightness > threshold ? colors.black : colors.white
+  return brightness > threshold ? '#000000' : '#ffffff'
 }
 
 /**

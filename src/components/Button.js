@@ -66,7 +66,7 @@ const Button = styled(cleanElement({ type: 'button' }))(
     lineHeight: lineHeights.tight,
     textDecoration: 'none',
     border: 0,
-    borderRadius: radii[1],
+    borderRadius: radii[2],
     outline: 0,
     whiteSpace: 'nowrap',
     cursor: 'pointer',

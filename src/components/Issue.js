@@ -16,7 +16,7 @@ import IssueLabels from './IssueLabels'
 const IssueTitle = styled.a({
   fontSize: fontSizes[1],
   fontWeight: fontWeights.bold,
-  lineHeight: lineHeights.normal,
+  lineHeight: lineHeights.tight,
   color: colors.gray[8],
   textDecoration: 'none',
 

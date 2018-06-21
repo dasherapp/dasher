@@ -1,7 +1,10 @@
-import styled from 'react-emotion'
+import system from 'system-components/emotion'
 
-const Spacer = styled.div({
-  margin: '0 auto',
-})
+const Spacer = system(
+  {
+    is: 'div',
+  },
+  { flexGrow: 1 },
+)
 
 export default Spacer

@@ -65,15 +65,14 @@ export const timingFunctions = {
 
 export const durations = [0, 100].map(value => value + 'ms')
 
+// TODO: remove
 export const transition = {
   duration: '150ms',
   easing: 'ease-in-out',
 }
 
 export const focusStyle = {
-  boxShadow: `0 0 0 2px ${colors.white}, 0 1px 2px 4px ${toAlpha(
-    colors.gray[4],
-  )}`,
+  boxShadow: `0 0 0 2px ${colors.white}, 0 1px 2px 4px ${colors.grayAlpha[4]}`,
 }
 
 export default {

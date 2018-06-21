@@ -1,4 +1,10 @@
-import { toMediaQuery, joinSpacing, toAlpha, propStyles } from '../style'
+import {
+  toMediaQuery,
+  joinSpacing,
+  toAlpha,
+  propStyles,
+  getReadableColor,
+} from '../style'
 
 describe('toMediaQuery()', () => {
   it('uses em by default', () => {
@@ -28,6 +34,21 @@ describe('joinSpacing()', () => {
 
   it('throws an error when passed more than four arguments', () => {
     expect(() => joinSpacing(1, 2, 3, 4, 5)).toThrowErrorMatchingSnapshot()
+  })
+})
+
+describe('getReadableColor()', () => {
+  it('returns the more readable text color given a background color', () => {
+    expect(getReadableColor('#fff')).toBe('#000000')
+    expect(getReadableColor('#eee')).toBe('#000000')
+    expect(getReadableColor('#d4c5f9')).toBe('#000000')
+    expect(getReadableColor('#000')).toBe('#ffffff')
+    expect(getReadableColor('#333')).toBe('#ffffff')
+    expect(getReadableColor('#006b75')).toBe('#ffffff')
+  })
+
+  it('works with an rgb color value', () => {
+    expect(getReadableColor('rgb(238, 238, 238)')).toBe('#000000')
   })
 })
 

@@ -22,6 +22,32 @@ export const joinSpacing = (...args) => {
 }
 
 /**
+ * Returns either black or white depending on which color will be more readable
+ * on top of the `background` color.
+ *
+ * Visibility is determined by comparing a set threshold with the calculated
+ * brightness of the `background`. Color brightness is calculated using the
+ * following formula:
+ * ((Red value * 299) + (Green value * 587) + (Blue value * 114)) / 1000
+ * Source: https://www.w3.org/TR/AERT/#color
+ *
+ * @param {string} background
+ * @returns {string}
+ *
+ */
+export const getReadableColor = background => {
+  // The threshold ranges from 0 to 256. A threshold above the midpoint, 128, will
+  // favor white text over black text.
+  const threshold = 136
+
+  const rgb = color.get.rgb(background)
+
+  const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
+
+  return brightness > threshold ? '#000000' : '#ffffff'
+}
+
+/**
  * Returns the transparent version of the `foreground` color,
  * as if it was overlaid on the `background` color.
  *

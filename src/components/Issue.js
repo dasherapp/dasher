@@ -11,6 +11,7 @@ import {
   SmallCircleIcon,
   XIcon,
 } from './Icon'
+import IssueLabels from './IssueLabels'
 
 const IssueTitle = styled.a({
   fontSize: fontSizes[1],
@@ -105,6 +106,10 @@ function Issue({ issue }) {
             ` by
           ${issue.author.login}`}
         </small>
+        <IssueLabels
+          labels={issue.labels.labels}
+          totalCount={issue.labels.totalCount}
+        />
       </Flex>
     </Flex>
   )

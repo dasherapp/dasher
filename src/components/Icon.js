@@ -1,38 +1,31 @@
-import { number, oneOfType, string } from 'prop-types'
 import React from 'react'
+import system from 'system-components/emotion'
 
-function Icon({ size, ...props }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={2}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      vectorEffect="non-scaling-stroke"
-      css={{
-        verticalAlign: 'middle',
+const Icon = system(
+  {
+    is: 'svg',
+    size: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round',
+    strokeLinejoin: 'round',
+    vectorEffect: 'non-scaling-stroke',
+    xmlns: 'http://www.w3.org/2000/svg',
+  },
+  {
+    verticalAlign: 'middle',
 
-        ' *': {
-          vectorEffect: 'inherit',
-        },
-      }}
-      {...props}
-    />
-  )
-}
+    ' *': {
+      vectorEffect: 'inherit',
+    },
+  },
+  'space',
+  'color',
+)
 
-Icon.propTypes = {
-  size: oneOfType([number, string]),
-}
-
-Icon.defaultProps = {
-  size: 24,
-}
+Icon.displayName = 'Icon'
 
 export function IssueIcon(props) {
   return (

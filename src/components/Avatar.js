@@ -8,7 +8,7 @@ const Avatar = styled(
 )(props => ({
   width: props.size,
   height: props.size,
-  borderRadius: props.shape === 'square' ? radii[0] : '50%',
+  borderRadius: props.shape === 'square' ? radii[1] : '50%',
   verticalAlign: 'middle',
 }))
 

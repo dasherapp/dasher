@@ -45,7 +45,7 @@ const buttonStyles = {
     ':focus': focusStyle,
   },
   icon: {
-    padding: space[0],
+    padding: space[1],
     color: colors.gray[6],
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
@@ -59,14 +59,14 @@ const buttonStyles = {
 const Button = styled(cleanElement({ type: 'button' }))(
   {
     display: 'inline-block',
-    padding: joinSpacing(space[1], space[2]),
+    padding: joinSpacing(space[2], space[3]),
     fontFamily: 'inherit',
     fontSize: fontSizes[1],
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.tight,
     textDecoration: 'none',
     border: 0,
-    borderRadius: radii[0],
+    borderRadius: radii[1],
     outline: 0,
     whiteSpace: 'nowrap',
     cursor: 'pointer',

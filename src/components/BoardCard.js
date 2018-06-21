@@ -23,13 +23,13 @@ import Spacer from './Spacer'
 import UpdateBoardModal from './UpdateBoardModal'
 
 const CardLink = styled(Link)({
-  padding: space[3],
+  padding: space[4],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,
   textDecoration: 'none',
   color: toAlpha(colors.gray[8]),
   backgroundColor: colors.white,
-  borderRadius: radii[1],
+  borderRadius: radii[2],
   boxShadow: shadows[1],
   outline: 0,
   transitionProperty: 'box-shadow',
@@ -50,7 +50,7 @@ function BoardCard({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <CardLink to={`/board/${board.id}`}>
-          <Flex css={{ alignItems: 'center', paddingLeft: space[1] }}>
+          <Flex css={{ alignItems: 'center', paddingLeft: space[2] }}>
             <span>{board.name}</span>
             <Spacer />
             <Dropdown

@@ -38,9 +38,9 @@ const Menu = styled(
   flexDirection: 'column',
   minWidth: props.minWidth,
   marginTop: props.offsetTop,
-  padding: joinSpacing(space[0], 0),
+  padding: joinSpacing(space[1], 0),
   backgroundColor: colors.gray[8],
-  borderRadius: radii[1],
+  borderRadius: radii[2],
   boxShadow: shadows[3],
   overflow: 'hidden',
   transformOrigin: `top ${props.align}`,
@@ -56,13 +56,13 @@ Menu.propTypes = {
 Menu.defaultProps = {
   align: 'right',
   minWidth: 'auto',
-  offsetTop: space[0],
+  offsetTop: space[1],
 }
 
 const MenuItem = styled.button({
   display: 'block',
   width: '100%',
-  padding: joinSpacing(space[1], space[3]),
+  padding: joinSpacing(space[2], space[4]),
   fontFamily: 'inherit',
   fontSize: fontSizes[1],
   lineHeight: lineHeights.tight,
@@ -90,7 +90,7 @@ const MenuDivider = styled.div({
   width: '100%',
   height: 0,
   borderTop: `1px solid ${toAlpha(colors.gray[9], colors.black)}`,
-  margin: joinSpacing(space[0], 0),
+  margin: joinSpacing(space[1], 0),
 })
 
 class Dropdown extends Component {
@@ -104,7 +104,7 @@ class Dropdown extends Component {
   static defaultProps = {
     align: 'right',
     minWidth: 'auto',
-    offsetTop: space[0],
+    offsetTop: space[1],
   }
 
   constructor(props) {

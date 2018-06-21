@@ -37,7 +37,7 @@ function Boards() {
               if (error) return <div>Error</div>
 
               return (
-                <Grid width={300} gap={space[3]}>
+                <Grid width={300} gap={space[4]}>
                   {data.boards.map(board => (
                     <BoardCard key={board.id} board={board} />
                   ))}

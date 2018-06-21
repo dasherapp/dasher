@@ -47,7 +47,7 @@ function AccountMenu({ history }) {
         return (
           <Dropdown
             minWidth={160}
-            offsetTop={space[1]}
+            offsetTop={space[2]}
             renderMenuButton={({ getMenuButtonProps }) => (
               <AvatarButton
                 {...getMenuButtonProps({
@@ -60,7 +60,7 @@ function AccountMenu({ history }) {
             <Flex
               css={{
                 flexDirection: 'column',
-                padding: joinSpacing(space[1], space[3]),
+                padding: joinSpacing(space[2], space[4]),
               }}
             >
               <Name>{data.me.name}</Name>

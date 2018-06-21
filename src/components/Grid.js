@@ -18,7 +18,7 @@ Grid.propTypes = {
 
 Grid.defaultProps = {
   align: 'stretch',
-  gap: space[3],
+  gap: space[4],
 }
 
 export default Grid

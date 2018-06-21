@@ -15,7 +15,7 @@ import Spacer from './Spacer'
 import UpdateBoardModal from './UpdateBoardModal'
 
 const BoardName = styled.h1({
-  marginRight: space[0],
+  marginRight: space[1],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,
   color: toAlpha(colors.gray[8]),

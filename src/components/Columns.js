@@ -42,7 +42,7 @@ const HorizontalScroll = styled.div({
 const ColumnsContainer = styled.div({
   display: 'flex',
   alignItems: 'flex-start',
-  padding: space[3],
+  padding: space[4],
 })
 
 class Columns extends Component {

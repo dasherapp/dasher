@@ -8,7 +8,7 @@ export const breakpoints = {
   xl: toMediaQuery(80),
 }
 
-export const space = [4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
+export const space = [0, 4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
 
 export const fonts = {
   sans: [
@@ -43,7 +43,7 @@ export const lineHeights = {
 
 export const colors = openColor
 
-export const radii = [2, 4]
+export const radii = [0, 2, 4]
 
 export const shadows = [
   `0 0 0 1px ${toAlpha(colors.gray[3])}`,
@@ -65,4 +65,18 @@ export const focusStyle = {
   boxShadow: `0 0 0 2px ${colors.white}, 0 1px 2px 4px ${toAlpha(
     colors.gray[4],
   )}`,
+}
+
+export default {
+  // breakpoints,
+  space,
+  fonts,
+  fontWeights,
+  fontSizes,
+  lineHeights,
+  colors,
+  radii,
+  shadows,
+  transition,
+  focusStyle,
 }

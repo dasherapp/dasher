@@ -72,8 +72,8 @@ function Issue({ issue }) {
   return (
     <Flex
       css={{
-        padding: space[3],
-        paddingRight: space[4],
+        padding: space[4],
+        paddingRight: space[5],
         borderTop: `1px solid ${colors.gray[2]}`,
       }}
     >
@@ -81,11 +81,11 @@ function Issue({ issue }) {
         css={{
           flexDirection: 'column',
           alignItems: 'center',
-          marginRight: space[3],
+          marginRight: space[4],
         }}
       >
         {renderStateIcon(issue)}
-        <div css={{ marginTop: space[1] }} />
+        <div css={{ marginTop: space[2] }} />
         {renderStatusIcon(issue)}
       </Flex>
       <Flex css={{ flexDirection: 'column', alignItems: 'flex-start' }}>
@@ -94,7 +94,7 @@ function Issue({ issue }) {
         </IssueTitle>
         <small
           css={{
-            marginTop: space[0],
+            marginTop: space[1],
             fontSize: fontSizes[0],
             lineHeight: lineHeights.normal,
             color: colors.gray[6],

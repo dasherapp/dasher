@@ -41,9 +41,9 @@ const ColumnContainer = styled.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,
-  marginRight: space[3],
+  marginRight: space[4],
   backgroundColor: colors.white,
-  borderRadius: radii[1],
+  borderRadius: radii[2],
   boxShadow: props.isDragging ? shadows[3] : shadows[1],
   transition: `box-shadow ${transition.duration} ${transition.easing}`,
 }))
@@ -102,8 +102,8 @@ class Column extends Component {
                     <Flex
                       css={{
                         alignItems: 'center',
-                        padding: space[1],
-                        paddingLeft: space[3],
+                        padding: space[2],
+                        paddingLeft: space[4],
                       }}
                       {...dragHandleProps}
                     >

@@ -1,5 +1,6 @@
 import color from 'color-string'
 import { parseToRgb } from 'polished'
+import { style } from 'styled-system'
 
 const isNumber = value => typeof value === 'number' && !isNaN(value)
 
@@ -20,6 +21,24 @@ export const joinSpacing = (...args) => {
 
   return args.map(toPx).join(' ')
 }
+
+export const timingFunction = style({
+  prop: 'timingFunction',
+  cssProperty: 'transitionTimingFunction',
+  key: 'timingFunctions',
+})
+
+export const duration = style({
+  prop: 'duration',
+  cssProperty: 'transitionDuration',
+  key: 'durations',
+})
+
+export const transitionProperty = style({
+  prop: 'transitionProperty',
+  cssProperty: 'transitionProperty',
+  getter: value => (Array.isArray(value) ? value.join(',') : value),
+})
 
 /**
  * Returns either black or white depending on which color will be more readable

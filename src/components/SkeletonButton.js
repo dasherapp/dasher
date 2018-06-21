@@ -1,5 +1,5 @@
-import { themeGet } from 'styled-system'
 import system from 'system-components/emotion'
+import { duration, timingFunction, transitionProperty } from '../utils/style'
 
 const SkeletonButton = system(
   {
@@ -13,6 +13,11 @@ const SkeletonButton = system(
     color: 'grayAlpha.6',
     bg: 'transparent',
     borderRadius: 2,
+    border: '2px dashed',
+    borderColor: 'grayAlpha.4',
+    timingFunction: 'standard',
+    duration: 1,
+    transitionProperty: 'background-color',
 
     hover: {
       backgroundColor: 'grayAlpha.1',
@@ -22,13 +27,14 @@ const SkeletonButton = system(
       backgroundColor: 'grayAlpha.1',
     },
   },
-  props => ({
+  {
     fontFamily: 'inherit',
-    border: `2px dashed ${themeGet('colors.grayAlpha.4')(props)}`,
     cursor: 'pointer',
     outline: 0,
-    // TODO: Handle transition
-  }),
+  },
+  timingFunction,
+  duration,
+  transitionProperty,
 )
 
 SkeletonButton.displayName = 'SkeletonButton'

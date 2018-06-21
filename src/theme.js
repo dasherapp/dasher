@@ -59,6 +59,12 @@ export const shadows = [
   )}`,
 ]
 
+export const timingFunctions = {
+  standard: 'cubic-bezier(0.4, 0, 0.2, 1)',
+}
+
+export const durations = [0, 100].map(value => value + 'ms')
+
 export const transition = {
   duration: '150ms',
   easing: 'ease-in-out',
@@ -80,6 +86,8 @@ export default {
   colors,
   radii,
   shadows,
+  timingFunctions,
+  durations,
   transition,
   focusStyle,
 }

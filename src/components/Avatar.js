@@ -1,26 +1,16 @@
-import { number, oneOf, oneOfType, string } from 'prop-types'
-import styled from 'react-emotion'
-import { radii } from '../theme'
-import { cleanElement } from '../utils/utils'
+import system from 'system-components/emotion'
 
-const Avatar = styled(
-  cleanElement({ type: 'img', excludeProps: ['size', 'shape'] }),
-)(props => ({
-  width: props.size,
-  height: props.size,
-  borderRadius: props.shape === 'square' ? radii[1] : '50%',
-  verticalAlign: 'middle',
-}))
+const Avatar = system(
+  {
+    is: 'img',
+    borderRadius: 2,
+  },
+  {
+    verticalAlign: 'middle',
+  },
+  'size',
+)
 
-Avatar.propTypes = {
-  src: string.isRequired,
-  size: oneOfType([string, number]),
-  shape: oneOf(['circle', 'square']),
-}
-
-Avatar.defaultProps = {
-  size: 24,
-  shape: 'square',
-}
+Avatar.displayName = 'Avatar'
 
 export default Avatar

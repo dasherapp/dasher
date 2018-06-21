@@ -22,6 +22,8 @@ export const joinSpacing = (...args) => {
   return args.map(toPx).join(' ')
 }
 
+/* Custom styled-system style utilities */
+
 export const timingFunction = style({
   prop: 'timingFunction',
   cssProperty: 'transitionTimingFunction',

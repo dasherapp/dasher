@@ -39,4 +39,11 @@ const SkeletonButton = system(
 
 SkeletonButton.displayName = 'SkeletonButton'
 
+SkeletonButton.defaultProps.blacklist = [
+  ...Object.keys(SkeletonButton.propTypes),
+  ...Object.keys(timingFunction.propTypes),
+  ...Object.keys(duration.propTypes),
+  ...Object.keys(transitionProperty.propTypes),
+]
+
 export default SkeletonButton

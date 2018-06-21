@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'react-emotion'
-import { colors, fontSizes, fontWeights, lineHeights, space } from '../theme'
+import { space } from '../theme'
 import { get } from '../utils/utils'
 import Flex from './Flex'
+import Heading from './Heading'
 import {
   CheckIcon,
   IssueIcon,
@@ -12,19 +12,8 @@ import {
   XIcon,
 } from './Icon'
 import IssueLabels from './IssueLabels'
+import Link from './Link'
 import Text from './Text'
-
-const IssueTitle = styled.a({
-  fontSize: fontSizes[1],
-  fontWeight: fontWeights.bold,
-  lineHeight: lineHeights.tight,
-  color: colors.gray[8],
-  textDecoration: 'none',
-
-  ':hover': {
-    color: colors.indigo[8],
-  },
-})
 
 function renderStateIcon(issue) {
   if (issue.merged) {
@@ -70,9 +59,15 @@ function Issue({ issue }) {
         {renderStatusIcon(issue)}
       </Flex>
       <Flex flexDirection="column" alignItems="flex-start">
-        <IssueTitle href={issue.url} target="_blank" rel="noopener noreferrer">
+        <Heading
+          is={Link}
+          fontSize={1}
+          href={issue.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {issue.title}
-        </IssueTitle>
+        </Heading>
         <Text is="small" mt={1} fontSize={0} lineHeight="normal" color="gray.6">
           #{issue.number}
           {issue.closed ? '' : ' opened'}

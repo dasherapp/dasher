@@ -1,13 +1,16 @@
-import styled from 'react-emotion'
-import { colors, space } from '../theme'
-import { joinSpacing, toAlpha } from '../utils/style'
+import system from 'system-components/emotion'
 
-const Header = styled.div({
+const Header = system({
+  is: 'div',
   display: 'flex',
   alignItems: 'center',
   height: 56,
-  padding: joinSpacing(0, space[4]),
-  borderBottom: `1px solid ${toAlpha(colors.gray[2])}`,
+  px: 4,
+  py: 0,
+  borderBottom: '1px solid',
+  borderColor: 'grayAlpha.2',
 })
+
+Header.displayName = 'Header'
 
 export default Header

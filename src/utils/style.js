@@ -1,5 +1,4 @@
-import color from 'color-string'
-import { parseToRgb } from 'polished'
+import { parseToRgb, rgba } from 'polished'
 import { style } from 'styled-system'
 
 const isNumber = value => typeof value === 'number' && !isNaN(value)
@@ -61,9 +60,9 @@ export const getReadableColor = background => {
   // favor white text over black text.
   const threshold = 136
 
-  const rgb = color.get.rgb(background)
+  const rgb = parseToRgb(background)
 
-  const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
+  const brightness = (rgb.red * 299 + rgb.green * 587 + rgb.blue * 114) / 1000
 
   return brightness > threshold ? '#000000' : '#ffffff'
 }
@@ -102,12 +101,12 @@ export const toAlpha = (foreground, background = '#fff') => {
       : bgColor[channel] + (fgColor[channel] - bgColor[channel]) / alpha
   }
 
-  return color.to.rgb(
-    processChannel('red'),
-    processChannel('green'),
-    processChannel('blue'),
-    Math.round(alpha * 100) / 100,
-  )
+  return rgba({
+    red: processChannel('red'),
+    green: processChannel('green'),
+    blue: processChannel('blue'),
+    alpha: Math.round(alpha * 100) / 100,
+  })
 }
 
 /**

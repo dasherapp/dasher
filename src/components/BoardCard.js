@@ -6,28 +6,23 @@ import ModalContainer from '../containers/ModalContainer'
 import {
   breakpoints,
   colors,
-  fontSizes,
-  fontWeights,
   radii,
   shadows,
   space,
   transition,
 } from '../theme'
-import { toAlpha } from '../utils/style'
 import Button from './Button'
 import DeleteBoardModal from './DeleteBoardModal'
 import Dropdown, { MenuItem } from './Dropdown'
 import Flex from './Flex'
+import Heading from './Heading'
 import { EllipsesIcon } from './Icon'
 import Spacer from './Spacer'
 import UpdateBoardModal from './UpdateBoardModal'
 
 const CardLink = styled(Link)({
   padding: space[4],
-  fontSize: fontSizes[3],
-  fontWeight: fontWeights.bold,
   textDecoration: 'none',
-  color: toAlpha(colors.gray[8]),
   backgroundColor: colors.white,
   borderRadius: radii[2],
   boxShadow: shadows[1],
@@ -50,8 +45,10 @@ function BoardCard({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <CardLink to={`/board/${board.id}`}>
-          <Flex alignItems="center" pl={2}>
-            <span>{board.name}</span>
+          <Flex alignItems="center">
+            <Heading is="span" ml={2} fontSize={[2, 3]}>
+              {board.name}
+            </Heading>
             <Spacer />
             <Dropdown
               renderMenuButton={({ getMenuButtonProps }) => (

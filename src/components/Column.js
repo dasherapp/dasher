@@ -12,6 +12,7 @@ import ColumnForm from './ColumnForm'
 import DeleteColumnModal from './DeleteColumnModal'
 import Dropdown, { MenuItem } from './Dropdown'
 import Flex from './Flex'
+import Heading from './Heading'
 import { EllipsesIcon } from './Icon'
 import Issues from './Issues'
 import Spacer from './Spacer'
@@ -100,7 +101,9 @@ class Column extends Component {
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
                     <Flex alignItems="center" p={2} pl={4} {...dragHandleProps}>
-                      <strong>{name || 'Untitled Column'}</strong>
+                      <Heading is="span" fontSize={2}>
+                        {name || 'Untitled Column'}
+                      </Heading>
                       <Spacer />
                       {column.name && (
                         <Dropdown

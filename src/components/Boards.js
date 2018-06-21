@@ -3,13 +3,14 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import { space } from '../theme'
 import BoardCard from './BoardCard'
 import Button from './Button'
 import CreateBoardModal from './CreateBoardModal'
 import Flex from './Flex'
 import Grid from './Grid'
+import Heading from './Heading'
 import SkeletonButton from './SkeletonButton'
+import Spacer from './Spacer'
 
 export const BOARDS_QUERY = gql`
   query BoardsQuery {
@@ -25,8 +26,11 @@ function Boards() {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <div>
-          <Flex alignItems="center" justifyContent="space-between">
-            <h1>Boards</h1>
+          <Flex pt={[5, 7]} pb={5} alignItems="center">
+            <Heading is="h1" fontSize={[4, 5]}>
+              Boards
+            </Heading>
+            <Spacer />
             <Button onClick={() => modal.openModal(CreateBoardModal)}>
               New board
             </Button>

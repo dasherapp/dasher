@@ -102,9 +102,9 @@ export const toAlpha = (foreground, background = '#fff') => {
   }
 
   return rgba({
-    red: processChannel('red'),
-    green: processChannel('green'),
-    blue: processChannel('blue'),
+    red: Math.round(processChannel('red')),
+    green: Math.round(processChannel('green')),
+    blue: Math.round(processChannel('blue')),
     alpha: Math.round(alpha * 100) / 100,
   })
 }

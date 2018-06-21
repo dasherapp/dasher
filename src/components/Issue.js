@@ -12,6 +12,7 @@ import {
   XIcon,
 } from './Icon'
 import IssueLabels from './IssueLabels'
+import Text from './Text'
 
 const IssueTitle = styled.a({
   fontSize: fontSizes[1],
@@ -72,20 +73,13 @@ function Issue({ issue }) {
         <IssueTitle href={issue.url} target="_blank" rel="noopener noreferrer">
           {issue.title}
         </IssueTitle>
-        <small
-          css={{
-            marginTop: space[1],
-            fontSize: fontSizes[0],
-            lineHeight: lineHeights.normal,
-            color: colors.gray[6],
-          }}
-        >
+        <Text is="small" mt={1} fontSize={0} lineHeight="normal" color="gray.6">
           #{issue.number}
           {issue.closed ? '' : ' opened'}
           {issue.author &&
             ` by
           ${issue.author.login}`}
-        </small>
+        </Text>
         <IssueLabels
           labels={issue.labels.labels}
           totalCount={issue.labels.totalCount}

@@ -1,7 +1,8 @@
-import styled from 'react-emotion'
+import React from 'react'
+import Box from './Box'
 
-const Flex = styled.div({
-  display: 'flex',
-})
+function Flex(props) {
+  return <Box display="flex" {...props} />
+}
 
 export default Flex

@@ -9,7 +9,7 @@ function IssueLabels({ labels, totalCount }) {
 
   return (
     totalCount > 0 && (
-      <Flex css={{ flexWrap: 'wrap', marginTop: space[1] }}>
+      <Flex flexWrap="wrap" mt={1}>
         {labels.map(label => (
           <IssueLabel key={label.name} color={`#${label.color}`}>
             {label.name}

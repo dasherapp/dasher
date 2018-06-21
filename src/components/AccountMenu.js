@@ -6,7 +6,7 @@ import styled from 'react-emotion'
 import { withRouter } from 'react-router-dom'
 import { colors, fontSizes, lineHeights, space } from '../theme'
 import { logOut } from '../utils/auth'
-import { joinSpacing, toAlpha } from '../utils/style'
+import { toAlpha } from '../utils/style'
 import AvatarButton from './AvatarButton'
 import Dropdown, { MenuDivider, MenuItem } from './Dropdown'
 import Flex from './Flex'
@@ -57,12 +57,7 @@ function AccountMenu({ history }) {
               />
             )}
           >
-            <Flex
-              css={{
-                flexDirection: 'column',
-                padding: joinSpacing(space[2], space[4]),
-              }}
-            >
+            <Flex flexDirection="column" py={2} px={4}>
               <Name>{data.me.name}</Name>
               <Login>{data.me.login}</Login>
             </Flex>

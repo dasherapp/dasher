@@ -99,14 +99,7 @@ class Column extends Component {
               <ColumnContainer {...props}>
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
-                    <Flex
-                      css={{
-                        alignItems: 'center',
-                        padding: space[2],
-                        paddingLeft: space[4],
-                      }}
-                      {...dragHandleProps}
-                    >
+                    <Flex alignItems="center" p={2} pl={4} {...dragHandleProps}>
                       <strong>{name || 'Untitled Column'}</strong>
                       <Spacer />
                       {column.name && (

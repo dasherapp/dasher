@@ -70,25 +70,13 @@ function renderStatusIcon(issue) {
 
 function Issue({ issue }) {
   return (
-    <Flex
-      css={{
-        padding: space[4],
-        paddingRight: space[5],
-        borderTop: `1px solid ${colors.gray[2]}`,
-      }}
-    >
-      <Flex
-        css={{
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginRight: space[4],
-        }}
-      >
+    <Flex p={4} pr={5} borderTop="1px solid" borderColor="grayAlpha.2">
+      <Flex flexDirection="column" alignItems="center" mr={4}>
         {renderStateIcon(issue)}
         <div css={{ marginTop: space[2] }} />
         {renderStatusIcon(issue)}
       </Flex>
-      <Flex css={{ flexDirection: 'column', alignItems: 'flex-start' }}>
+      <Flex flexDirection="column" alignItems="flex-start">
         <IssueTitle href={issue.url} target="_blank" rel="noopener noreferrer">
           {issue.title}
         </IssueTitle>

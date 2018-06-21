@@ -43,7 +43,7 @@ export const lineHeights = {
 
 export const colors = openColor
 
-export const radii = [3, 6]
+export const radii = [2, 4]
 
 export const shadows = [
   `0 0 0 1px ${toAlpha(colors.gray[3])}`,
@@ -62,7 +62,7 @@ export const transition = {
 }
 
 export const focusStyle = {
-  boxShadow: `0 0 0 2px ${colors.white}, 0 0 2px 4px ${toAlpha(
+  boxShadow: `0 0 0 2px ${colors.white}, 0 1px 2px 4px ${toAlpha(
     colors.gray[4],
   )}`,
 }

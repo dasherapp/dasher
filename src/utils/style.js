@@ -1,5 +1,5 @@
 import color from 'color-string'
-import memoize from 'fast-memoize'
+import { parseToRgb } from 'polished'
 
 const isNumber = value => typeof value === 'number' && !isNaN(value)
 
@@ -57,47 +57,37 @@ export const getReadableColor = background => {
  * @param {string} [background=#fff]
  * @returns {string}
  */
-export const toAlpha = memoize(
-  (foreground, background = '#fff') => {
-    const r = 0
-    const g = 1
-    const b = 2
+export const toAlpha = (foreground, background = '#fff') => {
+  const fgColor = parseToRgb(foreground)
+  const bgColor = parseToRgb(background)
 
-    // Convert color string to array (i.e. [r, g, b, a])
-    const fgColor = color.get.rgb(foreground)
-    const bgColor = color.get.rgb(background)
-
-    // Calculate alpha value
-    let alpha = [r, g, b]
-      .map(
-        channel =>
-          (fgColor[channel] - bgColor[channel]) /
-          ((0 < fgColor[channel] - bgColor[channel] ? 255 : 0) -
-            bgColor[channel]),
-      )
-      .sort((a, b) => b - a)[0]
-
-    // Keep alpha value between 0 and 1
-    alpha = Math.max(Math.min(alpha, 1), 0)
-
-    // Calculate the resulting color
-    function processChannel(channel) {
-      return 0 === alpha
-        ? bgColor[channel]
-        : bgColor[channel] + (fgColor[channel] - bgColor[channel]) / alpha
-    }
-
-    return color.to.rgb(
-      processChannel(r),
-      processChannel(g),
-      processChannel(b),
-      Math.round(alpha * 100) / 100,
+  // Calculate alpha value
+  let alpha = ['red', 'green', 'blue']
+    .map(
+      channel =>
+        (fgColor[channel] - bgColor[channel]) /
+        ((0 < fgColor[channel] - bgColor[channel] ? 255 : 0) -
+          bgColor[channel]),
     )
-  },
-  {
-    strategy: memoize.strategies.variadic,
-  },
-)
+    .sort((a, b) => b - a)[0]
+
+  // Keep alpha value between 0 and 1
+  alpha = Math.max(Math.min(alpha, 1), 0)
+
+  // Calculate the resulting color
+  function processChannel(channel) {
+    return 0 === alpha
+      ? bgColor[channel]
+      : bgColor[channel] + (fgColor[channel] - bgColor[channel]) / alpha
+  }
+
+  return color.to.rgb(
+    processChannel('red'),
+    processChannel('green'),
+    processChannel('blue'),
+    Math.round(alpha * 100) / 100,
+  )
+}
 
 /**
  * Makes it easier to create components that

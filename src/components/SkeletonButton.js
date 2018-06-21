@@ -1,52 +1,36 @@
-import { func, number, oneOfType, string } from 'prop-types'
-import styled from 'react-emotion'
-import {
-  breakpoints,
-  colors,
-  fontSizes,
-  fontWeights,
-  lineHeights,
-  radii,
-  space,
-  transition,
-} from '../theme'
-import { joinSpacing, toAlpha } from '../utils/style'
-import { cleanElement } from '../utils/utils'
+import { themeGet } from 'styled-system'
+import system from 'system-components/emotion'
 
-const SkeletonButton = styled(
-  cleanElement({ type: 'button', excludeProps: ['width'] }),
-)(props => ({
-  width: props.width,
-  padding: joinSpacing(space[4], 0),
-  fontFamily: 'inherit',
-  fontWeight: fontWeights.bold,
-  fontSize: fontSizes[2],
-  lineHeight: lineHeights.normal,
-  color: toAlpha(colors.gray[6]),
-  backgroundColor: 'transparent',
-  border: `2px dashed ${toAlpha(colors.gray[4])}`,
-  borderRadius: radii[1],
-  cursor: 'pointer',
-  outline: 0,
-  transition: `background-color ${transition.duration} ${transition.easing}`,
+const SkeletonButton = system(
+  {
+    is: 'button',
+    width: 1,
+    px: 0,
+    py: [5, 7],
+    fontSize: 2,
+    fontWeight: 'bold',
+    lineHeight: 'normal',
+    color: 'grayAlpha.6',
+    bg: 'transparent',
+    borderRadius: 2,
 
-  ':hover,:focus': {
-    backgroundColor: toAlpha(colors.gray[1]),
+    hover: {
+      backgroundColor: 'grayAlpha.1',
+    },
+
+    focus: {
+      backgroundColor: 'grayAlpha.1',
+    },
   },
+  props => ({
+    fontFamily: 'inherit',
+    border: `2px dashed ${themeGet('colors.grayAlpha.4')(props)}`,
+    cursor: 'pointer',
+    outline: 0,
+    // TODO: Handle transition
+  }),
+)
 
-  [breakpoints.sm]: {
-    padding: joinSpacing(space[6], 0),
-  },
-}))
-
-SkeletonButton.propTypes = {
-  width: oneOfType([number, string]),
-  onClick: func,
-}
-
-SkeletonButton.defaultProps = {
-  width: '100%',
-  onClick: () => {},
-}
+SkeletonButton.displayName = 'SkeletonButton'
 
 export default SkeletonButton

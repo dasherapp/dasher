@@ -41,7 +41,10 @@ export const lineHeights = {
   loose: 2,
 }
 
-export const colors = openColor
+export const colors = {
+  ...openColor,
+  grayAlpha: openColor.gray.map(color => toAlpha(color)),
+}
 
 export const radii = [0, 2, 4]
 

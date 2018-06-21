@@ -23,6 +23,14 @@ const Box = system(
   'order',
   'flexBasis',
 
+  // Position
+  'position',
+  'zIndex',
+  'top',
+  'right',
+  'bottom',
+  'left',
+
   // Misc
   'borders',
   'borderColor',

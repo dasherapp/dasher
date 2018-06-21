@@ -1,23 +1,9 @@
 import { func, number, oneOf, oneOfType, string } from 'prop-types'
 import React, { Component } from 'react'
-import styled from 'react-emotion'
 import posed from 'react-pose'
-import {
-  colors,
-  fontSizes,
-  lineHeights,
-  radii,
-  shadows,
-  space,
-  transition,
-} from '../theme'
-import { joinSpacing, toAlpha } from '../utils/style'
-import { cleanElement } from '../utils/utils'
-
-const MenuContainer = styled.div({
-  position: 'relative',
-  display: 'inline-block',
-})
+import system from 'system-components/emotion'
+import { duration, timingFunction, transitionProperty } from '../utils/style'
+import Box from './Box'
 
 const MenuTransition = posed.div({
   open: {
@@ -29,68 +15,88 @@ const MenuTransition = posed.div({
   },
 })
 
-const Menu = styled(
-  cleanElement({ type: MenuTransition, includeProps: ['pose'] }),
-)(props => ({
-  position: 'absolute',
-  [props.align]: 0,
-  display: 'flex',
-  flexDirection: 'column',
-  minWidth: props.minWidth,
-  marginTop: props.offsetTop,
-  padding: joinSpacing(space[1], 0),
-  backgroundColor: colors.gray[8],
-  borderRadius: radii[2],
-  boxShadow: shadows[3],
-  overflow: 'hidden',
-  transformOrigin: `top ${props.align}`,
-  zIndex: 1,
-}))
-
-Menu.propTypes = {
-  align: oneOf(['right', 'left']),
-  minWidth: oneOfType([number, string]),
-  offsetTop: oneOfType([number, string]),
-}
-
-Menu.defaultProps = {
-  align: 'right',
-  minWidth: 'auto',
-  offsetTop: space[1],
-}
-
-const MenuItem = styled.button({
-  display: 'block',
-  width: '100%',
-  padding: joinSpacing(space[2], space[4]),
-  fontFamily: 'inherit',
-  fontSize: fontSizes[1],
-  lineHeight: lineHeights.tight,
-  textAlign: 'left',
-  color: colors.white,
-  backgroundColor: 'transparent',
-  border: 0,
-  outline: 0,
-  cursor: 'pointer',
-  whiteSpace: 'nowrap',
-  transition: `background-color ${transition.duration} ${transition.easing}`,
-
-  ':hover,:focus': {
-    backgroundColor: toAlpha(colors.gray[8], colors.black),
+const Menu = system(
+  {
+    is: MenuTransition,
+    position: 'absolute',
+    display: 'flex',
+    flexDirection: 'column',
+    minWidth: 'auto',
+    px: 0,
+    py: 1,
+    mt: 1,
+    bg: 'gray.9',
+    borderRadius: 2,
+    boxShadow: 3,
+    zIndex: 1,
+    align: 'right',
   },
-})
+  props => ({
+    [props.align]: 0,
+    overflow: 'hidden',
+    transformOrigin: `top ${props.align}`,
+  }),
+)
 
-MenuItem.defaultProps = {
-  role: 'menuitem',
-  tabIndex: -1,
-}
+Menu.displayName = 'Menu'
 
-const MenuDivider = styled.div({
-  display: 'block',
-  width: '100%',
+Menu.propTypes.align = oneOf(['right', 'left'])
+
+const MenuItem = system(
+  {
+    is: 'button',
+    role: 'menuitem',
+    tabIndex: -1,
+    display: 'block',
+    width: 1,
+    px: 4,
+    py: 2,
+    fontSize: 1,
+    lineHeight: 'tight',
+    textAlign: 'left',
+    color: 'white',
+    bg: 'transparent',
+    timingFunction: 'standard',
+    duration: 1,
+    transitionProperty: 'background-color',
+
+    hover: {
+      backgroundColor: 'gray.7',
+    },
+
+    focus: {
+      backgroundColor: 'gray.7',
+    },
+  },
+  {
+    fontFamily: 'inherit',
+    border: 0,
+    outline: 0,
+    cursor: 'pointer',
+    whiteSpace: 'nowrap',
+  },
+  timingFunction,
+  duration,
+  transitionProperty,
+)
+
+MenuItem.displayName = 'MenuItem'
+
+MenuItem.defaultProps.blacklist = [
+  ...Object.keys(MenuItem.propTypes),
+  ...Object.keys(timingFunction.propTypes),
+  ...Object.keys(duration.propTypes),
+  ...Object.keys(transitionProperty.propTypes),
+]
+
+const MenuDivider = system({
+  is: 'div',
+  width: 1,
   height: 0,
-  borderTop: `1px solid ${toAlpha(colors.gray[9], colors.black)}`,
-  margin: joinSpacing(space[1], 0),
+  mx: 0,
+  my: 1,
+  borderTop: '1px solid',
+  borderColor: 'gray.8',
 })
 
 class Dropdown extends Component {
@@ -104,7 +110,7 @@ class Dropdown extends Component {
   static defaultProps = {
     align: 'right',
     minWidth: 'auto',
-    offsetTop: space[1],
+    offsetTop: 1,
   }
 
   constructor(props) {
@@ -273,19 +279,19 @@ class Dropdown extends Component {
     const { isOpen } = this.state
 
     return (
-      <MenuContainer>
+      <Box display="inline-block" position="relative">
         {renderMenuButton({ getMenuButtonProps: this.getMenuButtonProps })}
         <Menu
           pose={isOpen ? 'open' : 'closed'}
           align={align}
           minWidth={minWidth}
-          offsetTop={offsetTop}
+          mt={offsetTop}
         >
           <div role="menu" ref={this.menuRef}>
             {children}
           </div>
         </Menu>
-      </MenuContainer>
+      </Box>
     )
   }
 }

@@ -4,7 +4,7 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import styled from 'react-emotion'
 import { withRouter } from 'react-router-dom'
-import { colors, fontSizes, lineHeights, space } from '../theme'
+import { colors, fontSizes, lineHeights } from '../theme'
 import { logOut } from '../utils/auth'
 import { toAlpha } from '../utils/style'
 import AvatarButton from './AvatarButton'
@@ -47,7 +47,7 @@ function AccountMenu({ history }) {
         return (
           <Dropdown
             minWidth={160}
-            offsetTop={space[2]}
+            offsetTop={2}
             renderMenuButton={({ getMenuButtonProps }) => (
               <AvatarButton
                 {...getMenuButtonProps({

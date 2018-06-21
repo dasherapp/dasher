@@ -6,7 +6,7 @@ import {
   fontWeights,
   lineHeights,
   radii,
-  spacing,
+  space,
 } from '../theme'
 import { getReadableColor, joinSpacing, toAlpha } from '../utils/style'
 import { cleanElement } from '../utils/utils'
@@ -14,9 +14,9 @@ import { cleanElement } from '../utils/utils'
 const Label = styled(cleanElement({ type: 'span', excludeProps: ['color'] }))(
   props => ({
     display: 'inline-block',
-    padding: joinSpacing(spacing[0], spacing[1]),
-    marginTop: spacing[0],
-    marginRight: spacing[0],
+    padding: joinSpacing(space[0], space[1]),
+    marginTop: space[0],
+    marginRight: space[0],
     fontSize: fontSizes[0],
     fontWeight: fontWeights.bold,
     lineHeight: lineHeights.none,

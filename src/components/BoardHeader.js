@@ -3,7 +3,7 @@ import styled from 'react-emotion'
 import { Link } from 'react-router-dom'
 import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import { colors, fontSizes, fontWeights, spacing } from '../theme'
+import { colors, fontSizes, fontWeights, space } from '../theme'
 import { toAlpha } from '../utils/style'
 import AccountMenu from './AccountMenu'
 import Button from './Button'
@@ -15,7 +15,7 @@ import Spacer from './Spacer'
 import UpdateBoardModal from './UpdateBoardModal'
 
 const BoardName = styled.h1({
-  marginRight: spacing[0],
+  marginRight: space[0],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,
   color: toAlpha(colors.gray[8]),

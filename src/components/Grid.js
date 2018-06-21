@@ -1,6 +1,6 @@
 import { number, oneOfType, string } from 'prop-types'
 import styled from 'react-emotion'
-import { spacing } from '../theme'
+import { space } from '../theme'
 import { toPx } from '../utils/style'
 
 const Grid = styled.div(props => ({
@@ -18,7 +18,7 @@ Grid.propTypes = {
 
 Grid.defaultProps = {
   align: 'stretch',
-  gap: spacing[3],
+  gap: space[3],
 }
 
 export default Grid

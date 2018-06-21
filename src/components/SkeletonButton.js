@@ -7,7 +7,7 @@ import {
   fontWeights,
   lineHeights,
   radii,
-  spacing,
+  space,
   transition,
 } from '../theme'
 import { joinSpacing, toAlpha } from '../utils/style'
@@ -17,7 +17,7 @@ const SkeletonButton = styled(
   cleanElement({ type: 'button', excludeProps: ['width'] }),
 )(props => ({
   width: props.width,
-  padding: joinSpacing(spacing[4], 0),
+  padding: joinSpacing(space[4], 0),
   fontFamily: 'inherit',
   fontWeight: fontWeights.bold,
   fontSize: fontSizes[2],
@@ -35,7 +35,7 @@ const SkeletonButton = styled(
   },
 
   [breakpoints.sm]: {
-    padding: joinSpacing(spacing[6], 0),
+    padding: joinSpacing(space[6], 0),
   },
 }))
 

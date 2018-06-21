@@ -3,7 +3,7 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import { spacing } from '../theme'
+import { space } from '../theme'
 import BoardCard from './BoardCard'
 import Button from './Button'
 import CreateBoardModal from './CreateBoardModal'
@@ -37,7 +37,7 @@ function Boards() {
               if (error) return <div>Error</div>
 
               return (
-                <Grid width={300} gap={spacing[3]}>
+                <Grid width={300} gap={space[3]}>
                   {data.boards.map(board => (
                     <BoardCard key={board.id} board={board} />
                   ))}

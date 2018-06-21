@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import styled from 'react-emotion'
-import { spacing } from '../theme'
+import { space } from '../theme'
 import { reorder } from '../utils/utils'
 import { BOARD_QUERY } from './BoardPage'
 import Column, { COLUMN_WIDTH } from './Column'
@@ -42,7 +42,7 @@ const HorizontalScroll = styled.div({
 const ColumnsContainer = styled.div({
   display: 'flex',
   alignItems: 'flex-start',
-  padding: spacing[3],
+  padding: space[3],
 })
 
 class Columns extends Component {

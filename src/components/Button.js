@@ -7,7 +7,7 @@ import {
   fontWeights,
   lineHeights,
   radii,
-  spacing,
+  space,
   transition,
 } from '../theme'
 import { joinSpacing, propStyles, toAlpha } from '../utils/style'
@@ -45,7 +45,7 @@ const buttonStyles = {
     ':focus': focusStyle,
   },
   icon: {
-    padding: spacing[0],
+    padding: space[0],
     color: colors.gray[6],
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
@@ -59,7 +59,7 @@ const buttonStyles = {
 const Button = styled(cleanElement({ type: 'button' }))(
   {
     display: 'inline-block',
-    padding: joinSpacing(spacing[1], spacing[2]),
+    padding: joinSpacing(space[1], space[2]),
     fontFamily: 'inherit',
     fontSize: fontSizes[1],
     fontWeight: fontWeights.bold,

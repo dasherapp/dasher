@@ -4,7 +4,7 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import styled from 'react-emotion'
 import { withRouter } from 'react-router-dom'
-import { colors, fontSizes, lineHeights, spacing } from '../theme'
+import { colors, fontSizes, lineHeights, space } from '../theme'
 import { logOut } from '../utils/auth'
 import { joinSpacing, toAlpha } from '../utils/style'
 import AvatarButton from './AvatarButton'
@@ -47,7 +47,7 @@ function AccountMenu({ history }) {
         return (
           <Dropdown
             minWidth={160}
-            offsetTop={spacing[1]}
+            offsetTop={space[1]}
             renderMenuButton={({ getMenuButtonProps }) => (
               <AvatarButton
                 {...getMenuButtonProps({
@@ -60,7 +60,7 @@ function AccountMenu({ history }) {
             <Flex
               css={{
                 flexDirection: 'column',
-                padding: joinSpacing(spacing[1], spacing[3]),
+                padding: joinSpacing(space[1], space[3]),
               }}
             >
               <Name>{data.me.name}</Name>

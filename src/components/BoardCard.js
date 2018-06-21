@@ -10,7 +10,7 @@ import {
   fontWeights,
   radii,
   shadows,
-  spacing,
+  space,
   transition,
 } from '../theme'
 import { toAlpha } from '../utils/style'
@@ -23,7 +23,7 @@ import Spacer from './Spacer'
 import UpdateBoardModal from './UpdateBoardModal'
 
 const CardLink = styled(Link)({
-  padding: spacing[3],
+  padding: space[3],
   fontSize: fontSizes[3],
   fontWeight: fontWeights.bold,
   textDecoration: 'none',
@@ -50,7 +50,7 @@ function BoardCard({ board }) {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <CardLink to={`/board/${board.id}`}>
-          <Flex css={{ alignItems: 'center', paddingLeft: spacing[1] }}>
+          <Flex css={{ alignItems: 'center', paddingLeft: space[1] }}>
             <span>{board.name}</span>
             <Spacer />
             <Dropdown

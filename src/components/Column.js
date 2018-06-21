@@ -5,7 +5,7 @@ import { Mutation } from 'react-apollo'
 import styled from 'react-emotion'
 import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import { colors, radii, shadows, spacing, transition } from '../theme'
+import { colors, radii, shadows, space, transition } from '../theme'
 import { BOARD_QUERY } from './BoardPage'
 import Button from './Button'
 import ColumnForm from './ColumnForm'
@@ -41,7 +41,7 @@ const ColumnContainer = styled.div(props => ({
   display: 'flex',
   flexDirection: 'column',
   width: COLUMN_WIDTH,
-  marginRight: spacing[3],
+  marginRight: space[3],
   backgroundColor: colors.white,
   borderRadius: radii[1],
   boxShadow: props.isDragging ? shadows[3] : shadows[1],
@@ -102,8 +102,8 @@ class Column extends Component {
                     <Flex
                       css={{
                         alignItems: 'center',
-                        padding: spacing[1],
-                        paddingLeft: spacing[3],
+                        padding: space[1],
+                        paddingLeft: space[3],
                       }}
                       {...dragHandleProps}
                     >

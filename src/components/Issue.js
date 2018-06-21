@@ -27,24 +27,16 @@ const IssueTitle = styled.a({
 
 function renderStateIcon(issue) {
   if (issue.merged) {
-    return <MergeIcon color={colors.violet[8]} size={20} />
+    return <MergeIcon color="violet.8" size={20} />
   }
 
   if (issue.mergeable) {
     return (
-      <PullRequestIcon
-        color={issue.closed ? colors.red[8] : colors.green[8]}
-        size={20}
-      />
+      <PullRequestIcon color={issue.closed ? 'red.8' : 'green.8'} size={20} />
     )
   }
 
-  return (
-    <IssueIcon
-      color={issue.closed ? colors.red[8] : colors.green[8]}
-      size={20}
-    />
-  )
+  return <IssueIcon color={issue.closed ? 'red.8' : 'green.8'} size={20} />
 }
 
 function renderStatusIcon(issue) {
@@ -55,13 +47,13 @@ function renderStatusIcon(issue) {
 
   switch (buildStatus) {
     case 'SUCCESS':
-      return <CheckIcon color={colors.green[8]} size={16} />
+      return <CheckIcon color="green.8" size={16} />
 
     case 'PENDING':
-      return <SmallCircleIcon color={colors.yellow[8]} size={16} />
+      return <SmallCircleIcon color="yellow.8" size={16} />
 
     case 'FAILURE':
-      return <XIcon color={colors.red[8]} size={16} />
+      return <XIcon color="red.8" size={16} />
 
     default:
       return null

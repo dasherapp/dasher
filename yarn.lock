@@ -7079,9 +7079,9 @@ symbol-tree@^3.2.1:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.2.tgz#ae27db38f660a7ae2e1c3b7d1bc290819b8519e6"
 
-system-components@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/system-components/-/system-components-2.2.1.tgz#a1aba8fca4e415a00d24c8e3ca109a14042974d5"
+system-components@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/system-components/-/system-components-2.2.2.tgz#dbc005a8bfa64562e8aac9fa4c4f10fea9e54f6e"
   dependencies:
     clean-tag "^1.0.4"
     styled-system "^2.3.1"

@@ -1,16 +1,8 @@
 import { bool, oneOf } from 'prop-types'
-import styled from 'react-emotion'
 import { themeGet } from 'styled-system'
-import {
-  fontSizes,
-  fontWeights,
-  lineHeights,
-  radii,
-  space,
-  transition,
-} from '../theme'
-import { joinSpacing, propStyles } from '../utils/style'
-import { cleanElement } from '../utils/utils'
+import system from 'system-components/emotion'
+import { propStyles } from '../utils/style'
+import { duration, timingFunction, transitionProperty } from '../utils/style'
 
 const buttonStyles = {
   primary: props => ({
@@ -58,22 +50,30 @@ const buttonStyles = {
   }),
 }
 
-const Button = styled(cleanElement({ type: 'button' }))(
+const Button = system(
   {
+    is: 'button',
+    buttonStyle: 'primary',
+    disabled: false,
     display: 'inline-block',
-    padding: joinSpacing(space[2], space[3]),
+    px: 3,
+    py: 2,
+    fontSize: 1,
+    fontWeight: 'bold',
+    lineHeight: 'tight',
+    borderRadius: 2,
+    timingFunction: 'standard',
+    duration: 1,
+    transitionProperty: ['background-color', 'box-shadow'],
+  },
+  {
     fontFamily: 'inherit',
-    fontSize: fontSizes[1],
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.tight,
-    textDecoration: 'none',
+    textDecroation: 'none',
     border: 0,
-    borderRadius: radii[2],
     outline: 0,
     whiteSpace: 'nowrap',
     cursor: 'pointer',
     userSelect: 'none',
-    transition: `all ${transition.duration} ${transition.easing}`,
   },
   props => buttonStyles[props.buttonStyle](props),
   propStyles({
@@ -82,16 +82,24 @@ const Button = styled(cleanElement({ type: 'button' }))(
       pointerEvents: 'none',
     },
   }),
+  timingFunction,
+  duration,
+  transitionProperty,
 )
 
+Button.displayName = 'Button'
+
 Button.propTypes = {
+  ...Button.propTypes,
   buttonStyle: oneOf(['primary', 'secondary', 'danger', 'icon']),
   disabled: bool,
 }
 
-Button.defaultProps = {
-  buttonStyle: 'primary',
-  disabled: false,
-}
+Button.defaultProps.blacklist = [
+  ...Object.keys(Button.propTypes),
+  ...Object.keys(timingFunction.propTypes),
+  ...Object.keys(duration.propTypes),
+  ...Object.keys(transitionProperty.propTypes),
+]
 
 export default Button

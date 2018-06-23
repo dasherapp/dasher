@@ -4,7 +4,7 @@ const Avatar = system(
   {
     is: 'img',
     size: 24,
-    borderRadius: 1,
+    borderRadius: 2,
   },
   {
     verticalAlign: 'middle',

@@ -1,18 +1,11 @@
 import { number, oneOfType, string } from 'prop-types'
 import React from 'react'
-import { radii } from '../theme'
 import Avatar from './Avatar'
 import Clickable from './Clickable'
 
 const AvatarButton = React.forwardRef(({ src, size, ...props }, ref) => {
   return (
-    <Clickable
-      innerRef={ref}
-      css={{
-        borderRadius: radii[1],
-      }}
-      {...props}
-    >
+    <Clickable innerRef={ref} borderRadius={2} {...props}>
       <Avatar src={src} size={size} />
     </Clickable>
   )

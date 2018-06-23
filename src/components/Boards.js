@@ -26,7 +26,7 @@ function Boards() {
     <Subscribe to={[ModalContainer]}>
       {modal => (
         <div>
-          <Flex pt={[5, 7]} pb={5} alignItems="center">
+          <Flex pb={5} alignItems="center">
             <Heading is="h1" fontSize={[4, 5]}>
               Boards
             </Heading>

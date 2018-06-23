@@ -1,7 +1,6 @@
 import { oneOf } from 'prop-types'
 import { themeGet } from 'styled-system'
 import system from 'system-components/emotion'
-import { duration, timingFunction, transitionProperty } from '../utils/style'
 
 const buttonStyles = {
   primary: props => ({
@@ -61,9 +60,6 @@ const Button = system(
     lineHeight: 'tight',
     borderRadius: 2,
     border: 0,
-    timingFunction: 'standard',
-    duration: 1,
-    transitionProperty: 'background-color, box-shadow',
   },
   {
     fontFamily: 'inherit',
@@ -82,18 +78,12 @@ const Button = system(
     },
   },
   props => buttonStyles[props.buttonStyle](props),
-  timingFunction,
-  duration,
-  transitionProperty,
 )
 
 Button.displayName = 'Button'
 
 Button.propTypes = {
   ...Button.propTypes,
-  ...timingFunction.propTypes,
-  ...duration.propTypes,
-  ...transitionProperty.propTypes,
   buttonStyle: oneOf(['primary', 'secondary', 'danger', 'icon']),
 }
 

@@ -2,7 +2,6 @@ import { func, number, oneOf, oneOfType, string } from 'prop-types'
 import React, { Component } from 'react'
 import posed from 'react-pose'
 import system from 'system-components/emotion'
-import { duration, timingFunction, transitionProperty } from '../utils/style'
 import Box from './Box'
 
 const MenuTransition = posed.div({
@@ -18,6 +17,7 @@ const MenuTransition = posed.div({
 const Menu = system(
   {
     is: MenuTransition,
+    align: 'right',
     position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
@@ -29,7 +29,6 @@ const Menu = system(
     borderRadius: 2,
     boxShadow: 3,
     zIndex: 1,
-    align: 'right',
   },
   props => ({
     [props.align]: 0,
@@ -40,7 +39,10 @@ const Menu = system(
 
 Menu.displayName = 'Menu'
 
-Menu.propTypes.align = oneOf(['right', 'left'])
+Menu.propTypes = {
+  ...Menu.propTypes,
+  align: oneOf(['right', 'left']),
+}
 
 const MenuItem = system(
   {
@@ -56,9 +58,6 @@ const MenuItem = system(
     textAlign: 'left',
     color: 'white',
     bg: 'transparent',
-    timingFunction: 'standard',
-    duration: 1,
-    transitionProperty: 'background-color',
 
     hover: {
       backgroundColor: 'gray.7',
@@ -75,19 +74,9 @@ const MenuItem = system(
     cursor: 'pointer',
     whiteSpace: 'nowrap',
   },
-  timingFunction,
-  duration,
-  transitionProperty,
 )
 
 MenuItem.displayName = 'MenuItem'
-
-MenuItem.defaultProps.blacklist = [
-  ...Object.keys(MenuItem.propTypes),
-  ...Object.keys(timingFunction.propTypes),
-  ...Object.keys(duration.propTypes),
-  ...Object.keys(transitionProperty.propTypes),
-]
 
 const MenuDivider = system({
   is: 'div',
@@ -98,6 +87,8 @@ const MenuDivider = system({
   borderTop: '1px solid',
   borderColor: 'gray.8',
 })
+
+MenuDivider.displayName = 'MenuDivider'
 
 class Dropdown extends Component {
   static propTypes = {
@@ -113,15 +104,12 @@ class Dropdown extends Component {
     offsetTop: 1,
   }
 
-  constructor(props) {
-    super(props)
+  menuButtonRef = React.createRef()
 
-    this.menuButtonRef = React.createRef()
-    this.menuRef = React.createRef()
+  menuRef = React.createRef()
 
-    this.state = {
-      isOpen: false,
-    }
+  state = {
+    isOpen: false,
   }
 
   componentDidMount() {

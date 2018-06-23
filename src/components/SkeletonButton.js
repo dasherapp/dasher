@@ -1,5 +1,5 @@
+import { themeGet } from 'styled-system'
 import system from 'system-components/emotion'
-import { duration, timingFunction, transitionProperty } from '../utils/style'
 
 const SkeletonButton = system(
   {
@@ -15,35 +15,18 @@ const SkeletonButton = system(
     borderRadius: 2,
     border: '2px dashed',
     borderColor: 'grayAlpha.4',
-    timingFunction: 'standard',
-    duration: 1,
-    transitionProperty: 'background-color',
-
-    hover: {
-      backgroundColor: 'grayAlpha.1',
-    },
-
-    focus: {
-      backgroundColor: 'grayAlpha.1',
-    },
   },
-  {
+  props => ({
     fontFamily: 'inherit',
     cursor: 'pointer',
     outline: 0,
-  },
-  timingFunction,
-  duration,
-  transitionProperty,
+
+    '&:hover, &:focus': {
+      backgroundColor: themeGet('colors.grayAlpha.1')(props),
+    },
+  }),
 )
 
 SkeletonButton.displayName = 'SkeletonButton'
-
-SkeletonButton.defaultProps.blacklist = [
-  ...Object.keys(SkeletonButton.propTypes),
-  ...Object.keys(timingFunction.propTypes),
-  ...Object.keys(duration.propTypes),
-  ...Object.keys(transitionProperty.propTypes),
-]
 
 export default SkeletonButton

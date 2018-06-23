@@ -18,6 +18,14 @@ const Grid = system(
 
 Grid.displayName = 'Grid'
 
-Grid.propTypes.maxColumnWidth = oneOfType([number, string]).isRequired
+Grid.propTypes = {
+  ...Grid.propTypes,
+  maxColumnWidth: oneOfType([number, string]).isRequired,
+}
+
+Grid.defaultProps = {
+  ...Grid.defaultProps,
+  blacklist: Object.keys(Grid.propTypes),
+}
 
 export default Grid

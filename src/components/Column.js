@@ -2,10 +2,10 @@ import { gql } from 'apollo-boost'
 import { bool, func, object, shape, string } from 'prop-types'
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
-import styled from 'react-emotion'
+import { themeGet } from 'styled-system'
+import system from 'system-components/emotion'
 import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import { colors, radii, shadows, space, transition } from '../theme'
 import { BOARD_QUERY } from './BoardPage'
 import Button from './Button'
 import ColumnForm from './ColumnForm'
@@ -38,16 +38,35 @@ const DELETE_COLUMN_MUTATION = gql`
 
 export const COLUMN_WIDTH = 330
 
-const ColumnContainer = styled.div(props => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: COLUMN_WIDTH,
-  marginRight: space[4],
-  backgroundColor: colors.white,
-  borderRadius: radii[2],
-  boxShadow: props.isDragging ? shadows[3] : shadows[1],
-  transition: `box-shadow ${transition.duration} ${transition.easing}`,
-}))
+const ColumnContainer = system(
+  {
+    is: 'div',
+    isDragging: false,
+    display: 'flex',
+    flexDirection: 'column',
+    width: COLUMN_WIDTH,
+    mr: 4,
+    bg: 'white',
+    borderRadius: 2,
+  },
+  props => ({
+    boxShadow: props.isDragging
+      ? themeGet('shadows.3')(props)
+      : themeGet('shadows.1')(props),
+  }),
+)
+
+ColumnContainer.displayName = 'ColumnContainer'
+
+ColumnContainer.propTypes = {
+  ...ColumnContainer.propTypes,
+  isDragging: bool,
+}
+
+ColumnContainer.defaultProps = {
+  ...ColumnContainer.defaultProps,
+  blacklist: Object.keys(ColumnContainer.propTypes),
+}
 
 class Column extends Component {
   static propTypes = {

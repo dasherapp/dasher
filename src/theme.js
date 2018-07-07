@@ -1,12 +1,7 @@
 import openColor from 'open-color'
-import { toAlpha, toMediaQuery } from './utils/style'
+import { toAlpha } from './utils/style'
 
-export const breakpoints = {
-  sm: toMediaQuery(32),
-  md: toMediaQuery(48),
-  lg: toMediaQuery(64),
-  xl: toMediaQuery(80),
-}
+export const breakpoints = ['40em', '52em', '64em']
 
 export const space = [0, 4, 8, 12, 16, 24, 32, 64, 128, 256, 512]
 
@@ -49,34 +44,24 @@ export const colors = {
 export const radii = [0, 2, 4]
 
 export const shadows = [
-  `0 0 0 1px ${toAlpha(colors.gray[3])}`,
-  `0 1px 1px 1px ${toAlpha(colors.gray[3])}`,
-  `0 4px 8px 0 ${toAlpha(colors.gray[3])}, 0 2px 4px 1px ${toAlpha(
-    colors.gray[2],
-  )}`,
-  `0 15px 30px 0 ${toAlpha(colors.gray[3])}, 0 5px 15px 1px ${toAlpha(
-    colors.gray[2],
-  )}`,
+  `0 0 0 1px ${colors.grayAlpha[3]}`,
+  `0 1px 1px 1px ${colors.grayAlpha[3]}`,
+  `0 4px 8px 0 ${colors.grayAlpha[3]}, 0 2px 4px 1px ${colors.grayAlpha[2]}`,
+  `0 15px 30px 0 ${colors.grayAlpha[3]}, 0 5px 15px 1px ${colors.grayAlpha[2]}`,
 ]
 
 export const timingFunctions = {
   standard: 'cubic-bezier(0.4, 0, 0.2, 1)',
 }
 
-export const durations = [0, 100, 200].map(value => value + 'ms')
-
-// TODO: remove
-export const transition = {
-  duration: '150ms',
-  easing: 'ease-in-out',
-}
+export const durations = ['0', '100ms', '200ms']
 
 export const focusStyle = {
   boxShadow: `0 0 0 2px ${colors.white}, 0 1px 2px 4px ${colors.grayAlpha[4]}`,
 }
 
 export default {
-  // breakpoints,
+  breakpoints,
   space,
   fonts,
   fontWeights,
@@ -87,6 +72,5 @@ export default {
   shadows,
   timingFunctions,
   durations,
-  transition,
   focusStyle,
 }

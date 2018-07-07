@@ -10,17 +10,6 @@ export const toPx = toUnit('px')
 
 export const toEm = toUnit('em')
 
-export const toMediaQuery = breakpoint =>
-  `@media screen and (min-width: ${toEm(breakpoint)})`
-
-export const joinSpacing = (...args) => {
-  if (args.length > 4) {
-    throw new Error('Too many arguments')
-  }
-
-  return args.map(toPx).join(' ')
-}
-
 /* Custom styled-system style utilities */
 
 export const timingFunction = style({
@@ -56,8 +45,8 @@ export const transitionProperty = style({
  *
  */
 export const getReadableColor = background => {
-  // The threshold ranges from 0 to 256. A threshold above the midpoint, 128, will
-  // favor white text over black text.
+  // The threshold ranges from 0 to 256. A threshold above the midpoint, 128,
+  // will favor white text over black text.
   const threshold = 136
 
   const rgb = parseToRgb(background)

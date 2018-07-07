@@ -54,23 +54,23 @@ describe('getReadableColor()', () => {
 
 describe('toAlpha()', () => {
   it('returns the transparent version a color', () => {
-    expect(toAlpha('#808080')).toBe('rgba(0, 0, 0, 0.5)')
-    expect(toAlpha('#000')).toBe('rgb(0, 0, 0)')
-    expect(toAlpha('#fff')).toBe('rgba(255, 255, 255, 0)')
-    expect(toAlpha('#ff7f7f')).toBe('rgba(255, 0, 0, 0.5)')
-    expect(toAlpha('#bdddd8')).toBe('rgba(0, 124, 104, 0.26)')
-    expect(toAlpha('#7e3b65')).toBe('rgba(87, 0, 55, 0.77)')
+    expect(toAlpha('#808080')).toBe('rgba(0,0,0,0.5)')
+    expect(toAlpha('#000')).toBe('#000')
+    expect(toAlpha('#fff')).toBe('rgba(255,255,255,0)')
+    expect(toAlpha('#ff7f7f')).toBe('rgba(255,0,0,0.5)')
+    expect(toAlpha('#bdddd8')).toBe('rgba(0,124,104,0.26)')
+    expect(toAlpha('#7e3b65')).toBe('rgba(87,0,55,0.77)')
   })
 
   it('works with custom background color', () => {
-    expect(toAlpha('#414141', '#000')).toBe('rgba(255, 255, 255, 0.25)')
-    expect(toAlpha('#91974c', '#f34949')).toBe('rgba(14, 255, 80, 0.43)')
-    expect(toAlpha('#808080', '#000')).toBe('rgba(255, 255, 255, 0.5)')
-    expect(toAlpha('#ae1268', '#e93636')).toBe('rgba(145, 0, 129, 0.67)')
+    expect(toAlpha('#414141', '#000')).toBe('rgba(255,255,255,0.25)')
+    expect(toAlpha('#91974c', '#f34949')).toBe('rgba(14,255,80,0.43)')
+    expect(toAlpha('#808080', '#000')).toBe('rgba(255,255,255,0.5)')
+    expect(toAlpha('#ae1268', '#e93636')).toBe('rgba(145,0,129,0.67)')
   })
 
   it('works with an rgb color value', () => {
-    expect(toAlpha('rgb(128, 128, 128)')).toBe('rgba(0, 0, 0, 0.5)')
+    expect(toAlpha('rgb(128, 128, 128)')).toBe('rgba(0,0,0,0.5)')
   })
 })
 

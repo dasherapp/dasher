@@ -1,24 +1,25 @@
 import React from 'react'
-import { fireEvent, render, renderIntoDocument } from 'react-testing-library'
+import { fireEvent, renderIntoDocument } from 'react-testing-library'
+import { renderWithTheme } from '../../utils/testUtils'
 import SkeletonButton from '../SkeletonButton'
 
 it('renders without crashing', () => {
-  const { container } = render(
+  const { container } = renderWithTheme(
     <SkeletonButton>Test SkeletonButton</SkeletonButton>,
   )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders with custom number width', () => {
-  const { container } = render(
+  const { container } = renderWithTheme(
     <SkeletonButton width={360}>Custom Width SkeletonButton</SkeletonButton>,
   )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders with custom percentage width', () => {
-  const { container } = render(
-    <SkeletonButton width={'100%'}>Custom Width SkeletonButton</SkeletonButton>,
+  const { container } = renderWithTheme(
+    <SkeletonButton width={1 / 2}>Custom Width SkeletonButton</SkeletonButton>,
   )
   expect(container.firstChild).toMatchSnapshot()
 })

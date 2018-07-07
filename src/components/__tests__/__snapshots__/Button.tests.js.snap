@@ -3,15 +3,20 @@
 exports[`renders as danger 1`] = `
 .emotion-0 {
   display: inline-block;
-  padding: 8px 12px;
-  font-family: inherit;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  vertical-align: middle;
+  text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  border: 0;
-  border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
@@ -19,10 +24,16 @@ exports[`renders as danger 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   color: #ffffff;
   background-color: #f03e3e;
+}
+
+.emotion-0:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .emotion-0:hover {
@@ -30,11 +41,11 @@ exports[`renders as danger 1`] = `
 }
 
 .emotion-0:focus {
-  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
+  box-shadow: 0 0 0 2px #ffffff,0 1px 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   Primary Button
 </button>
@@ -43,15 +54,20 @@ exports[`renders as danger 1`] = `
 exports[`renders as icon 1`] = `
 .emotion-1 {
   display: inline-block;
-  padding: 8px 12px;
-  font-family: inherit;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  vertical-align: middle;
+  text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  border: 0;
-  border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
@@ -59,12 +75,18 @@ exports[`renders as icon 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   padding: 4px;
   color: #868e96;
   background-color: transparent;
   vertical-align: middle;
+}
+
+.emotion-1:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .emotion-1:hover,
@@ -73,6 +95,8 @@ exports[`renders as icon 1`] = `
 }
 
 .emotion-0 {
+  height: 24px;
+  width: 24px;
   vertical-align: middle;
 }
 
@@ -81,19 +105,17 @@ exports[`renders as icon 1`] = `
 }
 
 <button
-  class="emotion-1 emotion-2"
+  class="emotion-1"
 >
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <circle
@@ -118,15 +140,20 @@ exports[`renders as icon 1`] = `
 exports[`renders as primary 1`] = `
 .emotion-0 {
   display: inline-block;
-  padding: 8px 12px;
-  font-family: inherit;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  vertical-align: middle;
+  text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  border: 0;
-  border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
@@ -134,90 +161,14 @@ exports[`renders as primary 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   color: #ffffff;
   background-color: #4263eb;
 }
 
-.emotion-0:hover {
-  background-color: #364fc7;
-}
-
-.emotion-0:focus {
-  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
-}
-
-<button
-  class="emotion-0 emotion-1"
->
-  Primary Button
-</button>
-`;
-
-exports[`renders as secondary 1`] = `
-.emotion-0 {
-  display: inline-block;
-  padding: 8px 12px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.25;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: 0;
-  border-radius: 3px;
-  outline: 0;
-  white-space: nowrap;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
-  color: rgba(0,5,9,0.87);
-  background-color: transparent;
-}
-
-.emotion-0:hover {
-  background-color: rgba(0,36,73,0.05);
-}
-
-.emotion-0:focus {
-  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
-}
-
-<button
-  class="emotion-0 emotion-1"
->
-  Primary Button
-</button>
-`;
-
-exports[`renders when disabled 1`] = `
-.emotion-0 {
-  display: inline-block;
-  padding: 8px 12px;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.25;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  border: 0;
-  border-radius: 3px;
-  outline: 0;
-  white-space: nowrap;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
-  color: #ffffff;
-  background-color: #4263eb;
+.emotion-0:disabled {
   opacity: 0.5;
   pointer-events: none;
 }
@@ -227,12 +178,114 @@ exports[`renders when disabled 1`] = `
 }
 
 .emotion-0:focus {
-  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
+  box-shadow: 0 0 0 2px #ffffff,0 1px 2px 4px rgba(0,31,62,0.19);
+}
+
+<button
+  class="emotion-0"
+>
+  Primary Button
+</button>
+`;
+
+exports[`renders as secondary 1`] = `
+.emotion-0 {
+  display: inline-block;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  outline: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: rgba(0,5,9,0.87);
+  background-color: transparent;
+}
+
+.emotion-0:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.emotion-0:hover {
+  background-color: rgba(0,36,73,0.05);
+}
+
+.emotion-0:focus {
+  box-shadow: 0 0 0 2px #ffffff,0 1px 2px 4px rgba(0,31,62,0.19);
+}
+
+<button
+  class="emotion-0"
+>
+  Primary Button
+</button>
+`;
+
+exports[`renders when disabled 1`] = `
+.emotion-0 {
+  display: inline-block;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  outline: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #ffffff;
+  background-color: #4263eb;
+}
+
+.emotion-0:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.emotion-0:hover {
+  background-color: #364fc7;
+}
+
+.emotion-0:focus {
+  box-shadow: 0 0 0 2px #ffffff,0 1px 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
   disabled=""
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   Disabled Button
 </button>
@@ -241,15 +294,20 @@ exports[`renders when disabled 1`] = `
 exports[`renders without crashing 1`] = `
 .emotion-0 {
   display: inline-block;
-  padding: 8px 12px;
-  font-family: inherit;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   font-size: 14px;
   font-weight: 600;
   line-height: 1.25;
+  border-radius: 4px;
+  border: 0;
+  font-family: inherit;
+  vertical-align: middle;
+  text-align: center;
   -webkit-text-decoration: none;
   text-decoration: none;
-  border: 0;
-  border-radius: 3px;
   outline: 0;
   white-space: nowrap;
   cursor: pointer;
@@ -257,10 +315,16 @@ exports[`renders without crashing 1`] = `
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-transition: all 150ms ease-in-out;
-  transition: all 150ms ease-in-out;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   color: #ffffff;
   background-color: #4263eb;
+}
+
+.emotion-0:disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .emotion-0:hover {
@@ -268,11 +332,11 @@ exports[`renders without crashing 1`] = `
 }
 
 .emotion-0:focus {
-  box-shadow: 0 0 0 2px #ffffff,0 0 2px 4px rgba(0,31,62,0.19);
+  box-shadow: 0 0 0 2px #ffffff,0 1px 2px 4px rgba(0,31,62,0.19);
 }
 
 <button
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 >
   Test Button
 </button>

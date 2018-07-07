@@ -1,3 +1,4 @@
+import { string } from 'prop-types'
 import { themeGet } from 'styled-system/dist/util'
 import system from 'system-components/emotion'
 import { getReadableColor } from '../utils/style'
@@ -21,5 +22,15 @@ const IssueLabel = system(
 )
 
 IssueLabel.displayName = 'IssueLabel'
+
+IssueLabel.propTypes = {
+  ...IssueLabel.propTypes,
+  color: string.isRequired,
+}
+
+IssueLabel.defaultProps = {
+  ...IssueLabel.defaultProps,
+  blacklist: Object.keys(IssueLabel.propTypes),
+}
 
 export default IssueLabel

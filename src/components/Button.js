@@ -1,97 +1,95 @@
-import { bool, func, oneOf } from 'prop-types'
-import styled from 'react-emotion'
-import {
-  colors,
-  focusStyle,
-  fontSizes,
-  fontWeights,
-  lineHeights,
-  radii,
-  spacing,
-  transition,
-} from '../theme'
-import { joinSpacing, propStyles, toAlpha } from '../utils/style'
-import { cleanElement } from '../utils/utils'
+import { oneOf } from 'prop-types'
+import { themeGet } from 'styled-system'
+import system from 'system-components/emotion'
 
 const buttonStyles = {
-  primary: {
-    color: colors.white,
-    backgroundColor: colors.indigo[7],
+  primary: props => ({
+    color: themeGet('colors.white')(props),
+    backgroundColor: themeGet('colors.indigo.7')(props),
 
-    ':hover': {
-      backgroundColor: colors.indigo[9],
+    '&:hover': {
+      backgroundColor: themeGet('colors.indigo.9')(props),
     },
 
-    ':focus': focusStyle,
-  },
-  secondary: {
-    color: toAlpha(colors.gray[9]),
+    '&:focus': themeGet('focusStyle')(props),
+  }),
+
+  secondary: props => ({
+    color: themeGet('colors.grayAlpha.9')(props),
     backgroundColor: 'transparent',
 
-    ':hover': {
-      backgroundColor: toAlpha(colors.gray[1]),
+    '&:hover': {
+      backgroundColor: themeGet('colors.grayAlpha.1')(props),
     },
 
-    ':focus': focusStyle,
-  },
-  danger: {
-    color: colors.white,
-    backgroundColor: colors.red[7],
+    '&:focus': themeGet('focusStyle')(props),
+  }),
 
-    ':hover': {
-      backgroundColor: colors.red[9],
+  danger: props => ({
+    color: themeGet('colors.white')(props),
+    backgroundColor: themeGet('colors.red.7')(props),
+
+    '&:hover': {
+      backgroundColor: themeGet('colors.red.9')(props),
     },
 
-    ':focus': focusStyle,
-  },
-  icon: {
-    padding: spacing[0],
-    color: colors.gray[6],
+    '&:focus': themeGet('focusStyle')(props),
+  }),
+
+  icon: props => ({
+    padding: themeGet('space.1')(props),
+    color: themeGet('colors.gray.6')(props),
     backgroundColor: 'transparent',
     verticalAlign: 'middle',
 
-    ':hover,:focus': {
-      backgroundColor: toAlpha(colors.gray[1]),
+    '&:hover, &:focus': {
+      backgroundColor: themeGet('colors.grayAlpha.1')(props),
     },
-  },
+  }),
 }
 
-const Button = styled(cleanElement({ type: 'button' }))(
+const Button = system(
   {
+    is: 'button',
+    buttonStyle: 'primary',
     display: 'inline-block',
-    padding: joinSpacing(spacing[1], spacing[2]),
-    fontFamily: 'inherit',
-    fontSize: fontSizes[1],
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.tight,
-    textDecoration: 'none',
+    px: 3,
+    py: 2,
+    fontSize: 1,
+    fontWeight: 'bold',
+    lineHeight: 'tight',
+    borderRadius: 2,
     border: 0,
-    borderRadius: radii[0],
+  },
+  {
+    fontFamily: 'inherit',
+    verticalAlign: 'middle',
+    textAlign: 'center',
+    textDecoration: 'none',
     outline: 0,
     whiteSpace: 'nowrap',
     cursor: 'pointer',
     userSelect: 'none',
-    transition: `all ${transition.duration} ${transition.easing}`,
-  },
-  props => buttonStyles[props.buttonStyle],
-  propStyles({
-    disabled: {
+    appearance: 'none',
+
+    '&:disabled': {
       opacity: 0.5,
       pointerEvents: 'none',
     },
-  }),
+  },
+  props => buttonStyles[props.buttonStyle](props),
 )
 
+Button.displayName = 'Button'
+
 Button.propTypes = {
+  ...Button.propTypes,
   buttonStyle: oneOf(['primary', 'secondary', 'danger', 'icon']),
-  disabled: bool,
-  onClick: func,
 }
 
 Button.defaultProps = {
-  buttonStyle: 'primary',
-  disabled: false,
-  onClick: () => {},
+  ...Button.defaultProps,
+  blacklist: Object.keys(Button.propTypes),
 }
 
 export default Button

@@ -2,14 +2,12 @@ import { gql } from 'apollo-boost'
 import { func, shape } from 'prop-types'
 import React from 'react'
 import { Query } from 'react-apollo'
-import styled from 'react-emotion'
 import { withRouter } from 'react-router-dom'
-import { colors, fontSizes, lineHeights, spacing } from '../theme'
 import { logOut } from '../utils/auth'
-import { joinSpacing, toAlpha } from '../utils/style'
 import AvatarButton from './AvatarButton'
 import Dropdown, { MenuDivider, MenuItem } from './Dropdown'
 import Flex from './Flex'
+import Text from './Text'
 
 const ME_QUERY = gql`
   query MeQuery {
@@ -21,21 +19,15 @@ const ME_QUERY = gql`
   }
 `
 
-const textStyle = {
-  textAlign: 'left',
-  lineHeight: lineHeights.normal,
-  whiteSpace: 'nowrap',
-}
-
-const Name = styled.span(textStyle, {
-  fontSize: fontSizes[2],
-  color: colors.white,
-})
-
-const Login = styled.span(textStyle, {
-  fontSize: fontSizes[1],
-  color: toAlpha(colors.gray[6], colors.black),
-})
+const MenuText = props => (
+  <Text
+    is="span"
+    textAlign="left"
+    lineHeight="normal"
+    css={{ whiteSpace: 'nowrap' }}
+    {...props}
+  />
+)
 
 function AccountMenu({ history }) {
   return (
@@ -47,7 +39,7 @@ function AccountMenu({ history }) {
         return (
           <Dropdown
             minWidth={160}
-            offsetTop={spacing[1]}
+            offsetTop={2}
             renderMenuButton={({ getMenuButtonProps }) => (
               <AvatarButton
                 {...getMenuButtonProps({
@@ -57,14 +49,13 @@ function AccountMenu({ history }) {
               />
             )}
           >
-            <Flex
-              css={{
-                flexDirection: 'column',
-                padding: joinSpacing(spacing[1], spacing[3]),
-              }}
-            >
-              <Name>{data.me.name}</Name>
-              <Login>{data.me.login}</Login>
+            <Flex flexDirection="column" py={2} px={4}>
+              <MenuText fontSize={2} color="white">
+                {data.me.name}
+              </MenuText>
+              <MenuText fontSize={1} color="gray.5">
+                {data.me.login}
+              </MenuText>
             </Flex>
             <MenuDivider />
             <MenuItem

@@ -14,7 +14,7 @@ function HomePage() {
         <Spacer />
         <AccountMenu />
       </Header>
-      <PageContainer>
+      <PageContainer py={[5, 7]}>
         <Boards />
       </PageContainer>
     </div>

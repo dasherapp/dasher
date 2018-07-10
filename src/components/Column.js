@@ -2,16 +2,17 @@ import { gql } from 'apollo-boost'
 import { bool, func, object, shape, string } from 'prop-types'
 import React, { Component } from 'react'
 import { Mutation } from 'react-apollo'
-import styled from 'react-emotion'
+import { themeGet } from 'styled-system'
+import system from 'system-components/emotion'
 import { Subscribe } from 'unstated'
 import ModalContainer from '../containers/ModalContainer'
-import { colors, radii, shadows, spacing, transition } from '../theme'
 import { BOARD_QUERY } from './BoardPage'
 import Button from './Button'
 import ColumnForm from './ColumnForm'
 import DeleteColumnModal from './DeleteColumnModal'
 import Dropdown, { MenuItem } from './Dropdown'
 import Flex from './Flex'
+import Heading from './Heading'
 import { EllipsesIcon } from './Icon'
 import Issues from './Issues'
 import Spacer from './Spacer'
@@ -37,16 +38,35 @@ const DELETE_COLUMN_MUTATION = gql`
 
 export const COLUMN_WIDTH = 330
 
-const ColumnContainer = styled.div(props => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: COLUMN_WIDTH,
-  marginRight: spacing[3],
-  backgroundColor: colors.white,
-  borderRadius: radii[1],
-  boxShadow: props.isDragging ? shadows[3] : shadows[1],
-  transition: `box-shadow ${transition.duration} ${transition.easing}`,
-}))
+const ColumnContainer = system(
+  {
+    is: 'div',
+    isDragging: false,
+    display: 'flex',
+    flexDirection: 'column',
+    width: COLUMN_WIDTH,
+    mr: 4,
+    bg: 'white',
+    borderRadius: 2,
+  },
+  props => ({
+    boxShadow: props.isDragging
+      ? themeGet('shadows.3')(props)
+      : themeGet('shadows.1')(props),
+  }),
+)
+
+ColumnContainer.displayName = 'ColumnContainer'
+
+ColumnContainer.propTypes = {
+  ...ColumnContainer.propTypes,
+  isDragging: bool,
+}
+
+ColumnContainer.defaultProps = {
+  ...ColumnContainer.defaultProps,
+  blacklist: Object.keys(ColumnContainer.propTypes),
+}
 
 class Column extends Component {
   static propTypes = {
@@ -99,15 +119,10 @@ class Column extends Component {
               <ColumnContainer {...props}>
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
-                    <Flex
-                      css={{
-                        alignItems: 'center',
-                        padding: spacing[1],
-                        paddingLeft: spacing[3],
-                      }}
-                      {...dragHandleProps}
-                    >
-                      <strong>{name || 'Untitled Column'}</strong>
+                    <Flex alignItems="center" p={2} pl={4} {...dragHandleProps}>
+                      <Heading is="span" fontSize={2}>
+                        {name || 'Untitled Column'}
+                      </Heading>
                       <Spacer />
                       {column.name && (
                         <Dropdown

@@ -1,5 +1,5 @@
-import color from 'color-string'
-import memoize from 'fast-memoize'
+import { parseToRgb, rgba } from 'polished'
+import { style } from 'styled-system'
 
 const isNumber = value => typeof value === 'number' && !isNaN(value)
 
@@ -10,16 +10,25 @@ export const toPx = toUnit('px')
 
 export const toEm = toUnit('em')
 
-export const toMediaQuery = breakpoint =>
-  `@media screen and (min-width: ${toEm(breakpoint)})`
+/* Custom styled-system style utilities */
 
-export const joinSpacing = (...args) => {
-  if (args.length > 4) {
-    throw new Error('Too many arguments')
-  }
+export const timingFunction = style({
+  prop: 'timingFunction',
+  cssProperty: 'transitionTimingFunction',
+  key: 'timingFunctions',
+})
 
-  return args.map(toPx).join(' ')
-}
+export const duration = style({
+  prop: 'duration',
+  cssProperty: 'transitionDuration',
+  key: 'durations',
+})
+
+export const transitionProperty = style({
+  prop: 'transitionProperty',
+  cssProperty: 'transitionProperty',
+  getter: value => (Array.isArray(value) ? value.join(',') : value),
+})
 
 /**
  * Returns either black or white depending on which color will be more readable
@@ -36,13 +45,13 @@ export const joinSpacing = (...args) => {
  *
  */
 export const getReadableColor = background => {
-  // The threshold ranges from 0 to 256. A threshold above the midpoint, 128, will
-  // favor white text over black text.
+  // The threshold ranges from 0 to 256. A threshold above the midpoint, 128,
+  // will favor white text over black text.
   const threshold = 136
 
-  const rgb = color.get.rgb(background)
+  const rgb = parseToRgb(background)
 
-  const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000
+  const brightness = (rgb.red * 299 + rgb.green * 587 + rgb.blue * 114) / 1000
 
   return brightness > threshold ? '#000000' : '#ffffff'
 }
@@ -57,47 +66,37 @@ export const getReadableColor = background => {
  * @param {string} [background=#fff]
  * @returns {string}
  */
-export const toAlpha = memoize(
-  (foreground, background = '#fff') => {
-    const r = 0
-    const g = 1
-    const b = 2
+export const toAlpha = (foreground, background = '#fff') => {
+  const fgColor = parseToRgb(foreground)
+  const bgColor = parseToRgb(background)
 
-    // Convert color string to array (i.e. [r, g, b, a])
-    const fgColor = color.get.rgb(foreground)
-    const bgColor = color.get.rgb(background)
-
-    // Calculate alpha value
-    let alpha = [r, g, b]
-      .map(
-        channel =>
-          (fgColor[channel] - bgColor[channel]) /
-          ((0 < fgColor[channel] - bgColor[channel] ? 255 : 0) -
-            bgColor[channel]),
-      )
-      .sort((a, b) => b - a)[0]
-
-    // Keep alpha value between 0 and 1
-    alpha = Math.max(Math.min(alpha, 1), 0)
-
-    // Calculate the resulting color
-    function processChannel(channel) {
-      return 0 === alpha
-        ? bgColor[channel]
-        : bgColor[channel] + (fgColor[channel] - bgColor[channel]) / alpha
-    }
-
-    return color.to.rgb(
-      processChannel(r),
-      processChannel(g),
-      processChannel(b),
-      Math.round(alpha * 100) / 100,
+  // Calculate alpha value
+  let alpha = ['red', 'green', 'blue']
+    .map(
+      channel =>
+        (fgColor[channel] - bgColor[channel]) /
+        ((0 < fgColor[channel] - bgColor[channel] ? 255 : 0) -
+          bgColor[channel]),
     )
-  },
-  {
-    strategy: memoize.strategies.variadic,
-  },
-)
+    .sort((a, b) => b - a)[0]
+
+  // Keep alpha value between 0 and 1
+  alpha = Math.max(Math.min(alpha, 1), 0)
+
+  // Calculate the resulting color
+  function processChannel(channel) {
+    return 0 === alpha
+      ? bgColor[channel]
+      : bgColor[channel] + (fgColor[channel] - bgColor[channel]) / alpha
+  }
+
+  return rgba({
+    red: Math.round(processChannel('red')),
+    green: Math.round(processChannel('green')),
+    blue: Math.round(processChannel('blue')),
+    alpha: Math.round(alpha * 100) / 100,
+  })
+}
 
 /**
  * Makes it easier to create components that

@@ -1,61 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders as circle 1`] = `
-.emotion-0 {
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  vertical-align: middle;
-}
-
-<img
-  src="http://via.placeholder.com/100x100"
-  alt="placeholder"
-  class="emotion-0 emotion-1"
-/>
-`;
-
 exports[`renders with custom size (number) 1`] = `
 .emotion-0 {
-  width: 32px;
   height: 32px;
-  border-radius: 3px;
+  width: 32px;
+  border-radius: 4px;
   vertical-align: middle;
 }
 
 <img
   src="http://via.placeholder.com/100x100"
   alt="placeholder"
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 />
 `;
 
 exports[`renders with custom size (string) 1`] = `
 .emotion-0 {
-  width: 4rem;
   height: 4rem;
-  border-radius: 3px;
+  width: 4rem;
+  border-radius: 4px;
   vertical-align: middle;
 }
 
 <img
   src="http://via.placeholder.com/100x100"
   alt="placeholder"
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 />
 `;
 
 exports[`renders without crashing 1`] = `
 .emotion-0 {
-  width: 24px;
   height: 24px;
-  border-radius: 3px;
+  width: 24px;
+  border-radius: 4px;
   vertical-align: middle;
 }
 
 <img
   src="http://via.placeholder.com/100x100"
   alt="placeholder"
-  class="emotion-0 emotion-1"
+  class="emotion-0"
 />
 `;

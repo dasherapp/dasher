@@ -3,11 +3,11 @@ import { arrayOf, number, shape, string } from 'prop-types'
 import React, { Component } from 'react'
 import { ApolloConsumer, Mutation } from 'react-apollo'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
-import styled from 'react-emotion'
-import { spacing } from '../theme'
+import system from 'system-components/emotion'
 import { reorder } from '../utils/utils'
 import { BOARD_QUERY } from './BoardPage'
 import Column, { COLUMN_WIDTH } from './Column'
+import Flex from './Flex'
 import SkeletonButton from './SkeletonButton'
 
 const CREATE_COLUMN_MUTATION = gql`
@@ -33,17 +33,15 @@ const UPDATE_COLUMN_MUTATION = gql`
     }
   }
 `
+const HorizontalScroll = system(
+  {
+    is: 'div',
+    display: 'flex',
+  },
+  { overflowX: 'auto' },
+)
 
-const HorizontalScroll = styled.div({
-  display: 'flex',
-  overflowX: 'auto',
-})
-
-const ColumnsContainer = styled.div({
-  display: 'flex',
-  alignItems: 'flex-start',
-  padding: spacing[3],
-})
+HorizontalScroll.displayName = 'HorixontalScroll'
 
 class Columns extends Component {
   static propTypes = {
@@ -116,8 +114,10 @@ class Columns extends Component {
                     <HorizontalScroll>
                       <Droppable droppableId="droppable" direction="horizontal">
                         {(provided, snapshot) => (
-                          <ColumnsContainer
+                          <Flex
                             innerRef={provided.innerRef}
+                            alignItems="flex-start"
+                            p={4}
                             {...provided.droppableProps}
                           >
                             {columns.map((column, index) => (
@@ -153,7 +153,7 @@ class Columns extends Component {
                             >
                               Add column
                             </SkeletonButton>
-                          </ColumnsContainer>
+                          </Flex>
                         )}
                       </Droppable>
                     </HorizontalScroll>

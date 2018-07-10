@@ -1,17 +1,24 @@
-import styled from 'react-emotion'
-import { focusStyle, transition } from '../theme'
+import { themeGet } from 'styled-system'
+import system from 'system-components/emotion'
 
-const Clickable = styled.button({
-  display: 'inline-block',
-  margin: 0,
-  padding: 0,
-  background: 'transparent',
-  border: 0,
-  outline: 0,
-  cursor: 'pointer',
-  transition: `all ${transition.duration} ${transition.easing}`,
+const Clickable = system(
+  {
+    is: 'button',
+    m: 0,
+    p: 0,
+    bg: 'transparent',
+    border: 0,
+  },
+  props => ({
+    outline: 0,
+    cursor: 'pointer',
+    appearance: 'none',
 
-  ':focus': focusStyle,
-})
+    '&:focus': themeGet('focusStyle')(props),
+  }),
+  'borderRadius',
+)
+
+Clickable.displayName = 'Clickable'
 
 export default Clickable

@@ -1,41 +1,44 @@
 import React from 'react'
-import { fireEvent, render, renderIntoDocument } from 'react-testing-library'
+import { fireEvent, renderIntoDocument } from 'react-testing-library'
+import { renderWithTheme } from '../../utils/testUtils'
 import Button from '../Button'
 import { EllipsesIcon } from '../Icon'
 
 it('renders without crashing', () => {
-  const { container } = render(<Button>Test Button</Button>)
+  const { container } = renderWithTheme(<Button>Test Button</Button>)
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders when disabled', () => {
-  const { container } = render(<Button disabled>Disabled Button</Button>)
+  const { container } = renderWithTheme(
+    <Button disabled>Disabled Button</Button>,
+  )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders as primary', () => {
-  const { container } = render(
+  const { container } = renderWithTheme(
     <Button buttonStyle="primary">Primary Button</Button>,
   )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders as secondary', () => {
-  const { container } = render(
+  const { container } = renderWithTheme(
     <Button buttonStyle="secondary">Primary Button</Button>,
   )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders as danger', () => {
-  const { container } = render(
+  const { container } = renderWithTheme(
     <Button buttonStyle="danger">Primary Button</Button>,
   )
   expect(container.firstChild).toMatchSnapshot()
 })
 
 it('renders as icon', () => {
-  const { container } = render(
+  const { container } = renderWithTheme(
     <Button buttonStyle="icon">
       <EllipsesIcon />
     </Button>,

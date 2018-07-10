@@ -1,6 +1,5 @@
-import { array, number } from 'prop-types'
+import { arrayOf, number, shape, string } from 'prop-types'
 import React from 'react'
-import { spacing } from '../theme'
 import Flex from './Flex'
 import IssueLabel from './IssueLabel'
 
@@ -9,20 +8,25 @@ function IssueLabels({ labels, totalCount }) {
 
   return (
     totalCount > 0 && (
-      <Flex css={{ flexWrap: 'wrap', marginTop: spacing[0] }}>
+      <Flex flexWrap="wrap" mt={1}>
         {labels.map(label => (
           <IssueLabel key={label.name} color={`#${label.color}`}>
             {label.name}
           </IssueLabel>
         ))}
-        {Boolean(remainingCount) && <IssueLabel>...</IssueLabel>}
+        {remainingCount > 0 ? <IssueLabel color="#eee">...</IssueLabel> : null}
       </Flex>
     )
   )
 }
 
 IssueLabels.propTypes = {
-  labels: array.isRequired,
+  labels: arrayOf(
+    shape({
+      name: string.isRequired,
+      color: string.isRequired,
+    }),
+  ).isRequired,
   totalCount: number.isRequired,
 }
 

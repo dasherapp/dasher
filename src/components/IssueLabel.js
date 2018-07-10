@@ -1,38 +1,36 @@
 import { string } from 'prop-types'
-import styled from 'react-emotion'
-import {
-  colors,
-  fontSizes,
-  fontWeights,
-  lineHeights,
-  radii,
-  spacing,
-} from '../theme'
-import { getReadableColor, joinSpacing, toAlpha } from '../utils/style'
-import { cleanElement } from '../utils/utils'
+import { themeGet } from 'styled-system/dist/util'
+import system from 'system-components/emotion'
+import { getReadableColor } from '../utils/style'
 
-const Label = styled(cleanElement({ type: 'span', excludeProps: ['color'] }))(
+const IssueLabel = system(
+  {
+    is: 'span',
+    p: 1,
+    mt: 1,
+    mr: 1,
+    fontSize: 0,
+    fontWeight: 'bold',
+    lineHeight: 'none',
+    borderRadius: 1,
+  },
   props => ({
-    display: 'inline-block',
-    padding: joinSpacing(spacing[0], spacing[1]),
-    marginTop: spacing[0],
-    marginRight: spacing[0],
-    fontSize: fontSizes[0],
-    fontWeight: fontWeights.bold,
-    lineHeight: lineHeights.none,
     color: getReadableColor(props.color),
     backgroundColor: props.color,
-    borderRadius: radii[0],
-    boxShadow: `inset 0 -1px 0 ${toAlpha(colors.gray[2])}`,
+    boxShadow: `inset 0 -1px 0 ${themeGet('colors.grayAlpha.2')(props)}`,
   }),
 )
 
-Label.propTypes = {
-  color: string,
+IssueLabel.displayName = 'IssueLabel'
+
+IssueLabel.propTypes = {
+  ...IssueLabel.propTypes,
+  color: string.isRequired,
 }
 
-Label.defaultProps = {
-  color: colors.gray[2],
+IssueLabel.defaultProps = {
+  ...IssueLabel.defaultProps,
+  blacklist: Object.keys(IssueLabel.propTypes),
 }
 
-export default Label
+export default IssueLabel

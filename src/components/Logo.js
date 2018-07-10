@@ -1,28 +1,30 @@
 import React from 'react'
-import { colors } from '../theme'
+import system from 'system-components/emotion'
 
-function Logo({ size, ...props }) {
+const Svg = system(
+  {
+    is: 'svg',
+    size: 24,
+    color: 'indigo.7',
+  },
+  { verticalAlign: 'middle' },
+  'space',
+  'color',
+)
+
+Svg.displayName = 'Svg'
+
+function Logo(props) {
   return (
-    <svg
+    <Svg
       xmlns="http://www.w3.org/2000/svg"
-      width={size}
-      height={size}
       viewBox="0 0 80 80"
       fill="currentColor"
-      css={{ verticalAlign: 'middle' }}
       {...props}
     >
-      <path
-        d="M 10.0129 0C 2.57908 0 -2.25588 7.82312 1.06863 14.4721L 9.36042 31.0557C 12.1757 36.6863 12.1757 43.3137 9.36042 48.9443L 1.06863 65.5279C -2.25588 72.1769 2.57908 80 10.0129 80L 33.8326 80C 55.9239 80 73.8326 62.0914 73.8326 40C 73.8326 17.9086 55.9239 0 33.8326 0L 10.0129 0Z"
-        transform="translate(6 0)"
-      />
-    </svg>
+      <path d="M16.013 0C8.579 0 3.744 7.823 7.069 14.472l8.291 16.584a20 20 0 0 1 0 17.888L7.07 65.528C3.744 72.177 8.579 80 16.013 80h23.82c22.09 0 40-17.909 40-40s-17.91-40-40-40h-23.82z" />
+    </Svg>
   )
-}
-
-Logo.defaultProps = {
-  size: 24,
-  color: colors.indigo[7],
 }
 
 export default Logo

@@ -1,9 +1,11 @@
-import styled from 'react-emotion'
+import system from 'system-components/emotion'
 
-const PageContainer = styled.div({
+const PageContainer = system({
+  is: 'div',
   maxWidth: 1200,
-  width: '90%',
-  margin: '0 auto',
+  width: 0.9,
+  mx: 'auto',
+  my: 0,
 })
 
 export default PageContainer

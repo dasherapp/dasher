@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'react-emotion'
-import { colors, fontSizes, fontWeights, lineHeights, spacing } from '../theme'
+import { space } from '../theme'
 import { get } from '../utils/utils'
 import Flex from './Flex'
+import Heading from './Heading'
 import {
   CheckIcon,
   IssueIcon,
@@ -12,39 +12,21 @@ import {
   XIcon,
 } from './Icon'
 import IssueLabels from './IssueLabels'
-
-const IssueTitle = styled.a({
-  fontSize: fontSizes[1],
-  fontWeight: fontWeights.bold,
-  lineHeight: lineHeights.normal,
-  color: colors.gray[8],
-  textDecoration: 'none',
-
-  ':hover': {
-    color: colors.indigo[8],
-  },
-})
+import Link from './Link'
+import Text from './Text'
 
 function renderStateIcon(issue) {
   if (issue.merged) {
-    return <MergeIcon color={colors.violet[8]} size={20} />
+    return <MergeIcon color="violet.8" size={20} />
   }
 
   if (issue.mergeable) {
     return (
-      <PullRequestIcon
-        color={issue.closed ? colors.red[8] : colors.green[8]}
-        size={20}
-      />
+      <PullRequestIcon color={issue.closed ? 'red.8' : 'green.8'} size={20} />
     )
   }
 
-  return (
-    <IssueIcon
-      color={issue.closed ? colors.red[8] : colors.green[8]}
-      size={20}
-    />
-  )
+  return <IssueIcon color={issue.closed ? 'red.8' : 'green.8'} size={20} />
 }
 
 function renderStatusIcon(issue) {
@@ -55,13 +37,13 @@ function renderStatusIcon(issue) {
 
   switch (buildStatus) {
     case 'SUCCESS':
-      return <CheckIcon color={colors.green[8]} size={16} />
+      return <CheckIcon color="green.8" size={16} />
 
     case 'PENDING':
-      return <SmallCircleIcon color={colors.yellow[8]} size={16} />
+      return <SmallCircleIcon color="yellow.8" size={16} />
 
     case 'FAILURE':
-      return <XIcon color={colors.red[8]} size={16} />
+      return <XIcon color="red.8" size={16} />
 
     default:
       return null
@@ -70,42 +52,29 @@ function renderStatusIcon(issue) {
 
 function Issue({ issue }) {
   return (
-    <Flex
-      css={{
-        padding: spacing[3],
-        paddingRight: spacing[4],
-        borderTop: `1px solid ${colors.gray[2]}`,
-      }}
-    >
-      <Flex
-        css={{
-          flexDirection: 'column',
-          alignItems: 'center',
-          marginRight: spacing[3],
-        }}
-      >
+    <Flex p={4} pr={5} borderTop="1px solid" borderColor="grayAlpha.2">
+      <Flex flexDirection="column" alignItems="center" mr={4}>
         {renderStateIcon(issue)}
-        <div css={{ marginTop: spacing[1] }} />
+        <div css={{ marginTop: space[2] }} />
         {renderStatusIcon(issue)}
       </Flex>
-      <Flex css={{ flexDirection: 'column', alignItems: 'flex-start' }}>
-        <IssueTitle href={issue.url} target="_blank" rel="noopener noreferrer">
-          {issue.title}
-        </IssueTitle>
-        <small
-          css={{
-            marginTop: spacing[0],
-            fontSize: fontSizes[0],
-            lineHeight: lineHeights.normal,
-            color: colors.gray[6],
-          }}
+      <Flex flexDirection="column" alignItems="flex-start">
+        <Heading
+          is={Link}
+          fontSize={1}
+          href={issue.url}
+          target="_blank"
+          rel="noopener noreferrer"
         >
+          {issue.title}
+        </Heading>
+        <Text is="small" mt={1} fontSize={0} lineHeight="normal" color="gray.6">
           #{issue.number}
           {issue.closed ? '' : ' opened'}
           {issue.author &&
             ` by
           ${issue.author.login}`}
-        </small>
+        </Text>
         <IssueLabels
           labels={issue.labels.labels}
           totalCount={issue.labels.totalCount}

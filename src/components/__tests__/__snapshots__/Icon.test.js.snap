@@ -2,6 +2,8 @@
 
 exports[`renders custom icons 1`] = `
 .emotion-0 {
+  height: 24px;
+  width: 24px;
   vertical-align: middle;
 }
 
@@ -11,16 +13,14 @@ exports[`renders custom icons 1`] = `
 
 <div>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <circle
@@ -42,16 +42,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <circle
@@ -75,16 +73,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <circle
@@ -102,16 +98,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <polyline
@@ -119,16 +113,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <line
@@ -145,16 +137,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <circle
@@ -164,16 +154,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <circle
@@ -193,16 +181,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <polyline
@@ -210,16 +196,14 @@ exports[`renders custom icons 1`] = `
     />
   </svg>
   <svg
-    stroke="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24"
     viewBox="0 0 24 24"
     fill="none"
-    width="24"
+    stroke="currentColor"
     stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     vector-effect="non-scaling-stroke"
+    xmlns="http://www.w3.org/2000/svg"
     class="emotion-0"
   >
     <line
@@ -237,7 +221,10 @@ exports[`renders custom icons 1`] = `
 
 exports[`renders with custom color and size 1`] = `
 .emotion-0 {
+  height: 16px;
+  width: 16px;
   vertical-align: middle;
+  color: #c27e00;
 }
 
 .emotion-0 * {
@@ -245,18 +232,15 @@ exports[`renders with custom color and size 1`] = `
 }
 
 <svg
-  stroke-width="2"
-  xmlns="http://www.w3.org/2000/svg"
-  height="16"
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"
-  width="16"
+  stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
   vector-effect="non-scaling-stroke"
+  xmlns="http://www.w3.org/2000/svg"
   class="emotion-0"
-  color="#c27e00"
 >
   <circle
     cx="12"
@@ -268,6 +252,8 @@ exports[`renders with custom color and size 1`] = `
 
 exports[`renders without crashing 1`] = `
 .emotion-0 {
+  height: 24px;
+  width: 24px;
   vertical-align: middle;
 }
 
@@ -276,16 +262,14 @@ exports[`renders without crashing 1`] = `
 }
 
 <svg
-  stroke="currentColor"
-  xmlns="http://www.w3.org/2000/svg"
-  height="24"
   viewBox="0 0 24 24"
   fill="none"
-  width="24"
+  stroke="currentColor"
   stroke-width="2"
   stroke-linecap="round"
   stroke-linejoin="round"
   vector-effect="non-scaling-stroke"
+  xmlns="http://www.w3.org/2000/svg"
   class="emotion-0"
 >
   <circle

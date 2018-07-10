@@ -93,7 +93,7 @@ function Issue({ issue }) {
                     pl={2}
                     fontSize={0}
                     lineHeight="tight"
-                    color="gray.7"
+                    color="gray.6"
                   >
                     Assigned to{' '}
                     <Link href={assignee.url}>{assignee.login}</Link>

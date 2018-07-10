@@ -49,6 +49,7 @@ export function searchIssues(variables) {
               assignees: nodes {
                 login
                 avatarUrl
+                url
               }
             }
             labels(first: 5) {
@@ -92,6 +93,7 @@ export function searchIssues(variables) {
               assignees: nodes {
                 login
                 avatarUrl
+                url
               }
             }
             labels(first: 5) {

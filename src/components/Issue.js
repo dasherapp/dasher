@@ -84,7 +84,9 @@ function Issue({ issue }) {
           <Flex flexWrap="wrap" mt={2}>
             {issue.assignees.assignees.map(assignee => (
               <Flex alignItems="center">
-                <Avatar src={assignee.avatarUrl} m={1} ml={0} />
+                <a href={assignee.url}>
+                  <Avatar src={assignee.avatarUrl} m={1} ml={0} />
+                </a>
                 {issue.assignees.totalCount === 1 && (
                   <Text
                     is="small"
@@ -93,7 +95,8 @@ function Issue({ issue }) {
                     lineHeight="tight"
                     color="gray.7"
                   >
-                    Assigned to {assignee.login}
+                    Assigned to{' '}
+                    <Link href={assignee.url}>{assignee.login}</Link>
                   </Text>
                 )}
               </Flex>

@@ -9,6 +9,7 @@ const Avatar = system(
   {
     verticalAlign: 'middle',
   },
+  'space',
 )
 
 Avatar.displayName = 'Avatar'

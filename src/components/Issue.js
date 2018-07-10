@@ -1,6 +1,7 @@
 import React from 'react'
 import { space } from '../theme'
 import { get } from '../utils/utils'
+import Avatar from './Avatar'
 import Flex from './Flex'
 import Heading from './Heading'
 import {
@@ -79,6 +80,26 @@ function Issue({ issue }) {
           labels={issue.labels.labels}
           totalCount={issue.labels.totalCount}
         />
+        {issue.assignees.totalCount > 0 && (
+          <Flex flexWrap="wrap" mt={2}>
+            {issue.assignees.assignees.map(assignee => (
+              <Flex alignItems="center">
+                <Avatar src={assignee.avatarUrl} m={1} ml={0} />
+                {issue.assignees.totalCount === 1 && (
+                  <Text
+                    is="small"
+                    pl={2}
+                    fontSize={0}
+                    lineHeight="tight"
+                    color="gray.7"
+                  >
+                    Assigned to {assignee.login}
+                  </Text>
+                )}
+              </Flex>
+            ))}
+          </Flex>
+        )}
       </Flex>
     </Flex>
   )

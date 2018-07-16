@@ -45,6 +45,7 @@ const ColumnContainer = system(
     display: 'flex',
     flexDirection: 'column',
     width: COLUMN_WIDTH,
+    maxHeight: '100%',
     mr: 4,
     bg: 'white',
     borderRadius: 2,
@@ -119,7 +120,13 @@ class Column extends Component {
               <ColumnContainer {...props}>
                 <Subscribe to={[ModalContainer]}>
                   {modal => (
-                    <Flex alignItems="center" p={2} pl={4} {...dragHandleProps}>
+                    <Flex
+                      alignItems="center"
+                      flex="0 0 auto"
+                      p={2}
+                      pl={4}
+                      {...dragHandleProps}
+                    >
                       <Heading is="span" fontSize={2}>
                         {name || 'Untitled Column'}
                       </Heading>

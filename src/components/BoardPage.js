@@ -4,6 +4,7 @@ import React from 'react'
 import { Query } from 'react-apollo'
 import BoardHeader from './BoardHeader'
 import Columns from './Columns'
+import Flex from './Flex'
 import NotFoundPage from './NotFoundPage'
 
 export const BOARD_QUERY = gql`
@@ -30,10 +31,10 @@ function BoardPage({ match }) {
         if (!data.board) return <NotFoundPage />
 
         return (
-          <div>
+          <Flex flexDirection="column" height="100vh">
             <BoardHeader board={data.board} />
             <Columns boardId={data.board.id} columns={data.board.columns} />
-          </div>
+          </Flex>
         )
       }}
     </Query>

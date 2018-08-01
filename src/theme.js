@@ -41,7 +41,7 @@ export const colors = {
   grayAlpha: openColor.gray.map(color => toAlpha(color)),
 }
 
-export const radii = [0, 2, 4]
+export const radii = [0, 2, 4, 8]
 
 export const shadows = [
   `0 0 0 1px ${colors.grayAlpha[3]}`,

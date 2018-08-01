@@ -6,7 +6,7 @@ const CardLink = system(
     p: 4,
     bg: 'white',
     boxShadow: 1,
-    borderRadius: 2,
+    borderRadius: 3,
 
     hover: {
       boxShadow: 2,

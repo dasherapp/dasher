@@ -4,6 +4,7 @@ import Button from './Button'
 import Text from './Text'
 import Box from './Box'
 import Flex from './Flex'
+import Input from './Input'
 
 function LabelText(props) {
   return (
@@ -13,6 +14,8 @@ function LabelText(props) {
       mb={2}
       fontSize={1}
       lineHeight="none"
+      fontWeight="bold"
+      color="grayAlpha.9"
       {...props}
     />
   )
@@ -21,11 +24,11 @@ function LabelText(props) {
 function ColumnForm({ formState, onChange, onSubmit, onCancel }) {
   return (
     <form onSubmit={onSubmit}>
-      <Box py={2} px={4}>
-        <Box py={2}>
+      <Box py={1} px={4}>
+        <Box py={3}>
           <Flex is="label" flexDirection="column">
             <LabelText>Name</LabelText>
-            <input
+            <Input
               value={formState.name}
               onChange={event => onChange({ name: event.target.value })}
               required
@@ -33,10 +36,10 @@ function ColumnForm({ formState, onChange, onSubmit, onCancel }) {
             />
           </Flex>
         </Box>
-        <Box py={2}>
+        <Box py={3}>
           <Flex is="label" flexDirection="column">
             <LabelText>Query</LabelText>
-            <input
+            <Input
               value={formState.query}
               onChange={event => onChange({ query: event.target.value })}
               required
@@ -48,13 +51,15 @@ function ColumnForm({ formState, onChange, onSubmit, onCancel }) {
         justifyContent="flex-end"
         px={4}
         py={3}
-        borderTop="1px solid"
-        borderColor="grayAlpha.2"
+        // borderTop="1px solid"
+        // borderColor="grayAlpha.2"
       >
         <Button type="button" buttonStyle="secondary" onClick={onCancel}>
           Cancel
         </Button>
-        <Button type="submit">Save</Button>
+        <Button type="submit" ml={2}>
+          Save
+        </Button>
       </Flex>
     </form>
   )

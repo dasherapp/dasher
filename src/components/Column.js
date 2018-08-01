@@ -48,7 +48,7 @@ const ColumnContainer = system(
     maxHeight: '100%',
     mr: 4,
     bg: 'white',
-    borderRadius: 2,
+    borderRadius: 3,
   },
   props => ({
     boxShadow: props.isDragging
